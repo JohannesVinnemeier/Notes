@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\usepackage{ragged2e}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{positioning}
+\usetikzlibrary{hobby}
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+\usetikzlibrary{decorations.markings}
+\usepackage[justification=centering]{caption}
+\usepackage{bbm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{hyperref, xurl}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage{needspace}
+
+%Prevents footnotes from breaking across pages
+\interfootnotelinepenalty=10000
+
+%For the pgfplotset package to draw plots
+\pgfplotsset{compat=1.18}
+
+%Link colors
+\hypersetup{
+    colorlinks = true,
+    linkcolor = black,
+    citecolor = black,
+    urlcolor = black
+}
+
+
+%custom colors 
+\definecolor{custom_green}{rgb}{0.0, 0.5, 0.0}
+\definecolor{custom_blue}{rgb}{0.2, 0.2, 0.6}
+\definecolor{custom_blue2}{rgb}{0.16, 0.32, 0.75}
+\definecolor{cardinal}{rgb}{0.77, 0.12, 0.23}
+
+% new \oset macro:
+\makeatletter
+\newcommand{\oset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-2\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
+
+% Absolute value bars command. Write \abs{x}.
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+%Real, complex, natural numbers and integers symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+
+%Theorems, lemmas etc.
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{claim}{Claim}
+
+%Change default caption under figures/tables to be smaller
+\captionsetup[figure]{font=small}
+
+\begin{document}
+    \tableofcontents
+    \newpage
+
+    This is a collection of statements I have proven myself and considered to be useful in some cases. I will often only present proof sketches instead of fully detailed proofs.
+
+    \section{On manifolds with boundary}
+    In this section we discuss how known theorems/lemmas fail for manifolds with non-emtpy boundary and how they can be generalized.
+    
+    \input{sections/On Manifolds with Boundary/regular_values.tex}
+    \input{sections/On Manifolds with Boundary/morse_theory.tex}
+    \input{sections/On Manifolds with Boundary/integral_curves_and_flows.tex}
+    
+    \section{Miscellaneous}
+
+    \input{sections/Miscellaneous/Smoothness_on_arbitrary_subsets.tex}
+
+
+% Add an unnumbered entry for the bibliography in the table of contents
+\cleardoublepage
+\addcontentsline{toc}{section}{References}
+
+% Include all entries from BibTeX file
+\nocite{*}
+
+\bibliographystyle{alpha}
+\bibliography{ref}
+\end{document}

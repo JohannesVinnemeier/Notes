@@ -1,0 +1,49 @@
+\subsection{Smoothness on arbitrary subsets}
+
+Let $M,N$ be manifolds and $A \subseteq M$ an arbitrary subset. In \cite{lee2011smooth} the author defines what it means for a map
+\[
+f \colon A \to N
+\]
+to be smooth, namely
+\begin{center}
+    \textit{We call $f$ smooth if around each $x \in A$ there exists a smooth extension $\oset[-1pt]{\sim}{f} \colon U \to N$ of $f$ to some open neighbourhood $U \subseteq M$ of $x$ (see \cite[p. 45]{lee2011smooth}).}
+\end{center}
+However this definition has a fatal flaw: if $A$ happens to be a submanifold of $M$, a map $f \colon A \to N$ might be smooth in the usual sense (i.e. as a map between smooth manifolds) but not smooth in the sense of Lee`s definition. Consider for example
+\begin{gather*}
+    M := \R, N:= [0,1], A := [0,1], \\
+    f \colon A \to N, \, t \mapsto t.   
+\end{gather*}
+Then clearly $f$ is smooth as a map between smooth manifolds, but around $0,1 \in A$ it does not admit a smooth extension onto an open neighbourhood $U \subseteq M$, since the image of such an extension would fail to be contained within $N$. We can however correct this flaw by defining:
+
+\begin{definition}[Extension-smooth]
+    \label{def:extension_smooth}
+    Let $M^n,N^m$ be manifolds with or without boundary, $A \subseteq M$ an arbitrary subset and $f \colon A \to N$ a map. We call $f$ \textit{extension-smooth} if around each $x \in A$ there exist charts
+    \begin{gather*}
+        h \colon U \to M \text{ around } x\\
+        k \colon V \to N \text{ around } f(x),
+    \end{gather*}
+    such that
+    \[
+    g:= k^{-1} \circ f \circ h|_{h^{-1}(A)}
+    \]
+    admits a smooth extension around $h^{-1}(x)$ in the sense that there exist open subsets $U_0 \subseteq \R^n$ and $V_0 \subseteq \R^m$ with $h^{-1}(x) \in U_0$ and $k^{-1}(f(x)) \in V_0$ and a smooth map 
+    \[
+    \oset[-1pt]{\sim}{g} \colon U_0 \to V_0
+    \]
+    with $g|_{U_0 \cap h^{-1}(A)} = \oset[-1pt]{\sim}{g}|_{U_0 \cap h^{-1}(A)}$.
+\end{definition}
+
+We now claim the following.
+
+\begin{lemma}
+    If $\partial N = \emptyset$ then Lee`s definition and Definition \ref{def:extension_smooth} are equivalent. In general Lee`s definition is stronger.
+\end{lemma}
+
+\begin{lemma}
+    If $A$ is a submanifold of $M$, then $f \colon A \to N$ is smooth as a map of smooth manifolds if and only if it is extension-smooth.
+\end{lemma}
+
+In particular the extension Lemma in \cite{lee2011smooth} (Lemma 2.26.) still holds and the proof of the Whitney approximation theorems in chapter 6 work the same (here the extension Lemma is used). But with our new definition Problem 6-7 in \cite{lee2011smooth} now is an actual counterexample. (with Lee`s definition $F$ would not be smooth on the closed subset $A$ but only smooth as a map between manifolds).
+
+Another way to properly define smoothness of $f \colon A \to N$ would be to change the codomain in Lee`s definition to be the double of $N$. This should be equivalent to Definition \ref{def:extension_smooth}.
+

@@ -1,0 +1,25 @@
+\begin{tikzpicture}[scale = 0.5,every plot/.append style={very thick}]
+    \begin{axis}[
+        clip = true,
+        ticks = none,
+        xmin = -1.5, xmax = 1.5,
+        ymin = -1.5, ymax = 1.5,
+        zmin = 0, zmax = 1,
+        axis equal image,
+        axis lines = middle,
+        axis line style={draw=none},
+        view = {0}{90},
+    ]
+        \addplot3[samples = 27,
+            quiver = {
+                u = {1},
+                v = {2*x},
+                scale arrows = 0.15,
+            },
+            -stealth,
+            domain = -3:3,
+            domain y = -4:4,
+        ] {0};
+    \end{axis}
+    
+\end{tikzpicture}

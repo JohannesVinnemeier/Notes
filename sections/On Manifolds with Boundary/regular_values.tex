@@ -1,0 +1,14 @@
+\subsection{Regular values}
+    It is known that for the regular value theorem, and more generally statements about transversality, to still hold for manifolds with boundary one needs to impose additional conditions on the boundary behaviour of a smooth function $f \colon M \to N$. Here is another lemma, that fits into the same category. We call $q \in N$ a \textbf{boundary value} of $f$ if $q \in f(\partial M)$.
+
+    \begin{lemma}
+        \label{lem:regular_sublevel_sets}
+        Let $M$ be a manifold with boundary and $f \colon M \to \R$ a smooth function. Furthermore, let $a \in \R$ be a regular value of $f$, that is not a boundary value. Then $M_a := f^{-1}(-\infty,a]$ is a submanifold with boundary $\partial M_a = f^{-1}(a)$.
+    \end{lemma}
+    \begin{proof}[Proof sketch]
+        For $p \in f^{-1}(a)$ we have $p \in \mathrm{int}(M)$ by assumption. Since $\mathrm{int}(M)$ is a boundaryless manifold the local submersion theorem holds, i.e. $f$ looks like the orthogonal projection $\R^n \to \R$ around $p$. Then the proof goes the same as in the boundaryless case.
+    \end{proof}
+
+    \begin{remark}
+        To see that Lemma \ref{lem:regular_sublevel_sets} fails without the assumption that $a$ is not a boundary value consider $M := S^1 \times [0,1]$ and $f \colon M \to \R, (z,t) \mapsto t$. Then $f$ is everywhere regular but $f^{-1}(-\infty,0]$ does not satisfy the statements in Lemma \ref{lem:regular_sublevel_sets}. 
+    \end{remark}

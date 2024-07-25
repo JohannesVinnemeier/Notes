@@ -1,0 +1,142 @@
+\subsection{Morse Theory}
+
+    
+    For a smooth function $f \colon M \to \R$ and a regular value $a \in \R$ that is not a boundary value we define the \textbf{sublevel set} of $a$ to be
+    \[
+    M_a := f^{-1}(-\infty,a].
+    \] 
+    Lemma \ref{lem:regular_sublevel_sets} guarantees, that $M_a$ is a (sub-)manifold with boundary.
+
+    \begin{lemma}
+        \label{lem:topology_sublevel_sets_not_crossing_critical_point}
+        Let $M$ be a compact manifold with boundary and $f \colon M \to \R$ a Morse function. Furthermore let $a,b \in \R$ be regular values of $f$, such that $[a,b]$ does not contain any critical values nor any boundary values. Then 
+        \[
+        M_a \cong M_b.
+        \]
+    \end{lemma}
+
+    \begin{proof}
+        Let $K := f^{-1}[a,b]$ and let $U := \{p \in \mathrm{int}(M) \mid p \text{ is a regular point of } f\}$. Then $U \subseteq M$ is open and $K \subseteq U$. Choose a cutoff function $\phi \colon M \to \R$ with
+        \begin{itemize}
+            \item $\phi|_{K} = 1$
+            \item $\mathrm{supp}(\phi) \subseteq U$
+            \item $0 \leq \phi \leq 1$
+        \end{itemize}
+        Now choose a pseudo gradient\footnotemark $X$ of $f$ and define the smooth vector field
+        \[
+            Y := \phi \frac{-1}{X \cdot f} X,
+        \]
+
+
+        \footnotetext{Here we agree to the convention that $X \cdot f < 0$ outisde of critical points.}
+
+        \noindent which we define to be $0$ outside of $U$. Since $Y$ vanishes in a neighbourhood around $\partial M$ (or more generally since $Y$ is tangent to $\partial M$, see \cite{lee2011smooth} Theorem 9.34) we can consider the flow of $Y$: 
+        \[
+        \theta \colon M \times \R \to M.
+        \]
+        Since $M$ is compact (and $Y$ tangent to $\partial M$) each integral curve is defined for all time. Let $\theta_t := \theta( - ,t) \colon M \to M$. We claim that 
+        \begin{align}
+            \label{eq:flow1}
+            \theta_{b-a}(M_b) \subseteq M_a, \\
+            \label{eq:flow2}
+            \theta_{a-b}(M_a) \subseteq M_b.
+        \end{align}
+        Let $p \in f^{-1}[a,b]$ and let $\gamma_p \colon \R \to M$ be the integral curve of $Y$ starting at $p$. Consider
+        \[
+        h \colon \R \to \R, \; t \mapsto f(\gamma_p(t)).
+        \]
+        Then for $t \in \R$ with $h(t) \in [a,b]$ we have $\phi(\gamma_p(t)) = 1$ and thus
+        \[
+        h^\prime(t) = \dot{\gamma_p}(t) \cdot f = Y_{\gamma_p(t)} \cdot f = -1.
+        \]
+        So $h$ is a smooth function with $c := h(0) = f(p) \in [a,b]$ and $h^\prime(t) = -1$ as long as $h(t) \in [a,b]$. We claim that $h(c-a) = a$. To see this let 
+        \[
+        s := \mathrm{sup}\{t \in [0,c-a] \mid h([0,t]) \subseteq [a,b]\}.
+        \]
+        Assume $s < c-a$. For continuity reasons we get that $h([0,s]) \subseteq [a,b]$ and thus $h^\prime(t) = -1$ for $t \in [0,s]$. Then $h(t) = c -t$ for $t \in [0,s]$. But then $h(s) \in (a,b]$ and $h$ is strictly decreasing around $t =s$ such that there exists $\epsilon >0$ with $h([0,s+\epsilon]) \subseteq [a,b]$, contradicting the definition of $s$. So $s = c-a$ and we get that $h(t) = c-t$ for $t \in [0,c-a]$. Thus $h(c-a) = a$.
+
+        As $h^\prime(t) \leq 0$ for all $t \in \R$ we conclude
+        \[
+        f(\theta_{b-a}(p)) = h(b-a) \leq h(c-a) = a,
+        \]
+        thus $\theta_{b-a}(p) \in M_a$. For $p \in M_b \setminus f^{-1}[a,b] = \mathrm{int}{M_a}$ we also have 
+        \[
+        \theta_{b-a}(p) \in M_a
+        \]
+        as $f$ decreases along gradient flow lines of $Y$. This shows (\ref{eq:flow1}). We argue similiarly for (\ref{eq:flow2}). Let $p \in M_a$ and let $\gamma_p \colon \R \to M$ be the integral curve of $Y$ starting at $p$. Consider
+        \[
+        h \colon \R \to \R, \; t \mapsto f(\gamma_p(-t)).
+        \]
+        Then $h^\prime(t) = \phi(\gamma_p(-t)) \leq 1$. Assume that $h(b-a) = f(\theta_{a-b}(p)) > b$. Then by the mean value theorem there exists some $\xi \in [0,b-a]$ with 
+        \[
+        h^\prime(\xi) = \frac{h(b-a) - h(0)}{b-a} \geq \frac{h(b-a) - a}{b-a} > 1,
+        \]
+        which is a contradiction. So $f(\theta_{a-b}(p)) \leq b$, showing (\ref{eq:flow2}). Thus $\theta_{b-a}$ restricts to a diffeomorphism $M_b \oset[1pt]{\cong}{\longrightarrow} M_a$ with inverse $\theta_{a-b}$.
+    \end{proof}
+
+    \begin{remark}
+        We can weaken the assumptions of Lemma \ref{lem:topology_sublevel_sets_not_crossing_critical_point}. First of all $f$ does not need to be a Morse function. We can then still construct a vector field $X$, such that $X \cdot f < 0$ outisde of critical points. Secondly, we may replace the assumption that $M$ is compact by instead requiring $f^{-1}[a,b]$ to be compact, which is for example the case if $f$ is proper. We then only have to modify the proof in the definition of $U$. Instead we define $U$ to be a \textit{compact} neighbourhood of $K := f^{-1}[a,b]$, i.e. $K \subseteq \mathrm{int} U$, which does not contain any critical points nor boundary points. For example we may define $U$ as a union of finitely many (here we need compactness of $f^{-1}[a,b]$) compact sets $K_i$ not containing critical points nor boundary points such that $\mathrm{int} K_i$ still cover $K$. 
+    \end{remark}
+
+    Similiarly we may proof the following, for which we can also weaken the assumptions as described in the remark above.
+
+    \begin{lemma}
+        \label{lem:topology_sublevel_sets_not_crossing_critical_point_variation}
+        Let $M$ be a compact manifold with boundary and $f \colon M \to \R$ a Morse function. Furthermore let $a,b \in \R$ be regular values of $f$, such that $[a,b]$ does not contain any critical values nor any boundary values. Then 
+        $M_a$ is a (not necessarily smooth) deformation retract of $M_b$.
+    \end{lemma}
+    \begin{proof}
+        We consider the flow $\theta$ as in Lemma \ref{lem:topology_sublevel_sets_not_crossing_critical_point} and define a retraction
+        \[
+            r \colon M_b \to M_a, \; p \mapsto \begin{dcases}
+            \theta(f(p) - a,p), & f(p) \geq a \\
+            p, & f(p) \leq a
+        \end{dcases}
+        \]
+        As we have shown above $\theta(f(p) - a,p) \in f^{-1}(a)$. It follows that $r$ is continous and well-defined. To see that $r$ is a deformation retract consider
+        \[
+        H \colon M_b \times [0,1] \to M_b, (p,t) \mapsto \begin{dcases}
+            \theta(t(f(p) - a),p), & f(p) \geq a \\
+            p, & f(p) \leq a
+        \end{dcases}
+        \]
+        Then $H(-,0) = id_{M_b}$ and $H(-,1) = r$.
+    \end{proof}
+
+    We would now also like to generalize the result, that the topology of $M$ changes by attaching a $\lambda$-cell when crossing a critical point $c_0$ of index $\lambda$ to compact manifolds with boundary. This statement can now be shown using the two lemmas above by requiring $f^{-1}[a,b]$ to only contain the critical point $c_0$ and no boundary points. The proof now works exactly the same as for the boundaryless case. See \cite{milnor1963morse}. Let us state the theorem for manifolds with boundary:
+    
+    \begin{theorem}
+        \label{thm:topology_when_crossing_critical_point}
+        Let $M$ be a compact manifold with boundary and $f \colon M \to \R$ a Morse function. Let $c_0 \in M$ be a critical point of $f$ of index $\lambda$ and $c := f(c_0)$ as well as $\epsilon > 0$, such that $f^{-1}[c-\epsilon,c+\epsilon]$ contains no boundary points and no critical points besides $c$. Then for $\epsilon$ sufficiently small $M_{c+\epsilon}$ has the homotopy type of $M_{c-\epsilon}$ with a $\lambda$-cell attached. More precisely, there exists an attaching map 
+        \[
+            \phi \colon S^{\lambda - 1} = \partial D^\lambda \to \partial M_{c-\epsilon}
+        \] and a homotopy equivalence 
+        \[
+        r \colon M_{c+\epsilon} \to M_{c-\epsilon} \cup_\phi D^\lambda
+        \]
+        with homotopy inverse 
+        \[
+        \iota \colon M_{c-\epsilon} \cup_\phi D^\lambda \to M_{c+\epsilon},
+        \]
+        such that $r \circ \iota = id_{M_{c-\epsilon} \cup_\phi D^\lambda}$.
+    \end{theorem}
+    \begin{proof}[Proof Sketch]
+        Following \cite{milnor1963morse} we first construct $F \colon M \to \R$, such that 
+        $$F^{-1}(-\infty,c+\epsilon] = f^{-1}(-\infty,c+\epsilon] = M_{c+\epsilon}.$$
+        Furthermore $F^{-1}[c-\epsilon,c+\epsilon]$ does not contain any critical points or boundary points, such that $F^{-1}(-\infty,c-\epsilon]$ is a deformation retract of $F^{-1}(-\infty,c+\epsilon]$ by Lemma \ref{lem:topology_sublevel_sets_not_crossing_critical_point_variation}. We then show that $M_{c-\epsilon} \cup_\phi D^\lambda$ is a deformation retract of $F^{-1}(-\infty,c-\epsilon]$ (or more precisely the image of $M_{c-\epsilon} \cup_\phi D^\lambda$ under an embedding is a deformation retract). This then shows that $M_{c-\epsilon} \cup_\phi D^\lambda$ is a deformation retract of $M_{c+\epsilon}$.
+    \end{proof}
+    
+    However this does not yield a cell decomposition of $M$ as we do not know how the topology changes when crossing boundary points. Instead we can use the fact that any compact without boundary admits a cell-decomposition directly, to proof the case when $M$ has non-empty boundary.
+
+    \begin{theorem}[Cell-decompositions of Manifolds]
+        \label{thm:cell_decomp}
+        Let $M$ be compact manifold with or without boundary. Then $M$ has the homotopy type of a CW-complex.
+    \end{theorem}
+
+    \begin{proof}
+        The case when $M$ has no boundary is shown in \cite{milnor1963morse}. If $\partial M \neq \emptyset$ we can argue as follows: consider the double $D(M)$ of $M$. Then $D(M)$ is a compact manifold without boundary. Now we construct a Morse function on $D(M)$. Choose a Morse function $f \colon M \to \R$ with $f \leq 0$ and $f(p) = 0$ if and only if $p \in \partial M$, such that $f$ has no critical points on the boundary. Such Morse functions always exist, see \cite{BA}. We can then glue $f$ and $-f$ together to get a Morse function $F$ on $D(M)$, again see \cite{BA}. Then $M \cong F^{-1}(-\infty,0]$ and $0$ is a regular value of $F$, allowing us to refer back to the boundaryless case, which tells us that every sublevel set $M_a$ for a regular value $a \in \R$ has the homotopy type of a CW-complex.
+    \end{proof}
+
+    \begin{remark}
+        We may also formulate Theorem \ref{thm:topology_when_crossing_critical_point} and \ref{thm:cell_decomp} for handle bodies instead of CW-complexes. The proof is essentially the same but instead of construction a deformation retract $F^{-1}(-\infty,c-\epsilon] \to M_{c-\epsilon} \cup_\phi D^\lambda$ one constructs a homeomorphism $F^{-1}(-\infty,c-\epsilon] \to M_{c-\epsilon} \cup_\phi D^\lambda \times D^{n-\lambda}$.
+    \end{remark}
