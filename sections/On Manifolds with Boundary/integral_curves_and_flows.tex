@@ -1,30 +1,34 @@
 
 \subsection{Integral curves and flows}
 
-\begin{lemma}[Existence of Integral curves]
-    \label{lem:existence_integral_curves}
-    Let $M$ be a manifold with boundary, $X$ a smooth vector field on $M$ and $p \in M$. Then there exists a unique maximal integral curve $\gamma \colon I \to M$ starting at $p$, where one of the four following cases holds for $a \leq 0 \leq b$:
-    \begin{enumerate}[(i)]
-        \item $I = (a,b)$
-        \item $I = [a,b)$ and $\gamma(a) \in \partial M$
-        \item $I = (a,b]$ and $\gamma(b) \in \partial M$
-        \item $I = [a,b]$ and $\gamma(a),\gamma(b) \in \partial M$
-    \end{enumerate}
-\end{lemma}
+For manifolds with boundary we essentially define integral curves in the same way as for boundaryless manifolds, but allow the domain to be any non-trivial interval (i.e. not a single point) containing $0$. In particular this interval may only be half-open or closed. In general, the existence of integral curves on manifolds with boundary fails as illustrated by the following example:
 
-\begin{remark}
+\begin{counterexample}
     \label{rem:vector_field_example}
-    In general it does not hold that $a < b$ in Lemma \ref{lem:existence_integral_curves} as illustrated by the following example. Consider  the lower halfspace $M := \R^2_{y \leq 0}$ and the vector field $X := \frac{\partial}{\partial x} + 2x \frac{\partial}{\partial y}$. Then for $p = (0,0)$ the integral curve is only defined for $t = 0$, since on $\R^2$ it would be given by $\gamma(t) = (t,t^2)$ but $t^2 > 0$ for $t \neq 0$.
+    Consider  the lower halfspace $M := \R^2_{y \leq 0}$ and the vector field $X := \frac{\partial}{\partial x} + 2x \frac{\partial}{\partial y}$. Then for $p = (0,0)$ the integral curve is only defined for $t = 0$, since on $\R^2$ it would be given by $\gamma(t) = (t,t^2)$ but $t^2 > 0$ for $t \neq 0$.
     \begin{figure}[ht]
         \centering
         \label{fig:vector_field1}
         \input{graphics/vector_field1.tex}
         \caption{The vector field $X$. The integral curves are parabolas.}
     \end{figure}
-\end{remark}
+\end{counterexample}
 
-\begin{proof}[Proof sketch of Lemma \ref{lem:existence_integral_curves}]
-The proof is essentially the same as in the boundaryless case (see for example \cite{lee2011smooth}): We show that two integral curves $\gamma \colon I \to M$ and $\gamma^\prime \colon I^\prime \to M$ starting at $p$ agree on their common domain. This then allows us to define the maximal integral curve on some interval $I$ and every interval containing $0$ is of the form $(i) - (iv)$ \footnotemark. The only difference is that $I$ and $I^\prime$ may not be open intervalls. So we have to show that uniqueness still applies. We claim: Let $U \subseteq \R^n$ be open, $F \colon U \to \R^n$ a smooth vector field, $I$ an interval of the form $(i) - (iv)$ and $\gamma,\gamma^\prime \colon I \to U$ integral curves both starting at $p \in U$. Then $\gamma = \gamma^\prime$. If $0$ is an interior point of $I$ we can apply the usual uniqueness theorem for $\gamma,\gamma^\prime$ restricted to $\mathrm{int}(I)$. By continuity they must then also agree at the endpoint. So it remains to show uniqueness if $0$ is a boundary point of $I$ (say for example $I = [0,b)$). But by the existence theorem for integral curves we can find an integral curve $\eta \colon (-\epsilon,\epsilon) \to U$ starting at $p$ and define
+We do however still get a uniqueness result \textbf{if} the integral curve exists. Furthermore, if the vector field is sufficiently well-behaved we can guarantee the existence.
+
+\begin{lemma}[Uniqueness and existence of Integral curves]
+    \label{lem:existence_integral_curves}
+    Let $M$ be a manifold with boundary, $X$ a smooth vector field on $M$ and $p \in M$. If there exists an integral curve starting at $p$, then there exists a unique maximal integral curve $\gamma \colon I \to M$ starting at $p$, where one of the four following cases holds for $a \leq 0 \leq b$, $a<b$:
+    \begin{enumerate}[(i)]
+        \item $I = (a,b)$
+        \item $I = [a,b)$ and $\gamma(a) \in \partial M$
+        \item $I = (a,b]$ and $\gamma(b) \in \partial M$
+        \item $I = [a,b]$ and $\gamma(a),\gamma(b) \in \partial M$
+    \end{enumerate}
+    Furthermore, if $X$ is either transversal to the boundary or everywhere tangent, the unique maximal integral curve starting at $p$ always exists.
+\end{lemma}
+
+\begin{proof}[Proof sketch of Lemma \ref{lem:existence_integral_curves}] Let's begin by showing uniqueness. The proof is essentially the same as in the boundaryless case (see for example \cite{lee2011smooth}): We show that two integral curves $\gamma \colon I \to M$ and $\gamma^\prime \colon I^\prime \to M$ starting at $p$ agree on their common domain. This then allows us to define the maximal integral curve on some interval $I$ and every interval containing $0$ is of the form $(i) - (iv)$ \footnotemark. The only difference is that $I$ and $I^\prime$ may not be open intervalls. So we have to show that uniqueness still applies. We claim: Let $U \subseteq \R^n$ be open, $F \colon U \to \R^n$ a smooth vector field, $I$ an interval of the form $(i) - (iv)$ and $\gamma,\gamma^\prime \colon I \to U$ integral curves both starting at $p \in U$. Then $\gamma = \gamma^\prime$. If $0$ is an interior point of $I$ we can apply the usual uniqueness theorem for $\gamma,\gamma^\prime$ restricted to $\mathrm{int}(I)$. By continuity they must then also agree at the endpoint. So it remains to show uniqueness if $0$ is a boundary point of $I$ (say for example $I = [0,b)$). But by the existence theorem for integral curves we can find an integral curve $\eta \colon (-\epsilon,\epsilon) \to U$ starting at $p$ and define
 \[
 \beta \colon (-\epsilon,b) \to U, t \mapsto \begin{dcases*}
     \eta(t), t \leq 0 \\
@@ -45,15 +49,23 @@ By the uniqueness theorem we have
 and our claim follows. The case $I = (a,0]$ goes analogous and for $I = [0,b]$ or $I = [a,0]$ it is either trivial (if $a = b = 0$) or we consider $I\setminus \{b\}$ resp. $I\setminus \{a\}$ and apply the above argument. Equality at $t = a, t = b$ respectively then again follows by continuity.
 
 To see that $\gamma(t) \in \partial M$ for $t \in \{a,b\}$ a boundary point of $I$ we note that for $ p = \gamma(t) \in \mathrm{int}(M)$ we can define the integral curve starting at $p$ on some open interval $(-\epsilon,\epsilon)$ by the existence theorem for integral curves (Picard-Lindelöff). But then $t$ is not a boundary point of $I$ since $I$ is maximal.
+
+Next we show the existence if $X$ is transversal to $\partial M$. For $p \in \mathrm{int}(M)$ this follows directly from the Picard-Lindelöff Theorem as in the boundaryless case. If $p \in \partial M$, we may argue similiarly: Consider a chart $h \colon \R^n_{x_n \geq 0} \supseteq U \to M$ around $p = h(0)$ and let $Y$ be the vector field $X$ in this chart, i.e. $D_q h(Y_q) = X_{h(q)}$. Then by definition of smoothness we can extend $Y$ to a smooth vector field $Y^\prime$ on some open neighbourhood $U^\prime \subseteq \R^n$ around $0 = h^{-1}(p)$. Applying Picard-Lindelöff we get the existence of an integral curve $\gamma \colon (-\epsilon,\epsilon) \to U^\prime$ of $Y^\prime$ starting at $0$. Write $$Y^\prime = \sum_i F_i \frac{\partial}{\partial x_i}$$ and $$\gamma = (\gamma_1,\ldots,\gamma_n).$$ Assume that $X$ is inwards pointing along the boundary. After restricting to a smaller domain we may assume $F_n \geq 0$. Then
+\[
+\gamma^\prime_n(t) = F_n(\gamma(t)) \geq 0,
+\]
+such that $\gamma_n$ is increasing. In particular $\gamma_n(t) \geq 0$ for $t \in [0,\epsilon)$, hence $\gamma(t) \in U$ for $t \in [0,\epsilon)$. Then $$\eta := h \circ \gamma \colon [0,\epsilon) \to M$$ is the desired integral curve.
+
+For the case that $X$ is everywhere tangent to $\partial M$ see \cite{lee2011smooth} (Theorem 9.34).
     
 \end{proof}
 
 \footnotetext{If we put together integral curves defined on open intervals that agree on their common domain, it is clear that this results in a smooth curve, since around each $t$ this curve is given by one of the smooth curves which we put together. If we put together integral curves $\gamma_1,\gamma_2$ defined on something like $I_1 = (a,b]$ and $I_2 = [b,c)$ we have to be more careful around the boundary point $b$. But the same argument as we applied to $\beta$ in the proof of Lemma \ref{lem:existence_integral_curves} shows that putting $\gamma_1$ and $\gamma_2$ together results in a $C^1$-curve. We can then apply the usual uniqueness theorem to see that this curve is already given by a $C^\infty$-curve.}
 
-On compact maniolds we can say more about the maximal Interval $I$:
+On compact manifolds we can say more about the maximal Interval $I$:
 \begin{lemma}[Existence of Integral curves on compact manifolds]
 \label{lem:existence_integral_curves_compact_mnf}
-    Let $M$ be a compact manifold with boundary, $X$ a smooth vector field on $M$ and $p \in M$. Then there exists a unique maximal integral curve $\gamma \colon I \to M$ starting at $p$, where one of the four following cases holds for $a \leq 0 \leq b$:
+    If $M$ is compact in Lemma \ref{lem:existence_integral_curves} then the maximal interval $I$ has one of the following forms:
     \begin{enumerate}[(i)]
         \item $I = (-\infty,\infty)$
         \item $I = [a,\infty)$ and $\gamma(a) \in \partial M$
@@ -87,7 +99,7 @@ and so $[a,b + \frac{\epsilon}{2}) \subseteq [a,\epsilon + t_m)$, contradicting 
 
 
 \begin{remark}[A note on flows for manifolds with boundary]
-    In general the concept of a flow is not well behaved if $M$ has boundary. Consider for example the vector field in Remark \ref{rem:vector_field_example}. Then the integral curve for $p = (0,0)$ is only defined for $t=0$ but for every other point it is defined on a half-open interval. In \cite{lee2011smooth} the author shows, that if $X$ is tangent to $\partial M$ we still get a well-behaved flow, i.e. it is defined on some open subset $\mathcal{O} \subseteq M \times \R$. I think that if we instead assume, that $X$ is transversal to $\partial M$, we still get a "good" flow domain in the sense that we can define the flow on some subset $\mathcal{D} \subseteq M \times \R$, which is a codimension $0$ submanifold with boundary and $I_p := \{ t \in \R \mid (p,t) \in \mathcal{D}\}$ is an interval for each $p \in M$.
+    In general the concept of a flow is not well behaved if $M$ has boundary, as integral curves may not even exist (see Counterexample \ref{rem:vector_field_example}). In \cite{lee2011smooth} the author shows, that if $X$ is tangent to $\partial M$ we still get a well-behaved flow, i.e. it is defined on some open subset $\mathcal{O} \subseteq M \times \R$. I think that if we instead assume, that $X$ is transversal to $\partial M$, we still get a "good" flow domain in the sense that we can define the flow on some subset $\mathcal{D} \subseteq M \times \R$, which is a codimension $0$ submanifold with boundary and $I_p := \{ t \in \R \mid (p,t) \in \mathcal{D}\}$ is an interval around $0$ for each $p \in M$.
 \end{remark}
 
 The statement in the above remark should follow from the following lemma, which allows us to define submanifold charts for $\mathcal{D}$.

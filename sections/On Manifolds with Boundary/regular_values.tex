@@ -9,6 +9,7 @@
         For $p \in f^{-1}(a)$ we have $p \in \mathrm{int}(M)$ by assumption. Since $\mathrm{int}(M)$ is a boundaryless manifold the local submersion theorem holds, i.e. $f$ looks like the orthogonal projection $\R^n \to \R$ around $p$. Then the proof goes the same as in the boundaryless case.
     \end{proof}
 
-    \begin{remark}
+    \begin{counterexample}
+        \label{ex:boundary_values}
         To see that Lemma \ref{lem:regular_sublevel_sets} fails without the assumption that $a$ is not a boundary value consider $M := S^1 \times [0,1]$ and $f \colon M \to \R, (z,t) \mapsto t$. Then $f$ is everywhere regular but $f^{-1}(-\infty,0]$ does not satisfy the statements in Lemma \ref{lem:regular_sublevel_sets}. 
-    \end{remark}
+    \end{counterexample}

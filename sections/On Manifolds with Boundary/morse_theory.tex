@@ -74,6 +74,10 @@
         which is a contradiction. So $f(\theta_{a-b}(p)) \leq b$, showing (\ref{eq:flow2}). Thus $\theta_{b-a}$ restricts to a diffeomorphism $M_b \oset[1pt]{\cong}{\longrightarrow} M_a$ with inverse $\theta_{a-b}$.
     \end{proof}
 
+    \begin{counterexample}
+        Example \ref{ex:boundary_values} also shows, that we need to impose conditions on the boundary values in Lemma \ref{lem:topology_sublevel_sets_not_crossing_critical_point}. To see that we also need that condition for Lemma \ref{lem:topology_sublevel_sets_not_crossing_critical_point_variation} we may similiarly define $f$ as the height function on the disjoint union of two cylinders which are slightly shifted in height. Similiar examples show, that Theorem \ref{thm:topology_when_crossing_critical_point} fails without the assumption on boundary values.
+    \end{counterexample}
+
     \begin{remark}
         We can weaken the assumptions of Lemma \ref{lem:topology_sublevel_sets_not_crossing_critical_point}. First of all $f$ does not need to be a Morse function. We can then still construct a vector field $X$, such that $X \cdot f < 0$ outisde of critical points. Secondly, we may replace the assumption that $M$ is compact by instead requiring $f^{-1}[a,b]$ to be compact, which is for example the case if $f$ is proper. We then only have to modify the proof in the definition of $U$. Instead we define $U$ to be a \textit{compact} neighbourhood of $K := f^{-1}[a,b]$, i.e. $K \subseteq \mathrm{int} U$, which does not contain any critical points nor boundary points. For example we may define $U$ as a union of finitely many (here we need compactness of $f^{-1}[a,b]$) compact sets $K_i$ not containing critical points nor boundary points such that $\mathrm{int} K_i$ still cover $K$. 
     \end{remark}
