@@ -73,11 +73,18 @@
 %Change default caption under figures/tables to be smaller
 \captionsetup[figure]{font=small}
 
+%Command for a headline in the middle of a subsection
+\newcommand{\headline}[1]{
+    \vspace{10pt}
+    \noindent{\large\textit{#1}}
+    \vspace{9pt}
+}
+
 \begin{document}
     \tableofcontents
     \newpage
 
-    This is a collection of statements I have proven myself and considered to be useful in some cases. I will often only present proof sketches instead of fully detailed proofs.
+    This is a collection of statements I have proven myself and considered to be useful in some cases. I will often only present proof sketches instead of fully detailed proofs. Furthermore these notes contain a variety of counterexamples.
 
     \section{On manifolds with boundary}
     In this section we discuss how known theorems/lemmas fail for manifolds with non-emtpy boundary and how they can be generalized.

@@ -52,16 +52,18 @@ In particular the extension Lemma in \cite{lee2011smooth} (Lemma 2.26.) still ho
 
 Another way to properly define smoothness of $f \colon A \to N$ would be to change the codomain in Lee`s definition to be the double of $N$. This should be equivalent to Definition \ref{def:extension_smooth} and is arguably more elegant at the cost of being less elementary. 
 
-This allows to define a \textbf{smooth homotopy} as a smooth map 
+\headline{Smooth Homotopies}
+
+\noindent This allows to define a \textbf{smooth homotopy} as a smooth map 
 \[
 H \colon M \times [0,1] \to \N,
 \]
-for manifolds $M,N$ with or without boundary, where we consider $N \times [0,1]$ as a subset of $N \times \R$. Since the definition of extension-smooth is not that nice to work with we may instead want to define:
+for manifolds $M,N$ with or without boundary, where we consider $N \times [0,1]$ as a subset of $N \times \R$ (in the sense of Definition \ref{def:extension_smooth}). Since the definition of extension-smooth is not that nice to work with we may instead want to define:
 \begin{definition}
     \label{def:smooth_homotopy}
-    A homotopy $H\colon M \times [0,1] \to N$ is called smooth if there exists a smooth extension of $H$ onto $M \times \R$.
+    A homotopy $H\colon M \times [0,1] \to N$ is called smooth if there exists a smooth extension of $H$ to $M \times \R$.
 \end{definition}
-As we have seen in Counterexample \ref{ex:extension_smooth} this is a stronger definition compared to the first one given, as less homotopies are considered smooth by Definition \ref{def:smooth_homotopy}. However the homotopiy classes are the same. More precisely this is formulated in the following lemma.
+As we have seen in Counterexample \ref{ex:extension_smooth} this is a stronger definition compared to the first one given, as less homotopies are considered to be smooth by Definition \ref{def:smooth_homotopy}. However the homotopy classes of smooth maps are the same. More precisely this is formulated in the following lemma.
 
 \begin{lemma}
     Let $M,N$ be manifolds with or without boundary and $f,g \colon M \to N$ smooth maps. Then $f$ and $g$ are smoothly homotopic in the sense of the first definition if and only if they are smoothly homotopic in the sense of Definition \ref{def:smooth_homotopy}.
@@ -77,13 +79,13 @@ As we have seen in Counterexample \ref{ex:extension_smooth} this is a stronger d
     \[
         \Phi \colon M \times [0,1] \to M \times [0,1], (x,t) \mapsto (x,\phi(t))
     \]
-    is extension-smooth (it can be smoothly extended to $M \times \R$ and this implies that it is smooth in the sense of Definition \ref{def:extension_smooth}, as Lee`s definition is stronger by Lemma \ref{lem:smoothness_arbitrary_subsets_1}). Furthermore it is easily verified that the composition of extension-smooth maps on arbitray subsets is extension-smooth, such that 
+    is extension-smooth (it can be smoothly extended to $M \times \R$ and this implies that it is smooth in the sense of Definition \ref{def:extension_smooth}, as Lee`s definition is stronger by Lemma \ref{lem:smoothness_arbitrary_subsets_1}). Furthermore, it is easily verified that the composition of extension-smooth maps on arbitray subsets is extension-smooth, such that 
     \[
-    \overline{H} \colon M \times [0,1] \to N, (x,t) \mapsto H(x,\phi(t))
+    \overline{H} := H \circ \Phi \colon M \times [0,1] \to N
     \] 
     is extension-smooth. Then $\overline{H}$ is a homotopy from $f$ to $g$ and we can extend $\overline{H}$ to the smooth map 
     \[
-        H \circ \Phi \colon M \times \R \to N,
+        G \colon M \times \R \to N, (x,t) \mapsto H(x,\phi(t)),
     \]
     hence $\overline{H}$ is a smooth homotopy from $f$ to $g$ in the sense of Definition \ref{def:smooth_homotopy}. The converse follows directly from Lemma \ref{lem:smoothness_arbitrary_subsets_1}.
     
