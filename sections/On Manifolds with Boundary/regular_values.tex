@@ -1,4 +1,4 @@
-\subsection{Regular values}
+\subsection{Regular values and transversality}
     It is known that for the regular value theorem, and more generally statements about transversality, to still hold for manifolds with boundary one needs to impose additional conditions on the boundary behaviour of a smooth function $f \colon M \to N$. Here is another lemma, that fits into the same category. We call $q \in N$ a \textbf{boundary value} of $f$ if $q \in f(\partial M)$.
 
     \begin{lemma}
@@ -13,3 +13,107 @@
         \label{ex:boundary_values}
         To see that Lemma \ref{lem:regular_sublevel_sets} fails without the assumption that $a$ is not a boundary value consider $M := S^1 \times [0,1]$ and $f \colon M \to \R, (z,t) \mapsto t$. Then $f$ is everywhere regular but $f^{-1}(-\infty,0]$ does not satisfy the statements in Lemma \ref{lem:regular_sublevel_sets}. 
     \end{counterexample}
+
+    Let $M,N$ be manifolds with boundary and $f \colon M\to N$ smooth. We define the \textbf{boundary map} $\partial f$ of $f$ by 
+    \[
+    \partial f := f|_{\partial M}.
+    \]
+    We now generalize two theorems from \cite{guillemin2010differential} about transversal maps by allowing the codomain to have boundary as well. 
+
+    \begin{theorem}[Transversality Theorem]
+    \label{thm:transversality}
+    Let $M,N$ be manifolds with boundary, $f \colon M \to N$ smooth and $X \subseteq N$ a submanifold without boundary. If 
+    \[
+    f \pitchfork X \text{ and } \partial f \pitchfork X
+    \]
+    then $X^\prime := f^{-1}(X)$ is a submanifold with boundary 
+    \[
+    \partial X^\prime = X^\prime \cap \partial M
+    \]
+    and 
+    \[
+    \mathrm{codim}(X^\prime) = \mathrm{codim}(X).
+    \]
+    \end{theorem}
+    \begin{proof}
+        The case $\partial N = \emptyset$ is shown in \cite{guillemin2010differential} (p. 60). If $\partial N \neq \emptyset$ consider the inclusion
+        \[
+        \iota \colon N \to \mathrm{D}(N),
+        \]
+        where $\mathrm{D}(N)$ denotes the double of $N$ and define $F := \iota \circ f$. Then $Y := \iota(X)$ is a submanifo  ld of $\mathrm{D}(N)$ and $X^\prime = F^{-1}(Y)$. Furthermore, since $\iota$ is an embedding (and $\mathrm{dim}(N) = \mathrm{dim}(\mathrm{D}(N))$) it follows that 
+        \[
+        F \pitchfork Y \text{ and } \partial F \pitchfork Y,
+        \] 
+        such that the statement follows from the boundaryless case.
+    \end{proof}
+
+    \begin{theorem}[Parametric Transversality Theorem]
+        \label{thm:parametric_transversality}
+        Let $M,N$ be manifolds with boundary and $X \subseteq N$ a submanifold without boundary. Furthermore, let $S$ be a manifold without boundary and $F \colon M \times S \to N$ a smooth map with 
+        \[
+            F \pitchfork X \text{ and } \partial F \pitchfork X.
+        \]
+        Then for almost every $s \in S$ the map $f_s \colon M \to N$ defined by $f_s(p) := F(p,s)$ satisfies
+        \[
+            f_s \pitchfork X \text{ and } \partial f_s \pitchfork X.
+        \]
+    \end{theorem}
+    \begin{proof}
+        By Theorem \ref{thm:transversality} we know that 
+        \[
+        X^\prime := F^{-1}(X)
+        \]
+        is a submanifold (with boundary) of $M \times S$. Consider the projection $\pi \colon M \times S \to S$. We can then show, that for a regular value $s \in S$ of the map $\pi|_{X^\prime}$ the maps $f_s$ and $\partial f_s$ are transversal to $X$, which is just some linear algebra. The proof is exactly the same as in the case $\partial N = \emptyset$, see \cite{guillemin2010differential} (p. 68). Then the statement follows from Sard`s Theorem.
+    \end{proof}
+
+    \begin{theorem}[Transversality Homotopy Theorem]
+        Let $M,N$ be manifolds with boundary, $f \colon M \to N$ smooth and $X \subseteq N$ a submanifold without boundary. Then $f$ is smoothly homotopic to a map $g \colon M \to N$ with
+        \[
+            g \pitchfork X \text{ and } \partial g \pitchfork X.
+        \]
+    \end{theorem}
+    \begin{proof}
+        First we may assume that $\mathrm{im}(f)\subseteq \mathrm{int}(N)$, since $f$ is always smoothly homotopic to such a map (the inclusion $\mathrm{int}(N) \hookrightarrow N$ is a smooth homotopy equivalence). Define
+        \[
+        Y := X \cap \mathrm{int}(N)
+        \]
+        and 
+        \[
+        g \colon M \to \mathrm{int}(N), \; p \mapsto f(p).
+        \]
+        Using the Transversality Homotopy Theorem for the case $\partial N = \emptyset$ (see \cite{guillemin2010differential} p. 70) we get that $g$ is smoothly homotopic to a map $g^\prime \colon M \to \mathrm{int}(N)$, such that 
+        \[
+            g^\prime \pitchfork Y \text{ and } \partial g^\prime \pitchfork Y.
+        \]
+        Now define $f^\prime := \iota \circ g$, where $\iota \colon \mathrm{int}(N) \hookrightarrow N$ is the inclusion. Since $f^\prime$ does not intersect $X$ at boundary points, i.e. $\mathrm{im}(f^\prime) \cap X \subseteq \mathrm{int}(N)$, the transversality properties of $g^\prime$ directly imply
+        \[
+            f^\prime \pitchfork X \text{ and } \partial f^\prime \pitchfork X.
+        \]
+        
+        %Now consider the inclusion $\iota \colon N \to \mathrm{D}(N)$ of $N$ into its double and define $g := \iota \circ f$ and $Y := \iota(X)$. From here on we mimic the proof of Theorem 6.36 in \cite{lee2011smooth}. By the Whitney embedding theorem we may assume that $\mathrm{D}(N)$ is a submanifold of some $\R^n$. Choose a tubular neighbourhood $V$ of $\mathrm{N}$ together with a retraction $r \colon V \to \mathrm{D}(N)$, which is a submersion. Now define $$\delta \colon \mathrm{D}(N) \to \R_{>0}, \; x \mapsto \mathrm{sup}\{\tau >0 \mid B_\tau(x) \subseteq V\}.$$
+        % It is straightforward to show that $\delta$ is continuous. Using the Whitney approximation theorem for functions we can choose a smooth function $\epsilon \colon \mathrm{D}(N) \to \R_{>0}$ with 
+        % \[
+        % 0 < \epsilon(x) < \delta(x) \text{ for all } x \in \mathrm{D}(N). 
+        % \]
+        % Now define 
+        % \[
+        % G^\prime \colon M \times B_1(0) \to V, (p,v) \mapsto g(p) + \epsilon(g(p))v. 
+        % \]
+        % and $G := r \circ G^\prime$. For $p \in M$ consider the inclusion
+        % \[
+        % h_p \colon B_1(0) \to M \times B_1(0), \; v \mapsto (p,v).
+        % \]
+        % Then $G^\prime \circ h_p$ is clearly a submersion. If $p \in \partial M$ then $\partial G^\prime \circ h_p$ is also a submerison. In particular $D_{(p,v)} G^\prime$ and $D_{(p,v)} \partial G^\prime$ are surjective, thus $G^\prime$ and $\partial G^\prime$ are submersions. This implies that $G$ and $\partial G$ are submerisons (since $r$ is also a submerison). In particular 
+        % \[
+        % G \pitchfork Y \text{ and } \partial G \pitchfork Y.
+        % \]
+        % Applying Theorem \ref{thm:parametric_transversality} we get that for almost every $v \in B_1(0)$:
+        % \[
+        %     g_v \pitchfork Y \text{ and } \partial g_v \pitchfork Y.
+        % \]
+        % Since $g_0 = g = \iota \circ f$ and $\mathrm{im}(f) \subseteq \mathrm{int}(N)$ we get that $\mathrm{im}(g_0) \subseteq \iota(\mathrm{int}(N)) =: U$, which is an open subset of $\mathrm{D}(N)$. Then
+        % \[
+        % G^{-1}(U) \subseteq M \times B_1(0)
+        % \]
+        % is open and $M \times {0} \subseteq U$.
+    \end{proof}
