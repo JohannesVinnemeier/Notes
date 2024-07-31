@@ -1,0 +1,62 @@
+\subsection{Fiber Bundles}
+
+For convencience, let us state the definition of a fiber bundle.
+
+\begin{definition}[Fiber Bundle]
+    \label{def:fiber_bundle}
+    Let $G$ be a topological group acting effectively on a space $F$. A fiber bundle $E$ over $B$ with fiber $F$ and structure group $G$ consists of a surjective continuous map $p \colon E \to B$ and a collection of maps 
+    \[
+    (\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha))_\alpha,
+    \]
+    called a trivialising atlas, for open sets $U_\alpha \subseteq B$, such that 
+    \begin{enumerate}[(i)]
+        \item The maps $\phi_\alpha$ are homeomorphisms and the following diagrams commute:
+        \begin{center}
+            \commtriangle{$U_\alpha\times F$}{$p^{-1}(U_\alpha)$}{$U_\alpha$}{$\phi_\alpha$}{$\pi$}{$p$}
+        \end{center}
+        where $\pi$ is the usual projection onto the first factor.
+        \item For any two maps $\phi_\alpha, \phi_\beta$ there exists a continuous map
+        \[
+        \tau_{\alpha,\beta} \colon U_\alpha \cap U_\beta \to G,
+        \]
+        scuh that
+        \[
+        \phi_\alpha^{-1} \circ \phi_\beta \colon (U_\alpha \cap U_\beta) \times F \to (U_\alpha \cap U_\beta) \times F
+        \]
+        is given by $(b,f) \mapsto (b,\tau_{\alpha,\beta} \cdot f)$.
+        \item $(U_\alpha)_\alpha$ is an open cover of $B$.
+        \item The collection $(\phi_\alpha)$ is maximal with respect to the first 3 conditions.
+    \end{enumerate}
+    The maps $\phi_\alpha$ are called local trivialisations,  The sets $U_\alpha$ are called trivialising neighbourhoods and the map $\tau_{\alpha,\beta}$ is called the transition function for $\phi_\alpha,\phi_\beta$. Furthermore, we call $E$ the total space, $B$ the base space and $F$ the fiber. We write
+    \[
+    F \hookrightarrow E \oset[0.5pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B
+    \]
+    to denote the fiber bundle.
+\end{definition}
+
+\begin{remark}
+    We require surjectivity of $p$ to exclude the case $F = \emptyset$. The requirement, that $G$ acts effectively guarantees for the transition maps to be unique. However, this is not a strong requirement to impose, since if $G$ does not act effectively, i.e.
+    \[
+    \Phi \colon G \to \mathrm{Aut}(F)
+    \]
+    is not injective we get an effective group action by taking a quotient of $G$:
+    \[
+    G_{/\mathrm{ker}\Phi} \to \mathrm{Aut}(F).
+    \]
+    It follows from the universal property of the quotient topology, that this map is still continuous.
+\end{remark}
+
+\begin{remark}
+    The maximality condition for the trivialising atlas is well-defined: Given any trivialising atlas $\mathcal{F} = (\phi_\alpha)_\alpha$ satisfying conditions (i) - (iii) of Definition \ref{def:fiber_bundle} we can define
+    \begin{align*}
+        \hat{\mathcal{F}} := \{& \phi \colon U \times F \to p^{-1}(U) \mid U \subseteq B \text{ open }, \phi \text{ homeomorphism},  \text{ for any } \phi_\alpha \in \mathcal{F} \\ &\text{exists a map } \tau_{\alpha,\phi} \colon U \cap U_\alpha \to G, \text{ with } (\phi_\alpha^{-1} \circ \phi)(b,f) = (b,\tau_{\alpha,\phi}(b) \cdot f) \}.
+    \end{align*}
+    This is the maximal trivialising atlas induced by $\mathcal{F}$ satisfying (i) - (iii). Note however, that there is no unique trivialising atlas, since beginning with a different $\mathcal{F}$ may yield a different $\hat{\mathcal{F}}$ (as is the case for smooth atlases of smooth manifolds).
+    \begin{proof}
+        Given $\phi \colon U \times F \to p^{-1}(U), \phi^\prime \colon U^\prime \times F \to p^{-1}(U^\prime) \in \hat{\mathcal{F}}$, we claim that there exists $\tau \colon U \cap U^\prime \to G$, such that
+        \[
+        (\phi^{-1} \circ \phi^\prime)(b,f) = (b,\tau(b) \cdot f).
+        \]
+    \end{proof}
+    
+\end{remark}

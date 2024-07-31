@@ -18,6 +18,7 @@
 \usepackage{tocloft}
 \usepackage{etoolbox}
 \usepackage{needspace}
+\usepackage{xfrac}
 
 %Prevents footnotes from breaking across pages
 \interfootnotelinepenalty=10000
@@ -80,6 +81,34 @@
     \vspace{9pt}
 }
 
+% Commutative Triangle
+\newcommand{\commtriangle}[6]{
+  \begin{tikzpicture}
+    \draw node (node1) at (0,0) {#1};
+    \draw node (node2) at (2,0) {#2};
+    \draw node (node3) at (1,-1.5) {#3};
+
+    \draw[->] (node1.east) to node[above] {#4} (node2.west);
+    \draw[->] (node1.south) to node[above] {#5} ([xshift=-2]node3.north);
+    \draw[->] (node2.south) to node[above] {#6} ([xshift=2]node3.north);
+  \end{tikzpicture}
+}
+
+%Commutative Square
+\newcommand{\commsquare}[8]{
+  \begin{tikzpicture}
+    \draw node (node1) at (0,0) {#1};
+    \draw node (node2) at (2,0) {#2};
+    \draw node (node3) at (0,-2) {#3};
+    \draw node (node4) at (2,-2) {#4};
+
+    \draw[->] (node1.east) to node[above] {#5} (node2.west);
+    \draw[->] (node1.south) to node[right] {#6} (node3.north);
+    \draw[->] (node2.south) to node[right] {#7} (node4.north);
+    \draw[->] (node3.east) to node[above] {#8} (node4.west);
+  \end{tikzpicture}
+}
+
 \begin{document}
     \tableofcontents
     \newpage
@@ -90,12 +119,16 @@
     In this section we discuss how known theorems/lemmas fail for manifolds with non-emtpy boundary and how they can be generalized.
     
     \input{sections/On Manifolds with Boundary/regular_values.tex}
+
     \input{sections/On Manifolds with Boundary/morse_theory.tex}
+
     \input{sections/On Manifolds with Boundary/integral_curves_and_flows.tex}
     
     \section{Miscellaneous}
 
     \input{sections/Miscellaneous/Smoothness_on_arbitrary_subsets.tex}
+
+    \input{sections/Miscellaneous/Fiber_bundles.tex}
 
 
 % Add an unnumbered entry for the bibliography in the table of contents
