@@ -57,6 +57,68 @@ For convencience, let us state the definition of a fiber bundle.
         \[
         (\phi^{-1} \circ \phi^\prime)(b,f) = (b,\tau(b) \cdot f).
         \]
+        For $b_0 \in B$ choose $(\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha)) \in \mathcal{F}$ with $b_0 \in U_\alpha$. Then there exists
+        \[
+        \tau_{\alpha,\phi} \colon U \cap U_\alpha \to G, \; \tau_{\alpha,\phi^\prime} \colon U^\prime \cap U_\alpha \to G
+        \]
+        with
+        \[
+        (\phi^{-1}_\alpha \circ \phi)(b,f) = (b,\tau_{\alpha,\phi}(b) \cdot f), \; 
+        (\phi^{-1}_\alpha \circ \phi^\prime)(b,f) = (b,\tau_{\alpha,\phi^\prime}(b) \cdot f).
+        \]
+        Then
+        \[
+        (\phi^{-1} \circ \phi_\alpha) \circ (\phi_\alpha^{-1} \circ \phi^\prime) \colon (U_\alpha \cap U \cap U^\prime) \times F \to (U_\alpha \cap U \cap U^\prime) \times F 
+        \]
+        is given by
+        \[
+        (b,f) \mapsto (b, \tau_{\alpha,\phi}(b)^{-1}\tau_{\alpha,\phi^\prime}(b) \cdot f).
+        \]
+        We conclude that around $\{b_0\} \times F$ we have
+        \[
+        (\phi^{-1} \circ \phi^\prime)(b,f) = (b,\tau(b) \cdot f)
+        \]
+        for $\tau(b) := \tau_{\alpha,\phi}(b)^{-1}\tau_{\alpha,\phi^\prime}(b)$. Since group inversion and multiplication are continuous, $\tau$ is continuous. As $b_0$ was chosen arbitrary, such a map $\tau$ can be defined on all of $U \cap U^\prime$. Furthermore, the group action of $G$ is effective, hence $\tau$ is unique and the above argument shows that it is continuous. 
     \end{proof}
-    
 \end{remark}
+
+    For the transition functions we have the following Lemma, where again the effectiveness of the group action is crucial.
+
+    \begin{lemma}
+        \label{lem:transition_functions}
+        Let $F \hookrightarrow E \oset[0.5pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ be a fiber bundle with structure group $G$. Then (using the notation in Definition \ref{def:fiber_bundle}):
+        \begin{enumerate}[(i)]
+            \item $\tau_{\alpha,\alpha}(b) = e$
+            \item $\tau_{\alpha,\beta}^{-1}(b) = \tau_{\beta,\alpha}(b)$
+            \item $\tau_{\gamma,\alpha}(b)\tau_{\alpha,\beta}(b) = \tau_{\gamma,\beta}(b)$
+        \end{enumerate}
+    \end{lemma}
+    \begin{proof}
+        Let us first proof (iii), then (i) and (ii) follow directly from the group axioms. We compute:
+        \begin{align*}
+            (b,\tau_{\gamma,\beta}(b) \cdot f) & = (\phi_\gamma^{-1} \circ \phi_\beta)(b,f) \\ & = (\phi_\gamma^{-1} \circ \phi_\alpha \circ \phi_\alpha^{-1} \circ \phi_\beta)(b,f) = (b,\tau_{\gamma,\alpha}(b)\tau_{\alpha,\beta}(b) \cdot f).
+        \end{align*}
+        Since the transition functions are uniquely determined, the statement follows. 
+    \end{proof}
+
+     Interestingly, the transition functions already uniquely determine the fiber bundle, in a sense made precise by the following theorem.
+
+     \begin{theorem}
+        \label{thm:fiber_bundle_construction1}
+        Let $B,F$ be (non-empty) topological spaces and $G$ a topological group acting effectively on $F$. Suppose we are given the following data:
+        \begin{enumerate}[(i)]
+            \item An open cover $\mathcal{U} := (U_\alpha)_\alpha$ of B (where $\alpha$ ranges over some index set $A$)
+            \item A collection $(\tau_{\alpha,\beta})$ of continuous maps
+            \[
+            \tau_{\alpha,\beta} \colon U_\alpha \cap U_\beta \to G
+            \]
+            for each pair $U_\alpha,U_\beta \in \mathcal{U}$
+            \item $\tau_{\gamma,\alpha}(b)\tau_{\alpha,\beta}(b) = \tau_{\gamma,\beta}(b)$ for all $b \in U_\alpha \cap U_\beta \cap U_\gamma$
+        \end{enumerate}
+        Then there exists a unique (up to isomorphism) fiber bundle $F \hookrightarrow E \oset[0.5pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ with structure group $G$, such that the maximal trivialising atlas is induced by a trivialising atlas of the form
+        \[
+        (\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha))_\alpha,
+        \]
+        such that $(\phi^{-1} \circ \phi_\beta)(b,f) = (b,\tau_{\alpha,\beta}(b) \cdot f)$.
+     \end{theorem}
+
