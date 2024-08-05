@@ -52,7 +52,7 @@ For convencience, let us state the definition of a fiber bundle.
         \hat{\mathcal{F}} := \{& \phi \colon U \times F \to p^{-1}(U) \mid U \subseteq B \text{ open }, \phi \text{ homeomorphism},  \text{ for any } \phi_\alpha \in \mathcal{F} \\ &\text{exists a map } \tau_{\alpha,\phi} \colon U \cap U_\alpha \to G, \text{ with } (\phi_\alpha^{-1} \circ \phi)(b,f) = (b,\tau_{\alpha,\phi}(b) \cdot f) \}.
     \end{align*}
     This is the maximal trivialising atlas induced by $\mathcal{F}$ satisfying (i) - (iii). Note however, that there is no unique trivialising atlas, since beginning with a different $\mathcal{F}$ may yield a different $\hat{\mathcal{F}}$ (as is the case for smooth atlases of smooth manifolds).
-    \begin{proof}
+    \begin{proof}[Proof of above remark]
         Given $\phi \colon U \times F \to p^{-1}(U), \phi^\prime \colon U^\prime \times F \to p^{-1}(U^\prime) \in \hat{\mathcal{F}}$, we claim that there exists $\tau \colon U \cap U^\prime \to G$, such that
         \[
         (\phi^{-1} \circ \phi^\prime)(b,f) = (b,\tau(b) \cdot f).
@@ -103,7 +103,7 @@ For convencience, let us state the definition of a fiber bundle.
 
      Interestingly, the transition functions already uniquely determine the fiber bundle, in a sense made precise by the following theorem.
 
-     \begin{theorem}
+     \begin{theorem}[Fiber bundle construction A]
         \label{thm:fiber_bundle_construction1}
         Let $B,F$ be (non-empty) topological spaces and $G$ a topological group acting effectively on $F$. Suppose we are given the following data:
         \begin{enumerate}[(i)]
@@ -115,10 +115,200 @@ For convencience, let us state the definition of a fiber bundle.
             for each pair $U_\alpha,U_\beta \in \mathcal{U}$
             \item $\tau_{\gamma,\alpha}(b)\tau_{\alpha,\beta}(b) = \tau_{\gamma,\beta}(b)$ for all $b \in U_\alpha \cap U_\beta \cap U_\gamma$
         \end{enumerate}
-        Then there exists a unique (up to isomorphism) fiber bundle $F \hookrightarrow E \oset[0.5pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ with structure group $G$, such that the maximal trivialising atlas is induced by a trivialising atlas of the form
+        Then there exists a unique (up to isomorphism) fiber bundle $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ with structure group $G$, such that the maximal trivialising atlas is induced by a trivialising atlas of the form
         \[
         (\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha))_\alpha,
         \]
-        such that $(\phi^{-1} \circ \phi_\beta)(b,f) = (b,\tau_{\alpha,\beta}(b) \cdot f)$.
+        such that $(\phi_\alpha^{-1} \circ \phi_\beta)(b,f) = (b,\tau_{\alpha,\beta}(b) \cdot f)$.
      \end{theorem}
+     \needspace{8\baselineskip}
+     \begin{proof}
+        Consider the space
+        \[
+        E := \left( \coprod_{\alpha \in A} U_\alpha \times F \right)_{\raisebox{5pt}{\scalebox{1.5}{$/$}}\raisebox{5pt}{\scalebox{1.05}{$\sim$}}}
+        \]
+        where the equivalence relation $\sim$ is defined by
+        \[
+        (b,f,\beta) \sim (b,\tau_{\alpha,\beta}(b) \cdot f,\alpha)
+        \]
+        and let $p \colon E \to B, \: [(b,f,\alpha)] \mapsto b$. Furthermore, let $\pi \colon \raisebox{1.2pt}{$\scalebox{0.8}{$\coprod$}_\alpha$} \, U_\alpha \times F \to E$ be the projection map.
+
+        \textbf{Step 1.} \textit{$\sim$ is an equivalence relation.}
+
+        This follows directly from Lemma \ref{lem:transition_functions}: (i) implies reflexivity, (ii) implies symmetry and (iii) implies transitivity.
+
+        \textbf{Step 2.} \textit{$p$ is well-defined, continuous and surjective.}
+
+        Clearly $p$ is well-defined and surjective as $F \neq \emptyset$. Continuity then follows directly from the universal property of the quotient topology.
+
+        \textbf{Step 3.} \textit{Defining the trivialising atlas}
+
+        Consider
+        \[
+        \phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha), \; (b,f) \mapsto [(b,f,\alpha)].
+        \]
+        Clearly $\phi_\alpha$ is well-defined ($[(b,f,\alpha)] \in p^{-1}(U_\alpha)$) and continuous (the projection map $\pi$ is continuous). The inverse is given by
+        \[
+        \phi_\alpha^{-1}([(b,f,\beta)]) = (b,\tau_{\alpha,\beta}(b) \cdot f).
+        \]
+        To show that $\phi_\alpha^{-1}$ is continuous, we show that $\phi_\alpha$ is an open map. To this end, let $U \times V \subseteq U_\alpha \times F$ be open and consider
+        \[
+        \theta_{\alpha,\beta} \colon (U_\alpha \cap U_\beta) \times F \to (U_\alpha \cap U_\beta) \times F, \; (b,f) \mapsto (b, \tau_{\alpha,\beta}(b) \cdot f). 
+        \]
+        Clearly $\theta_{\alpha,\beta}$ is continuous (in fact it is a homeomorphism), hence
+        \[
+        V_\beta := \theta_{\alpha,\beta}^{-1}((U \cap U_\beta) \times V) \subseteq (U_\alpha \cap U_\beta) \times F
+        \]
+        is open and thus
+        \[
+        \pi^{-1}(\phi_\alpha(U \times V)) = \coprod_{\beta \in A} V_\beta \subseteq \coprod_{\beta \in A} U_\beta \times F
+        \]
+        is open. Thus $\phi_\alpha(U\times V)$ is open in $E$ and since $p^{-1}(U_\alpha)$ is also open, we conclude that $\phi_\alpha$ is an open map. Furthermore, the diagram
+        \begin{center}
+            \commtriangle{$U_\alpha\times F$}{$p^{-1}(U_\alpha)$}{$U_\alpha$}{$\phi_\alpha$}{}{$p$}
+        \end{center}
+        commutes, such that $\phi_\alpha$ is a local trivialisation. Moreover,
+        \[
+        (\phi_\alpha^{-1} \circ \phi_\beta)(b,f) = (b,\tau_{\alpha,\beta}(b) \cdot f).
+        \]
+        So the collection of maps $(\phi_\alpha)_\alpha$ is a trivialising atlas with the desired transition functions, making $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ into a fiber bundle with structure group $G$.
+
+        \textbf{Step 4.} \textit{Uniqueness}
+
+        Given two fiber bundles
+        \begin{align*}
+            \delta & := (F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B) \\
+            \epsilon & := (F \hookrightarrow \tilde{E} \oset[2pt]{\scalebox{0.8}{$\tilde{p}$}}{\longrightarrow} B)
+        \end{align*}
+        with structure group $G$ and trivialising atlases
+        \begin{align*}
+            (\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha))_{\alpha \in A} \\
+            (\tilde{\phi}_\alpha \colon U_\alpha \times F \to \tilde{p}^{-1}(U_\alpha))_{\alpha \in A}
+        \end{align*}
+        respectively, such that
+        \[
+        (\phi_\alpha^{-1} \circ \phi_\beta) (b,f) = (b,\tau_{\alpha,\beta}(b) \cdot f) = (\tilde{\phi}_\alpha^{-1} \circ \tilde{\phi}_\beta) (b,f).
+        \]
+        We can then construct an isomorphism $\Gamma \colon \delta \to \epsilon$ as follows: for $x \in E$ choose $U_\alpha \in \mathcal{U}$ with $p(x) \in U_\alpha$. Then define
+        \[
+        \Gamma(x) := (\tilde{\phi}_\alpha \circ \phi_\alpha^{-1})(x).
+        \]
+        Well-definedness of $\Gamma$ follows from the commutativity of the following diagram:
+        \begin{center}
+            \begin{tikzpicture}
+                \draw node (left) at (-3,0) {$p^{-1}(U_\alpha \cap U_\beta)$};
+                \draw node (up) at (0,1) {$(U_\alpha \cap U_\beta) \times F$};
+                \draw node (down) at (0,-1) {$(U_\alpha \cap U_\beta) \times F$};
+                \draw node (right) at (3,0) {$\tilde{p}^{-1}(U_\alpha \cap U_\beta)$};
+
+                \draw[->] (up.west) to node[above]{$\phi_\beta$} (left.north);
+                \draw[->] (down.west) to node[below] {$\phi_\alpha$} (left.south);
+                \draw[->] (up.east) to node[above] {$\tilde{\phi}_\beta$} (right.north);
+                \draw[->] (down.east) to node[below] {$\tilde{\phi}_\alpha$} (right.south); 
+                \draw[->] (up.south) to node[right] {$\tau$} (down.north);
+            \end{tikzpicture}
+        \end{center}
+        where $\tau(b,f) := (b, \tau_{\alpha,\beta}(b) \cdot f)$. Locally $\Gamma$ is given by a continuous map, so it is continuous. Analogously we define the inverse map. Furthermore,
+        \begin{center}
+            \commtriangle{$E$}{$\tilde{E}$}{$B$}{$\Gamma$}{$p$}{$\tilde{p}$}
+        \end{center}
+        commutes, so $\Gamma$ is a bundle isomorphism. This completes the proof.
+     \end{proof}
+
+     We may also formulate Theorem \ref{thm:fiber_bundle_construction1} slightly different, if we are given the fibers $F_x = p^{-1}(x)$ as sets. This may be more practical in some situations, as the description of the bundle is more explicit:
+
+     \begin{theorem}[Fiber bundle construction B]
+        \label{thm:fiber_bundle_construction2}
+        Let $B,F$ be (non-empty) topological spaces and $G$ a topological group acting effectively on $F$. Given sets $F_x$ for each $x \in B$ we define $$E := \coprod_{x \in E}F_x$$ and $p \colon E \to B$ by sending each element in $F_x$ to $x$. Suppose we are given the following data:
+        \begin{enumerate}[(i)]
+            \item An open cover $\mathcal{U} := (U_\alpha)_\alpha$ of B (where $\alpha$ ranges over some index set $A$)
+            \item A collection of bijections $\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha)$, that restrict to bijections $\{x\} \times F \to F_x$
+            \item  A collection $(\tau_{\alpha,\beta})$ of continuous maps
+            \[
+            \tau_{\alpha,\beta} \colon U_\alpha \cap U_\beta \to G
+            \]
+            for each pair $U_\alpha,U_\beta \in \mathcal{U}$, such that $(\phi_\alpha^{-1} \circ \phi_\beta)(b,f) = (b,\tau_{\alpha,\beta}(b) \cdot f)$
+        \end{enumerate}
+        Then $E$ has a unique topology making $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ into a fiber bundle with structure group $G$, where the maps $\phi_\alpha$ are local trivialisations.
+     \end{theorem}
+     \begin{proof}
+        Define the topology on $E$ as the final topology with respect to the maps $\phi_\alpha$, i.e.
+        \[
+        V \subseteq E \text{ is open } \Leftrightarrow \phi_\alpha^{-1}(V) \subseteq U_\alpha \times F \text{ is open for each } \alpha
+        \]
+        We show that the maps $\phi_\alpha$ are open with this topology. To this end, let $W \subseteq U_\alpha \times F$ be open. Then
+        \[
+        \phi_\beta^{-1}(\phi_\alpha(W)) = (\phi_\beta^{-1} \circ \phi_\alpha)(W \cap ((U_\alpha \cap U_\beta) \times F)) \subseteq U_\beta \times F
+        \]
+        is open, since $\phi_\beta \circ \phi_\alpha$ is a homeomorphism by condition (iii). Thus $\phi_\alpha$ is a homeomorphism. In particular, for any open set $U \subseteq U_\alpha$, we get that
+        \[
+        p^{-1}(U) = \phi_\alpha(U \times F)
+        \]
+        is open, since by (ii) the following diagram commutes:
+        \begin{center}
+            \commtriangle{$U_\alpha \times F$}{$p^{-1}(U_\alpha)$}{$U_\alpha$}{$\phi_\alpha$}{}{$p$}
+        \end{center}
+        So $p$ is also continuous. Moreover, as $F \neq \emptyset$, we get that $p$ is surjective. It remains to show uniqueness. So let $E$ be equipped with any topology, such that $p$ is continuous and $\phi_\alpha$ are homeomorphisms. Let $V \subseteq E$, such that 
+        \[
+        W_\alpha := \phi_\alpha^{-1}(V) \subseteq U_\alpha \times F
+        \]
+        is open for all $\alpha$. Then 
+        \[
+        V = \bigcup_\alpha W_\alpha,
+        \]
+        since the $U_\alpha$ cover $B$ (and hence $E = \bigcup_\alpha \mathrm{im}\phi_\alpha$). As the $\phi_\alpha$ are homeomorphisms and $p^{-1}(U_\alpha)$ is open, we conclude that $V$ is open. Furthermore, the topology can not be finer than the final topology defined above, such that the two must coincide.
+     \end{proof}
+
+    Given a fiber bundle, Theorem \ref{thm:fiber_bundle_construction1} allows to change the fiber:
+
+    \begin{corollary}[Changing the fiber]
+        Let $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ be a fiber bundle with structure group $G$. Given a space $F^\prime$ upon which $G$ acts effectively, there exists a unique fiber bundle 
+        \[
+        F^\prime \hookrightarrow E^\prime \oset[3pt]{\scalebox{0.8}{$p^\prime$}}{\longrightarrow} B
+        \]
+        which has the same trivialising neighbourhoods $(U_\alpha)$ and the same transition functions $(\tau_{\alpha,\beta})$ as $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$.
+    \end{corollary}
+
+    Theorem \ref{thm:fiber_bundle_construction1} tells us, that the new bundle still retains all of the information of the old bundle, as it is uniquely determined by the transition functions.
+
+    \subsubsection{Smooth bundles}
+
+    \noindent If we are in the smooth category, we can analogously define smooth fiber bundles by requiring the spaces $E ,B$ and $F$ to be smooth manifolds (where either $F$ or $B$ has no boundary), the group $G$ to be a Lie group and all maps to be smooth. In particular, the local trivialisation are diffeomorphisms. All of the above results also hold in the smooth category. 
+
+    \begin{theorem}[Fiber bundle construction $\mathrm{A}^\prime$]
+        The conclusions of Theorem \ref{thm:fiber_bundle_construction1} remain true in the smooth category. 
+    \end{theorem}
+    \begin{proof}
+        The only difficulty is in defining the smooth structure on 
+        \[
+            E := \left( \coprod_{\alpha \in A} U_\alpha \times F \right)_{\raisebox{5pt}{\scalebox{1.5}{$/$}}\raisebox{5pt}{\scalebox{1.05}{$\sim$}}}
+        \]
+        This smooth structure is defined via the local trivialisations $(\phi_\alpha)$ as follows: Choose and open cover $(V_\alpha)$ of $B$, such that
+        \begin{itemize}
+            \item $V_\alpha \subseteq U_\alpha$
+            \item there exist smooth charts $h_\alpha \colon W_\alpha \to V_\alpha$
+        \end{itemize}
+        Furthermore, choose a smooth atlas
+        \[
+        (k_i \colon W_i^F \to V_i^F)_i
+        \]
+        of $F$. Then 
+        \[
+        (\phi_\alpha \circ (h_\alpha \times k_i) \colon W_\alpha \times W_i^F \to E)_{i,\alpha}
+        \]
+        defines a smooth atlas for $E$, since the maps $\phi_\alpha^{-1} \circ \phi_\beta$ are diffeomorphisms. It is then easy to verify, that this atlas satisifies the first countability and Hausdorff axioms. Furthermore, this smooth structure is uniquely determined by requiring the local trivialisations to be diffeomorphisms.
+    \end{proof}
+
+    \begin{theorem}[Fiber bundle construction $\mathrm{B}^\prime$]
+        The conclusions of Theorem \ref{thm:fiber_bundle_construction2} remain true in the smooth category. 
+    \end{theorem}
+    \begin{proof}
+        As in the above theorem, the local trivialisations determine a unique smooth structure on $E$.
+    \end{proof}
+
+    \subsubsection{Whitney Sums}
+
+    
+     
+     
 
