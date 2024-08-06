@@ -1,5 +1,7 @@
 \subsection{Fiber Bundles}
 
+\subsubsection{Construction of fiber bundles}
+
 For convencience, let us state the definition of a fiber bundle.
 
 \begin{definition}[Fiber Bundle]
@@ -306,9 +308,80 @@ For convencience, let us state the definition of a fiber bundle.
         As in the above theorem, the local trivialisations determine a unique smooth structure on $E$.
     \end{proof}
 
-    \subsubsection{Whitney Sums}
+    \subsubsection{Vector bundles}
 
-    
+    \headline{Whitney Sums}
+
+    Given vector bundles $E_1, E_2$ over the same base $B$, we can define their \textbf{Whitney Sum} $E_1 \oplus E_2$ using Theorem \ref{thm:fiber_bundle_construction2} as the vector bundle whose fibers are given by $E_1|_p \oplus E_2|_p$ with the obvious choice as local trivialisations. The following Lemma characterizes the Whitney sum and at the same time provides the technical grounds for an intuition.
+
+    \begin{lemma}[Characterisation of the Whitney sum]
+        \label{lem:whitney_sum}
+        Let $E_1$ and $E_2$ be vector bundles over the same base space $B$ of rank $k_1$ and $k_2$ respectively. A rank $k_1+k_2$ vector bundle $E$ over $B$ is isomorphic to $E_1 \oplus E_2$ if and only if $E_1$ and $E_2$ can be embedded into $E$ as subbundles and $E_1|_p + E_2|_p = E|_p$.
+    \end{lemma}
+
+    Let us first clarify what we mean by embedding. A vector bundle homomorphism $F \colon E \to E^\prime$ is called and \textbf{embedding}, if it is injective. Then $\mathrm{im}(F)$ is a subbundle of $E^\prime$ and $F \colon E \to \mathrm{im}(F)$ is a vector bundle isomorphism. This follows from \cite{lee2011smooth} Theorem 10.34 and Prop. 10.26.
+
+    \begin{proof}[Proof of Lemma \ref{lem:whitney_sum}]
+        First let $E = E_1 \oplus E_2$. Then we can define embeddings by
+        \[
+        F_1 \colon E_1 \to E, \; v \mapsto (v,0),
+        F_2 \colon E_2 \to E \; w \mapsto (0,w).
+        \]
+        Now let $E_1,E_2 \subseteq E$ be subbundles. Let $(U_\alpha)_\alpha$ be an open cover of $B$, such that $E_1$ and $E_2$ are trivial over $U_\alpha$. Choose local frames
+        \[
+        \sigma^i_{\alpha,1},\ldots, \sigma^i_{\alpha,k_i} \colon U_\alpha \to E_i
+        \]
+        and define local trivialisations
+        \[
+        \phi_\alpha^i \colon U_\alpha \times \R^{k_i} \to E_i, \; (p,v) \mapsto \sum_{j=1}^{k_i} v_j \sigma^i_{\alpha,j}(p).
+        \]
+        Let $\tau^i_{\alpha,\beta} \colon U_\alpha \cap U_\beta \to \mathrm{GL}(k_i)$ be the transition functions defined by
+        \[
+        ((\phi_\alpha^i)^{-1} \circ \phi_\beta^i)(p,v) = (p,\tau_{\alpha,\beta}^i(p) \cdot v).
+        \]
+        Since $E|_p$ is the direct sum of $E_1|_p$ and $E_2|_p$, we get that 
+        \[
+            \sigma^1_{\alpha,1},\ldots, \sigma^1_{\alpha,k_1}, \sigma^2_{\alpha,1},\ldots, \sigma^2_{\alpha,k_2}
+        \]
+        is a local frame for $E$, thus defines a local trivialisation by
+        \[
+        \psi_\alpha \colon U_\alpha \times \R^{k_1} \times \R^{k_2} \to E, \; (p,v,w) \mapsto \phi_\alpha^1(p,v) + \phi_\alpha^2(p,w).
+        \]
+        Then 
+        \[
+        (\psi_\alpha^{-1} \circ \psi_\beta)(p,v,w) = (p,\tau^1_{\alpha,\beta}(p) \cdot v, \tau^2_{\alpha,\beta}(p) \cdot w).
+        \]
+        Note that $E_1 \oplus E_2$ is also trivial over $U_\alpha$ via
+        \[
+        \varphi_\alpha \colon U_\alpha \times \R^{k_1} \times \R^{k_2} \to E_1 \oplus E_2, \; (p,v,w) \mapsto (\phi_\alpha^1(p,v),\phi_\alpha^2(p,w))
+        \]
+        and $\varphi_\alpha^{-1} \circ \varphi_\beta = \psi_\alpha^{-1} \circ \psi_\beta$, thus
+        \[
+        E \cong E_1 \oplus E_2
+        \]
+        by the uniqueness result in Theorem \ref{thm:fiber_bundle_construction1}.
+    \end{proof}
      
+    This characterisation gives an intuitive reasoning behind the fact, that the Whitney sum of two Moebius bundles is trivial:
+
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[scale=0.3]{graphics/Whitney_sum_moebius_bundles.png}
+        \caption{Illustration of the Whitney sum of two Moebius bundles \small [source: \url{https://math.stackexchange.com/questions/1009126/global-trivialization-of-m-oplus-m}]}
+    \end{figure}
+
+    \headline{The Normal Bundle}
+
+    We can generalize Lemma 10.35 from \cite{lee2011smooth} to Riemannian manifolds:
+
+    \begin{lemma}[Orthogonal complement bundles]
+        Let $M$ be a Riemannian manifold $S \subseteq M$ a submanifold and $E \subseteq TM|_S$ a subbundle. Then
+        \[
+        E^\perp := \{(p,v) \mid p \in S, v \in E_p^\perp\} \subseteq TM|_S
+        \]
+        is a subbundle and there exists a smooth orthonormal local frame around each point in $S$.
+    \end{lemma}
+    
      
 
