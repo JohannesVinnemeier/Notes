@@ -376,7 +376,8 @@ For convencience, let us state the definition of a fiber bundle.
     We can generalize Lemma 10.35 from \cite{lee2011smooth} to Riemannian manifolds:
 
     \begin{lemma}[Orthogonal complement bundles]
-        Let $M$ be a Riemannian manifold $S \subseteq M$ a submanifold and $E \subseteq TM|_S$ a subbundle. Then
+        \label{lem:orthogonal_complement_bundles}
+        Let $M$ be a Riemannian manifold, $S \subseteq M$ a submanifold and $E \subseteq TM|_S$ a subbundle. Then
         \[
         E^\perp := \{(p,v) \mid p \in S, v \in E_p^\perp\} \subseteq TM|_S
         \]
@@ -387,7 +388,20 @@ For convencience, let us state the definition of a fiber bundle.
         \[\sigma_1,\ldots,\sigma_k \colon U \to E.\]
         After possibly shrinking $U$, we can extend this frame to a frame 
         \[\sigma_1,\ldots,\sigma_n \colon U \to TM|_S\]
-        of $TM|_S$
+        of $TM|_S$. Write $\sigma_i(p) = (p,X_p^i)$. Applying Gramm-Schmidt to the vectors $X_p^i$ yields an orthonormal basis $Y_p^1,\ldots,Y_p^n$ of $T_pM$ for each $p \in U$:
+        \[Y_p^i := \frac{X_p^i - \sum_{j=1}^{i-1}\langle X_p^i,Y_p^{j} \rangle X_p^i}{\lVert X_p^i - \sum_{j=1}^{i-1}\langle X_p^i,Y_p^{j} \rangle X_p^i \rVert}\]
+        Since this formula is smooth, we can define the smooth sections 
+        \[\tilde{\sigma}_i(p) := (p,Y_p^i).\]
+        Notice that $\tilde{\sigma}_i(p) \in E^\perp$ for $i \geq k+1$ and $E_p^\perp = \mathrm{span}\{Y_p^{k+1},\ldots,Y_p^n\}$. This shows the statement. 
+    \end{proof}
+
+    Given a Riemannian manifold $M$ and a submanifold $S \subseteq M$, we can define the \textbf{normal bundle} of $S$:
+    \[NS := \{(p,v) \in TM \mid p \in S, v \in T_pS^\perp\}.\]
+    \begin{corollary}
+        Let $M$ be a Riemannian manifold, $S\subseteq M$ a submanifold. Then $NS$ is a subbundle of $TM|_S$.
+    \end{corollary}
+    \begin{proof}
+        We only need to show, that $TS$ is a smooth subbundle of $TM|_S$ and then apply Lemma \ref{lem:orthogonal_complement_bundles}. To this end, choose a local frame $(\sigma_i)$ of $TS$. Then $\iota \circ \sigma_i$ are sections of $TM|_S$, where $\iota \colon TS \hookrightarrow TM|_S$ is the inclusion. So we only have to verify, that $\iota$ is smooth. But this can easily be seen in local trivialisations of $TS$ and $TM|_S$.
     \end{proof}
 
 
