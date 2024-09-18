@@ -16,3 +16,27 @@ In particular, there exists a smooth vector field $X$ on $M$, where the zeros of
     \[\{p \in M \mid \sigma(p) = 0\} = \sigma^{-1}(M^\prime) \]
     and $\sigma^{-1}(M^\prime)$ is a closed codimension $k$ submanifold of $M$. This shows the first two statements. Applying these results to $E := TM$, we see that the zeros of $\sigma$ are a closed codimension $0$ submanifold, thus discrete. If $M$ is compact this is equivalent to $\{p \in M \mid \sigma(p) = 0\}$ being finite. If $M$ has non-empty boundary, we can construct a vector field with finitely many zeros on the double and restrict it to $M$.  
 \end{proof}
+
+
+\begin{exercise}[Own exercise]
+    \label{ex:pullback_of_moebius_bundle}
+    Let $M$ be the Moebius line bundle. Consider the map $f \colon S^1 \to S^1, \, z \mapsto z^2$. Then the pullback bundle $E := f^*M$ is trivial. 
+\end{exercise}
+Intuitively, we can see this as follows: The fiber over $e^{\pi i}$ of $E$ is just the fiber over $e^{2 \pi i}$ of $M$, which has already made a half-twist, i.e. the fiber of $E$ over $1$ can be imagined as a straight line and then begins twisting upon increasing the angle. When the angle $\theta = \pi$ is reached a half twist has been performed. But upon further increasing the angle, another half twist is performed as we "walk" around the moebius bundle a second time. So $E$ is basically a double twisted moebius bundle, which is trivial.
+
+\begin{proof}{Proof of Exercise \ref{ex:pullback_of_moebius_bundle}}
+    We define $M := \R \times \R/_\sim $, where the equivalence relation is given by 
+    \[
+    (x,t) \sim (x + k, (-1)^kt)
+    \]
+    and the projection $p \colon M \to S^1$ is defined by $p([(x,t)]) := e^{2 \pi i x}$.
+    By identifiying $S^1$ with $[0,1]/_{0 \sim 1}$ we can write $f$ as
+    \[
+    f([\theta]) = e^{2\pi i \theta},
+    \]
+    such that $E$ is a line bundle over $[0,1]/_\sim$. To see that $E$ is trivial we define a global frame:
+    \[
+    \sigma \colon [0,1]/_\sim \to E, \; [\theta] \mapsto ([\theta],[(2\theta,1)])
+    \]
+    Note that $[(0,1)] = [(2,1)]$ in $M$, such that $\sigma$ is a well-defined section. Furthermore, it is easily seen that this section is nowhere vanishing. To see that $\sigma$ is smooth we could write $\sigma$ in the local trivialisations of $E$. Alternatively we can argue as follows: Consider $$s \colon [0,1] \to M, \; \theta \mapsto [(2\theta,1)]$$ and let $\pi \colon [0,1] \to [0,1]/_\sim$ be the projection map. Then $s = \sigma \circ \pi$. Clearly $s$ is smooth and it is easily verified that $\pi$ is a local diffeomorphism, such that smoothness of $\sigma$ follows. This completes the proof. 
+\end{proof}
