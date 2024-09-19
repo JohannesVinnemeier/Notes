@@ -1,0 +1,19 @@
+This is a collection of alternative proofs for various statements from books, lecture notes etc.
+
+\begin{theorem}[Theorem 10.34. from \cite{lee2011smooth}]
+    Let $E$ and $E^\prime$ be smooth vector bundles over a manifold $M$, and let $F \colon E \to E^\prime$ be a bundle homomorphism. Then $\mathrm{ker} F$ and $\mathrm{im} F$ are smooth subbundles of $E$ and $E^\prime$, respectively, if and only if $F$ has constant rank.
+\end{theorem}
+\begin{proof}
+    We present an alternative proof to show that $\mathrm{ker} F$ is a smooth subbundle. Let $\mathrm{rank} F = k$. Choose a local frame $$\sigma_1,\ldots,\sigma_n \colon U \to E,$$ such that $F\circ \sigma_1, \ldots, F \circ \sigma_k$ are linearly independent sections, i.e. a local frame for $\mathrm{im}F$. So for $j > k$ we can write
+    \[
+    F \circ \sigma_j = \sum_{i = 1}^k \tau_{ij} F \circ \sigma_i
+    \]
+    for smooth functions \[
+    \tau_{ij} \colon U \to \R
+    \]
+    Define 
+    \[
+    \sigma_j^\prime := \sigma_j - \sum _{i=1}^k \tau_{ij} \sigma_i
+    \]
+    Then $F \circ \sigma_j^\prime = 0$, thus $\mathrm{im}\sigma_j^\prime \subseteq \mathrm{ker}F$. Furthermore, $\sigma_{k+1}^\prime,\ldots,\sigma_n^\prime$ are linearly independent, since $\sigma_1,\ldots,\sigma_n$ is a local frame. This shows the statement.
+\end{proof}

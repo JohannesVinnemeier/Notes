@@ -40,3 +40,10 @@ Intuitively, we can see this as follows: The fiber over $e^{\pi i}$ of $E$ is ju
     \]
     Note that $[(0,1)] = [(2,1)]$ in $M$, such that $\sigma$ is a well-defined section. Furthermore, it is easily seen that this section is nowhere vanishing. To see that $\sigma$ is smooth we could write $\sigma$ in the local trivialisations of $E$. Alternatively we can argue as follows: Consider $$s \colon [0,1] \to M, \; \theta \mapsto [(2\theta,1)]$$ and let $\pi \colon [0,1] \to [0,1]/_\sim$ be the projection map. Then $s = \sigma \circ \pi$. Clearly $s$ is smooth and it is easily verified that $\pi$ is a local diffeomorphism, such that smoothness of $\sigma$ follows. This completes the proof. 
 \end{proof}
+
+\begin{exercise}[Exercise 10-14 from \cite{lee2011smooth}]
+    Let $M$ be a smooth manifold and $S \subseteq M$ a submanifold. Then $TS$ is a subbundle of $TM|_S$.
+\end{exercise}
+\begin{proof}
+    Let $\sigma_1,\ldots,\sigma_k$ be a local frame for $TS$. Then we can also consider the $\sigma_i$ as local sections of $TM|_S$ via the inclusion $TS \hookrightarrow TM|_S$. If we can show that these are still smooth sections we are done as this shows that $TS$ (as a set) is a subbundle of $TM|_S$ an the induced smoothness structure is the same as the usual one on $TS$ (see the construction of the smoothness structure on the subbundle in Lemma 10.32 in \cite{lee2011smooth} to see that this indeed yields the same structures). But smoothness of $\sigma_i$ as local sections of $TM|_S$ follows directly from the fact that the inclusion $TS \hookrightarrow TM|_S$ is just the restriction of the differential of the inclusion $\iota \colon S \hookrightarrow M$ to the submanifold $TM|_S \subseteq TM$ in the codomain (the fact that $TM|_S$ is a submanifold of $TM$ follows for example from Lemma \ref{lem:pullback_of_bundle_under_embedding}).
+\end{proof}
