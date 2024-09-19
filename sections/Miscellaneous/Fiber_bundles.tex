@@ -117,7 +117,7 @@ For convencience, let us state the definition of a fiber bundle.
             for each pair $U_\alpha,U_\beta \in \mathcal{U}$
             \item $\tau_{\gamma,\alpha}(b)\tau_{\alpha,\beta}(b) = \tau_{\gamma,\beta}(b)$ for all $b \in U_\alpha \cap U_\beta \cap U_\gamma$
         \end{enumerate}
-        Then there exists a unique (up to isomorphism) fiber bundle $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ with structure group $G$, such that the maximal trivialising atlas is induced by a trivialising atlas of the form
+        Then there exists a unique (up to isomorphism) fiber bundle $F \hookrightarrow E \oset[0.7pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ with structure group $G$, such that the maximal trivialising atlas is induced by a trivialising atlas of the form
         \[
         (\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha))_\alpha,
         \]
@@ -302,6 +302,7 @@ For convencience, let us state the definition of a fiber bundle.
     \end{proof}
 
     \begin{theorem}[Fiber bundle construction $\mathrm{B}^\prime$]
+        \label{thm:fiber_bundle_construction2_smooth}
         The conclusions of Theorem \ref{thm:fiber_bundle_construction2} remain true in the smooth category. 
     \end{theorem}
     \begin{proof}
@@ -404,8 +405,45 @@ For convencience, let us state the definition of a fiber bundle.
         We only need to show, that $TS$ is a smooth subbundle of $TM|_S$ and then apply Lemma \ref{lem:orthogonal_complement_bundles}. To this end, choose a local frame $(\sigma_i)$ of $TS$. Then $\iota \circ \sigma_i$ are sections of $TM|_S$, where $\iota \colon TS \hookrightarrow TM|_S$ is the inclusion. So we only have to verify, that $\iota$ is smooth. But this can easily be seen in local trivialisations of $TS$ and $TM|_S$.
     \end{proof}
 
+    \subsubsection{Pullback Bundles}
 
-    
+    Given a fiber bundle $F \hookrightarrow E \oset[0.7pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ and a map $g \colon B^\prime \to B$ we can construct the pullback bundle $g^*E$ using Theorem \ref{thm:fiber_bundle_construction2} as the fiber bundle over $B^\prime$, where the fiber over $b^\prime \in B^\prime$ is given by the fiber of $E$ over $g(b^\prime)$, i.e.
+    \[
+    g^*E = \coprod_{b^\prime \in B^\prime} p^{-1}(g(b^\prime)).
+    \]
+    Given a local trivialisation $\phi \colon U \times F \to E$ we define a local trivialisation of $g^*E$ by
+    \[
+    g^{-1}(U) \times F \to g^*E, \; (b^\prime,f) \mapsto (b^\prime,\phi(g(b^\prime),f)).
+    \]
+    The same construction works in the smooth category using Theorem \ref{thm:fiber_bundle_construction2_smooth} as long as either $F$ has no boundary or $B$ and $B^\prime$ have no boundary. By projecting onto the second factor we get a bundle homomorphism $G \colon g^*E \to E$, making the following diagram commute:
+    \[
+        \commsquare{$g^*E$}{$E$}{$B^\prime$}{$B$}{$G$}{}{$p$}{$g$}
+    \]
+
+    \begin{lemma}
+        In the above situation the following holds:
+        \begin{enumerate}[(i)]
+            \item If $g$ is an immersion, so is $G$
+            \item If $g$ is an embedding, so is $G$
+        \end{enumerate}
+    \end{lemma}
+   \begin{proof}
+    In local trivialisations we can write $G$ as
+    \[
+    g^{-1}(U) \times F \to U \times F, \; (b,f) \mapsto (g(b^\prime),f),
+    \]
+    such that (i) follows. Now let $g$ be an embedding. We have $\mathrm{im} G = p^{-1}(g(B^\prime))$, so we can define 
+    \[
+    H \colon \mathrm{im} G \to f^*E, \; x \mapsto (g^{-1}(p(x)),x).
+    \]
+    Clearly $H$ is continuous and $G \circ H = \mathrm{id}_{\mathrm{im} G}$ as well as $H \circ G = \mathrm{id}_{g^*E}$, so $G$ is in fact an embedding.
+   \end{proof}
+
+   Given a fiber bundle $F \hookrightarrow E \oset[0.7pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ and a submanifold $S \subseteq B$ we can then define the restriction of $E$ to $S$ as the pullback of $E$ under the inclusion $\iota \colon S \hookrightarrow B$:
+   \[
+   E|_S := \iota^*E
+   \]
+   The above Lemma shows that this is indeed a submanfold of $E$. In fact, in the situation of the above Lemma we have $$\mathrm{im} G = E|_{g(B^\prime)}$$
     
      
 
