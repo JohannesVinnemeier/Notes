@@ -10,7 +10,7 @@ For convencience, let us state the definition of a fiber bundle.
     \[
     (\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha))_\alpha,
     \]
-    called a trivialising atlas, for open sets $U_\alpha \subseteq B$, such that 
+    called a trivialising atlas\footnote{Wikipedia calls this a \textit{G-Atlas}}, for open sets $U_\alpha \subseteq B$, such that 
     \begin{enumerate}[(i)]
         \item The maps $\phi_\alpha$ are homeomorphisms and the following diagrams commute:
         \begin{center}
@@ -137,7 +137,7 @@ For convencience, let us state the definition of a fiber bundle.
 
         \textbf{Step 1.} \textit{$\sim$ is an equivalence relation.}
 
-        This follows directly from Lemma \ref{lem:transition_functions}: (i) implies reflexivity, (ii) implies symmetry and (iii) implies transitivity.
+        Transitivity follows directly from condition (iii). Reflexivity and symmetry then follow from the group axioms.
 
         \textbf{Step 2.} \textit{$p$ is well-defined, continuous and surjective.}
 
@@ -371,6 +371,19 @@ For convencience, let us state the definition of a fiber bundle.
         \includegraphics[scale=0.3]{graphics/Whitney_sum_moebius_bundles.png}
         \caption{Illustration of the Whitney sum of two Moebius bundles \small [source: \url{https://math.stackexchange.com/questions/1009126/global-trivialization-of-m-oplus-m}]}
     \end{figure}
+
+    \begin{lemma}
+        Let $E, E_1$ and $E_2$ be vector bundles over a manifold $M$ and $\sigma_i \colon M \to E_i$ smooth sections for $i = 1,2$. Then the following maps are smooth:
+        \begin{enumerate}[(i)]
+            \item $(\sigma_1,\sigma_2) \colon N \to E_1 \oplus E_2, \; p \mapsto (\sigma_1(p),\sigma_2(p))$
+            \item The addition map $E \oplus E \to E, \; (v,w) \mapsto v+w$
+            \item The scalar multiplication map $\R \times E \to E,\; (\lambda,v) \mapsto \lambda v$
+        \end{enumerate}
+    \end{lemma}
+    \begin{proof}
+        All statements follow easily by writing the maps in local trivialisations.
+    \end{proof}
+
 
     \headline{The Normal Bundle}
 
