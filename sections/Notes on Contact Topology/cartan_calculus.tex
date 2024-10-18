@@ -25,7 +25,40 @@ In this section we discuss two differential operators on the graded algebra $\Om
     \end{enumerate}
 \end{theorem}
 
+Firstly let us restate the definition of the Lie derivative. For a smooth boundaryless manifold $M$, $\alpha \in \Omega^r(M)$ and $X \in \mathscr{X}(M)$ we define
+\[
+(\mathcal{L}_X \alpha)_p := \frac{d}{dt}\bigg|_{t=0} (\phi_t^\ast \alpha)_p,
+\]
+where $\phi_t = \phi(t,-)$ denotes the flow of $X$.
 
+\begin{lemma}
+    \label{lem:well_definedness_Lie_derivative}
+    $(\mathcal{L}_X\alpha)_p$ exists for all $p\in M$ and defines a smooth $r$-form on $M$.
+\end{lemma}
+
+Before showing the lemma, let us introduce the notion of a smooth family of $r$-forms.
+
+\begin{definition}[Smooth family of $r$-forms]
+    Let $\beta_t$ be a family of $r$-forms on $M$ indexed over some Interval $I$. We call $\beta_t$ smooth if in some (then all) local coordinates $x^1,\ldots,x^n$ we can write
+    \[
+    (\beta_t)_p = \sum \beta^{i_1,\ldots,i_r}(t,p)d_px^{i_1} \wedge \ldots \wedge d_px^{i_r}
+    \]
+    for smooth functions $\beta^{i_1,\ldots,i_r}$.
+\end{definition}
+
+\noindent Then $t \mapsto (\beta_t)_p$ is a smooth curve in the vector space $\mathrm{Alt}^r(T_pM)$, such that 
+\[
+\left(\frac{d}{dt}\bigg|_{t=0} \beta_t\right)_p := \frac{d}{dt}\bigg|_{t=0} (\beta_t)_p
+\]
+is a well-defined $r$-form. Furthermore, in local coordinates we have
+\[
+    \frac{d}{dt}\bigg|_{t=t_0} \beta_t = \sum \frac{\partial\beta^{i_1,\ldots,i_r}}{\partial t}(t_0,-)dx^{i_1} \wedge \ldots \wedge dx^{i_r},
+\]
+such that this $r$-form is alsow smooth.
+
+\begin{proof}[Proof of Lemma \ref{lem:well_definedness_Lie_derivative}]
+    
+\end{proof}
 
 
 \subsubsection{Moser`s trick}
