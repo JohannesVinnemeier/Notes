@@ -1,0 +1,31 @@
+\subsection{Cartan Calculus}
+In this section we discuss two differential operators on the graded algebra $\Omega^\bullet(M)$ of differential forms on a manifold $M$, namely the Lie derivative $\mathcal{L}_X$ and the interior product $\iota_X$, where $X$ is a smooth vector field on $M$. The main goal of this section is to show well-definedness of $\mathcal{L}_X$ and proof the following theorem, describing the relationships between $\mathcal{L}_X, \iota_X$ and the exterior derivative $d$.
+
+\begin{theorem}
+    Let $M$ be a manifold and $X,Y \in \mathscr{X}(M)$. Then the maps
+    \begin{align*}
+        d &\colon \Omega^r(M) \to \Omega^{r+1}(M), \\
+        \mathcal{L}_X &\colon \Omega^r(M) \to \Omega^r(M), \\
+        \iota_X &\colon \Omega^r(M) \to \Omega^{r-1}(M)
+    \end{align*}
+    are differential operators satisfying the following Leibniz rules for $\alpha, \beta \in \Omega^\bullet(M)$:
+    \begin{align*}
+        d(\alpha \wedge \beta) &= d\alpha \wedge \beta + (-1)^{|\alpha|} \alpha \wedge d\beta, \\
+        \mathcal{L}_X(\alpha \wedge \beta) &= \mathcal{L}_X\alpha \wedge \beta +  \alpha \wedge \mathcal{L}_X\beta, \\
+        \iota_X(\alpha \wedge \beta) &= \iota_X\alpha \wedge \beta + (-1)^{|\alpha|} \alpha \wedge \iota_X\beta,
+    \end{align*}
+    as well as the following identities:
+    \begin{enumerate}[(i)]
+        \item $d^2 = 0$,
+        \item $d\mathcal{L}_X = \mathcal{L}_Xd$,
+        \item $\mathcal{L}_X = d\iota_X + \iota_Xd$,
+        \item $\mathcal{L}_X\mathcal{L}_Y - \mathcal{L}_Y\mathcal{L}_X = \mathcal{L}_{[X,Y]}$,
+        \item $\mathcal{L}_X\iota_Y - \iota_Y\mathcal{L}_X = \iota_{[X,Y]}$,
+        \item $\iota_X\iota_Y + \iota_Y\iota_X = 0$.
+    \end{enumerate}
+\end{theorem}
+
+
+
+
+\subsubsection{Moser`s trick}
