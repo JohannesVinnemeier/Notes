@@ -17,7 +17,7 @@ In this section we discuss two differential operators on the graded algebra $\Om
     \end{align*}
     as well as the following identities:
     \begin{enumerate}[(i)]
-        \item $d^2 = 0$,
+        \item $d^2 = 0$, \label{eq:cartan1}
         \item $d\mathcal{L}_X = \mathcal{L}_Xd$,
         \item $\mathcal{L}_X = d\iota_X + \iota_Xd$,
         \item $\mathcal{L}_X\mathcal{L}_Y - \mathcal{L}_Y\mathcal{L}_X = \mathcal{L}_{[X,Y]}$,
@@ -154,7 +154,12 @@ Clearly $\iota_X$ is linear and only depends on the local behaviour of $X$ and $
 \[
 \iota_X(\alpha \wedge \beta) = \iota_X\alpha \wedge \beta + (-1)^{\abs \alpha} \alpha \wedge \iota_X\beta.
 \]
-We are now ready to proof the first formula of Theorem \ref{thm:cartan_calculus}.
+
+Thus far the Lie derivative has only been defined on manfiolds without boundary. To extend the definition of $\mathcal{L}_X\alpha$ to manifolds with boundary, first choose extensions $X^\prime$ and $\alpha^\prime$ of $X$ and $\alpha$, respectively, to the double of $M$ and then define
+\[
+\mathcal{L}_X \alpha := (\mathcal{L}_{X^\prime}\alpha^\prime)|_M
+\]
+Of course it is not clear a priori that this definition does not depend on the choice of $X^\prime$ and $\alpha^\prime$. However, the following proposition, which is one of the formulas of Theorem \ref{thm:cartan_calculus}, shows that it is in fact independent.
 
 \begin{proposition}[Cartan's magic formula]
     Let $X \in \mathscr{X}(M)$. Then the following identity holds:
@@ -180,7 +185,10 @@ We are now ready to proof the first formula of Theorem \ref{thm:cartan_calculus}
     This shows the proposition.
 \end{proof}
 
-This allows us to extend the definition of $\mathcal{L}_X \alpha$ to manifolds with boundary, by extending $X$ and $\alpha$ to the double of $M$ and computing the Lie derivative there. The above proposition guarantees that this is independent of the chosen extensions (because $\mathcal{D}_X$ does not depend on the extensions).
+Now let us proof the remaining formulas of Theorem \ref{thm:cartan_calculus}.
 
+\begin{proof}[Proof of Theorem \ref{thm:cartan_calculus}]
+    Equation (\ref{eq:cartan1}) is only mentioned for the sake of completeness and we will not show it here. See for example \cite{steimle_geometrie} for a proof.
+\end{proof}
 
 \subsubsection{Moser`s trick}
