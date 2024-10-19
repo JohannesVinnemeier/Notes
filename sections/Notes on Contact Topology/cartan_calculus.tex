@@ -2,6 +2,7 @@
 In this section we discuss two differential operators on the graded algebra $\Omega^\bullet(M)$ of differential forms on a manifold $M$, namely the Lie derivative $\mathcal{L}_X$ and the interior product $\iota_X$, where $X$ is a smooth vector field on $M$. The main goal of this section is to show well-definedness of $\mathcal{L}_X$ and proof the following theorem, describing the relationships between $\mathcal{L}_X, \iota_X$ and the exterior derivative $d$.
 
 \begin{theorem}
+    \label{thm:cartan_calculus}
     Let $M$ be a manifold and $X,Y \in \mathscr{X}(M)$. Then the maps
     \begin{align*}
         d &\colon \Omega^r(M) \to \Omega^{r+1}(M), \\
@@ -25,7 +26,7 @@ In this section we discuss two differential operators on the graded algebra $\Om
     \end{enumerate}
 \end{theorem}
 
-Firstly let us restate the definition of the Lie derivative. For a smooth boundaryless manifold $M$, $\alpha \in \Omega^r(M)$ and $X \in \mathscr{X}(M)$ we define
+Firstly let us restate the definition of the Lie derivative. For a smooth manifold $M$ without boundary, $\alpha \in \Omega^r(M)$ and $X \in \mathscr{X}(M)$ we define
 \[
 (\mathcal{L}_X \alpha)_p := \frac{d}{dt}\bigg|_{t=0} (\phi_t^\ast \alpha)_p,
 \]
@@ -54,11 +55,132 @@ is a well-defined $r$-form. Furthermore, in local coordinates we have
 \[
     \frac{d}{dt}\bigg|_{t=t_0} \beta_t = \sum \frac{\partial\beta^{i_1,\ldots,i_r}}{\partial t}(t_0,-)dx^{i_1} \wedge \ldots \wedge dx^{i_r},
 \]
-such that this $r$-form is alsow smooth.
+such that this $r$-form is also smooth.
 
 \begin{proof}[Proof of Lemma \ref{lem:well_definedness_Lie_derivative}]
-    
+    Let $x_1,\ldots,x_n$ be local coordinates on some open neighbourhood $U \subseteq M$ of $p$. Choose a smaller neighbourhood $U^\prime \subseteq U$ of $p$ and $\epsilon > 0$, such that the flow
+    \[
+    \phi \colon (-\epsilon,\epsilon) \times U^\prime \to U
+    \]
+    of $X$ is defined. Write
+    \[
+        \alpha = \sum \alpha^{i_1,\ldots,i_r}dx^{i_1} \wedge \ldots \wedge dx^{i_r}.
+    \]
+    We compute:
+    \begin{align*}
+        (\phi_t^\ast\alpha)_p &= (d_p\phi_t)^\ast\left(\sum\alpha^{i_1,\ldots,i_r}(\phi_t(p))\,d_{\phi_t(p)}x^{i_1} \wedge \ldots \wedge d_{\phi_t(p)}x^{i_r}\right)\\
+        &= \sum \alpha^{i_1,\ldots,i_r}(\phi_t(p)) \,d_p(x^{i_1} \circ \phi_t) \wedge \ldots \wedge d_p(x^{i_r} \circ \phi_t)
+    \end{align*}
+    Expanding the differentials 
+    \[
+        d_p(x^{i_k} \circ \phi_t) = \sum_{j=1}^n \frac{\partial(x^{i_k} \circ \phi_t)}{\partial x_j}(p) d_px_j
+    \]
+    we see that $\beta_t := \phi_t^\ast \alpha$ is a smooth family of $r$-forms on $U^\prime$ indexed over $t \in (-\epsilon,\epsilon)$. Thus
+    \[
+    (\mathcal{L}_X \alpha)_p = \left(\frac{d}{dt}\bigg|_{t=0} \beta_t\right)_p
+    \]
+    exists and depends smoothly on $p$.
+
 \end{proof}
+
+\begin{proposition}[Basic properties of the Lie derivative]
+    Let $\alpha \in \Omega^r(M), \beta \in \Omega^s(M)$, $\lambda \in \R$ and $X \in \mathscr{X}(M)$. Then the Lie derivative satisfies the following properties:
+    \begin{enumerate}[(i)]
+        \item Locality: $(\mathcal{L}_X \alpha)_U = \mathcal{L}_{X|_U} \alpha|_U$ for $U \subseteq M$ open
+        \item Linearity in $\alpha$: $\mathcal{L}_X(\lambda \alpha + \beta) = \lambda \mathcal{L}_X \alpha + \mathcal{L}_X \beta$
+        \item Leibniz rule: $\mathcal{L}_X(\alpha \wedge \beta) = \mathcal{L}_X \alpha \wedge \beta + \alpha \wedge \mathcal{L}_X \beta$
+        \item Compatibility with $d$: $\mathcal{L}_X(d\alpha) = d(\mathcal{L}_X\alpha)$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    (i) follows from the fact that locally both sides are given by 
+    \[
+        \frac{d}{dt}\bigg|_{t=0} \beta_t
+    \]
+    for the smooth family $\beta_t$ defined in the proof of Lemma \ref{lem:well_definedness_Lie_derivative}. Moreover, (ii) follows immediately from the definition. To see (iii) write
+    \[
+    \mathcal{L}_X(\alpha \wedge \beta)_p = \frac{d}{dt}\bigg|_{t=0} (\phi_t^\ast\alpha)_p \wedge (\phi_t^\ast\beta)_p.
+    \] 
+    We claim: For a vector space $V$ and smooth curves $\alpha_t \in \mathrm{Alt}^r(V), \beta_t \in \mathrm{Alt}^s(V)$ the following holds:
+    \[
+        \frac{d}{dt}\bigg|_{t=0}(\alpha_t\wedge\beta_t) = \left(\frac{d}{dt}\bigg|_{t=0} \alpha_t\right) \wedge \beta_0 + \alpha_0 \wedge \left(\frac{d}{dt}\bigg|_{t=0} \beta_t\right)
+    \]
+    W.l.o.g. let 
+    \[
+    \alpha_t = a(t) \alpha^\prime, \; \beta_t = b(t) \beta^\prime 
+    \]
+    for some $\alpha^\prime \in \mathrm{Alt}^r(V), \beta^\prime \in \mathrm{Alt}^s(V)$ and smooth functions $a,b$. Then the general case follows from linearity. We compute:
+    \begin{align*}
+        \frac{d}{dt}\bigg|_{t=0}(\alpha_t \wedge \beta_t) &= \frac{d}{dt}\bigg|_{t=0} a(t)b(t)\alpha^\prime \wedge \beta^\prime\\
+        &= \left( \frac{da}{dt}(0)b(0) + a(0)\frac{db}{dt}(0) \right)\alpha^\prime \wedge \beta^\prime\\
+        &=\frac{da}{dt}(0) \alpha^\prime \wedge b(0)\beta^\prime + a(0)\alpha^\prime \wedge \frac{db}{dt}(0)\beta^\prime\\
+        &= \left(\frac{d}{dt}\bigg|_{t=0} \alpha_t\right) \wedge \beta_0 + \alpha_0 \wedge \left(\frac{d}{dt}\bigg|_{t=0} \beta_t\right).
+    \end{align*}
+
+    This shows the claim and thus (iii). To see (iv) let $\beta_t$ be again the smooth family of $r$-forms defined in the proof of Lemma \ref{lem:well_definedness_Lie_derivative} and write in local coordinates $x_1,\ldots,x_n$:
+    \[
+    \beta_t = \sum \beta^{i_1,\ldots,i_r}(t,-)dx^{i_1} \wedge \ldots \wedge dx^{i_r}.
+    \]
+    By linearity we may assume that all functions $\beta^{i_1,\ldots,i_r}$ except for one vanish, i.e.
+    \[
+    \beta_t = f(t,-)dx^{j_1} \wedge \ldots \wedge dx^{j_r}
+    \]
+    for some smooth function $f$ and $1 \leq j_1 < \cdots < j_r \leq n$.
+    Then
+    \[
+    d\beta_t = \sum_{k=1}^n \frac{\partial f(t,-)}{\partial x_k} dx^k \wedge dx^{j_1} \wedge \ldots \wedge dx^{j_r}.
+    \]
+    Thus
+    \begin{align*}
+        \mathcal{L}_X(d\alpha) &= \frac{d}{dt}\bigg|_{t=0} \phi_t^\ast d\alpha = \frac{d}{dt}\bigg|_{t=0} d\beta_t \\
+        &= \sum_{k=1}^n \frac{\partial^2 f}{\partial t\partial x_k}(0,-) dx^k \wedge dx^{j_1} \wedge \ldots \wedge dx^{j_r} \\
+        &= d \left(\frac{\partial f}{\partial t}(0,-) dx^{j_1} \wedge \ldots \wedge dx^{j_r}\right) \\
+        &= d(\frac{d}{dt}\bigg|_{t=0} \beta_t) = d(\mathcal{L}_X\alpha)
+    \end{align*}
+
+\end{proof}
+
+For convenience, let us also restate the definition of $\iota_X$
+\begin{definition}
+    Let $X \in \mathscr{X}(M)$ and $\alpha \in \Omega^r(M)$. For $r > 0$ define
+    \[
+    \iota_X \alpha := \alpha(X,-) \in \Omega^{r-1}(M)
+    \]
+    For $r=0$ let $\iota_X \alpha := 0$.
+\end{definition}
+
+Clearly $\iota_X$ is linear and only depends on the local behaviour of $X$ and $\alpha$. Furthermore, it is easily seen that 
+\[
+\iota_X(\alpha \wedge \beta) = \iota_X\alpha \wedge \beta + (-1)^{\abs \alpha} \alpha \wedge \iota_X\beta.
+\]
+We are now ready to proof the first formula of Theorem \ref{thm:cartan_calculus}.
+
+\begin{proposition}[Cartan's magic formula]
+    Let $X \in \mathscr{X}(M)$. Then the following identity holds:
+    \[\mathcal{L}_X = d\iota_X + \iota_Xd\]
+\end{proposition}
+\begin{proof}
+    Let $\mathcal{D}_X := d\iota_X + \iota_Xd$. From the discussion above it is easy to verify:
+    \[
+    \mathcal{D}_X(\alpha \wedge \beta) = \mathcal{D}_X\alpha \wedge \beta + \alpha \wedge \mathcal{D}_X\beta.
+    \]
+    Moreover, $\mathcal{D}_X$ clearly satisfies locality, linearity and commutes with $d$. Thus we can establish 
+    \[
+    \mathcal{D}_X = \mathcal{L}_X
+    \]
+    by showing equality on $\Omega^0(M)$. So let $f \in \Omega^0(M)$, then 
+    \[
+    \mathcal{D}_X f = \iota_Xdf = X \cdot f
+    \]
+    and
+    \[
+    \mathcal{L}_Xf = \frac{d}{dt}\bigg|_{t=0} (f \circ \phi_t) = df(X) = X \cdot f
+    \]
+    This shows the proposition.
+\end{proof}
+
+This allows us to extend the definition of $\mathcal{L}_X \alpha$ to manifolds with boundary, by extending $X$ and $\alpha$ to the double of $M$ and computing the Lie derivative there. The above proposition guarantees that this is independent of the chosen extensions (because $\mathcal{D}_X$ does not depend on the extensions).
 
 
 \subsubsection{Moser`s trick}
