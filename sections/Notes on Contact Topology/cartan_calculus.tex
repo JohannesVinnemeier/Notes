@@ -18,11 +18,11 @@ In this section we discuss two differential operators on the graded algebra $\Om
     as well as the following identities:
     \begin{enumerate}[(i)]
         \item $d^2 = 0$, \label{eq:cartan1}
-        \item $d\mathcal{L}_X = \mathcal{L}_Xd$,
-        \item $\mathcal{L}_X = d\iota_X + \iota_Xd$,
-        \item $\mathcal{L}_X\mathcal{L}_Y - \mathcal{L}_Y\mathcal{L}_X = \mathcal{L}_{[X,Y]}$,
-        \item $\mathcal{L}_X\iota_Y - \iota_Y\mathcal{L}_X = \iota_{[X,Y]}$,
-        \item $\iota_X\iota_Y + \iota_Y\iota_X = 0$.
+        \item $d\mathcal{L}_X = \mathcal{L}_Xd$,\label{eq:cartan2}
+        \item $\mathcal{L}_X = d\iota_X + \iota_Xd$,\label{eq:cartan3}
+        \item $\mathcal{L}_X\mathcal{L}_Y - \mathcal{L}_Y\mathcal{L}_X = \mathcal{L}_{[X,Y]}$,\label{eq:cartan4}
+        \item $\mathcal{L}_X\iota_Y - \iota_Y\mathcal{L}_X = \iota_{[X,Y]}$,\label{eq:cartan5}
+        \item $\iota_X\iota_Y + \iota_Y\iota_X = 0$.\label{eq:cartan6}
     \end{enumerate}
 \end{theorem}
 
@@ -40,22 +40,35 @@ where $\phi_t = \phi(t,-)$ denotes the flow of $X$.
 Before showing the lemma, let us introduce the notion of a smooth family of $r$-forms.
 
 \begin{definition}[Smooth family of $r$-forms]
-    Let $\beta_t$ be a family of $r$-forms on $M$ indexed over some Interval $I$. We call $\beta_t$ smooth if in some (then all) local coordinates $x^1,\ldots,x^n$ we can write
+    Let $\beta_t$ be a family of $r$-forms on $M$ indexed over some open Interval $I$. We call $\beta_t$ smooth if in some (then all) local coordinates $x^1,\ldots,x^n$ we can write
     \[
     (\beta_t)_p = \sum \beta^{i_1,\ldots,i_r}(t,p)d_px^{i_1} \wedge \ldots \wedge d_px^{i_r}
     \]
-    for smooth functions $\beta^{i_1,\ldots,i_r}$.
+    for smooth functions $\beta^{i_1,\ldots,i_r}$. If $I$ is closed we call $\beta_t$ smooth if it can be extended to a smooth family $\beta^\prime_t$ indexed over some open open interval $I^\prime \supseteq I$.
 \end{definition}
 
 \noindent Then $t \mapsto (\beta_t)_p$ is a smooth curve in the vector space $\mathrm{Alt}^r(T_pM)$, such that 
 \[
-\left(\frac{d}{dt}\bigg|_{t=0} \beta_t\right)_p := \frac{d}{dt}\bigg|_{t=0} (\beta_t)_p
+\left(\frac{d}{dt}\bigg|_{t=t_0} \beta_t\right)_p := \frac{d}{dt}\bigg|_{t=t_0} (\beta_t)_p
 \]
 is a well-defined $r$-form. Furthermore, in local coordinates we have
 \[
     \frac{d}{dt}\bigg|_{t=t_0} \beta_t = \sum \frac{\partial\beta^{i_1,\ldots,i_r}}{\partial t}(t_0,-)dx^{i_1} \wedge \ldots \wedge dx^{i_r},
 \]
-such that this $r$-form is also smooth.
+such that this $r$-form is also smooth and moreover depends smoothly on $t_0$. So 
+\[
+\dot{\beta_t} := \frac{d}{dt}\beta_t
+\]
+defines a smooth family of $r$-forms by
+\[
+\left(\frac{d}{dt}\beta_t\right)_{t_0} := \frac{d}{dt}\bigg|_{t=t_0} \beta_t.
+\]
+
+Note that if $\partial M = \emptyset$ we can also directly allow for closed intervals $I$ in the definition above. However we may then always extend the family $\beta_t$ to an open interval (in fact to all of $\R$), as $\beta_t$ can equivalently be considered a smooth $r$-form $\beta$ on $M \times I \subseteq M \times \R$. Under this correspondence we have the following interesting relationship (without proof):
+\[
+\dot{\beta_t} = \mathcal{L}_{\frac{\partial}{\partial t}}\beta.
+\]
+
 
 \begin{proof}[Proof of Lemma \ref{lem:well_definedness_Lie_derivative}]
     Let $x_1,\ldots,x_n$ be local coordinates on some open neighbourhood $U \subseteq M$ of $p$. Choose a smaller neighbourhood $U^\prime \subseteq U$ of $p$ and $\epsilon > 0$, such that the flow
@@ -84,6 +97,7 @@ such that this $r$-form is also smooth.
 \end{proof}
 
 \begin{proposition}[Basic properties of the Lie derivative]
+    \label{prop:lie_derivative_properties}
     Let $\alpha \in \Omega^r(M), \beta \in \Omega^s(M)$, $\lambda \in \R$ and $X \in \mathscr{X}(M)$. Then the Lie derivative satisfies the following properties:
     \begin{enumerate}[(i)]
         \item Locality: $(\mathcal{L}_X \alpha)_U = \mathcal{L}_{X|_U} \alpha|_U$ for $U \subseteq M$ open
@@ -185,10 +199,125 @@ Of course it is not clear a priori that this definition does not depend on the c
     This shows the proposition.
 \end{proof}
 
-Now let us proof the remaining formulas of Theorem \ref{thm:cartan_calculus}.
+Now let us proof the remaining formulas of Theorem \ref{thm:cartan_calculus}, which are shown similiarly.
 
 \begin{proof}[Proof of Theorem \ref{thm:cartan_calculus}]
-    Equation (\ref{eq:cartan1}) is only mentioned for the sake of completeness and we will not show it here. See for example \cite{steimle_geometrie} for a proof.
+    Equation (\ref{eq:cartan1}) is only mentioned for the sake of completeness and will not be shown here. See for example \cite{steimle_geometrie} for a proof. Equations (\ref{eq:cartan2}) and (\ref{eq:cartan3}) have already been shown above. 
+    
+    To see (\ref{eq:cartan4}) note that again both sides of the equation are differential operators satisfying the same Leibniz rule and commute with $d$, such that it suffices to show equality on $\Omega^0(M)$. But this follows immediately from the definition of the Lie bracket.
+
+    We argue similiarly for (\ref{eq:cartan5}), but in this equation the differential operators on each side do not commute with $d$. However they still satisfy the same Leibniz rule, so we only need to show equality on $\Omega^0(M)$ as well as on the exact one-forms. Clearly both sides vanish on $\Omega^0(M)$ (by definition of the interior product) and for $\alpha = df \in \Omega^1(M)$ we compute:
+    \begin{align*}
+        (\mathcal{L}_X\iota_Y - \iota_Y\mathcal{L}_X)(df) & = \mathcal{L}_X(Y \cdot f) - (\iota_Y d \mathcal{L}_X)(f) \\
+        &= XYf - YXf\\
+        &= [X,Y] \cdot f = \iota_{[X,Y]}(df).
+    \end{align*}
+    Finally, (\ref{eq:cartan6}) is just a way to rewrite
+    \[
+    \alpha(X,Y,-) = -\alpha(Y,X,-).
+    \]
+\end{proof}
+
+As an applictaion of Theorem \ref{thm:cartan_calculus} we can show the following identity:
+
+\begin{corollary}
+    For $\alpha \in \Omega^1(M)$ and $X,Y \in \mathscr{X}(M)$ the following identity holds:
+    \[
+    d\alpha(X,Y) = X \cdot \alpha(Y) - Y \cdot \alpha(X) - \alpha([X,Y])
+    \]
+\end{corollary}
+\begin{proof}
+    By Theorem \ref{thm:cartan_calculus} (\ref{eq:cartan3}) we have:
+    \[
+    (\iota_Y\mathcal{L}_X)(\alpha) = Y \cdot \alpha(X) + d\alpha(X,Y).
+    \]
+    Moreover, applying (\ref{eq:cartan5}) yields:
+    \[
+    (\iota_Y\mathcal{L}_X)(\alpha) = X \cdot \alpha(Y) - \alpha([X,Y]).
+    \]
+    The corollary follows.
 \end{proof}
 
 \subsubsection{Moser`s trick}
+
+Let $M$ be a manifold (with or without boundary). Given a smooth family $\alpha_t$ of differential forms on $M$ indexed over $t \in [0,1]$ we want to find a family of diffeomorphisms $\varphi_t \colon M \to M$ (i.e. an isotopy), such that $\varphi_0 = id_M$ and 
+\[
+    \varphi_t^\ast \alpha_t = \alpha_0 \: \text{ for all } t \in [0,1],
+\]
+or equivalently:
+\begin{equation}
+    \label{eq:mosers_trick}
+    \frac{d}{dt} \varphi_t^\ast \alpha_t = 0.    
+\end{equation}
+
+
+\begin{remark}
+    If $\partial M \neq \emptyset$, we call $\varphi_t$ a smooth family of diffeomorphisms if the map 
+    \[
+    M \times [0,1] \to M, \: (p,t) \mapsto \varphi_t(p)
+    \]
+    is smooth in the sense of Definition \ref{def:extension_smooth}, where we consider $M \times [0,1] \subseteq M \times \R$.
+    % If $\partial M \neq \emptyset$ we say that $\varphi_t$ is a smooth family of diffeomorphisms if it can be extended to a smooth family $\varphi^\prime_t$ indexed over $\R$. In fact, if $\partial M = \emptyset$ we can also extend $\varphi_t$ to $\R$, using the following trick: The isotopy $\varphi_t$ corresponds to the level preserving diffeomorphism
+    % \[
+    % \Phi \colon M \times [0,1] \to M \times [0,1], (p,t) \mapsto (\varphi_t(p),t).
+    % \]
+    % This diffeomorphism then defines a vector field $Y:= \Phi_\ast \frac{\partial}{\partial t}$, whose integral curves uniquely determine $\varphi_t$ (this trick is also explained in \cite{Milnor1965hcobord} Thm. 5.6). We can extend this vector field arbitrarily to $M \times \R$ and then set the component pointing in the $\R$ direction to $\frac{\partial}{\partial t}$. 
+\end{remark}
+
+\textcolor{red}{\textbf{For simplicity let $\partial M = \emptyset$ for now. Still need to resolve that!!!}}
+
+Directly constructing such an isotopy is difficult but we can make use of the following trick: The isotopy $\varphi_t$ corresponds to the level preserving diffeomorphism
+\[
+\Phi \colon M \times [0,1] \to M \times [0,1], (p,t) \mapsto (\varphi_t(p),t).
+\]
+This diffeomorphism then defines a vector field $\Phi_\ast \frac{\partial}{\partial t}$ on $M \times [0,1]$, whose integral curves uniquely determine $\varphi_t$. This suggests that in order to construct an isotopy $\varphi_t$ we can construct a vector field $Y$ on $M \times [0,1]$, of the form 
+\[
+Y_{(p,t)} = ((X_t)_p, \frac{\partial}{\partial t}) 
+\]
+for a time dependent vector field $X_t$ on $M$ (this trick is also explained in \cite{Milnor1965hcobord} Thm. 5.6). 
+
+Then (\ref{eq:mosers_trick}) can be reformulated as a condition on $X_t$, which is shown in the following Lemma.
+
+\begin{lemma}
+    In the situation above the following holds:
+    \[
+    \frac{d}{dt} \varphi_t^\ast \alpha_t = \phi_t^\ast(L_{X_t}\alpha_t + \dot{\alpha_t})
+    \]
+\end{lemma}
+
+\begin{proof}
+    Assume that $\alpha_t$ is defined for all $t \in \R$ and consider the smooth two-parameter family $\phi_t^\ast \alpha_s$ for $(t,s) \in [0,1] \times \R$. Then for each $p \in M$ we have a smooth map
+    \[
+        g \colon [0,1] \times \R \to T_p^\ast M, \: (t,s) \mapsto (\phi_t^\ast \alpha_s)_p
+    \]
+    and
+    \[
+        \frac{d}{dt}\bigg|_{t=t_0} (\varphi_t^\ast \alpha_t)_p = \frac{\partial g}{\partial t}(t_0,t_0) + \frac{\partial g}{\partial s}(t_0,t_0) 
+    \]
+    We claim that 
+    \[
+    \frac{\partial}{\partial t}\bigg|_{t=t_0} \varphi_t^\ast \alpha_s = \varphi_{t_0}^\ast(\mathcal{L}_{X_{t_0}} \alpha_s)
+    \]
+    The same proof as of Proposition \ref{prop:lie_derivative_properties} shows that 
+    \[
+    \beta \mapsto \frac{\partial}{\partial t}\bigg|_{t=t_0} \varphi_t^\ast \beta
+    \]
+    is a differential operator commuting with $d$ and satisfying the same Leibniz rule as 
+    \[
+    \beta \mapsto \varphi_{t_0}^\ast(\mathcal{L}_{X_{t_0}}\beta).
+    \]
+    Thus we only need to show equality on $\Omega^0(M)$. So for $f \in \Omega^0(M)$ we compute:
+    \begin{align*}
+        \frac{\partial}{\partial t}\bigg|_{t=t_0} (\varphi_t^\ast f)_p &= \frac{\partial}{\partial t}\bigg|_{t=t_0} f(\varphi_t(p)) \\
+        &= d_{\varphi_{t_0}(p)}f((X_{t_0})_{\varphi_{t_0}(p)}) \\
+        &= (X_{t_0} \cdot f)(\varphi_{t_0}(p))\\
+        &= \varphi_{t_0}(p)^\ast(X_{t_0} \cdot f)(p)\\
+        &= \varphi_{t_0}^\ast(\mathcal{L}_{X_{t_0}}f)_p
+    \end{align*}
+    This shows the claim. Moreover, by writing $\alpha_s$ in local coordinates it is easily seen that
+    \[
+        \frac{\partial}{\partial s}\bigg|_{s=t_0} \varphi_t^\ast \alpha_s = \varphi_t^\ast \left(\frac{\partial}{\partial s}\bigg|_{s=t_0}  \alpha_s \right) = \varphi_t^\ast \dot{\alpha}_{t_0}.
+    \]
+    This completes the proof.
+\end{proof}
+
