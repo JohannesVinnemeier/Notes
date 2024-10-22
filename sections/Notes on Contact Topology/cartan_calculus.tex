@@ -238,9 +238,48 @@ As an applictaion of Theorem \ref{thm:cartan_calculus} we can show the following
     The corollary follows.
 \end{proof}
 
+The Lie derivative $\mathcal{L}_X\alpha$ was defined as
+\[
+\frac{d}{dt}\bigg|_{t=0}\phi_t^\ast\alpha,
+\]
+where $\phi_t$ is the flow of $X$. We might also want to differentiate this expression at some other time $t=t_0$. The following proposition shows how this can be computed in terms of $\mathcal{L}_X\alpha$. In fact, we show a more general statement, where $\phi_t$ is the flow of a time dependent vector field.
+
+\begin{proposition}
+    \label{prop:lie_derivative_formula}
+    Let $M$ be a manifold without boundary, $X_t$ a time dependent vector field on $M$ and $\alpha \in \Omega^r(M).$ Denote by $\phi_t$ the (time-dependent) flow of $X_t$ and consider the open set $M_{t_0} = \{p\in M \mid \phi_t(p) \text{ exists for } t=t_0\}$. Then
+    \[
+        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}} \alpha)_p
+    \]
+    for all points $p \in M_{t_0}$.
+\end{proposition}
+\begin{proof}
+    If $X_t$ does not depend on time, i.e. $X_t = X_0$ for all $t$ where it is defined, the proposition follows from a simple computation:
+    \begin{align*}
+        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p &= \frac{d}{dt}\bigg|_{t=0}(\phi_{t+t_0}^\ast\alpha)_p = \frac{d}{dt}\bigg|_{t=0}(\phi_{t_0}^\ast\phi_t^\ast\alpha)_p \\
+        &= \phi_{t_0}^\ast \frac{d}{dt}\bigg|_{t=0} (\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast (\mathcal{L}_{X_0} \alpha)_p = \phi_{t_0}^\ast (\mathcal{L}_{X_{t_0}} \alpha)_p
+    \end{align*}
+    In the general case we argue as follows: The maps
+    \[
+    \Omega^r(M_{t_0}) \ni \alpha \mapsto \frac{d}{dt}\bigg|_{t=t_0}\phi_t^\ast\alpha
+    \]
+    and 
+    \[
+        \Omega^r(M_{t_0}) \ni \alpha \mapsto \phi_{t_0}^\ast \mathcal{L}_{X_{t_0}} \alpha 
+    \]
+    are both differential operators satisfying the same Leibniz rule and commute with $d$. For the second one this just follows from Proposition \ref{prop:lie_derivative_properties} and for the first one we can carry out precisely the same proof as of Proposition \ref{prop:lie_derivative_properties}. Thus we can again establish equality by showing that they agree on $\Omega^0(M_{t_0})$. So for $f \in \Omega^0(M_{t_0})$ we compute:
+    \begin{align*}
+        \frac{d}{d t}\bigg|_{t=t_0} (\phi_t^\ast f)_p &= \frac{d}{d t}\bigg|_{t=t_0} f(\phi_t(p)) \\
+        &= d_{\phi_{t_0}(p)}f((X_{t_0})_{\phi_{t_0}(p)}) \\
+        &= (X_{t_0} \cdot f)(\phi_{t_0}(p))\\
+        &= \phi_{t_0}^\ast(X_{t_0} \cdot f)(p)\\
+        &= \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}}f)_p
+    \end{align*}
+    This shows the statement.
+\end{proof}
+
 \subsubsection{Moser`s trick}
 
-Let $M$ be a manifold (with or without boundary). Given a smooth family $\alpha_t$ of differential forms on $M$ indexed over $t \in [0,1]$ we want to find a family of diffeomorphisms $\varphi_t \colon M \to M$ (i.e. an isotopy), such that $\varphi_0 = id_M$ and 
+Let $M$ be a manifold (without boundary). Given a smooth family $\alpha_t$ of differential forms on $M$ indexed over $t \in [0,1]$ we want to find a family of diffeomorphisms $\varphi_t \colon M \to M$ (i.e. an isotopy), such that $\varphi_0 = id_M$ and 
 \[
     \varphi_t^\ast \alpha_t = \alpha_0 \: \text{ for all } t \in [0,1],
 \]
@@ -251,20 +290,18 @@ or equivalently:
 \end{equation}
 
 
-\begin{remark}
-    If $\partial M \neq \emptyset$, we call $\varphi_t$ a smooth family of diffeomorphisms if the map 
-    \[
-    M \times [0,1] \to M, \: (p,t) \mapsto \varphi_t(p)
-    \]
-    is smooth in the sense of Definition \ref{def:extension_smooth}, where we consider $M \times [0,1] \subseteq M \times \R$.
+% \begin{remark}
+%     If $\partial M \neq \emptyset$, we call $\varphi_t$ a smooth family of diffeomorphisms if the map 
+%     \[
+%     M \times [0,1] \to M, \: (p,t) \mapsto \varphi_t(p)
+%     \]
+%     is smooth in the sense of Definition \ref{def:extension_smooth}, where we consider $M \times [0,1] \subseteq M \times \R$.
     % If $\partial M \neq \emptyset$ we say that $\varphi_t$ is a smooth family of diffeomorphisms if it can be extended to a smooth family $\varphi^\prime_t$ indexed over $\R$. In fact, if $\partial M = \emptyset$ we can also extend $\varphi_t$ to $\R$, using the following trick: The isotopy $\varphi_t$ corresponds to the level preserving diffeomorphism
     % \[
     % \Phi \colon M \times [0,1] \to M \times [0,1], (p,t) \mapsto (\varphi_t(p),t).
     % \]
     % This diffeomorphism then defines a vector field $Y:= \Phi_\ast \frac{\partial}{\partial t}$, whose integral curves uniquely determine $\varphi_t$ (this trick is also explained in \cite{Milnor1965hcobord} Thm. 5.6). We can extend this vector field arbitrarily to $M \times \R$ and then set the component pointing in the $\R$ direction to $\frac{\partial}{\partial t}$. 
-\end{remark}
-
-\textcolor{red}{\textbf{For simplicity let $\partial M = \emptyset$ for now. Still need to resolve that!!!}}
+%\end{remark}
 
 Directly constructing such an isotopy is difficult but we can make use of the following trick: The isotopy $\varphi_t$ corresponds to the level preserving diffeomorphism
 \[
@@ -279,6 +316,7 @@ for a time dependent vector field $X_t$ on $M$ (this trick is also explained in 
 Then (\ref{eq:mosers_trick}) can be reformulated as a condition on $X_t$, which is shown in the following Lemma.
 
 \begin{lemma}
+    \label{lem:mosers_trick_lemma}
     In the situation above the following holds:
     \[
     \frac{d}{dt} \varphi_t^\ast \alpha_t = \phi_t^\ast(L_{X_t}\alpha_t + \dot{\alpha_t})
@@ -294,30 +332,46 @@ Then (\ref{eq:mosers_trick}) can be reformulated as a condition on $X_t$, which 
     \[
         \frac{d}{dt}\bigg|_{t=t_0} (\varphi_t^\ast \alpha_t)_p = \frac{\partial g}{\partial t}(t_0,t_0) + \frac{\partial g}{\partial s}(t_0,t_0) 
     \]
-    We claim that 
+    By Proposition \ref{prop:lie_derivative_formula} we have:
     \[
     \frac{\partial}{\partial t}\bigg|_{t=t_0} \varphi_t^\ast \alpha_s = \varphi_{t_0}^\ast(\mathcal{L}_{X_{t_0}} \alpha_s)
     \]
-    The same proof as of Proposition \ref{prop:lie_derivative_properties} shows that 
-    \[
-    \beta \mapsto \frac{\partial}{\partial t}\bigg|_{t=t_0} \varphi_t^\ast \beta
-    \]
-    is a differential operator commuting with $d$ and satisfying the same Leibniz rule as 
-    \[
-    \beta \mapsto \varphi_{t_0}^\ast(\mathcal{L}_{X_{t_0}}\beta).
-    \]
-    Thus we only need to show equality on $\Omega^0(M)$. So for $f \in \Omega^0(M)$ we compute:
-    \begin{align*}
-        \frac{\partial}{\partial t}\bigg|_{t=t_0} (\varphi_t^\ast f)_p &= \frac{\partial}{\partial t}\bigg|_{t=t_0} f(\varphi_t(p)) \\
-        &= d_{\varphi_{t_0}(p)}f((X_{t_0})_{\varphi_{t_0}(p)}) \\
-        &= (X_{t_0} \cdot f)(\varphi_{t_0}(p))\\
-        &= \varphi_{t_0}(p)^\ast(X_{t_0} \cdot f)(p)\\
-        &= \varphi_{t_0}^\ast(\mathcal{L}_{X_{t_0}}f)_p
-    \end{align*}
-    This shows the claim. Moreover, by writing $\alpha_s$ in local coordinates it is easily seen that
+    Moreover, by writing $\alpha_s$ in local coordinates it is easily seen that
     \[
         \frac{\partial}{\partial s}\bigg|_{s=t_0} \varphi_t^\ast \alpha_s = \varphi_t^\ast \left(\frac{\partial}{\partial s}\bigg|_{s=t_0}  \alpha_s \right) = \varphi_t^\ast \dot{\alpha}_{t_0}.
     \]
     This completes the proof.
 \end{proof}
+So (\ref{eq:mosers_trick}) can be reformulated to the condition:
+\[
+    0 = L_{X_t}\alpha_t + \dot{\alpha_t} = d\iota_{X_t}\alpha_t + \iota_{X_t}d\alpha_t + \dot{\alpha_t},
+\]
+where we used Theorem \ref{thm:cartan_calculus} (\ref{eq:cartan3}) in the second equation. Hence it suffices to construct a time dependent vector field $X_t$ satisfying the above conditon and whose integral curves exist for time $t = 1$. 
 
+\subsubsection{A cooking recipe}
+
+The proof of Lemma \ref{lem:mosers_trick_lemma} gives a cooking recipe for computing derivatives of smooth families of differential forms indexed over some time $t$, where $t$ appears at multiple instances. Namely, fix $t$ for all but one instance and differentiate. Then take the sum of all of the results. We illustrate this in an example.
+
+\begin{example}
+    Let $X_t$ be some time dependent vector field on a manifold $M$ with (time-dependent) flow $\phi_t$. Furthermore, let $\alpha_t$ be a smooth family of differential forms and $f_t$ a smooth family of functions on $M$. We want to compute:
+    \[
+    \frac{d}{dt}\phi_t^\ast(e^{f_t}\alpha_t).
+    \]
+    Begin by fixing all but the first occurence of $t$ and differentiate, i.e. compute
+    \begin{align*}
+        \frac{\partial}{\partial t} \phi_t^\ast(e^{f_s}\alpha_s) = \phi_t^\ast(\mathcal{L}_{X_t}(e^{f_s}\alpha_s)) &= \phi_t^\ast((X_t \cdot e^{f_s})\alpha_s + e^{f_s}\mathcal{L}_{X_t}\alpha_s)\\ &= \phi_t^\ast((X_t \cdot f_s) e^{f_s} \alpha_s + e^{f_s}\mathcal{L}_{X_t}\alpha_s)
+    \end{align*}
+    Here we used Proposition \ref{prop:lie_derivative_formula} and the Leibniz rule for the Lie derivative. Next fix all but the second occurence of $t$:
+    \[
+        \frac{\partial}{\partial t} \phi_s^\ast(e^{f_t}\alpha_s) = \phi_s^\ast(\frac{\partial }{\partial t}e^{f_t}\alpha_s) = \phi_s^\ast(\dot{f_t}e^{f_t}\alpha_s)
+    \]
+    And lastly
+    \[
+        \frac{\partial }{\partial t} \phi_s^\ast(e^{f_s}\alpha_t) = \phi_s^\ast(e^{f_s}\frac{\partial }{\partial t} \alpha_t) = \phi_s^\ast(e^{f_s}\dot{\alpha_t})
+    \]
+    Finally plug in $s=t$ and sum the results:
+    \begin{align*}
+        \frac{d}{dt}\phi_t^\ast(e^{f_t}\alpha_t) &= \phi_t^\ast((X_t \cdot f_t) e^{f_t} \alpha_t + e^{f_t}\mathcal{L}_{X_t}\alpha_t) + \phi_t^\ast(\dot{f_t}e^{f_t}\alpha_t) + \phi_t^\ast(e^{f_t}\dot{\alpha_t})\\
+        &= \phi_t^\ast(e^{f_t}((X_t \cdot f_t) \alpha_t + \mathcal{L}_{X_t}\alpha_t + \dot{f_t}\alpha_t + \dot{\alpha_t}))
+    \end{align*}
+\end{example}
