@@ -79,7 +79,7 @@
     \end{counterexample}
 
     \begin{remark}
-        We can weaken the assumptions of Lemma \ref{lem:topology_sublevel_sets_not_crossing_critical_point}. First of all $f$ does not need to be a Morse function. We can then still construct a vector field $X$, such that $X \cdot f < 0$ outisde of critical points. Secondly, we may replace the assumption that $M$ is compact by instead requiring $f^{-1}[a,b]$ to be compact, which is for example the case if $f$ is proper. We then only have to modify the proof in the definition of $U$. Instead we define $U$ to be a \textit{compact} neighbourhood of $K := f^{-1}[a,b]$, i.e. $K \subseteq \mathrm{int} U$, which does not contain any critical points nor boundary points. For example we may define $U$ as a union of finitely many (here we need compactness of $f^{-1}[a,b]$) compact sets $K_i$ not containing critical points nor boundary points such that $\mathrm{int} K_i$ still cover $K$. 
+        We can weaken the assumptions of Lemma \ref{lem:topology_sublevel_sets_not_crossing_critical_point}. First of all $f$ does not need to be a Morse function. We can then still construct a vector field $X$, such that $X \cdot f < 0$ outisde of critical points. Secondly, we may replace the assumption that $M$ is compact by instead requiring $f^{-1}[a,b]$ to be compact, which is for example the case if $f$ is proper. We then only have to modify the proof in the definition of $U$. Instead we define $U$ to be a \textit{compact} neighbourhood of $K := f^{-1}[a,b]$, i.e. $K \subseteq \mathrm{int} U$, which does not contain any critical points nor boundary points. For example we may define $U$ as a union of finitely many (here we need compactness of $f^{-1}[a,b]$) compact sets $K_i$ not containing neither critical points nor boundary points such that $\mathrm{int} K_i$ still cover $K$. 
     \end{remark}
 
     Similiarly we may proof the following, for which we can also weaken the assumptions as described in the remark above.
@@ -107,7 +107,7 @@
         Then $H(-,0) = id_{M_b}$ and $H(-,1) = r$.
     \end{proof}
 
-    We would now also like to generalize the result, that the topology of $M$ changes by attaching a $\lambda$-cell when crossing a critical point $c_0$ of index $\lambda$ to compact manifolds with boundary. This statement can now be shown using the two lemmas above by requiring $f^{-1}[a,b]$ to only contain the critical point $c_0$ and no boundary points. The proof now works exactly the same as for the boundaryless case. See \cite{milnor1963morse}. Let us state the theorem for manifolds with boundary:
+    We would now also like to generalize the result, that the topology of $M$ changes by attaching a $\lambda$-cell when crossing a critical point $c_0$ of index $\lambda$ to compact manifolds with boundary. This statement can now be shown using the two lemmas above by requiring $f^{-1}[a,b]$ to only contain the critical point $c_0$ and no boundary points. The proof now works exactly the same as for the boundaryless case, see \cite{milnor1963morse}. Let us state the theorem for manifolds with boundary:
     
     \begin{theorem}
         \label{thm:topology_when_crossing_critical_point}
@@ -130,7 +130,7 @@
         Furthermore $F^{-1}[c-\epsilon,c+\epsilon]$ does not contain any critical points or boundary points, such that $F^{-1}(-\infty,c-\epsilon]$ is a deformation retract of $F^{-1}(-\infty,c+\epsilon]$ by Lemma \ref{lem:topology_sublevel_sets_not_crossing_critical_point_variation}. We then show that $M_{c-\epsilon} \cup_\phi D^\lambda$ is a deformation retract of $F^{-1}(-\infty,c-\epsilon]$ (or more precisely the image of $M_{c-\epsilon} \cup_\phi D^\lambda$ under an embedding is a deformation retract). This then shows that $M_{c-\epsilon} \cup_\phi D^\lambda$ is a deformation retract of $M_{c+\epsilon}$.
     \end{proof}
     
-    However this does not yield a cell decomposition of $M$ as we do not know how the topology changes when crossing boundary points. Instead we can use the fact that any compact without boundary admits a cell-decomposition directly, to proof the case when $M$ has non-empty boundary.
+    However this does not yield a cell decomposition of $M$ as we do not know how the topology changes when crossing boundary points. Instead we can use the fact that any compact manifold without boundary admits a cell-decomposition directly, to proof the case when $M$ has non-empty boundary.
 
     \begin{theorem}[Cell-decompositions of Manifolds]
         \label{thm:cell_decomp}

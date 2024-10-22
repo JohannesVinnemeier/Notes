@@ -3,10 +3,13 @@
 
     \begin{lemma}
         \label{lem:regular_sublevel_sets}
-        Let $M$ be a manifold with boundary and $f \colon M \to \R$ a smooth function. Furthermore, let $a \in \R$ be a regular value of $f$, that is not a boundary value. Then $M_a := f^{-1}(-\infty,a]$ is a submanifold with boundary $\partial M_a = f^{-1}(a)$.
+        Let $M$ be a manifold with boundary and $f \colon M \to \R$ a smooth function. Furthermore, let $a \in \R$ be a regular value of $f$, that is not a boundary value. Then $M_a := f^{-1}(-\infty,a]$ is a submanifold with boundary 
+        \[
+            \partial M_a = f^{-1}(a) \cup (M_a \cap \partial M).
+        \]
     \end{lemma}
     \begin{proof}[Proof sketch]
-        For $p \in f^{-1}(a)$ we have $p \in \mathrm{int}(M)$ by assumption. Since $\mathrm{int}(M)$ is a boundaryless manifold the local submersion theorem holds, i.e. $f$ looks like the orthogonal projection $\R^n \to \R$ around $p$. Then the proof goes the same as in the boundaryless case.
+        For $p \in f^{-1}(a)$ we have $p \in \mathrm{int}(M)$ by assumption. Since $\mathrm{int}(M)$ is a boundaryless manifold (and an open subset of $M$) the local submersion theorem holds, i.e. $f$ looks like the orthogonal projection $\R^n \to \R$ around $p$. Then the proof goes essentially the same as in the boundaryless case.
     \end{proof}
 
     \begin{counterexample}
@@ -40,7 +43,7 @@
         \[
         \iota \colon N \to \mathrm{D}(N),
         \]
-        where $\mathrm{D}(N)$ denotes the double of $N$ and define $F := \iota \circ f$. Then $Y := \iota(X)$ is a submanifo  ld of $\mathrm{D}(N)$ and $X^\prime = F^{-1}(Y)$. Furthermore, since $\iota$ is an embedding (and $\mathrm{dim}(N) = \mathrm{dim}(\mathrm{D}(N))$) it follows that 
+        where $\mathrm{D}(N)$ denotes the double of $N$ and define $F := \iota \circ f$. Then $Y := \iota(X)$ is a submanifold of $\mathrm{D}(N)$ and $X^\prime = F^{-1}(Y)$. Furthermore, since $\iota$ is an embedding (and $\mathrm{dim}(N) = \mathrm{dim}(\mathrm{D}(N))$) it follows that 
         \[
         F \pitchfork Y \text{ and } \partial F \pitchfork Y,
         \] 
@@ -80,15 +83,15 @@
         \]
         and 
         \[
-        g \colon M \to \mathrm{int}(N), \; p \mapsto f(p).
+        f^\prime \colon M \to \mathrm{int}(N), \; p \mapsto f(p).
         \]
-        Using the Transversality Homotopy Theorem for the case $\partial N = \emptyset$ (see \cite{guillemin2010differential} p. 70) we get that $g$ is smoothly homotopic to a map $g^\prime \colon M \to \mathrm{int}(N)$, such that 
+        Using the Transversality Homotopy Theorem for the case $\partial N = \emptyset$ (see \cite{guillemin2010differential} p. 70) we get that $f^\prime$ is smoothly homotopic to a map $g^\prime \colon M \to \mathrm{int}(N)$, such that 
         \[
             g^\prime \pitchfork Y \text{ and } \partial g^\prime \pitchfork Y.
         \]
-        Now define $f^\prime := \iota \circ g$, where $\iota \colon \mathrm{int}(N) \hookrightarrow N$ is the inclusion. Since $f^\prime$ does not intersect $X$ at boundary points, i.e. $\mathrm{im}(f^\prime) \cap X \subseteq \mathrm{int}(N)$, the transversality properties of $g^\prime$ directly imply
+        Now define $g := \iota \circ f^\prime$, where $\iota \colon \mathrm{int}(N) \hookrightarrow N$ is the inclusion. Since $g$ does not intersect $X$ at boundary points, i.e. $\mathrm{im}(g) \cap X \subseteq \mathrm{int}(N)$, the transversality properties of $g^\prime$ directly imply
         \[
-            f^\prime \pitchfork X \text{ and } \partial f^\prime \pitchfork X.
+            g \pitchfork X \text{ and } \partial g \pitchfork X.
         \]
         
         %Now consider the inclusion $\iota \colon N \to \mathrm{D}(N)$ of $N$ into its double and define $g := \iota \circ f$ and $Y := \iota(X)$. From here on we mimic the proof of Theorem 6.36 in \cite{lee2011smooth}. By the Whitney embedding theorem we may assume that $\mathrm{D}(N)$ is a submanifold of some $\R^n$. Choose a tubular neighbourhood $V$ of $\mathrm{N}$ together with a retraction $r \colon V \to \mathrm{D}(N)$, which is a submersion. Now define $$\delta \colon \mathrm{D}(N) \to \R_{>0}, \; x \mapsto \mathrm{sup}\{\tau >0 \mid B_\tau(x) \subseteq V\}.$$
