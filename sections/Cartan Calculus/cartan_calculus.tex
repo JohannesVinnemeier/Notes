@@ -1,4 +1,4 @@
-\subsection{Cartan Calculus}
+\subsection{Lie derivative and Cartan's magic formula}
 In this section we discuss two differential operators on the graded algebra $\Omega^\bullet(M)$ of differential forms on a manifold $M$, namely the Lie derivative $\mathcal{L}_X$ and the interior product $\iota_X$, where $X$ is a smooth vector field on $M$. The main goal of this section is to show well-definedness of $\mathcal{L}_X$ and proof the following theorem, describing the relationships between $\mathcal{L}_X, \iota_X$ and the exterior derivative $d$.
 
 \begin{theorem}
@@ -238,46 +238,7 @@ As an applictaion of Theorem \ref{thm:cartan_calculus} we can show the following
     The corollary follows.
 \end{proof}
 
-The Lie derivative $\mathcal{L}_X\alpha$ was defined as
-\[
-\frac{d}{dt}\bigg|_{t=0}\phi_t^\ast\alpha,
-\]
-where $\phi_t$ is the flow of $X$. We might also want to differentiate this expression at some other time $t=t_0$. The following proposition shows how this can be computed in terms of $\mathcal{L}_X\alpha$. In fact, we show a more general statement, where $\phi_t$ is the flow of a time dependent vector field.
-
-\begin{proposition}
-    \label{prop:lie_derivative_formula}
-    Let $M$ be a manifold without boundary, $X_t$ a time dependent vector field on $M$ and $\alpha \in \Omega^r(M).$ Denote by $\phi_t$ the (time-dependent) flow of $X_t$ and consider the open set $M_{t_0} = \{p\in M \mid \phi_t(p) \text{ exists for } t=t_0\}$. Then
-    \[
-        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}} \alpha)_p
-    \]
-    for all points $p \in M_{t_0}$.
-\end{proposition}
-\begin{proof}
-    If $X_t$ does not depend on time, i.e. $X_t = X_0$ for all $t$ where it is defined, the proposition follows from a simple computation:
-    \begin{align*}
-        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p &= \frac{d}{dt}\bigg|_{t=0}(\phi_{t+t_0}^\ast\alpha)_p = \frac{d}{dt}\bigg|_{t=0}(\phi_{t_0}^\ast\phi_t^\ast\alpha)_p \\
-        &= \phi_{t_0}^\ast \frac{d}{dt}\bigg|_{t=0} (\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast (\mathcal{L}_{X_0} \alpha)_p = \phi_{t_0}^\ast (\mathcal{L}_{X_{t_0}} \alpha)_p
-    \end{align*}
-    In the general case we argue as follows: The maps
-    \[
-    \Omega^r(M_{t_0}) \ni \alpha \mapsto \frac{d}{dt}\bigg|_{t=t_0}\phi_t^\ast\alpha
-    \]
-    and 
-    \[
-        \Omega^r(M_{t_0}) \ni \alpha \mapsto \phi_{t_0}^\ast \mathcal{L}_{X_{t_0}} \alpha 
-    \]
-    are both differential operators satisfying the same Leibniz rule and commute with $d$. For the second one this just follows from Proposition \ref{prop:lie_derivative_properties} and for the first one we can carry out precisely the same proof as of Proposition \ref{prop:lie_derivative_properties}. Thus we can again establish equality by showing that they agree on $\Omega^0(M_{t_0})$. So for $f \in \Omega^0(M_{t_0})$ we compute:
-    \begin{align*}
-        \frac{d}{d t}\bigg|_{t=t_0} (\phi_t^\ast f)_p &= \frac{d}{d t}\bigg|_{t=t_0} f(\phi_t(p)) \\
-        &= d_{\phi_{t_0}(p)}f((X_{t_0})_{\phi_{t_0}(p)}) \\
-        &= (X_{t_0} \cdot f)(\phi_{t_0}(p))\\
-        &= \phi_{t_0}^\ast(X_{t_0} \cdot f)(p)\\
-        &= \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}}f)_p
-    \end{align*}
-    This shows the statement.
-\end{proof}
-
-\subsubsection{Moser`s trick}
+\subsection{Moser`s trick}
 
 Let $M$ be a manifold (without boundary). Given a smooth family $\alpha_t$ of differential forms on $M$ indexed over $t \in [0,1]$ we want to find a family of diffeomorphisms $\varphi_t \colon M \to M$ (i.e. an isotopy), such that $\varphi_0 = id_M$ and 
 \[
@@ -348,7 +309,62 @@ So (\ref{eq:mosers_trick}) can be reformulated to the condition:
 \]
 where we used Theorem \ref{thm:cartan_calculus} (\ref{eq:cartan3}) in the second equation. Hence it suffices to construct a time dependent vector field $X_t$ satisfying the above conditon and whose integral curves exist for time $t = 1$. 
 
-\subsubsection{A cooking recipe}
+\subsection{Further computation rules}
+
+The Lie derivative $\mathcal{L}_X\alpha$ was defined as
+\[
+\frac{d}{dt}\bigg|_{t=0}\phi_t^\ast\alpha,
+\]
+where $\phi_t$ is the flow of $X$. We might also want to differentiate this expression at some other time $t=t_0$. The following proposition shows how this can be computed in terms of $\mathcal{L}_X\alpha$. In fact, we show a more general statement, where $\phi_t$ is the flow of a time dependent vector field.
+
+\begin{proposition}
+    \label{prop:lie_derivative_formula}
+    Let $M$ be a manifold without boundary, $X_t$ a time dependent vector field on $M$ and $\alpha \in \Omega^r(M).$ Denote by $\phi_t$ the (time-dependent) flow of $X_t$ and consider the open set $M_{t_0} = \{p\in M \mid \phi_t(p) \text{ exists for } t=t_0\}$. Then
+    \[
+        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}} \alpha)_p
+    \]
+    for all points $p \in M_{t_0}$.
+\end{proposition}
+\begin{proof}
+    If $X_t$ does not depend on time, i.e. $X_t = X_0$ for all $t$ where it is defined, the proposition follows from a simple computation:
+    \begin{align*}
+        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p &= \frac{d}{dt}\bigg|_{t=0}(\phi_{t+t_0}^\ast\alpha)_p = \frac{d}{dt}\bigg|_{t=0}(\phi_{t_0}^\ast\phi_t^\ast\alpha)_p \\
+        &= \phi_{t_0}^\ast \frac{d}{dt}\bigg|_{t=0} (\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast (\mathcal{L}_{X_0} \alpha)_p = \phi_{t_0}^\ast (\mathcal{L}_{X_{t_0}} \alpha)_p
+    \end{align*}
+    In the general case we argue as follows: The maps
+    \[
+    \Omega^r(M_{t_0}) \ni \alpha \mapsto \frac{d}{dt}\bigg|_{t=t_0}\phi_t^\ast\alpha
+    \]
+    and 
+    \[
+        \Omega^r(M_{t_0}) \ni \alpha \mapsto \phi_{t_0}^\ast \mathcal{L}_{X_{t_0}} \alpha 
+    \]
+    are both differential operators satisfying the same Leibniz rule and commute with $d$. For the second one this just follows from Proposition \ref{prop:lie_derivative_properties} and for the first one we can carry out precisely the same proof as of Proposition \ref{prop:lie_derivative_properties}. Thus we can again establish equality by showing that they agree on $\Omega^0(M_{t_0})$. So for $f \in \Omega^0(M_{t_0})$ we compute:
+    \begin{align*}
+        \frac{d}{d t}\bigg|_{t=t_0} (\phi_t^\ast f)_p &= \frac{d}{d t}\bigg|_{t=t_0} f(\phi_t(p)) \\
+        &= d_{\phi_{t_0}(p)}f((X_{t_0})_{\phi_{t_0}(p)}) \\
+        &= (X_{t_0} \cdot f)(\phi_{t_0}(p))\\
+        &= \phi_{t_0}^\ast(X_{t_0} \cdot f)(p)\\
+        &= \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}}f)_p
+    \end{align*}
+    This shows the statement.
+\end{proof}
+
+Here are two more rules for computing the time-derivative of a smooth family of $r-$forms, which are occasioanlly useful:
+
+\begin{lemma}
+    \label{lem:cartan_calculus_further_rules}
+    Let $\alpha_t$ be a smooth time-dependent family of differential forms on a manifold $M$ and $f \colon N \to M$ a smooth map. Then the following holds:
+    \begin{enumerate}[(i)]
+        \item $\frac{d}{d t}f^*\alpha_t = f^*\frac{d}{d t} \alpha_t$
+        \item $\frac{d}{d t} d\alpha_t = d(\frac{d}{d t} \alpha_t)$
+    \end{enumerate} 
+\end{lemma}
+\begin{proof}
+    Both statements can easily be verified by directly computing both sides of the equation in local coordinates. For $(ii)$ we have in fact already seen this computation in the proof of Lemma \ref{prop:lie_derivative_properties}.
+\end{proof}
+
+\headline{A cooking recipe}
 
 The proof of Lemma \ref{lem:mosers_trick_lemma} gives a cooking recipe for computing derivatives of smooth families of differential forms indexed over some time $t$, where $t$ appears at multiple instances. Namely, fix $t$ for all but one instance and differentiate. Then take the sum of all of the results. We illustrate this in an example.
 
@@ -361,7 +377,7 @@ The proof of Lemma \ref{lem:mosers_trick_lemma} gives a cooking recipe for compu
     \begin{align*}
         \frac{\partial}{\partial t} \phi_t^\ast(e^{f_s}\alpha_s) = \phi_t^\ast(\mathcal{L}_{X_t}(e^{f_s}\alpha_s)) &= \phi_t^\ast((X_t \cdot e^{f_s})\alpha_s + e^{f_s}\mathcal{L}_{X_t}\alpha_s)\\ &= \phi_t^\ast((X_t \cdot f_s) e^{f_s} \alpha_s + e^{f_s}\mathcal{L}_{X_t}\alpha_s)
     \end{align*}
-    Here we used Proposition \ref{prop:lie_derivative_formula} and the Leibniz rule for the Lie derivative. Next fix all but the second occurence of $t$:
+    Here we used Proposition \ref{prop:lie_derivative_formula} and the Leibniz rule for the Lie derivative. Next fix all but the second occurence of $t$ and using Lemma \ref{lem:cartan_calculus_further_rules} compute:
     \[
         \frac{\partial}{\partial t} \phi_s^\ast(e^{f_t}\alpha_s) = \phi_s^\ast(\frac{\partial }{\partial t}e^{f_t}\alpha_s) = \phi_s^\ast(\dot{f_t}e^{f_t}\alpha_s)
     \]
