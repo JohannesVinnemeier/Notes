@@ -111,6 +111,13 @@
   \end{tikzpicture}
 }
 
+\renewcommand{\epsilon}{\varepsilon}
+
+\renewcommand{\bullet}{{\mathchoice
+  {\tikz \filldraw (0,0) circle (1pt);}
+  {\tikz \filldraw (0,0) circle (1pt);}
+  {\tikz \filldraw (0,0) circle (0.95pt);}
+  {\tikz \filldraw (0,0) circle (0.5pt);}}}
 
 
 \begin{document}
@@ -132,6 +139,11 @@
     \section{Cartan Calculus}
 
     \input{sections/Cartan Calculus/cartan_calculus.tex}
+
+    \newpage
+    \section{Algebraic Topology}
+
+    \input{sections/Algebraic Topology/alg_topo.tex}
     
     \newpage
     \section{Miscellaneous}
