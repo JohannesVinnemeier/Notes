@@ -1,0 +1,69 @@
+\subsection{CW-Complexes}
+
+\begin{proposition}
+    Let $(X,A)$ be a relative CW-complex. If $A$ is Hausdorff (resp. normal) then $X$ is Hausdorff (resp. normal) as well. In particular every absolute CW-complex is Hausdorff and normal.
+\end{proposition}
+\begin{proof}
+    We show the statement for the case that $A$ is normal. The Hausdorff case follows completely analogously by replacing the sets to be seperated by point sets. So let $B,C \subseteq X$ be closed disjoint sets. We will show the following statement inductively:
+    \begin{claim}
+    There exist open disjoint sets $U_n,V_n \subseteq X_n$, such that $B_n := B \cap X_n \subseteq U_n$ and $C_n := C \cap X_n \subseteq V_n$ as well as $U_{n-1} \subseteq U_n, V_{n-1} \subseteq V_n$.
+    \end{claim}
+    The case $n=-1$ follows from the assumption on $A$. For the induction step choose a push-out
+    \begin{center}
+        \commsquare{$\coprod_{i \in I} S^{n-1}$}{$X_{n-1}$}{$\coprod_{i \in I} D^n$}{$X_n$}{$(q_i)$}{}{}{$(Q_i)$}
+    \end{center}
+    and set $U_{n-1}^\prime := (q_i)^{-1}_{i \in I}(U_{n-1})$, $V_{n-1}^\prime := (q_i)^{-1}_{i \in I}(V_{n-1})$. By Lemma \ref{lem:technical_lemma1} shown below we can find open neighbourhoods $U_n^\prime,V_n^\prime \subseteq \coprod_I D^n$ with the following properties:
+    \begin{enumerate}[(i)]
+        \item $(Q_i)_I^{-1}(B_n) \subseteq U_n^\prime$ and $(Q_i)_I^{-1}(C_n) \subseteq V_n^\prime$
+        \item $U_n^\prime \cap V_n^\prime = \emptyset$
+        \item $U_{n-1}^\prime = U_n^\prime \cap \coprod_I S^{n-1}$ and $V_{n-1}^\prime = V_n^\prime \cap \coprod_I S^{n-1}$ 
+    \end{enumerate}
+    Then define 
+    \[
+    U_n := U_{n-1} \cup (Q_i)_I(U_n^\prime), \quad V_n := V_{n-1} \cup (Q_i)_I(V_n^\prime)
+    \]
+    By (iii) $U_n \cap X_{n-1} = U_{n-1}$ and $(Q_i)_I^{-1}(U_n) = U_n^\prime$, so $U_n \subseteq X_n$ is open. The same holds for $V_n$. Furthermore, $B_n \subseteq U_n, \; C_n \subseteq V_n$ by (i) and $U_n \cap V_n = \emptyset$ by (ii). This shows the claim. Now consider
+    \[
+    U := \bigcup_n U_n, \quad V := \bigcup_n V_n.
+    \] 
+    By construction $U \cap X_n \subseteq$ is open for all $n \geq -1$ and hence $U \subseteq X$ is open by definition of the colimit topology. The same holds for $V$. Moreover, $B \subseteq U, C \subseteq V$ and $U \cap V = \emptyset$. 
+\end{proof}
+
+It remains to proof the technical lemma mentioned in the proof of the above proposition. The proof makes use of Zorn's Lemma.
+
+\begin{lemma}[Open Set Extension Lemma]
+    \label{lem:technical_lemma1}
+    Let $B , C \subseteq D^n$ be closed disjoint sets and $U^\prime, V^\prime \subseteq S^{n-1}$ open disjoint neighbourhoods of $B \cap S^{n-1}, C \cap S^{n-1}$, respectively. Then there exist open sets $U,V \subseteq D^n$ with the following properties:
+    \begin{enumerate}[(i)]
+        \item $B \subseteq U, C \subseteq V$
+        \item $U \cap V =\emptyset$
+        \item $U^\prime = U \cap S^{n-1}, V^\prime = V \cap S^{n-1}$
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    Consider the (non-empty) set 
+    \[
+    \Gamma := \{(U,V) \mid U,V \subseteq D^n \mathrm{open}, B \subseteq U, C \subseteq V, U \cap V = \emptyset\}
+    \]
+    with the partial order
+    \[
+    (U_1,V_1) \leq (U_2,V_2) :\Leftrightarrow U_1 \subseteq U_2, V_1 \subseteq V_2.
+    \]
+    Let $T = (U_i,V_i)_{i \in I} \subseteq \Gamma$ be a totally ordered subset. Define
+    \[
+    (\hat{U},\hat{V}) := \left(\bigcup_i U_i, \bigcup_i V_i\right).
+    \]
+    Then 
+    \[
+    \hat{U} \cap \hat{V} = \bigcup_{i,j} U_i \cap V_j
+    \]
+    Given fixed $i,j \in I$ we may assume wlog $(U_i,V_i) \leq (U_j,V_j)$ (since T is totally ordered!) and hence
+    \[
+    U_i \cap V_j \subseteq U_j \cap V_j = \emptyset.
+    \]
+    It follows that $(\hat{U},\hat{V}) \in \Gamma$. So Zorn's Lemma guarantees the existence of a maximal element
+    \[
+    (U_\mathrm{max},V_\mathrm{max}) \in \Gamma.
+    \]
+\end{proof}

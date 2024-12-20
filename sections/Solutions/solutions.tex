@@ -47,3 +47,24 @@ Intuitively, we can see this as follows: The fiber over $e^{\pi i}$ of $E$ is ju
 \begin{proof}
     Let $\sigma_1,\ldots,\sigma_k$ be a local frame for $TS$. Then we can also consider the $\sigma_i$ as local sections of $TM|_S$ via the inclusion $TS \hookrightarrow TM|_S$. If we can show that these are still smooth sections we are done as this shows that $TS$ (as a set) is a subbundle of $TM|_S$ an the induced smoothness structure is the same as the usual one on $TS$ (see the construction of the smoothness structure on the subbundle in Lemma 10.32 in \cite{lee2011smooth} to see that this indeed yields the same structures). But smoothness of $\sigma_i$ as local sections of $TM|_S$ follows directly from the fact that the inclusion $TS \hookrightarrow TM|_S$ is just the restriction of the differential of the inclusion $\iota \colon S \hookrightarrow M$ to the submanifold $TM|_S \subseteq TM$ in the codomain (the fact that $TM|_S$ is a submanifold of $TM$ follows for example from Lemma \ref{lem:pullback_of_bundle_under_embedding}).
 \end{proof}
+
+\begin{exercise}[Mentioned in \cite{bredon2013topology} in chapter 'Conventions for CW complexes']
+    Let $(X,x_0)$ and $(Y,y_0)$ be compact pointed topological spaces, then the smash product $X \wedge Y$ is homeomorphic to the one point compactification of $Z := (X-x_0) \times (Y-y_0)$. In particular
+    \[
+    S^n \wedge S^m \cong S^{n+m}.
+    \]
+\end{exercise}
+\begin{proof}[Proof sketch]
+    Let $Z^+$ be the one point compactification of $Z$. Define $f \colon X \times Y \to Z^+$ by
+    \[
+    f(x,y) := \begin{dcases}
+        (x,y) &, x \neq x_0 \text{ and } y \neq y_0 \\
+        \infty &, \mathrm{otherwise}
+    \end{dcases}
+    \]
+    It is then straightforward to show that $f$ is continuous and the following diagram is a push-out:
+    \begin{center}
+        \commsquare{$X \vee Y$}{$X \times Y$}{$\ast$}{$Z^+$}{}{}{$f$}{}
+    \end{center} 
+    So by the universal property of push-outs we get $Z^+ \cong X \wedge Y$. The statement about the smash product of spheres then just follows from $S^n - \ast \cong \R^n$ and that the one point compactification of $\R^n$ is $S^n$.
+\end{proof}
