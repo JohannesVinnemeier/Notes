@@ -1,6 +1,4 @@
-\subsection{Fiber Bundles}
-
-\subsubsection{Construction of fiber bundles}
+\subsection{Construction of fiber bundles}
 
 For convencience, let us state the definition of a fiber bundle.
 
@@ -21,7 +19,7 @@ For convencience, let us state the definition of a fiber bundle.
         \[
         \tau_{\alpha,\beta} \colon U_\alpha \cap U_\beta \to G,
         \]
-        scuh that
+        such that
         \[
         \phi_\alpha^{-1} \circ \phi_\beta \colon (U_\alpha \cap U_\beta) \times F \to (U_\alpha \cap U_\beta) \times F
         \]
@@ -43,9 +41,9 @@ For convencience, let us state the definition of a fiber bundle.
     \]
     is not injective we get an effective group action by taking a quotient of $G$:
     \[
-    G_{/\mathrm{ker}\Phi} \to \mathrm{Aut}(F).
+    G/\mathrm{ker}\Phi \to \mathrm{Aut}(F).
     \]
-    It follows from the universal property of the quotient topology, that this map is still continuous.
+    It follows from the universal property of the quotient topology, that $G/\mathrm{ker}\Phi$ still acts continuously on $F$, i.e. the induced map $G/\mathrm{ker}\Phi \times F \to F$ is still continuous (if $F$ is locally compact we can define the exponential topology on Aut$(F)$ and the statement is equivalent to $G/\mathrm{ker}\Phi \to \mathrm{Aut}(F)$ being continuous).
 \end{remark}
 
 \begin{remark}
@@ -217,7 +215,7 @@ For convencience, let us state the definition of a fiber bundle.
         commutes, so $\Gamma$ is a bundle isomorphism. This completes the proof.
      \end{proof}
 
-     We may also formulate Theorem \ref{thm:fiber_bundle_construction1} slightly different, if we are given the fibers $F_x = p^{-1}(x)$ as sets. This may be more practical in some situations, as the description of the bundle is more explicit:
+     We may also formulate Theorem \ref{thm:fiber_bundle_construction1} slightly different, if we are given the fibers $F_x = p^{-1}(x)$ as sets. This is usually more practical, as the description of the bundle is more explicit:
 
      \begin{theorem}[Fiber bundle construction B]
         \label{thm:fiber_bundle_construction2}
@@ -273,7 +271,7 @@ For convencience, let us state the definition of a fiber bundle.
 
     Theorem \ref{thm:fiber_bundle_construction1} tells us, that the new bundle still retains all of the information of the old bundle, as it is uniquely determined by the transition functions.
 
-    \subsubsection{Smooth bundles}
+    \subsection{Smooth bundles}
 
     \noindent If we are in the smooth category, we can analogously define smooth fiber bundles by requiring the spaces $E ,B$ and $F$ to be smooth manifolds (where either $F$ or $B$ has no boundary), the group $G$ to be a Lie group and all maps to be smooth. In particular, the local trivialisation are diffeomorphisms. All of the above results also hold in the smooth category. 
 
@@ -309,7 +307,7 @@ For convencience, let us state the definition of a fiber bundle.
         As in the above theorem, the local trivialisations determine a unique smooth structure on $E$.
     \end{proof}
 
-    \subsubsection{Vector bundles}
+    \subsection{Vector bundles}
 
     \headline{Whitney Sums}
 
@@ -418,7 +416,7 @@ For convencience, let us state the definition of a fiber bundle.
         We only need to show, that $TS$ is a smooth subbundle of $TM|_S$ and then apply Lemma \ref{lem:orthogonal_complement_bundles}. To this end, choose a local frame $(\sigma_i)$ of $TS$. Then $\iota \circ \sigma_i$ are sections of $TM|_S$, where $\iota \colon TS \hookrightarrow TM|_S$ is the inclusion. So we only have to verify, that $\iota$ is smooth. But this can easily be seen in local trivialisations of $TS$ and $TM|_S$.
     \end{proof}
 
-    \subsubsection{Pullback Bundles}
+    \subsection{Pullback Bundles}
 
     Given a fiber bundle $F \hookrightarrow E \oset[0.7pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ and a map $g \colon B^\prime \to B$ we can construct the pullback bundle $g^*E$ using Theorem \ref{thm:fiber_bundle_construction2} as the fiber bundle over $B^\prime$, where the fiber over $b^\prime \in B^\prime$ is given by the fiber of $E$ over $g(b^\prime)$, i.e.
     \[

@@ -44,7 +44,7 @@ It remains to proof the technical lemma mentioned in the proof of the above prop
 \begin{proof}
     Consider the (non-empty) set 
     \[
-    \Gamma := \{(U,V) \mid U,V \subseteq D^n \mathrm{open}, B \subseteq U, C \subseteq V, U \cap V = \emptyset\}
+    \Gamma := \{(U,V) \mid U,V \subseteq D^n \text{ open}, B \subseteq U, C \subseteq V, U \cap V = \emptyset\}
     \]
     with the partial order
     \[
@@ -66,4 +66,18 @@ It remains to proof the technical lemma mentioned in the proof of the above prop
     \[
     (U_\mathrm{max},V_\mathrm{max}) \in \Gamma.
     \]
+    We claim $U^\prime \subseteq U_{\mathrm{max}} \cap S^{n-1}$. Assume this would not be the case, i.e. there exists $x \in U^\prime$ with $x \notin U_\mathrm{max} \cap S^{n-1}$. Then we can find (since $D^n$ is normal) an open neighbourhood $W \subseteq D^n$ of $x$ with $\overline{W} \cap C = \emptyset$. Define
+    \[
+    \oset[-1pt]{\sim}{U} := U_{\mathrm{max}} \cup W, \; \oset[-1pt]{\sim}{V} := V_{\mathrm{max}} - \overline{W}
+    \]
+    Now $(\oset[-1pt]{\sim}{U},\oset[-1pt]{\sim}{V}) \in \Gamma$ but \[
+        (\oset[-1pt]{\sim}{U},\oset[-1pt]{\sim}{V}) \nleq  (U_\mathrm{max},V_\mathrm{max}),
+    \]
+    contradicting maximality. Analogously we have $V^\prime \subseteq V_{\mathrm{max}} \cap S^{n-1}$. Finally define
+    \begin{align*}
+        U & := U_{\mathrm{max}} - ((U_{\mathrm{max}} \cap S^{n-1}) - U^\prime) = U_{\mathrm{max}} \cap (D^n - S^{n-1}) \cup U^\prime \\
+        V & := V_{\mathrm{max}} - ((V_{\mathrm{max}} \cap S^{n-1}) - V^\prime) = V_{\mathrm{max}} \cap (D^n - S^{n-1}) \cup V^\prime 
+    \end{align*}
+    Now $(U,V)$ satisfies the desired properties.
+    
 \end{proof}
