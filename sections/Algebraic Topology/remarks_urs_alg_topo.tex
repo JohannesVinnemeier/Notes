@@ -71,11 +71,113 @@ In this section we present an alternative (and arguably more elegant) proof on h
             Obvious.
         \end{proof}
 
-        In the lecture we have shown that the cochain maps from the above two lemmata induce isomorphisms in homology at least for open subsets of $\R^n$. A short proof of how this generalizes to all manifolds with or without boundary is given in the following theorem (which notably uses facts that we have not established in the lecture).
+        In the lecture we have shown that the cochain maps from the above two lemmas induce isomorphisms in homology at least for open subsets of $\R^n$. A short proof of how this generalizes to all manifolds with or without boundary is given in the following theorem (which notably uses facts that we have not established in the lecture).
 
         \begin{theorem}
             The cochain maps from Lemma \ref{lem:natural_cochain_map1} and \ref{lem:natural_cochain_map2} induce isomorphisms in homology.
         \end{theorem}
         \begin{proof}
+            We first show the statement if $\partial M = \emptyset$. Begin by choosing an embedding
+            \[
+            \iota \colon M \hookrightarrow U
+            \]
+            into a tubular neighbourhood $U \subseteq \R^n$. In particular, $U$ is open and $\iota$ a homotopy equivalence. Then by Lemma \ref{lem:natural_cochain_map1} the following diagram commutes:
+            \begin{center}
+                \begin{tikzpicture}
+                        \draw node (node1) at (0,0) {$H_{dR}^k(U)$};
+                        \draw node (node2) at (3,0) {$H_\infty^k(U)$};
+                        \draw node (node3) at (0,-2) {$H_{dR}^{k}(M)$};
+                        \draw node (node4) at (3,-2) {$H_\infty^k(M)$};
+        
+                        \draw[->] (node1.east) to node[above] {$\Gamma$} (node2.west);
+                        \draw[->] (node1.south) to node[right] {$\iota^\ast$} (node3.north);
+                        \draw[->] (node2.south) to node[right] {$\iota^\ast$} (node4.north);
+                        \draw[->] (node3.east) to node[above] {$\Gamma$} (node4.west);
+                \end{tikzpicture}
+            \end{center}
+            The vertical maps are isomorphisms due to homotopy invariance and in the lecture we have shown that the top horizontal map is an isomorphism as well. The claim follows. 
             
+            If $\partial M \neq \emptyset$ we can reduce this to the case $\partial M = \emptyset$ by considering the homotopy equivalence
+            \[
+            \mathrm{int}(M) \hookrightarrow M
+            \]
+            and using a completely analogous argument to above. The same argument shows the statement for the map from Lemma \ref{lem:natural_cochain_map2}.
+        \end{proof}
+
+        Composing the two maps we get a natural isomorphism
+        \[
+        H_{dR}^k(M) \to H^k(M).
+        \]
+        Under the identification $H^k(M) \cong H_k^\ast(M)$ (which is also natural, see Lemma \ref{lem:cohomology_dualhomology_isomorphism}) this isomorphism is given by
+        \[
+        [\omega] \mapsto \left( [\eta] \mapsto \int_{\oset[-1pt]{\sim}{\eta}} \omega \right),
+        \]
+        where $\oset[-1pt]{\sim}{\eta}$ is a smooth representative of the class $[\eta]$.
+        
+        \begin{lemma}
+            \label{lem:cohomology_dualhomology_isomorphism}
+            Let $(C_\bullet,d_\bullet)$ be a chain complex over $\R$ (or any other field). Then 
+            \begin{align*}
+                D \colon H^k(C_\bullet^\ast,d_\bullet^\ast) &\to H_k^\ast(C_\bullet,d_\bullet) \\
+                [\phi] &\mapsto \left( [c] \mapsto \phi(c)\right)
+            \end{align*}
+            defines an isomorphism, which is natural for maps between chain complexes over $\R$.
+        \end{lemma}
+        \begin{proof}
+            First we show well-definedness, so let $\phi^\prime = \phi + d^\ast\psi$ for some $\psi \in C_{k-1}^\ast$. But then
+            \[
+            \phi^\prime(c) - \phi(c) = d^\ast\psi(c) = \psi(dc) = 0
+            \]
+            since $c$ is closed. Moreover, if $c^\prime = c + da$ for some $a\in C_{k+1}$ we get
+            \[
+            \phi(c^\prime-c) = \phi(da) = d^\ast\phi(a) = 0
+            \]
+            since $\phi$ is closed. Next we show injectivity, i.e. for closed $\phi \in C_k^\ast$ with $\phi(c) = 0$ for all closed $c \in C_k$ we have to construct $\psi \in C_{k-1}^\ast$ with $d^\ast \psi = \phi$. For $a = dc \in C_{k-1}$ we define $\psi$ by 
+            \[
+            \psi(a) := \phi(c)
+            \]
+            which is well defined since for $a = dc^\prime$ we have $d(c-c^\prime) = 0$ such that
+            \[
+            \phi(c-c^\prime) = 0.
+            \]
+            Now extend $\psi$ arbitrarily to a linear map $C_{k-1} \to \R$ (which is possible since $C_{k-1}$ is a vector space.)
+            To show surjectivity let $\tau \in H_k^\ast(C_\bullet,d_\bullet)$. We have to construct a closed $\phi \in C_k^\ast$ with 
+            \[
+            \phi(c) = \psi([c])
+            \]
+            for all closed $c \in C_k$. To this end write
+            \[
+            C_k = \mathrm{ker}d_k \oplus V
+            \]
+            for some subspace $V \subseteq C_k$ and define $\phi$ by
+            \begin{align*}
+                \phi(c) &:= \psi([c]), \; c \in \mathrm{ker}d_k \\
+                \phi|_V &:= 0
+            \end{align*}
+            By construction $d^\ast\phi = 0$ and $D([\phi]) = \psi$. Finally, we will show naturality. Let 
+            \[
+            f_\bullet \colon (C_\bullet,d_\bullet) \to (B_\bullet,b_\bullet)
+            \]
+            be a chain map. We have to show commutativity of the following diagram:
+            \begin{center}
+                \begin{tikzpicture}
+                        \draw node (node1) at (0,0) {$H^k(C_\bullet^\ast,d_\bullet^\ast)$};
+                        \draw node (node2) at (3,0) {$H_k^\ast(C_\bullet,d_\bullet)$};
+                        \draw node (node3) at (0,-2) {$H^k(B_\bullet^\ast,b_\bullet^\ast)$};
+                        \draw node (node4) at (3,-2) {$H_k^\ast(B_\bullet,b_\bullet)$};
+        
+                        \draw[->] (node1.east) to node[above] {$D$} (node2.west);
+                        \draw[->] (node3.north) to node[right] {$H^k(f_\bullet)$} (node1.south);
+                        \draw[->] (node4.north) to node[right] {$H_k^\ast(f_\bullet)$} (node2.south);
+                        \draw[->] (node3.east) to node[above] {$D$} (node4.west);
+                \end{tikzpicture}
+            \end{center}
+            For $\phi \in H^k(B_\bullet^\ast,b_\bullet^\ast)$ we compute:
+            \begin{align*}
+                (H_k^\ast(f_\bullet) \circ D)([\phi]) & = (H_k(f_\bullet))^\ast([b] \mapsto \phi(b)) \\ &= ([c] \mapsto \phi(f_kc))
+            \end{align*}
+            as well as
+            \begin{align*}
+                (D \circ H^k(f_\bullet))([\phi]) &= D([\phi \circ f_k]) \\ &= ([c] \mapsto \phi(f_kc)).
+            \end{align*}
         \end{proof}
