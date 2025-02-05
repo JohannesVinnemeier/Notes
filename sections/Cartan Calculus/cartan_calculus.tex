@@ -79,11 +79,10 @@ Note that if $\partial M = \emptyset$ we can also directly allow for closed inte
     \[
         \alpha = \sum \alpha^{i_1,\ldots,i_r}dx^{i_1} \wedge \ldots \wedge dx^{i_r}.
     \]
-    We compute:
-    \begin{align*}
-        (\phi_t^\ast\alpha)_p &= (d_p\phi_t)^\ast\left(\sum\alpha^{i_1,\ldots,i_r}(\phi_t(p))\,d_{\phi_t(p)}x^{i_1} \wedge \ldots \wedge d_{\phi_t(p)}x^{i_r}\right)\\
-        &= \sum \alpha^{i_1,\ldots,i_r}(\phi_t(p)) \,d_p(x^{i_1} \circ \phi_t) \wedge \ldots \wedge d_p(x^{i_r} \circ \phi_t)
-    \end{align*}
+    Then:
+    \[
+        (\phi_t^\ast\alpha)_p = \sum \alpha^{i_1,\ldots,i_r}(\phi_t(p)) \,d_p(x^{i_1} \circ \phi_t) \wedge \ldots \wedge d_p(x^{i_r} \circ \phi_t)
+    \]
     Expanding the differentials 
     \[
         d_p(x^{i_k} \circ \phi_t) = \sum_{j=1}^n \frac{\partial(x^{i_k} \circ \phi_t)}{\partial x_j}(p) d_px_j
