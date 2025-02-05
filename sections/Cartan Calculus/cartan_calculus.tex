@@ -173,7 +173,7 @@ Thus far the Lie derivative has only been defined on manfiolds without boundary.
 \[
 \mathcal{L}_X \alpha := (\mathcal{L}_{X^\prime}\alpha^\prime)|_M
 \]
-Of course it is not clear a priori that this definition does not depend on the choice of $X^\prime$ and $\alpha^\prime$. However, the following proposition, which is one of the formulas of Theorem \ref{thm:cartan_calculus}, shows that it is in fact independent.
+Of course a priori it is not clear that this definition does not depend on the choice of $X^\prime$ and $\alpha^\prime$. However, the following proposition, which is one of the formulas of Theorem \ref{thm:cartan_calculus}, shows that it is in fact independent.
 
 \begin{proposition}[Cartan's magic formula]
     Let $X \in \mathscr{X}(M)$. Then the following identity holds:
@@ -319,49 +319,46 @@ where $\phi_t$ is the flow of $X$. We might also want to differentiate this expr
 
 \begin{proposition}
     \label{prop:lie_derivative_formula}
-    Let $M$ be a manifold without boundary, $X_t$ a time dependent vector field on $M$ and $\alpha \in \Omega^r(M).$ Denote by $\phi_t$ the (time-dependent) flow of $X_t$ and consider the open set $M_{t_0} = \{p\in M \mid \phi_t(p) \text{ exists for } t=t_0\}$. Then
+    Let $M$ be a manifold without boundary, $X_t$ a time dependent vector field on $M$ and $\alpha \in \Omega^r(M).$ Denote by $\phi_t$ the flow of $X_t$ and consider the open set $M_{t_0} = \{p\in M \mid \phi_t(p) \text{ exists for } t=t_0\}$. Then
     \[
         \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}} \alpha)_p
     \]
     for all points $p \in M_{t_0}$.
 \end{proposition}
 \begin{proof}
-    If $X_t$ does not depend on time, i.e. $X_t = X_0$ for all $t$ where it is defined, the proposition follows from a simple computation:
-    \begin{align*}
-        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p &= \frac{d}{dt}\bigg|_{t=0}(\phi_{t+t_0}^\ast\alpha)_p = \frac{d}{dt}\bigg|_{t=0}(\phi_{t_0}^\ast\phi_t^\ast\alpha)_p \\
-        &= \phi_{t_0}^\ast \frac{d}{dt}\bigg|_{t=0} (\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast (\mathcal{L}_{X_0} \alpha)_p = \phi_{t_0}^\ast (\mathcal{L}_{X_{t_0}} \alpha)_p
-    \end{align*}
-    In the general case we argue as follows: The maps
+    We begin by introducing some notation. Say $X_t$ is defined for time $t = t_1$. We then write $\phi_{t_1,t}$ for the solution of the following  nonautonomous ODE
     \[
-    \Omega^r(M_{t_0}) \ni \alpha \mapsto \frac{d}{dt}\bigg|_{t=t_0}\phi_t^\ast\alpha
+    \frac{d}{dt}\phi_{t_1,t} = X_{t+t_1}(\phi_{t_1,t}),
     \]
-    and 
+    i.e. the flow of the reparametrised time-dependent vector field $X_{t+t_1}$. Then we have $\phi_{0,t} = \phi_t$ and 
     \[
-        \Omega^r(M_{t_0}) \ni \alpha \mapsto \phi_{t_0}^\ast \mathcal{L}_{X_{t_0}} \alpha 
+    \phi_{t+t_0} = \phi_{t_0,t} \circ \phi_{0,t_0} 
     \]
-    are both differential operators satisfying the same Leibniz rule and commute with $d$. For the second one this just follows from Proposition \ref{prop:lie_derivative_properties} and for the first one we can carry out precisely the same proof as of Proposition \ref{prop:lie_derivative_properties}. Thus we can again establish equality by showing that they agree on $\Omega^0(M_{t_0})$. So for $f \in \Omega^0(M_{t_0})$ we compute:
+    wherever this equation makes sense. Then we can compute:
     \begin{align*}
-        \frac{d}{d t}\bigg|_{t=t_0} (\phi_t^\ast f)_p &= \frac{d}{d t}\bigg|_{t=t_0} f(\phi_t(p)) \\
-        &= d_{\phi_{t_0}(p)}f((X_{t_0})_{\phi_{t_0}(p)}) \\
-        &= (X_{t_0} \cdot f)(\phi_{t_0}(p))\\
-        &= \phi_{t_0}^\ast(X_{t_0} \cdot f)(p)\\
-        &= \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}}f)_p
+        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p &= \frac{d}{dt}\bigg|_{t=0}(\phi_{t+t_0}^\ast\alpha)_p\\ &= \frac{d}{dt}\bigg|_{t=0}(\phi_{0,t_0}^\ast\phi_{t_0,t}^\ast\alpha)_p \\
+        &= \phi_{0,t_0}^\ast \frac{d}{dt}\bigg|_{t=0} (\phi_{t_0,t}^\ast\alpha)_p
     \end{align*}
-    This shows the statement.
+    We claim that
+    \[
+        \frac{d}{dt}\bigg|_{t=0} (\phi_{t_0,t}^\ast\alpha)_p = (\mathcal{L}_{X_{t_0}}\alpha)_p
+    \]
+    To see this, we can explicitly express both sides in local coordinates and then use (\ref{eq:cartan_calc_further_rule_2}) and (\ref{eq:cartan_calc_further_rule_3}) from Lemma \ref{lem:cartan_calculus_further_rules} to reduce this to the case, where $\alpha$ is a $0$-form, which follows immediately. Essentially, this is again using the trick that two differential operators are equal if they satisfy the same Leibniz rule, commute with $d$ and agree on $0$-forms. 
 \end{proof}
 
-Here are two more rules for computing the time-derivative of a smooth family of $r-$forms, which are occasioanlly useful:
+Here are some more rules for computing the time-derivative of a smooth family of $r-$forms, which are occasioanlly useful:
 
 \begin{lemma}
     \label{lem:cartan_calculus_further_rules}
-    Let $\alpha_t$ be a smooth time-dependent family of differential forms on a manifold $M$ and $f \colon N \to M$ a smooth map. Then the following holds:
+    Let $\alpha_t, \beta_t$ be smooth time-dependent families of differential forms on a manifold $M$ and $f \colon N \to M$ a smooth map. Then the following holds:
     \begin{enumerate}[(i)]
-        \item $\frac{d}{d t}f^*\alpha_t = f^*\frac{d}{d t} \alpha_t$
-        \item $\frac{d}{d t} d\alpha_t = d(\frac{d}{d t} \alpha_t)$
+        \item $\frac{d}{d t}f^*\alpha_t = f^*\frac{d}{d t} \alpha_t$ \label{eq:cartan_calc_further_rule_1}
+        \item $\frac{d}{d t} d\alpha_t = d(\frac{d}{d t} \alpha_t)$\label{eq:cartan_calc_further_rule_2}
+        \item $\frac{d}{dt}(\alpha_t\wedge \beta_t) = \frac{d}{dt}\alpha_t \wedge \beta_t + \alpha_t \wedge \frac{d}{dt}\beta_t$ \label{eq:cartan_calc_further_rule_3}
     \end{enumerate} 
 \end{lemma}
 \begin{proof}
-    Both statements can easily be verified by directly computing both sides of the equation in local coordinates. For $(ii)$ we have in fact already seen this computation in the proof of Lemma \ref{prop:lie_derivative_properties}.
+    All statements can easily be verified by directly computing both sides of the equation in local coordinates. For (\ref{eq:cartan_calc_further_rule_2}) and (\ref{eq:cartan_calc_further_rule_3}) we have in fact already seen this computation in the proof of Lemma \ref{prop:lie_derivative_properties}.
 \end{proof}
 
 \headline{A cooking recipe}
