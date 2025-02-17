@@ -284,23 +284,38 @@ Then (\ref{eq:mosers_trick}) can be reformulated as a condition on $X_t$, which 
 \end{lemma}
 
 \begin{proof}
-    Assume that $\alpha_t$ is defined for all $t \in \R$ and consider the smooth two-parameter family $\phi_t^\ast \alpha_s$ for $(t,s) \in [0,1] \times \R$. Then for each $p \in M$ we have a smooth map
+    Assume that $\alpha_t$ is defined for all $t \in \R$. The idea is 
+    to "decouple" the time variables and consider the two parameter family
     \[
         g \colon [0,1] \times \R \to T_p^\ast M, \: (t,s) \mapsto (\phi_t^\ast \alpha_s)_p
     \]
-    and
-    \[
-        \frac{d}{dt}\bigg|_{t=t_0} (\varphi_t^\ast \alpha_t)_p = \frac{\partial g}{\partial t}(t_0,t_0) + \frac{\partial g}{\partial s}(t_0,t_0) 
-    \]
-    By Proposition \ref{prop:lie_derivative_formula} we have:
+    The partial derivatives are now much easier to compute. By Proposition \ref{prop:lie_derivative_formula} we have:
     \[
     \frac{\partial}{\partial t}\bigg|_{t=t_0} \varphi_t^\ast \alpha_s = \varphi_{t_0}^\ast(\mathcal{L}_{X_{t_0}} \alpha_s)
     \]
-    Moreover, by writing $\alpha_s$ in local coordinates it is easily seen that
+    Moreover, by Lemma \ref{lem:cartan_calculus_further_rules}
     \[
         \frac{\partial}{\partial s}\bigg|_{s=t_0} \varphi_t^\ast \alpha_s = \varphi_t^\ast \left(\frac{\partial}{\partial s}\bigg|_{s=t_0}  \alpha_s \right) = \varphi_t^\ast \dot{\alpha}_{t_0}.
     \]
-    This completes the proof.
+    In order to compute the derivative of 
+    \[
+    f \colon [0,1] \to T_p^\ast M, \: t \mapsto (\phi_t^\ast \alpha_t)_p
+    \]
+    consider the diagonal map
+    \[
+    \Delta \colon [0,1] \to [0,1] \times \R, \: t \mapsto (t,t).
+    \]
+    Then
+    \[
+    f = g \circ\Delta,
+    \]
+    hence
+    \begin{align*}
+        \frac{d}{dt} \bigg|_{t = t_0} f(t) & = D_{t_0}f(1) = D_{(t_0,t_0)}g \circ D_{t_0}\Delta (1) \\
+        & = D_{(t_0,t_0)}(1,1) = D_{(t_0,t_0)}(1,0) + D_{(t_0,t_0)}(0,1) \\
+        & = \frac{\partial g}{\partial t} (t_0,t_0) + \frac{\partial g}{\partial s} (t_0,t_0)  
+    \end{align*}
+    The Lemma follows.
 \end{proof}
 So (\ref{eq:mosers_trick}) can be reformulated to the condition:
 \[
@@ -365,7 +380,7 @@ Here are some more rules for computing the time-derivative of a smooth family of
 The proof of Lemma \ref{lem:mosers_trick_lemma} gives a cooking recipe for computing derivatives of smooth families of differential forms indexed over some time $t$, where $t$ appears at multiple instances. Namely, fix $t$ for all but one instance and differentiate. Then take the sum of all of the results. We illustrate this in an example.
 
 \begin{example}
-    Let $X_t$ be some time dependent vector field on a manifold $M$ with (time-dependent) flow $\phi_t$. Furthermore, let $\alpha_t$ be a smooth family of differential forms and $f_t$ a smooth family of functions on $M$. We want to compute:
+    Let $X_t$ be some time dependent vector field on a manifold $M$ with flow $\phi_t$. Furthermore, let $\alpha_t$ be a smooth family of differential forms and $f_t$ a smooth family of functions on $M$. We want to compute:
     \[
     \frac{d}{dt}\phi_t^\ast(e^{f_t}\alpha_t).
     \]

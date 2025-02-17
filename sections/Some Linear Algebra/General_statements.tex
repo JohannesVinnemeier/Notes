@@ -1,0 +1,36 @@
+\subsection{General Statements}
+
+\begin{lemma}
+    Let $T \colon V \to W$ be a linear map of finite dimensional vector spaces and let $A$ be the matrix representation of $T$ with respect to some basis. Then the matrix representation of the dual map $T^\ast \colon W^\ast \to V^\ast$ with respect to the corresponding dual basis is given by $A^T$.
+\end{lemma}
+
+\begin{proof}
+    Let $X \colon \R^n \to V$ and $Y \colon \R^m \to W$ be linear isomorphisms given by the chosen basis, i.e.
+
+    \[\begin{tikzcd}
+	V & W \\
+	{\mathbb{R}^n} & {\mathbb{R}^m}
+	\arrow["T", from=1-1, to=1-2]
+	\arrow["X"', from=2-1, to=1-1]
+	\arrow["A", from=2-1, to=2-2]
+	\arrow["Y"', from=2-2, to=1-2]
+    \end{tikzcd}\]
+    commutes. Moreover, let $\phi \colon \R^n \to (\R^n)^\ast$, $\psi \colon \R^m \to (\R^m)^\ast$ be the canonical isomorphisms induced by the standard basis $e_1,\ldots,e_n$ and $d_1,\ldots,d_m$ on $\R^n$ and $\R^m$, respectively. We then get the following commutative diagram
+    \[\begin{tikzcd}
+	{V^\ast} & {W^\ast} \\
+	{(\mathbb{R}^n)^\ast} & {(\mathbb{R}^m)^\ast} \\
+	{\mathbb{R}^n} & {\mathbb{R}^m}
+	\arrow["{X^\ast}", from=1-1, to=2-1]
+	\arrow["{T^\ast}"', from=1-2, to=1-1]
+	\arrow["{Y^\ast}", from=1-2, to=2-2]
+	\arrow["{A^\ast}"', from=2-2, to=2-1]
+	\arrow["\phi"', from=3-1, to=2-1]
+	\arrow["\psi"', from=3-2, to=2-2]
+	\arrow["B"', from=3-2, to=3-1]
+    \end{tikzcd}\]
+    where $B$ is the desired matrix representation of $T^\ast$. Write $B = (b_{ij})$. Then $b_{ij}$ is given as the $i$-th component of the vector $Bd_j$. By the above diagram this is precisely
+    \[
+    b_{ij} = (d_j^\ast \circ A)(e_i) = a_{ji},
+    \]
+    i.e. $B = A^T$.
+\end{proof}
