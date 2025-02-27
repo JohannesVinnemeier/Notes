@@ -1,0 +1,51 @@
+\subsection{Multilinear Algebra}
+
+Here are two statements about multilinear maps, which are generalizations of the corresponding statements for linear maps.
+
+\begin{lemma}
+    \label{lem:continuity_multilinear_maps}
+    Let $V_1, \ldots, V_k$ and $W$ be normed vector spaces and 
+    \[
+    A \colon V_1 \times \cdots \times V_k \to Z
+    \]
+    be a multilinear map, then $A$ is continous (with respect to the product norm on $V_1 \times \cdots \times V_k$) if and only if it is bounded, i.e. there exists $C>0$ with
+    \[
+    \lVert A(v_1, \ldots, v_k) \rVert \leq C \prod_{i=1}^{k} \lVert v_i\rVert
+    \]
+    for all $v_i \in V_i$.
+\end{lemma}
+\begin{proof}
+    The proof is analogous to the linear case. First assume that $A$ is continous, then in particular there exists $\delta >0$, such that 
+    \[
+    \sum_{i=1}^{k} \lVert v_i \rVert \leq k\delta \quad \Rightarrow \quad \lVert A(v_1, \ldots, v_k) \rVert \leq 1.
+    \]
+    So for arbitrary $v_i \in V_i$, we have
+    \begin{align*}
+        \lVert A(v_1, \ldots, v_k) \rVert = \frac{1}{\delta^k} \prod_{i=1}^{k} \lVert v_i\rVert \; \lVert A(\frac{\delta v_1}{\lVert v_1 \rVert}, \ldots, \frac{\delta v_k}{\lVert v_k \rVert}) \rVert \leq \frac{1}{\delta^k} \prod_{i=1}^{k} \lVert v_i\rVert
+    \end{align*}
+    Now assume, that $A$ is bounded. Given any $v_i,w_i \in V_i$ we compute:
+    \begin{align*}
+        \lVert A(v_1, \ldots, v_k) - A(w_1, \ldots, &w_k) \rVert  = \lVert \sum_{i=1}^{k} A(w_1,\ldots,w_{i-1}, v_i - w_i, v_{i+1},\ldots,v_k) \rVert \\ 
+        &\leq C \sum_{i=1}^{k} \lVert w_1\rVert \cdots \lVert w_{i-1}\rVert \, \lVert v_i - w_i \rVert \, \lVert v_{i+1}\rVert \cdots \lVert v_k \rVert
+    \end{align*}
+    Since the left hand side vanishes for $v_i \to w_i$ the claim follows.
+\end{proof}
+
+\begin{lemma}
+    Multilinear maps on finite dimensional vector spaces are continous (with respect to any norm).
+\end{lemma}
+\begin{proof}
+    For ease of notation we only proof the Lemma for bilinear maps, but the proof is completely analogous for the general case. So let $A \colon V \times W \to Z$ be a bilinear map for finite dimensional vetcor spaces $V, W$ and let $e_1, \ldots e_k$ and $d_1,\ldots,d_m$ be a basis for $V$ and $W$, respectively. Given $v \in V$ and $w \in W$ write 
+    \[
+    v = \sum_{i = 1}^{k} v^i e_i, \; w = \sum_{j = 1}^{m} w^j d_j.
+    \]
+    Define $C := \mathrm{max}_{i,j} \lVert A(e_i,d_j) \rVert$, then
+    \begin{align*}
+        \lVert A(v,w) \rVert \leq \sum_{i,j} \lvert v^i \rvert \lvert w^j \rvert \, \lVert A(e_i,d_j) \rVert \leq C \sum_{i,j} \lvert v^i \rvert \lvert w^j \rvert = C \left(\sum_i \lvert v^i \rvert\right) \left(\sum_j \lvert w^j \rvert\right).
+    \end{align*}
+    Note that 
+    \[
+    \lVert v \rVert := \sum_i \lvert v^i \rvert
+    \]
+    defines a norm, so $A$ is bounded with respect to these norms on $V,W$, hence continous by Lemma \ref{lem:continuity_multilinear_maps}. Since all norms on finite dimensional vector spaces are equivalent, the statement follows.
+\end{proof}

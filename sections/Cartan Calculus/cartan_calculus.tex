@@ -237,7 +237,109 @@ As an applictaion of Theorem \ref{thm:cartan_calculus} we can show the following
     The corollary follows.
 \end{proof}
 
-\subsection{Moser`s trick}
+\subsection{Computation rules for time-dependent forms}
+In the above section we have seen how to differentiate and integrate a smooth time-dependent family $\alpha_t$ of $r-$forms. To explicitly compute such a time derivative/integral one can express $\alpha_t$ in local coordinates and take the time derivative/integral of the coefficient functions (as explained above). The goal of this section is to establish a few (coordinate free) rules for computing such expressions in practice.
+
+\vspace{.5cm}
+
+The Lie derivative $\mathcal{L}_X\alpha$ was defined as
+\[
+\frac{d}{dt}\bigg|_{t=0}\phi_t^\ast\alpha,
+\]
+where $\phi_t$ is the flow of $X$. We might also want to differentiate this expression at some other time $t=t_0$. The following proposition shows how this can be computed in terms of $\mathcal{L}_X\alpha$. In fact, we show a more general statement, where $\phi_t$ is the flow of a time dependent vector field.
+
+\begin{proposition}
+    \label{prop:lie_derivative_formula}
+    Let $M$ be a manifold without boundary, $X_t$ a time dependent vector field on $M$ and $\alpha \in \Omega^r(M).$ Denote by $\phi_t$ the flow of $X_t$ and consider the open set $M_{t_0} = \{p\in M \mid \phi_t(p) \text{ exists for } t=t_0\}$. Then
+    \[
+        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}} \alpha)_p
+    \]
+    for all points $p \in M_{t_0}$.
+\end{proposition}
+\begin{proof}
+    We begin by introducing some notation. Say $X_t$ is defined for time $t = t_1$. We then write $\phi_{t_1,t}$ for the solution of the following  nonautonomous ODE
+    \[
+    \frac{d}{dt}\phi_{t_1,t} = X_{t+t_1}(\phi_{t_1,t}),
+    \]
+    i.e. the flow of the reparametrised time-dependent vector field $X_{t+t_1}$. Then we have $\phi_{0,t} = \phi_t$ and 
+    \[
+    \phi_{t+t_0} = \phi_{t_0,t} \circ \phi_{0,t_0} 
+    \]
+    wherever this equation makes sense. Then we can compute:
+    \begin{align*}
+        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p &= \frac{d}{dt}\bigg|_{t=0}(\phi_{t+t_0}^\ast\alpha)_p\\ &= \frac{d}{dt}\bigg|_{t=0}(\phi_{0,t_0}^\ast\phi_{t_0,t}^\ast\alpha)_p \\
+        &= \phi_{0,t_0}^\ast \frac{d}{dt}\bigg|_{t=0} (\phi_{t_0,t}^\ast\alpha)_p
+    \end{align*}
+    We claim that
+    \[
+        \frac{d}{dt}\bigg|_{t=0} (\phi_{t_0,t}^\ast\alpha)_p = (\mathcal{L}_{X_{t_0}}\alpha)_p
+    \]
+    To see this, we can explicitly express both sides in local coordinates and then use (\ref{eq:cartan_calc_further_rule_2}) from Lemma \ref{lem:cartan_calculus_further_rules} and (\ref{eq:cartan_calc_further_rule_3}) from Lemma \ref{lem:cartan_calculus_time_derivative_commutes_with_diff_ops} to reduce this to the case, where $\alpha$ is a $0$-form, which follows immediately. Essentially, this is again using the trick that two differential operators are equal if they satisfy the same Leibniz rule, commute with $d$ and agree on $0$-forms. 
+\end{proof}
+
+We now state a couple of Lemmas on how to differentiate/integrate some elementary common expressions.
+
+\begin{lemma}
+    \label{lem:cartan_calculus_further_rules}
+    Let $\alpha_t, \beta_t$ be smooth time-dependent families of differential forms on a manifold $M$ and $f \colon M \to N$ a smooth map. Then the following holds:
+    \begin{enumerate}[(i)]
+        \item $\frac{d}{d t}f^*\alpha_t = f^*\frac{d}{d t} \alpha_t$ \label{eq:cartan_calc_further_rule_1}
+        \item $\frac{d}{dt}(\alpha_t\wedge \beta_t) = \frac{d}{dt}\alpha_t \wedge \beta_t + \alpha_t \wedge \frac{d}{dt}\beta_t$ \label{eq:cartan_calc_further_rule_2}
+    \end{enumerate} 
+\end{lemma}
+\begin{proof}
+    For (\ref{eq:cartan_calc_further_rule_1}) note that for a given point $p\in M$ the pullback along $f$ is given by a linear map
+    \[
+        f^\ast \colon\Lambda^r(T_{f(p)}^\ast N) \to \Lambda^r(T_{p}^\ast M),
+    \] 
+    so the statement follows directly from the chain rule. (\ref{eq:cartan_calc_further_rule_2}) follows from the ordinary Leibniz rule for smooth functions and can be seen by computing the derivative in local coordinates. We have in fact already seen this computation in the proof of Lemma \ref{prop:lie_derivative_properties}.
+\end{proof}
+
+This next Lemma shows, that the time derivative of time-dependent differential forms commutes with the differential operators from Theorem \ref{thm:cartan_calculus}.
+
+\begin{lemma}
+    \label{lem:cartan_calculus_time_derivative_commutes_with_diff_ops}
+    Let $\alpha_t$ be a time-dependent family of differential forms and $X$ a vector field on a manifold $M$. Then the following holds:
+    \begin{enumerate}[(i)]
+        \item $\frac{d}{dt}d\alpha_t = d\frac{d}{dt}\alpha_t$ \label{eq:cartan_calc_further_rule_3}
+        \item $\frac{d}{dt} \mathcal{L}_X \alpha_t = \mathcal{L}_X \frac{d}{dt}\alpha_t$ \label{eq:cartan_calc_further_rule_4}
+        \item $\frac{d}{dt} \iota_X \alpha_t = \iota_X \frac{d}{dt}\alpha_t$ \label{eq:cartan_calc_further_rule_5}
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+Moreover, the integral with respect to time also commutes with the differential operators, as the following Lemma shows.
+
+\begin{lemma}
+    Let $\alpha_t$ be a time-dependent family of differential forms defined on some interval $I$ and $X$ a vector field on a manifold $M$. Given $a,b \in I$ the following holds: 
+    \begin{enumerate}[(i)]
+        \item $d \int_{a}^{b} \alpha_t dt = \int_{a}^{b} d\alpha_t dt$ \label{eq:cartan_calc_further_rule_6}
+        \item $\mathcal{L}_X \int_{a}^{b} \alpha_t dt = \int_{a}^{b} \mathcal{L}_X\alpha_t dt$\label{eq:cartan_calc_further_rule_7}
+        \item $\iota_X \int_{a}^{b} \alpha_t dt = \int_{a}^{b} \iota_X\alpha_t dt$\label{eq:cartan_calc_further_rule_8}
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+Finally, we explain how to deal with time dependent vector fields in the differential operators.
+
+\begin{lemma}
+    Let $X_t$ be a time-dependent vector field on a manifold $M$. Then the following holds: 
+    \begin{enumerate}[(i)]
+        \item $\frac{d}{dt} \mathcal{L}_{X_t} = \mathcal{L}_{\frac{d}{dt}X_t}$ \label{eq:cartan_calc_further_rule_9}
+        \item $\frac{d}{dt} \iota_{X_t} = \iota_{\frac{d}{dt}X_t}$ \label{eq:cartan_calc_further_rule_10}
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+\headline{Moser`s trick}
+
+In many cases one has to differentiate a time-dependent family of differential forms, which is given by an expression where the time variable appears at multiple instances. We first proof a formula for the derivative of such an expression by discussing an important example, namely Moser`s trick, which is used to proof the Darboux Theorem about symplectic/contact manfiolds. Following that we present a straightforward cooking recipe illustrated by another example.
 
 Let $M$ be a manifold (without boundary). Given a smooth family $\alpha_t$ of differential forms on $M$ indexed over $t \in [0,1]$ we want to find a family of diffeomorphisms $\varphi_t \colon M \to M$ (i.e. an isotopy), such that $\varphi_0 = id_M$ and 
 \[
@@ -322,58 +424,6 @@ So (\ref{eq:mosers_trick}) can be reformulated to the condition:
     0 = L_{X_t}\alpha_t + \dot{\alpha_t} = d\iota_{X_t}\alpha_t + \iota_{X_t}d\alpha_t + \dot{\alpha_t},
 \]
 where we used Theorem \ref{thm:cartan_calculus} (\ref{eq:cartan3}) in the second equation. Hence it suffices to construct a time dependent vector field $X_t$ satisfying the above conditon and whose integral curves exist for time $t = 1$. 
-
-\subsection{Further computation rules}
-
-The Lie derivative $\mathcal{L}_X\alpha$ was defined as
-\[
-\frac{d}{dt}\bigg|_{t=0}\phi_t^\ast\alpha,
-\]
-where $\phi_t$ is the flow of $X$. We might also want to differentiate this expression at some other time $t=t_0$. The following proposition shows how this can be computed in terms of $\mathcal{L}_X\alpha$. In fact, we show a more general statement, where $\phi_t$ is the flow of a time dependent vector field.
-
-\begin{proposition}
-    \label{prop:lie_derivative_formula}
-    Let $M$ be a manifold without boundary, $X_t$ a time dependent vector field on $M$ and $\alpha \in \Omega^r(M).$ Denote by $\phi_t$ the flow of $X_t$ and consider the open set $M_{t_0} = \{p\in M \mid \phi_t(p) \text{ exists for } t=t_0\}$. Then
-    \[
-        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p = \phi_{t_0}^\ast(\mathcal{L}_{X_{t_0}} \alpha)_p
-    \]
-    for all points $p \in M_{t_0}$.
-\end{proposition}
-\begin{proof}
-    We begin by introducing some notation. Say $X_t$ is defined for time $t = t_1$. We then write $\phi_{t_1,t}$ for the solution of the following  nonautonomous ODE
-    \[
-    \frac{d}{dt}\phi_{t_1,t} = X_{t+t_1}(\phi_{t_1,t}),
-    \]
-    i.e. the flow of the reparametrised time-dependent vector field $X_{t+t_1}$. Then we have $\phi_{0,t} = \phi_t$ and 
-    \[
-    \phi_{t+t_0} = \phi_{t_0,t} \circ \phi_{0,t_0} 
-    \]
-    wherever this equation makes sense. Then we can compute:
-    \begin{align*}
-        \frac{d}{dt}\bigg|_{t=t_0}(\phi_t^\ast\alpha)_p &= \frac{d}{dt}\bigg|_{t=0}(\phi_{t+t_0}^\ast\alpha)_p\\ &= \frac{d}{dt}\bigg|_{t=0}(\phi_{0,t_0}^\ast\phi_{t_0,t}^\ast\alpha)_p \\
-        &= \phi_{0,t_0}^\ast \frac{d}{dt}\bigg|_{t=0} (\phi_{t_0,t}^\ast\alpha)_p
-    \end{align*}
-    We claim that
-    \[
-        \frac{d}{dt}\bigg|_{t=0} (\phi_{t_0,t}^\ast\alpha)_p = (\mathcal{L}_{X_{t_0}}\alpha)_p
-    \]
-    To see this, we can explicitly express both sides in local coordinates and then use (\ref{eq:cartan_calc_further_rule_2}) and (\ref{eq:cartan_calc_further_rule_3}) from Lemma \ref{lem:cartan_calculus_further_rules} to reduce this to the case, where $\alpha$ is a $0$-form, which follows immediately. Essentially, this is again using the trick that two differential operators are equal if they satisfy the same Leibniz rule, commute with $d$ and agree on $0$-forms. 
-\end{proof}
-
-Here are some more rules for computing the time-derivative of a smooth family of $r-$forms, which are occasioanlly useful:
-
-\begin{lemma}
-    \label{lem:cartan_calculus_further_rules}
-    Let $\alpha_t, \beta_t$ be smooth time-dependent families of differential forms on a manifold $M$ and $f \colon N \to M$ a smooth map. Then the following holds:
-    \begin{enumerate}[(i)]
-        \item $\frac{d}{d t}f^*\alpha_t = f^*\frac{d}{d t} \alpha_t$ \label{eq:cartan_calc_further_rule_1}
-        \item $\frac{d}{d t} d\alpha_t = d(\frac{d}{d t} \alpha_t)$\label{eq:cartan_calc_further_rule_2}
-        \item $\frac{d}{dt}(\alpha_t\wedge \beta_t) = \frac{d}{dt}\alpha_t \wedge \beta_t + \alpha_t \wedge \frac{d}{dt}\beta_t$ \label{eq:cartan_calc_further_rule_3}
-    \end{enumerate} 
-\end{lemma}
-\begin{proof}
-    All statements can easily be verified by directly computing both sides of the equation in local coordinates. For (\ref{eq:cartan_calc_further_rule_2}) and (\ref{eq:cartan_calc_further_rule_3}) we have in fact already seen this computation in the proof of Lemma \ref{prop:lie_derivative_properties}.
-\end{proof}
 
 \headline{A cooking recipe}
 
