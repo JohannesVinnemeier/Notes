@@ -1,0 +1,29 @@
+\subsection{Integrating vector valued functions}
+\label{sec:integrating_vector_valued_functions}
+
+Let $V$ be a finite dimensional real vector space and $(X,\mathcal{A},\mu)$ a measure space. Given a function $f \colon X \to V$ we would like to define its integral. First of all any finite dimensional vector space carries a canonical topology (the topology induced by any norm), hence we can consider the Borel $\sigma$-algebra on $V$ and get a well defined notion of what it means for $f$ to be measurable. The definition of the integral can now be reduced to the case $V = \R^n$: 
+
+\begin{definition}
+    Let $f\colon (X,\mathcal{A},\mu) \to V$ be a measurable function. Choose a linear isomorphism $A \colon V \to \R^n$. We call $f$ integrable if $Af \colon X \to \R^n$ is integrable and in this case we set 
+    \[
+    \int_{X} f d\mu := A^{-1} \int_X Af d\mu
+    \]
+\end{definition}
+
+Linearity of the integral implies that this is well defined, i.e. independent of the choice of $A$. Moreover, this definition describes how to compute such an integral in practice: First choose any basis of $V$ and express $f$ in that basis. Then integrate each component function. The result gives the coordinates of $\int_{X} f d\mu$ in the chosen basis.
+
+Linearity of the integral of $\R^n$-valued functions also generalizes immediately:
+
+\begin{lemma}
+    \label{lem:linearity_of_integral}
+    Let $f\colon (X,\mathcal{A},\mu) \to V$ be an integrable function and $T \colon V \to V$ linear, then 
+    \[
+    T\int_{X} f d\mu  = \int_{X} Tf d\mu 
+    \]
+\end{lemma}
+\begin{proof}
+    Choose an isomorphism $A \colon V \to \R^n$ then by definition
+    \[
+        T\int_{X} f d\mu = TA^{-1}\int_{X} Af d\mu = A^{-1}(ATA^{-1})\int_{X} Af d\mu = A^{-1} \int_{X} AT f d\mu
+    \]
+\end{proof}

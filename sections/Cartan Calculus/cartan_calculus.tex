@@ -42,18 +42,18 @@ Before showing the lemma, let us introduce the notion of a smooth family of $r$-
 \begin{definition}[Smooth family of $r$-forms]
     Let $\beta_t$ be a family of $r$-forms on $M$ indexed over some open Interval $I$. We call $\beta_t$ smooth if in some (then all) local coordinates $x^1,\ldots,x^n$ we can write
     \[
-    (\beta_t)_p = \sum \beta^{i_1,\ldots,i_r}(t,p)d_px^{i_1} \wedge \ldots \wedge d_px^{i_r}
+    (\beta_t)_p = \sum \beta^{i_1,\ldots,i_r}(t,p)d_px_{i_1} \wedge \ldots \wedge d_px_{i_r}
     \]
     for smooth functions $\beta^{i_1,\ldots,i_r}$. If $I$ is closed we call $\beta_t$ smooth if it can be extended to a smooth family $\beta^\prime_t$ indexed over some open open interval $I^\prime \supseteq I$.
 \end{definition}
 
-\noindent Then $t \mapsto (\beta_t)_p$ is a smooth curve in the vector space $\mathrm{Alt}^r(T_pM)$, such that 
+\noindent Then $t \mapsto (\beta_t)_p$ is a smooth curve in the vector space $\Lambda^r(T_p^\ast M)$, such that 
 \[
 \left(\frac{d}{dt}\bigg|_{t=t_0} \beta_t\right)_p := \frac{d}{dt}\bigg|_{t=t_0} (\beta_t)_p
 \]
 is a well-defined $r$-form. Furthermore, in local coordinates we have
 \[
-    \frac{d}{dt}\bigg|_{t=t_0} \beta_t = \sum \frac{\partial\beta^{i_1,\ldots,i_r}}{\partial t}(t_0,-)dx^{i_1} \wedge \ldots \wedge dx^{i_r},
+    \frac{d}{dt}\bigg|_{t=t_0} \beta_t = \sum \frac{\partial\beta^{i_1,\ldots,i_r}}{\partial t}(t_0,-)dx_{i_1} \wedge \ldots \wedge dx_{i_r},
 \]
 such that this $r$-form is also smooth and moreover depends smoothly on $t_0$. So 
 \[
@@ -77,15 +77,15 @@ Note that if $\partial M = \emptyset$ we can also directly allow for closed inte
     \]
     of $X$ is defined. Write
     \[
-        \alpha = \sum \alpha^{i_1,\ldots,i_r}dx^{i_1} \wedge \ldots \wedge dx^{i_r}.
+        \alpha = \sum \alpha^{i_1,\ldots,i_r}dx_{i_1} \wedge \ldots \wedge dx_{i_r}.
     \]
     Then:
     \[
-        (\phi_t^\ast\alpha)_p = \sum \alpha^{i_1,\ldots,i_r}(\phi_t(p)) \,d_p(x^{i_1} \circ \phi_t) \wedge \ldots \wedge d_p(x^{i_r} \circ \phi_t)
+        (\phi_t^\ast\alpha)_p = \sum \alpha^{i_1,\ldots,i_r}(\phi_t(p)) \,d_p(x_{i_1} \circ \phi_t) \wedge \ldots \wedge d_p(x_{i_r} \circ \phi_t)
     \]
     Expanding the differentials 
     \[
-        d_p(x^{i_k} \circ \phi_t) = \sum_{j=1}^n \frac{\partial(x^{i_k} \circ \phi_t)}{\partial x_j}(p) d_px_j
+        d_p(x_{i_k} \circ \phi_t) = \sum_{j=1}^n \frac{\partial(x_{i_k} \circ \phi_t)}{\partial x_j}(p) d_px_j
     \]
     we see that $\beta_t := \phi_t^\ast \alpha$ is a smooth family of $r$-forms on $U^\prime$ indexed over $t \in (-\epsilon,\epsilon)$. Thus
     \[
@@ -115,7 +115,7 @@ Note that if $\partial M = \emptyset$ we can also directly allow for closed inte
     \[
     \mathcal{L}_X(\alpha \wedge \beta)_p = \frac{d}{dt}\bigg|_{t=0} (\phi_t^\ast\alpha)_p \wedge (\phi_t^\ast\beta)_p.
     \] 
-    We claim: For a vector space $V$ and smooth curves $\alpha_t \in \mathrm{Alt}^r(V), \beta_t \in \mathrm{Alt}^s(V)$ the following holds:
+    We claim: For a vector space $V$ and smooth curves $\alpha_t \in \Lambda^r(V^\ast), \beta_t \in \Lambda^s(V^\ast)$ the following holds:
     \[
         \frac{d}{dt}\bigg|_{t=0}(\alpha_t\wedge\beta_t) = \left(\frac{d}{dt}\bigg|_{t=0} \alpha_t\right) \wedge \beta_0 + \alpha_0 \wedge \left(\frac{d}{dt}\bigg|_{t=0} \beta_t\right)
     \]
@@ -123,7 +123,7 @@ Note that if $\partial M = \emptyset$ we can also directly allow for closed inte
     \[
     \alpha_t = a(t) \alpha^\prime, \; \beta_t = b(t) \beta^\prime 
     \]
-    for some $\alpha^\prime \in \mathrm{Alt}^r(V), \beta^\prime \in \mathrm{Alt}^s(V)$ and smooth functions $a,b$. Then the general case follows from linearity. We compute:
+    for some $\alpha^\prime \in \Lambda^r(V^\ast), \beta^\prime \in \Lambda^s(V^\ast)$ and smooth functions $a,b$. Then the general case follows from linearity. We compute:
     \begin{align*}
         \frac{d}{dt}\bigg|_{t=0}(\alpha_t \wedge \beta_t) &= \frac{d}{dt}\bigg|_{t=0} a(t)b(t)\alpha^\prime \wedge \beta^\prime\\
         &= \left( \frac{da}{dt}(0)b(0) + a(0)\frac{db}{dt}(0) \right)\alpha^\prime \wedge \beta^\prime\\
@@ -133,22 +133,22 @@ Note that if $\partial M = \emptyset$ we can also directly allow for closed inte
 
     This shows the claim and thus (iii). To see (iv) let $\beta_t$ be again the smooth family of $r$-forms defined in the proof of Lemma \ref{lem:well_definedness_Lie_derivative} and write in local coordinates $x_1,\ldots,x_n$:
     \[
-    \beta_t = \sum \beta^{i_1,\ldots,i_r}(t,-)dx^{i_1} \wedge \ldots \wedge dx^{i_r}.
+    \beta_t = \sum \beta^{i_1,\ldots,i_r}(t,-)dx_{i_1} \wedge \ldots \wedge dx_{i_r}.
     \]
     By linearity we may assume that all functions $\beta^{i_1,\ldots,i_r}$ except for one vanish, i.e.
     \[
-    \beta_t = f(t,-)dx^{j_1} \wedge \ldots \wedge dx^{j_r}
+    \beta_t = f(t,-)dx_{j_1} \wedge \ldots \wedge dx_{j_r}
     \]
     for some smooth function $f$ and $1 \leq j_1 < \cdots < j_r \leq n$.
     Then
     \[
-    d\beta_t = \sum_{k=1}^n \frac{\partial f(t,-)}{\partial x_k} dx^k \wedge dx^{j_1} \wedge \ldots \wedge dx^{j_r}.
+    d\beta_t = \sum_{k=1}^n \frac{\partial f(t,-)}{\partial x_k} dx^k \wedge dx_{j_1} \wedge \ldots \wedge dx_{j_r}.
     \]
     Thus
     \begin{align*}
         \mathcal{L}_X(d\alpha) &= \frac{d}{dt}\bigg|_{t=0} \phi_t^\ast d\alpha = \frac{d}{dt}\bigg|_{t=0} d\beta_t \\
-        &= \sum_{k=1}^n \frac{\partial^2 f}{\partial t\partial x_k}(0,-) dx^k \wedge dx^{j_1} \wedge \ldots \wedge dx^{j_r} \\
-        &= d \left(\frac{\partial f}{\partial t}(0,-) dx^{j_1} \wedge \ldots \wedge dx^{j_r}\right) \\
+        &= \sum_{k=1}^n \frac{\partial^2 f}{\partial t\partial x_k}(0,-) dx_k \wedge dx_{j_1} \wedge \ldots \wedge dx_{j_r} \\
+        &= d \left(\frac{\partial f}{\partial t}(0,-) dx_{j_1} \wedge \ldots \wedge dx_{j_r}\right) \\
         &= d(\frac{d}{dt}\bigg|_{t=0} \beta_t) = d(\mathcal{L}_X\alpha)
     \end{align*}
 
@@ -237,12 +237,26 @@ As an applictaion of Theorem \ref{thm:cartan_calculus} we can show the following
     The corollary follows.
 \end{proof}
 
+\headline{Integrating time dependent forms}
+
+Let $\beta_t$ be a smooth time dependent family of differential forms on a manifold $M$ defined on some interval $I$. At the beginning of the section we described what it means to take the derivative of $\beta_t$ with respect to time. Often one is also interested in the \textit{integral} with respect to time, which is defined similiarly. For $a ,b \in I$ and $p \in M$ we set
+
+\[
+\left( \int_{a}^{b} \beta_t dt \right)_p := \int_{a}^{b} (\beta_t)_p dt,
+\]
+where the right side is just the integral of a smooth curve $[a,b] \to \Lambda^r(T_p^\ast M)$ (see section \ref{sec:integrating_vector_valued_functions} for a definition of such an integral). Furthermore, in local coordinates we have
+\[
+    \int_{a}^{b} \beta_t dt = \sum \int_{a}^{b} \beta^{i_1,\ldots,i_r}(t,-) dt \; dx_{i_1} \wedge \ldots \wedge dx_{i_r},
+\]
+so $\int_{a}^{b} \beta_t dt$ is a smooth $r$-form on $M$.
+
+
 \subsection{Computation rules for time-dependent forms}
 In the above section we have seen how to differentiate and integrate a smooth time-dependent family $\alpha_t$ of $r-$forms. To explicitly compute such a time derivative/integral one can express $\alpha_t$ in local coordinates and take the time derivative/integral of the coefficient functions (as explained above). The goal of this section is to establish a few (coordinate free) rules for computing such expressions in practice.
 
-\vspace{.5cm}
+\vspace{.25cm}
 
-The Lie derivative $\mathcal{L}_X\alpha$ was defined as
+\noindent The Lie derivative $\mathcal{L}_X\alpha$ was defined as
 \[
 \frac{d}{dt}\bigg|_{t=0}\phi_t^\ast\alpha,
 \]
@@ -307,7 +321,11 @@ This next Lemma shows, that the time derivative of time-dependent differential f
     \end{enumerate}
 \end{lemma}
 \begin{proof}
-    
+    (\ref{eq:cartan_calc_further_rule_3}) follows from Schwarz's Theorem by computing the expression in local coordinates. This computation has essentially already been carried out in the proof of Proposition \ref{prop:lie_derivative_properties}. (\ref{eq:cartan_calc_further_rule_4}) follows from (\ref{eq:cartan_calc_further_rule_3}) and (\ref{eq:cartan_calc_further_rule_5}) using Cartan's magic formula. For (\ref{eq:cartan_calc_further_rule_5}) note that for $p \in M$ the map 
+    \[
+    \iota_{X_p} \colon \Lambda^r(T_{p}^\ast M) \to \Lambda^{r-1}(T_{p}^\ast M)
+    \]
+    is linear so the statement follows again from the chain rule.
 \end{proof}
 
 Moreover, the integral with respect to time also commutes with the differential operators, as the following Lemma shows.
@@ -321,7 +339,11 @@ Moreover, the integral with respect to time also commutes with the differential 
     \end{enumerate}
 \end{lemma}
 \begin{proof}
-    
+    For (\ref{eq:cartan_calc_further_rule_6}) choose local coordinates $x_1,\ldots,x_n$ and let $\alpha^{i_1,\ldots,i_r}(t,x)$ be a component function of $\alpha_t$ with respect to these coordinates. Then 
+    \[
+    \frac{\partial}{\partial x_i} \int_{a}^{b} \alpha^{i_1,\ldots,i_r}(t,x) dt = \int_{a}^{b}  \frac{\partial}{\partial x_i} \alpha^{i_1,\ldots,i_r}(t,x) dt
+    \]
+    since $[a,b]$ is compact. The statement follows. Again (\ref{eq:cartan_calc_further_rule_7}) follows from (\ref{eq:cartan_calc_further_rule_6}) and (\ref{eq:cartan_calc_further_rule_8}) using Cartan's magic formula. (\ref{eq:cartan_calc_further_rule_8}) follows from linearity of the integral (see Lemma \ref{lem:linearity_of_integral}) by again considering the linear map $\iota_{X_p}$ for $p \in M$.
 \end{proof}
 
 Finally, we explain how to deal with time dependent vector fields in the differential operators.
@@ -334,7 +356,15 @@ Finally, we explain how to deal with time dependent vector fields in the differe
     \end{enumerate}
 \end{lemma}
 \begin{proof}
-    
+    (\ref{eq:cartan_calc_further_rule_9}) follows from (\ref{eq:cartan_calc_further_rule_10}) as well as Lemma \ref{lem:cartan_calculus_time_derivative_commutes_with_diff_ops} (\ref{eq:cartan_calc_further_rule_3}) using Cartan's magic formula. For (\ref{eq:cartan_calc_further_rule_10}) let $\alpha \in \Omega^r(M)$ and consider the linear map 
+    \[
+    A \colon T_p M \to \Lambda^{r-1}(T_p^\ast M), \;\, v \mapsto \alpha_p(v,-)
+    \]
+    for $p \in M$. Then 
+    \[
+    \left( \frac{d}{dt} \iota_{X_t} \alpha \right)_p = \frac{d}{dt} A(X_t(p))
+    \]
+    and so the statement follows again from the chain rule.
 \end{proof}
 
 \headline{Moser`s trick}
