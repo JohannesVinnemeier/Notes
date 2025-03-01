@@ -239,7 +239,7 @@ As an applictaion of Theorem \ref{thm:cartan_calculus} we can show the following
 
 \headline{Integrating time dependent forms}
 
-Let $\beta_t$ be a smooth time dependent family of differential forms on a manifold $M$ defined on some interval $I$. At the beginning of the section we described what it means to take the derivative of $\beta_t$ with respect to time. Often one is also interested in the \textit{integral} with respect to time, which is defined similiarly (i.e. pointwise). For $a ,b \in I$ and $p \in M$ we set
+Let $\beta_t$ be a smooth time dependent family of differential forms on a manifold $M$ defined on some interval $I$. At the beginning of the section we described what it means to take the derivative of $\beta_t$ with respect to time. Often one is also interested in the \textit{integral} with respect to time, which is defined similiarly, i.e. pointwise. For $a ,b \in I$ and $p \in M$ we set
 
 \[
 \left( \int_{a}^{b} \beta_t dt \right)_p := \int_{a}^{b} (\beta_t)_p dt,
@@ -252,7 +252,7 @@ so $\int_{a}^{b} \beta_t dt$ is a smooth $r$-form on $M$.
 
 
 \subsection{Computation rules for time-dependent forms}
-In the above section we have seen how to differentiate and integrate a smooth time-dependent family $\alpha_t$ of $r-$forms. To explicitly compute such a time derivative/integral one can express $\alpha_t$ in local coordinates and take the time derivative/integral of the coefficient functions (as explained above). The goal of this section is to establish a few (coordinate free) rules for computing such expressions in practice.
+The goal of this section is to establish a few coordinate free rules for computing expressions involving the derivative or integral of time dependent differential forms in practice. We begin by discussing some elementary common cases and explain how to deal with more complex ones later on. 
 
 \vspace{.25cm}
 
@@ -290,8 +290,6 @@ where $\phi_t$ is the flow of $X$. We might also want to differentiate this expr
     \]
     To see this, we can explicitly express both sides in local coordinates and then use (\ref{eq:cartan_calc_further_rule_2}) from Lemma \ref{lem:cartan_calculus_further_rules} and (\ref{eq:cartan_calc_further_rule_3}) from Lemma \ref{lem:cartan_calculus_time_derivative_commutes_with_diff_ops} to reduce this to the case, where $\alpha$ is a $0$-form, which follows immediately. Essentially, this is again using the trick that two differential operators are equal if they satisfy the same Leibniz rule, commute with $d$ and agree on $0$-forms. 
 \end{proof}
-
-We now state a couple of Lemmas on how to differentiate/integrate some elementary common expressions.
 
 \begin{lemma}
     \label{lem:cartan_calculus_further_rules}
@@ -369,9 +367,9 @@ Finally, we explain how to deal with time dependent vector fields in the differe
 
 \headline{Moser`s trick}
 
-In many cases one has to differentiate a time-dependent family of differential forms, which is given by an expression where the time variable appears at multiple instances. We first proof a formula for the derivative of such an expression by discussing an important example, namely Moser`s trick, which is used to proof the Darboux Theorem about symplectic/contact manfiolds. Following that we present a straightforward cooking recipe illustrated by another example.
+In many cases one has to differentiate a time-dependent family of differential forms, which is given by an expression where the time variable appears at multiple instances. To understand how a formula for this is obtained, we begin by discussing an important example, namely Moser`s trick, which is used to proof the Darboux Theorem about symplectic/contact manfiolds. Following that, we present a straightforward cooking recipe on how to compute the derivative of such an expression in general, illustrated by another example.
 
-Let $M$ be a manifold (without boundary). Given a smooth family $\alpha_t$ of differential forms on $M$ indexed over $t \in [0,1]$ we want to find a family of diffeomorphisms $\varphi_t \colon M \to M$ (i.e. an isotopy), such that $\varphi_0 = id_M$ and 
+Let $M$ be a manifold (without boundary). Given a smooth family $\alpha_t$ of differential forms on $M$ indexed over $t \in \R$ we want to find a family of diffeomorphisms $\varphi_t \colon M \to M$ (i.e. an isotopy), such that $\varphi_0 = id_M$ and 
 \[
     \varphi_t^\ast \alpha_t = \alpha_0 \: \text{ for all } t \in [0,1],
 \]
@@ -411,15 +409,14 @@ Then (\ref{eq:mosers_trick}) can be reformulated as a condition on $X_t$, which 
     \label{lem:mosers_trick_lemma}
     In the situation above the following holds:
     \[
-    \frac{d}{dt} \varphi_t^\ast \alpha_t = \phi_t^\ast(L_{X_t}\alpha_t + \dot{\alpha_t})
+    \frac{d}{dt} \varphi_t^\ast \alpha_t = \varphi_t^\ast(L_{X_t}\alpha_t + \dot{\alpha_t})
     \]
 \end{lemma}
 
 \begin{proof}
-    Assume that $\alpha_t$ is defined for all $t \in \R$. The idea is 
-    to "decouple" the time variables and consider the two parameter family
+    The idea is to "decouple" the time variables and consider the two parameter family
     \[
-        g \colon [0,1] \times \R \to T_p^\ast M, \: (t,s) \mapsto (\phi_t^\ast \alpha_s)_p
+        g \colon [0,1] \times \R \to T_p^\ast M, \: (t,s) \mapsto (\varphi_t^\ast \alpha_s)_p
     \]
     The partial derivatives are now much easier to compute. By Proposition \ref{prop:lie_derivative_formula} we have:
     \[
@@ -431,7 +428,7 @@ Then (\ref{eq:mosers_trick}) can be reformulated as a condition on $X_t$, which 
     \]
     In order to compute the derivative of 
     \[
-    f \colon [0,1] \to T_p^\ast M, \: t \mapsto (\phi_t^\ast \alpha_t)_p
+    f \colon [0,1] \to T_p^\ast M, \: t \mapsto (\varphi_t^\ast \alpha_t)_p
     \]
     consider the diagonal map
     \[
@@ -457,7 +454,7 @@ where we used Theorem \ref{thm:cartan_calculus} (\ref{eq:cartan3}) in the second
 
 \headline{A cooking recipe}
 
-The proof of Lemma \ref{lem:mosers_trick_lemma} gives a cooking recipe for computing derivatives of smooth families of differential forms indexed over some time $t$, where $t$ appears at multiple instances. Namely, fix $t$ for all but one instance and differentiate. Then take the sum of all of the results. We illustrate this in an example.
+The proof of Lemma \ref{lem:mosers_trick_lemma} now gives the announced cooking recipe for computing derivatives of smooth families of differential forms indexed over some time $t$, where $t$ appears at multiple instances. Namely, fix $t$ for all but one instance and differentiate. Then take the sum of all of the results. We illustrate this by an example.
 
 \begin{example}
     Let $X_t$ be some time dependent vector field on a manifold $M$ with flow $\phi_t$. Furthermore, let $\alpha_t$ be a smooth family of differential forms and $f_t$ a smooth family of functions on $M$. We want to compute:
