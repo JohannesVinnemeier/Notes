@@ -1,0 +1,110 @@
+\subsection{Local Computation of the Degree}
+
+In this chapter we proof the following theorem.
+
+\begin{theorem}
+    \label{alg_top:thm:local_degree}
+    Let $f \colon S^n \to S^n$ be smooth around a point $x \in S^n$, $y = f(x)$ and $T_xf \colon T_xS^n \to T_yS^n$ an isomorphism. Then for the local degree of $f$ at $x$ we have 
+    \[
+    \mathrm{deg}_x(f) = +1
+    \]
+    if $T_xf$ is orientation preserving and 
+    \[
+    \mathrm{deg}_x(f) = -1
+    \]
+    if $T_xf$ is orientation reversing.
+\end{theorem}
+
+For the proof we a need a technical Lemma for constructing a certain homotopy, which is a slight modification of Lemma 5.7 in \cite{Milnor1965hcobord}.
+
+\begin{lemma}
+    \label{alg_top:lem:isotopy_lemma}
+    Let $h \colon \R^n \to \R^n$ be an orientation preserving embedding with $h(0) = 0$. Then $h$ is isotopic to the identity $\mathrm{rel}\, \{0\}$.
+\end{lemma}
+\begin{proof}
+    The proof is basically the same as in \cite{Milnor1965hcobord}. Since $h(0) = 0$ we can write 
+    \[
+    h(x) = x_1h_1(x) + \ldots + x_nh_n(x)
+    \] 
+    for smooth functions $h_i \colon \R^n \to \R^n$ and then define an isotopy 
+    \[
+    \frac{1}{t}h(tx) = x_1h_1(tx) + \ldots + x_nh_n(tx), \quad 0\leq t\leq1
+    \]
+    from the linear map
+    \[
+        A \colon \R^n \to \R^n, x \mapsto x_1h_1(0) + \ldots + x_nh_n(0)
+    \]
+    to $h$. Since $\mathrm{det}(A) >0$ and the space of all $n \times n$ matrices with positive determinant is path connected we moreover get an isotopy from $A$ to $id$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{alg_top:thm:local_degree}]
+    First assume $T_xf$ is orientation preserving. We have to show that for an open neighbourhood $U \subseteq S^n$ of $x$ the map 
+    \[
+        \begin{tikzcd}[column sep = 2.2em]
+            {H_n(S^n)} & {H_n(S^n,S^n-y_1)} & {H_n(U,U-x)} & {H_n(S^n,S^n-y_1)} & {H_n(S^n)}
+            \arrow["\cong", from=1-1, to=1-2]
+            \arrow["\cong"', from=1-3, to=1-2]
+            \arrow["\cong","H_n(f|_U)"', from=1-3, to=1-4]
+            \arrow["\cong"', from=1-5, to=1-4]
+        \end{tikzcd}
+    \]
+    is the identity (where all other maps are induced by inlcusions). This follows immediately from the following claim.
+
+    \begin{claim}
+        For orientation preserving embeddings $g_i \colon U \to S^n$ with $g_i(x) = y_i$, $i = 1,2$ the map 
+        \begin{equation}
+            \label{alg_top:eq:local_degree_claim}
+            \tag{$\star$}
+            \begin{tikzcd}[column sep = 2em]
+                {H_n(S^n)} & {H_n(S^n,S^n-y_1)} & {H_n(U,U-x)} & {H_n(S^n,S^n-y_1)} & {H_n(S^n)}
+                \arrow["\cong", from=1-1, to=1-2]
+                \arrow["\cong"',"H_n(g_1)", from=1-3, to=1-2]
+                \arrow["\cong","H_n(g_2)"', from=1-3, to=1-4]
+                \arrow["\cong"', from=1-5, to=1-4]
+            \end{tikzcd}
+        \end{equation}
+        is the identity
+    \end{claim}
+    Firstly we may assume, that $y_1 = y_2$, otherwise replace $g_1$ with $R \circ g_1$, where $R \colon S^n \to S^n$ is a rotation with $R(y_1) = y_2$. Then the map (\ref{alg_top:eq:local_degree_claim}) is unchanged as seen by the commutativity of the following diagramm
+    \[\begin{tikzcd}[every label/.append style={font=\small}, sep =1.5em]
+	{H_n(S^n)} & {H_n(S^n,S^n-y_1)} \\
+	&& {H_n(U,U-x)} \\
+	{H_n(S^n)} & {H_n(S^n,S^n-y_2)}
+	\arrow["\cong", from=1-1, to=1-2]
+	\arrow["{H_n(R) = id}"', from=1-1, to=3-1]
+	\arrow["{H_n(R)}"', from=1-2, to=3-2]
+	\arrow["{H_n(g_1)}"', from=2-3, to=1-2]
+	\arrow["{H_n(R \circ g_1)}", from=2-3, to=3-2]
+	\arrow["\cong", from=3-1, to=3-2]
+\end{tikzcd}\]
+Note that $R \simeq id_{S^n}$ since $\mathrm{SO}(n)$ is path-connected. Moreover we may assume $U \cong \R^n$, otherwise shrink $U$ to some $U^\prime \subseteq U$ and excision yields $H_n(U^\prime,U^\prime-x) \xrightarrow{\cong}H_n(U,U-x)$. So if we consider $g_1$ and $g_2$ in suitable charts we get orientation preserving embeddings 
+\[
+\tilde{g}_1,\tilde{g}_2 \colon \R^n \to \R^n
+\]
+with $\tilde{g}_1(0) = 0 = \tilde{g}_2(0)$. So by Lemma \ref{alg_top:lem:isotopy_lemma} $\tilde{g}_1$ and $\tilde{g}_2$ are isotopic $\mathrm{rel}\, \{0\}$. In particular we get a homotopy
+\[
+H \colon U \times I \to S^n
+\]
+from $g_1$ to $g_2$ with $H((U-x) \times I) \subseteq S^n-y_1$, i.e. a homotopy of \textit{pairs}
+\[
+g_1,g_2 \colon (U,U-x) \to (S^n,S^n-y_1)
+\]
+and thus 
+\[
+H_n(g_1) = H_n(g_2) \colon H_n(U,U-x) \to H_n(S^n,S^n-y_1)
+\]
+which proofs the claim. It remains to consider the case where $T_xf$ is orientation reversing. For this consider the following commutative diagramm
+\[\begin{tikzcd}[column sep = 1.7em]
+	{H_n(S^n)} & {H_n(S^n,S^n-x)} & {H_n(U,U-x)} && {H_n(S^n,S^n-y)} & {H_n(S^n)} \\
+	&&&& {H_n(S^n,S^n-r(y))} & {H_n(S^n)}
+	\arrow["\cong", from=1-1, to=1-2]
+	\arrow["\cong"', from=1-3, to=1-2]
+	\arrow["{H_n(f|_U)}"', "\cong", from=1-3, to=1-5]
+	\arrow["{H_n(r \circ f|_U)}"',"\cong", bend right = 15, from=1-3, to=2-5]
+	\arrow["{H_n(r)}","\cong"', from=1-5, to=2-5]
+	\arrow["\cong"', from=1-6, to=1-5]
+	\arrow["{H_n(r)}","\cong"', from=1-6, to=2-6]
+	\arrow["\cong", from=2-6, to=2-5]
+\end{tikzcd}\]
+where $r \colon S^n \to S^n$ is the reflection along the equator. Then $T_x(r \circ f)$ is orientation preserving and the statement follows from what has been shown already and the fact that $\mathrm{deg}(r) = -1$.
+\end{proof}

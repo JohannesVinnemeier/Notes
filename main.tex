@@ -1,4 +1,6 @@
 \documentclass{article}
+\usepackage{geometry}
+\geometry{a4paper, left=3cm, right=3cm, top=2.5cm, bottom=2.5cm}
 \usepackage{amsfonts,amsmath,amssymb,amsthm}
 \usepackage{ragged2e}
 \usepackage{enumerate}
@@ -120,70 +122,38 @@
   {\tikz \filldraw (0,0) circle (0.5pt);}}}
 
 
+%\includeonly{sections/Algebraic_Topology/algebraic_topology}
+
 \begin{document}
     \tableofcontents
     \newpage
 
-    %This is a collection of statements I have proven myself and considered to be useful in some cases. I will often only present proof sketches instead of fully detailed proofs. Furthermore these notes contain a variety of counterexamples.
+    \include{sections/On_Manifolds_with_Boundary/on_manifolds_with_boundary}
 
-    \section{On manifolds with boundary}
-    In this section we discuss how known theorems/lemmas fail for manifolds with non-emtpy boundary and how they can be generalized.
+    \include{sections/Cartan_Calculus/cartan_calculus}
+
+    \include{sections/Algebraic_Topology/algebraic_topology}
+
+    \include{sections/Fiber_bundles/Fiber_bundles}
+
+    \include{sections/Some_Linear_Algebra/some_linear_algebra}
     
-    \input{sections/On Manifolds with Boundary/regular_values.tex}
-    \input{sections/On Manifolds with Boundary/morse_theory.tex}
-    \input{sections/On Manifolds with Boundary/integral_curves_and_flows.tex}
+    \include{sections/Miscellaneous/miscellaneous}
 
-    \newpage
-    \section{Cartan Calculus}
+    \include{sections/Solutions/solutions.tex}
 
-    \input{sections/Cartan Calculus/cartan_calculus.tex}
-
-    \newpage
-    \section{Algebraic Topology}
-
-    \input{sections/Algebraic Topology/general_statements_about_homology.tex}
-    \input{sections/Algebraic Topology/cw_complexes.tex}
-    \input{sections/Algebraic Topology/remarks_urs_alg_topo.tex}
-
-    \newpage
-    \section{Fiber Bundles}
-
-    \input{sections/Fiber bundles/Fiber_bundles.tex}
-
-    \newpage
-    \section{Some Linear Algebra}
-
-    \input{sections/Some Linear Algebra/General_statements.tex}
-    \input{sections/Some Linear Algebra/multinlinear_algebra.tex}
-    \input{sections/Some Linear Algebra/symplectitc_vector_spaces.tex}
-    
-    
-    \newpage
-    \section{Miscellaneous}
-
-    \input{sections/Miscellaneous/Smoothness_on_arbitrary_subsets.tex}
-    \input{sections/Miscellaneous/Integrating_vector_valued_functions.tex}
-
-    \newpage
-    \section{Solutions to selected exercises}
-
-    \input{sections/Solutions/solutions.tex}
-
-    \newpage
-    \section{Alternative Proofs}
-
-    \input{sections/Alternative Proofs/Alternative_Proofs.tex}
-
-
-
+    \include{sections/Alternative_Proofs/Alternative_Proofs}
 
 % Add an unnumbered entry for the bibliography in the table of contents
 \cleardoublepage
 \addcontentsline{toc}{section}{References}
 
-% Include all entries from BibTeX file
-\nocite{*}
 
+
+% Bibliography (Comment out for faster compilation)
+
+\nocite{*} %Include all entries from BibTeX file
 \bibliographystyle{alpha}
 \bibliography{ref}
+
 \end{document}
