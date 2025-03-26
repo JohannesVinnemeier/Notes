@@ -1,0 +1,13 @@
+\section{Point Set Topology}
+
+\begin{lemma}
+    Let $\pi \colon X \to Y$ be a quotient map and $A \subseteq X$ with $\pi^{-1}(\pi(A)) = A$. If $A \subseteq X$ is either closed or open then the restriction
+    \[
+    \pi|_A \colon A \to \pi(A)
+    \]
+    is also a quotient map.
+\end{lemma}
+
+\begin{proof}
+    Let $p:= \pi|_{A} \colon A \to \pi(A)$ be the restriction and $A$ be open. Given $V \subseteq \pi(A)$ such that $U:=p^{-1}(V) \subseteq A$ is open we get from our assumptions on $A$ that $U$ is also open in $X$ and that $ U = \pi^{-1}(V)$, hence $V$ is also open in $Y$ and thus $V$ is open in $\pi(A)$. The same argument shows the statement if $A$ is closed, since we can equivalently describe the quotient topology in terms of closed sets.  
+\end{proof}
