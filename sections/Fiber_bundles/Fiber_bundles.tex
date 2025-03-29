@@ -457,7 +457,26 @@ For convencience, let us state the definition of a fiber bundle.
    \[
    E|_S := \iota^*E
    \]
-   The above Lemma shows that this is indeed a submanfold of $E$. In fact, in the situation of the above Lemma we have $$\mathrm{im} G = E|_{g(B^\prime)}$$
-    
+   The above Lemma shows that this is indeed a submanfold of $E$. In fact, in the situation of the above Lemma we have $$\mathrm{im} G = E|_{g(B^\prime)}.$$
+
+   \vspace{1em}
+
+   One usecase for pullback bundles is to define vector fields along curves $\gamma \colon I \to M$ for a smooth manifold $M$ as sections in the pullback bundle $\gamma^\ast TM$. The follwoing Lemma says, that we can equivalently define them as maps 
+   \[
+   V \colon I \to TM
+   \]
+   with $V(t) \in T_{\gamma(t)} M$ (as is done in \cite{lee2018riemannian}).
+
+   \begin{lemma}
+    Let $F \hookrightarrow E \to M$ be a smooth fiber bundle and $g \colon N \to M$ a smooth map. Then a section $N \xrightarrow{\sigma} g^\ast E$ is smooth if and only if the composition
+    \[
+    N \xrightarrow{\sigma} g^\ast E \xrightarrow{G} E
+    \]
+    is smooth, where $G$ is the induced bundle homomorphism $g^\ast E \to E$ discussed above.
+   \end{lemma}
+
+   \begin{proof}
+    This follows directly from the definition of the smooth structure of the pullback bundle given above.
+   \end{proof}
      
 
