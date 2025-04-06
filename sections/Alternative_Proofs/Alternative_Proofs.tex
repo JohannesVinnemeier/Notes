@@ -2,7 +2,7 @@
 
 This is a collection of alternative proofs for various statements from books, lecture notes etc.
 
-\begin{theorem}[Theorem 10.34. from \cite{lee2011smooth}]
+\begin{theorem}[Theorem 10.34 from \cite{lee2011smooth}]
     Let $E$ and $E^\prime$ be smooth vector bundles over a manifold $M$, and let $F \colon E \to E^\prime$ be a bundle homomorphism. Then $\mathrm{ker} F$ and $\mathrm{im} F$ are smooth subbundles of $E$ and $E^\prime$, respectively, if and only if $F$ has constant rank.
 \end{theorem}
 \begin{proof}
@@ -18,4 +18,48 @@ This is a collection of alternative proofs for various statements from books, le
     \sigma_j^\prime := \sigma_j - \sum _{i=1}^k \tau_{ij} \sigma_i
     \]
     Then $F \circ \sigma_j^\prime = 0$, thus $\mathrm{im}\sigma_j^\prime \subseteq \mathrm{ker}F$. Furthermore, $\sigma_{k+1}^\prime,\ldots,\sigma_n^\prime$ are linearly independent, since $\sigma_1,\ldots,\sigma_n$ is a local frame. This shows the statement.
+\end{proof}
+
+\begin{proposition}[Proposition 5.17 from \cite{lee2018riemannian}]
+    The musical isomorphisms commute with the (total) covariant derivative: if $F$ is any smooth tensor field with a contravariant $i$-th index position and $\flat$ represents the operation of lowering the $i$-th index, then 
+    \begin{equation}
+        \label{section_alt_proofs:eq:musical_isomorphisms_and_derivative1}
+        \nabla_X(F^\flat) = (\nabla_X F)^\flat
+    \end{equation}
+    for all vector fields $X$. In particular 
+    \begin{equation}
+        \label{section_alt_proofs:eq:musical_isomorphisms_and_derivative2}
+        \nabla (F^\flat) = (\nabla F)^\flat.  
+    \end{equation}
+    Similiarly, if $G$ has covariant $i$-th position and $\sharp$ denotes raising the $i$-th index, then 
+    \begin{equation}
+        \label{section_alt_proofs:eq:musical_isomorphisms_and_derivative3}
+        \nabla_X(F^\sharp) = (\nabla_X F)^\sharp, \quad  \nabla(F^\sharp) = (\nabla F)^\sharp.
+    \end{equation}
+\end{proposition}
+
+In the book \cite{lee2018riemannian}, the author uses the identity $F^\flat = \mathrm{tr}(F \otimes g)$, which is however only correct in the case where $F$ is a vector field, since then 
+\[
+F^\flat = \langle F,- \rangle = \mathrm{tr}(F \otimes g)
+\]
+by definiton of the trace operator. In general this argument fails, as can be seen by writing each side in a local frame. Thus we present an alternative proof.
+
+\begin{proof}
+    First let $F = Z$ be a vector field. Instead of using the identity mentioned above we can also argue as follows: Write $\alpha := \langle Z, - \rangle$. Then for an arbitrary vector field $Y$ we compute:
+    \[
+    (\nabla_X \alpha) (Y) = X \cdot \alpha(Y) - \alpha(\nabla_X Y) = \langle \nabla_X Z, Y\rangle + \langle Z, \nabla_X Y \rangle - \langle Z, \nabla_X Y \rangle = \langle \nabla_X Z, Y\rangle
+    \]
+    hence 
+    \[
+    \nabla_X (Z^\flat) = \nabla_X \langle Z,-\rangle = \langle \nabla_X Z, -\rangle = (\nabla_X Z)^\flat.
+    \]
+    For general $F$ we may assume (by linearity of the $\flat$ operator)
+    \[
+    F = Z_1 \otimes \ldots \otimes Z_k \otimes \epsilon^1 \otimes \ldots \otimes \epsilon^l
+    \]
+    for some vector fields $Z_j$ and covector fields $\epsilon^j$. But then 
+    \[
+    F^\flat = Z_1 \otimes \ldots \otimes \langle Z_i , -\rangle \otimes \ldots \otimes Z_k \otimes \epsilon^1 \otimes \ldots \otimes \epsilon^l
+    \]
+    so (\ref{section_alt_proofs:eq:musical_isomorphisms_and_derivative1}) follows from the product rule and what has been shown above. Then (\ref{section_alt_proofs:eq:musical_isomorphisms_and_derivative2}) follows from (\ref{section_alt_proofs:eq:musical_isomorphisms_and_derivative1}) and the definition of the $\flat$ operator as well as the total covariant derivative. For (\ref{section_alt_proofs:eq:musical_isomorphisms_and_derivative3}) we argue as in \cite{lee2018riemannian}: note that $\sharp$ and $\flat$ are inverses to each other (since they operate on the same index position), so by substituting $F = G^\sharp$ in (\ref{section_alt_proofs:eq:musical_isomorphisms_and_derivative1}) and (\ref{section_alt_proofs:eq:musical_isomorphisms_and_derivative2}) and applying $\sharp$ to both sides, the statement follows.
 \end{proof}

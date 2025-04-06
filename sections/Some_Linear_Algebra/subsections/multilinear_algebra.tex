@@ -49,3 +49,37 @@ Here are two statements about multilinear maps, which are generalizations of the
     \]
     defines a norm, so $A$ is bounded with respect to these norms on $V,W$, hence continous by Lemma \ref{lem:continuity_multilinear_maps}. Since all norms on finite dimensional vector spaces are equivalent, the statement follows.
 \end{proof}
+
+The following lemma extends the universal property of the Tensor Product to multilinear maps.
+
+\begin{lemma}
+    For $i = 1, \ldots n$ let $V_1^i, \ldots V_{k_i}^i$ be vector spaces and
+    \[
+    \pi_i \colon V_1^i \times \ldots \times V_{k_i}^i \to V_1^i \otimes \ldots \otimes V_{k_i}^i
+    \]
+    the canonical product maps. Then for every multilinear map $L \colon \prod_{i=1}^n V_1^i \times \ldots \times V_{k_i}^i \to Z$ to a vector space $Z$, there exists a unique multilinear map $A \colon \prod_{i=1}^n V_1^i \otimes \ldots \otimes V_{k_i}^i \to Z$
+    such that the following diagram commutes
+    \[\begin{tikzcd}[column sep = 4em]
+	{\prod_{i=1}^n V_1^i \times \ldots \times V_{k_i}^i} & Z \\
+	{\prod_{i=1}^n V_1^i \otimes \ldots \otimes V_{k_i}^i}
+	\arrow["L", from=1-1, to=1-2]
+	\arrow["{\prod_i\pi_i}"', from=1-1, to=2-1]
+	\arrow["A"', dashed, end anchor = {[xshift = 5, yshift = -3]}, from=2-1, to=1-2]
+\end{tikzcd}\]
+\end{lemma}
+
+\begin{proof}
+    Consider the following commutative diagram
+    \[\begin{tikzcd}
+	{\prod_{i=1}^n V_1^i \times \ldots \times V_{k_i}^i} \\
+	{\bigotimes_{i=1}^n V_1^i \otimes \ldots \otimes V_{k_i}^i} && Z \\
+	{\prod_{i=1}^n V_1^i \otimes \ldots \otimes V_{k_i}^i}
+	\arrow["\pi"', from=1-1, to=2-1]
+	\arrow["L", shift left=2, shorten <=6pt, from=1-1, to=2-3]
+	\arrow["{\prod_i\pi_i}"', shift right=12, bend right = 55, from=1-1, to=3-1]
+	\arrow["B", dashed, from=2-1, to=2-3]
+	\arrow["p", from=3-1, to=2-1]
+	\arrow["A", shift right=2, shorten <=6pt, from=3-1, to=2-3]
+\end{tikzcd}\]
+where $p$ and $\pi$ are the canonical product maps, the map $B$ is induced by $L$ by the universal property of the tensor product and $A$ is defined as the composition of $B$ and $p$. Clearly $A$ is the unique map satisfying the statement of the lemma.
+\end{proof}
