@@ -16,7 +16,7 @@ For manifolds with boundary we essentially define integral curves in the same wa
 
 We do however still get a uniqueness result \textit{if} the integral curve exists. Furthermore, if the vector field is sufficiently well-behaved we can guarantee the existence.
 
-\begin{lemma}[Uniqueness and existence of Integral curves]
+\begin{theorem}[Uniqueness and existence of Integral curves]
     \label{lem:existence_integral_curves}
     Let $M$ be a manifold with boundary, $X$ a smooth vector field on $M$ and $p \in M$. If there exists an integral curve starting at $p$, then there exists a unique maximal integral curve $\gamma \colon I \to M$ starting at $p$, where one of the four following cases holds for $a \leq 0 \leq b$, $a<b$:
     \begin{enumerate}[(i)]
@@ -26,9 +26,9 @@ We do however still get a uniqueness result \textit{if} the integral curve exist
         \item $I = [a,b]$ and $\gamma(a),\gamma(b) \in \partial M$
     \end{enumerate}
     Furthermore, if $X$ is either transversal to the boundary or everywhere tangent, the unique maximal integral curve starting at $p$ always exists.
-\end{lemma}
+\end{theorem}
 
-\begin{proof}[Proof sketch of Lemma \ref{lem:existence_integral_curves}] Let's begin by showing uniqueness. The proof is essentially the same as in the boundaryless case (see for example \cite{lee2011smooth}): We show that two integral curves $\gamma \colon I \to M$ and $\gamma^\prime \colon I^\prime \to M$ starting at $p$ agree on their common domain. This then allows us to define the maximal integral curve on some interval $I$ and every interval containing $0$ is of the form $(i) - (iv)$ \footnotemark. The only difference is that $I$ and $I^\prime$ may not be open intervalls. So we have to show that uniqueness still applies. We claim: Let $U \subseteq \R^n$ be open, $F \colon U \to \R^n$ a smooth vector field, $I$ an interval of the form $(i) - (iv)$ and $\gamma,\gamma^\prime \colon I \to U$ integral curves both starting at $p \in U$. Then $\gamma = \gamma^\prime$. If $0$ is an interior point of $I$ we can apply the usual uniqueness theorem for $\gamma,\gamma^\prime$ restricted to $\mathrm{int}(I)$. By continuity they must then also agree at the endpoint. So it remains to show uniqueness if $0$ is a boundary point of $I$ (say for example $I = [0,b)$). But by the existence theorem for integral curves we can find an integral curve $\eta \colon (-\epsilon,\epsilon) \to U$ starting at $p$ and define
+\begin{proof}Let's begin by showing uniqueness. The proof is essentially the same as in the boundaryless case (see for example \cite{lee2011smooth}): We show that two integral curves $\gamma \colon I \to M$ and $\gamma^\prime \colon I^\prime \to M$ starting at $p$ agree on their common domain. This then allows us to define the maximal integral curve on some interval $I$ and every interval containing $0$ is of the form $(i) - (iv)$ \footnotemark. The only difference is that $I$ and $I^\prime$ may not be open intervalls. So we have to show that uniqueness still applies. We claim: Let $U \subseteq \R^n$ be open, $F \colon U \to \R^n$ a smooth vector field, $I$ an interval of the form $(i) - (iv)$ and $\gamma,\gamma^\prime \colon I \to U$ integral curves both starting at $p \in U$. Then $\gamma = \gamma^\prime$. If $0$ is an interior point of $I$ we can apply the usual uniqueness theorem for $\gamma,\gamma^\prime$ restricted to $\mathrm{int}(I)$. By continuity they must then also agree at the endpoint. So it remains to show uniqueness if $0$ is a boundary point of $I$ (say for example $I = [0,b)$). But by the existence theorem for integral curves we can find an integral curve $\eta \colon (-\epsilon,\epsilon) \to U$ starting at $p$ and define
 \[
 \beta \colon (-\epsilon,b) \to U, t \mapsto \begin{dcases*}
     \eta(t), t \leq 0 \\
@@ -97,6 +97,33 @@ and so $[a,b + \frac{\epsilon}{2}) \subseteq [a,\epsilon + t_m)$, contradicting 
 \noindent \textbf{Case 2: $q \in \partial M$.} We argue similiarly as above. In a local chart around $q$ we can again apply Picard-Lindelöff (smoothness of $X$ guarantees by definition the existence of a smooth extension of $X$ to an open neighbourhood in $\R^n$). We then again take $q_0 := \gamma(t_m)$ sufficiently close to $q$, choose an integral curve $\alpha$ starting at $q$, which we can use to define an integral curve $\alpha^\prime$ starting at $q_0$ defined on some open interval $(-\epsilon,\epsilon) $ by translation in time as above. Also we define $\gamma^\prime$ as above. The same argument as above then shows that we can extend $\gamma^\prime$ (in the local chart) to an integral curve $\beta$ on $J := [a-t_m,b-t_m) \cup (-\epsilon,\epsilon) \supseteq [a-t_m,b-t_m]$. In particular we have $\beta([a-t_m,b-t_m]) \subseteq M$. Translating in time again yields an integral curve $\gamma^{\prime\prime} \colon [a,b] \to M$ contradicting maximality.
 \end{proof}
 
+As an application we can show:
+
+\begin{lemma}
+    Let $I$ be some proper interval containing $0$ and $\gamma \colon I \to M$ any smooth regular curve, i.e. $\dot{\gamma}(t) \neq 0$ for all $t \in I$. Then there exists a unique unit speed reparametrization of $\gamma$, that is an orientation preserving diffeomorphism $\phi \colon J \to I$ with $\phi(0) = 0$, such that $\gamma \circ \phi$ is a unit speed curve. 
+\end{lemma}
+
+\begin{proof}
+    We have 
+    \[
+    (\gamma \circ \phi)^{\raisebox{2pt}{\scalebox{0.4}{$\bullet$}}}(t) = \phi^\prime(t) \dot{\gamma}(\phi(t)),
+    \]
+    so we need to find $\phi$, such that (note that we also need $\phi^\prime > 0$ to preserve orientation)
+    \[
+    \phi^\prime(t) = \frac{1}{\abs{\dot{\gamma}(\phi(t))}}
+    \]
+    This is a flow equation for the smooth vector field
+    \[
+    X(p) := \frac{1}{\abs{\dot{\gamma}(p)}}
+    \]
+    on $I$. Since $X$ is transversal to the boundary of $I$ (if $I$ even has boundary), Theorem \ref{lem:existence_integral_curves} yields the existence of a unique maximal integral curve $\phi \colon J \to I$ of $X$ with $\phi(0) = 0$. We now only need to show that $\phi$ is surjective, since $\phi^\prime >0$ already shows that it is an embedding. 
+    
+    To this end, consider any compact subinterval $I^\prime := [a,b] \subseteq I$ ($a < b$) containing $0$ and let $\psi \colon J^\prime \to I^\prime$ be the unique maximal integral curve of $X|_{I^\prime}$ starting at $0$. By Lemma \ref{lem:existence_integral_curves_compact_mnf} $\psi$ has to be defined on a compact interval $J^\prime = [c,d]$, since $X|_{I^\prime}$ is bounded below by a positive constant, so if $J^\prime$ would be infinite in the positive/negative direction, $\psi$ would also tend to positive/negative ininity, but by definition it is conatined in the compact interval $I^\prime$. Moreover Lemma \ref{lem:existence_integral_curves_compact_mnf} then yields
+    \[
+    \psi(c) = a, \quad \psi(d) = b.
+    \]
+    Since $\phi$ is the unique maximal integral curve of $X$ we get that $J^\prime \subseteq J$ and $\phi|_{J^\prime} = \psi$. In particular $I^\prime \subseteq \mathrm{im}(\phi)$. This completes the proof.
+\end{proof}
 
 \begin{remark}[A note on flows for manifolds with boundary]
     In general the concept of a flow is not well behaved if $M$ has boundary, as integral curves may not even exist (see Counterexample \ref{rem:vector_field_example}). In \cite{lee2011smooth} the author shows, that if $X$ is tangent to $\partial M$ we still get a well-behaved flow, i.e. it is defined on some open subset $\mathcal{O} \subseteq M \times \R$. I think that if we instead assume, that $X$ is transversal to $\partial M$, we still get a "good" flow domain in the sense that we can define the flow on some subset $\mathcal{D} \subseteq M \times \R$, which is a codimension $0$ submanifold with boundary and $I_p := \{ t \in \R \mid (p,t) \in \mathcal{D}\}$ is an interval around $0$ for each $p \in M$.
