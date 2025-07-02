@@ -1,0 +1,57 @@
+\subsection{Existence of Smooth Isotopies}
+
+In this section we proof two statements on the existence of smooth isotopies. Both follow \cite{Milnor1965hcobord} quite closely. The first Lemma is a slight modification of Lemma 5.7 in \cite{Milnor1965hcobord}.
+
+\begin{lemma}
+    \label{alg_top:lem:isotopy_lemma}
+    Let $h \colon \R^n \to \R^n$ be an orientation preserving embedding with $h(0) = 0$. Then $h$ is isotopic to the identity $\mathrm{rel}\, \{0\}$.
+\end{lemma}
+\begin{proof}
+    The proof is basically the same as in \cite{Milnor1965hcobord}. Since $h(0) = 0$ we can write 
+    \[
+    h(x) = x_1h_1(x) + \ldots + x_nh_n(x)
+    \] 
+    for smooth functions $h_i \colon \R^n \to \R^n$ and then define an isotopy 
+    \[
+    \frac{1}{t}h(tx) = x_1h_1(tx) + \ldots + x_nh_n(tx), \quad 0\leq t\leq1
+    \]
+    from the linear map
+    \[
+        A \colon \R^n \to \R^n, x \mapsto x_1h_1(0) + \ldots + x_nh_n(0)
+    \]
+    to $h$. Since $\mathrm{det}(A) >0$ and the space of all $n \times n$ matrices with positive determinant is path connected we moreover get an isotopy from $A$ to $id$.
+\end{proof}
+
+\noindent Next we proof Theorem 5.8 in \cite{Milnor1965hcobord} and give a slightly stronger formulation of it.
+
+\begin{theorem}[Isotopy Extension Theorem]
+    \label{constr_diffeo:thm:isotopy_extension_theorem}
+    Let $M$ and $N$ be manifolds without boundary, where $M \subseteq N$ is a submanifold and let $h_t \colon M \to N, 0\leq t \leq 1$ be an isotopy of the inclusion $M \hookrightarrow N$. Given any compact subset $K \subseteq M$ and an open set $U \subseteq N$, such that $h_t(K) \subseteq U$ for all $t \in [0,1]$, there exists an isotopy 
+    \[
+    \overline{h}_t \colon N \to N, 0\leq t\leq1
+    \]
+    with the following properties
+    \begin{enumerate}[i)]
+        \item $\overline{h}_0 = \mathrm{id}_N$
+        \item $\overline{h}_t(x) = h_t(x)$ for all $x \in K$ and $t \in [0,1]$
+        \item $\overline{h}_t(x) = x$ for all $x \in N\setminus U$ and $t \in [0,1]$
+    \end{enumerate}
+\end{theorem}
+
+As an application we show:
+
+\begin{corollary}
+    Let $M$ be a manifold without boundary, $p,q \in M$ and $\gamma \colon [0,1] \to M$ a smooth path from $p$ to $q$. Then there exists a diffeomorphism $\phi \colon M \to M$ with $\phi(p) = q$, which is smoothly isotopic to $\mathrm{id}_M$. Moreover this isotopy can be chosen to be stationary outside a given open neighbourhood $U \subseteq M$ of the image of $\gamma$.
+\end{corollary}
+
+\begin{proof}
+    The smooth path $\gamma$ can be seen as an isotpy of the inclusion $\{p\} \hookrightarrow M$. Then the statement follows directly from Theorem \ref{constr_diffeo:thm:isotopy_extension_theorem}.
+\end{proof}
+
+\begin{remark}
+    If $\mathrm{Aut}_{id}(M) \subset \mathrm{Aut}(M)$ denotes the subgroup of diffeomorphisms which are smoothly isotopic to $\mathrm{id}_M$, the above corollary implies that $\mathrm{Aut}_{id}(M)$ acts transitively on $M$.
+\end{remark}
+
+\begin{corollary}
+    
+\end{corollary}

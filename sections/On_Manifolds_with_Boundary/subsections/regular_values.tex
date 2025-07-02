@@ -21,7 +21,7 @@
     \[
     \partial f := f|_{\partial M}.
     \]
-    We now generalize two theorems from \cite{guillemin2010differential} about transversal maps by allowing the codomain to have boundary as well. 
+    We now generalize three theorems from \cite{guillemin2010differential} about transversal maps by allowing the codomain to have boundary as well. 
 
     \begin{theorem}[Transversality Theorem]
     \label{thm:transversality}
@@ -49,6 +49,24 @@
         \] 
         such that the statement follows from the boundaryless case.
     \end{proof}
+
+       We can also make a statement about the tangent space of $X^\prime$ in the above theorem. To this end let $f \colon M \to N$ and $X \subseteq N, X^\prime \subseteq M$ be as above. Then we can also characterize transversality $f \pitchfork X$ as follows: Choose a metric on $N$ and for $x \in X^\prime, y = f(x)$ define the \textbf{vertical differential}
+    \[
+    D^V_xf \colon T_xM \to N_yX
+    \]
+    as the composition 
+    \[
+    T_xM \xrightarrow{d_xf} T_yN = T_yX \oplus N_yX \xrightarrow{\mathrm{proj.}} N_yX.
+    \]
+    Then $f \pitchfork X$ if and only if $D^V_xf$ is surjective for all $x \in X^\prime$. If this is the case we moreover have (at least if $\partial M = \emptyset$, otherwise we also require $\partial f \pitchfork X$)
+    \[
+    \mathrm{codim}(\mathrm{ker}D^V_xf) = \mathrm{dim}(\mathrm{im}(D^V_xf)) = \mathrm{codim}(X) = \mathrm{codim}(X^\prime)
+    \]
+    and thus (since $T_xX^\prime \subseteq \mathrm{ker}D^V_xf$) we get 
+    \[
+    T_xX^\prime = \mathrm{ker}D^V_xf.
+    \]
+    This generalizes the formula for the tangent space of the preimage of a regular value. It should also be noted, that the Riemannian metric on $N$ was only chosen, to define a complement of $T_yX$ in a consistent manner, such that the vertical differential $D^V_xf$ depends smoothly on $x$.
 
     \begin{theorem}[Parametric Transversality Theorem]
         \label{thm:parametric_transversality}
@@ -121,3 +139,7 @@
         % \]
         % is open and $M \times {0} \subseteq U$.
     \end{proof}
+
+    % To conclude this section we briefly discuss the so called vertical differential of a map, which can be useful in the context of transversality. 
+    
+ 

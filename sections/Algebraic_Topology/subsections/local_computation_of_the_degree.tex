@@ -15,29 +15,7 @@ In this section we proof the following theorem.
     if $T_xf$ is orientation reversing.
 \end{theorem}
 
-For the proof we a need a technical Lemma for constructing a certain homotopy, which is a slight modification of Lemma 5.7 in \cite{Milnor1965hcobord}.
-
-\begin{lemma}
-    \label{alg_top:lem:isotopy_lemma}
-    Let $h \colon \R^n \to \R^n$ be an orientation preserving embedding with $h(0) = 0$. Then $h$ is isotopic to the identity $\mathrm{rel}\, \{0\}$.
-\end{lemma}
 \begin{proof}
-    The proof is basically the same as in \cite{Milnor1965hcobord}. Since $h(0) = 0$ we can write 
-    \[
-    h(x) = x_1h_1(x) + \ldots + x_nh_n(x)
-    \] 
-    for smooth functions $h_i \colon \R^n \to \R^n$ and then define an isotopy 
-    \[
-    \frac{1}{t}h(tx) = x_1h_1(tx) + \ldots + x_nh_n(tx), \quad 0\leq t\leq1
-    \]
-    from the linear map
-    \[
-        A \colon \R^n \to \R^n, x \mapsto x_1h_1(0) + \ldots + x_nh_n(0)
-    \]
-    to $h$. Since $\mathrm{det}(A) >0$ and the space of all $n \times n$ matrices with positive determinant is path connected we moreover get an isotopy from $A$ to $id$.
-\end{proof}
-
-\begin{proof}[Proof of Theorem \ref{alg_top:thm:local_degree}]
     First assume $T_xf$ is orientation preserving. We have to show that for an open neighbourhood $U \subseteq S^n$ of $x$ the map 
     \[
         \begin{tikzcd}[column sep = 2.2em]
