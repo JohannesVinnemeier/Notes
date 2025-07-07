@@ -22,11 +22,11 @@ In this section we proof two statements on the existence of smooth isotopies. Bo
     to $h$. Since $\mathrm{det}(A) >0$ and the space of all $n \times n$ matrices with positive determinant is path connected we moreover get an isotopy from $A$ to $id$.
 \end{proof}
 
-\noindent Next we proof Theorem 5.8 in \cite{Milnor1965hcobord} and give a slightly stronger formulation of it.
+\noindent Next we proof Theorem 5.8 in \cite{Milnor1965hcobord} and give a slightly stronger formulation of it. The main idea behind the proof is beautifully explained in \cite{Milnor1965hcobord}.
 
 \begin{theorem}[Isotopy Extension Theorem]
     \label{constr_diffeo:thm:isotopy_extension_theorem}
-    Let $M$ and $N$ be manifolds without boundary, where $M \subseteq N$ is a submanifold and let $h_t \colon M \to N, 0\leq t \leq 1$ be an isotopy of the inclusion $M \hookrightarrow N$. Given any compact subset $K \subseteq M$ and an open set $U \subseteq N$, such that $h_t(K) \subseteq U$ for all $t \in [0,1]$, there exists an isotopy 
+    Let $M \subseteq N$ be a submanifold with or without boundary of the boundaryless manifold $N$ and let $h_t \colon M \to N, 0\leq t \leq 1$ be an isotopy of the inclusion $M \hookrightarrow N$. Given any compact subset $K \subseteq M$ and an open set $U \subseteq N$, such that $h_t(K) \subseteq U$ for all $t \in [0,1]$, there exists an isotopy 
     \[
     \overline{h}_t \colon N \to N, 0\leq t\leq1
     \]
@@ -37,6 +37,77 @@ In this section we proof two statements on the existence of smooth isotopies. Bo
         \item $\overline{h}_t(x) = x$ for all $x \in N\setminus U$ and $t \in [0,1]$
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    We formulate the proof only for the case $\partial M = \emptyset$, see Remark \ref{constr_diffeo:rem:isotopy_extension_thm_boundary}. Let $V \subseteq M$ be a relatively compact neighbourhood of $K$. Then
+    \begin{align*}
+        H \colon V \times [0,1] &\to N \times [0,1], \\
+                    (x,t) &\mapsto (h_t(x),t)
+    \end{align*}
+    is an embedding, since the map $M \times [0,1] \to N \times [0,1]$ defined by the same formula is an injective immersion. So $H$ definies a submanifold
+    \[
+    S := \mathrm{im}(H) \subseteq N \times [0,1]
+    \]
+    as well as the smooth vector field $X := H_\ast(\frac{\partial}{\partial t})$ on $S$, i.e. for $y = h_t(x)$ we have 
+    \[
+    X_{(y,t)} := D_{(x,t)}H\left(\frac{\partial}{\partial t}\right) = \left( \frac{\partial h_t}{\partial t}(x), \frac{\partial}{\partial t} \right).
+    \]
+    We can then extend $X$ to some open neighbourhood $W \subseteq U \times [0,1] \subseteq N \times [0,1]$ of $S$ at first arbitrarily and then set the coordinate of the part pointing in the $\frac{\partial}{\partial t}$ direction equal to $1$. Thus we obtain a smooth vector field $Y$ on $W$ of the form 
+    \[
+    Y_{(y,t)} = (\tilde{X}_{(y,t)},\frac{\partial}{\partial t})
+    \]
+    which agrees with $X$ on $S$. Choose a cut-off function 
+    \[
+    \psi \colon N \times [0,1] \to \R
+    \]
+    which equals $1$ on $H(K \times [0,1])$ and has its support contained in $W$. Then we consider the smooth vector field $Z$ on $N \times [0,1]$ defined by
+    \[
+    Z := \psi Y + (1-\psi)\frac{\partial}{\partial t}.
+    \]
+    The idea now is to define the required isotopy $\overline{h}_t$ using the flow of $Z$. For this we want to assume that $U$ is relatively compact, otherwise we may shrink $U$. The reason for this will become clear shortly, but first let us record the crucial properties of $Z$:
+    \begin{enumerate}[i)]
+        \item $Z$ is of the form 
+            \[
+                Z_{(y,t)} = (\tilde{Z}_{(y,t)},\frac{\partial}{\partial t}),
+            \]
+        \item $Z$ agrees with $X$ on $H(K \times [0,1])$,
+        \item $Z = \frac{\partial}{\partial t}$ outside of the compact set $\overline{U} \times [0,1]$.
+    \end{enumerate}
+    
+    We claim that for any $y \in N$ the unique maximal integral curve $\psi_y$ of $Z$ starting at $(y,0) \in N \times [0,1]$ is defined for all $t \in [0,1]$. If $y \notin \overline{U}$ this is clear, since the $\psi_y$ is explicitly given by 
+    \[
+    \psi_y(t) = (y,t), \quad 0 \leq t \leq 1.
+    \] 
+    For $y \in \overline{U}$ this follows from the fact, that $\psi_y$ has to be contained in the compact set $\overline{U} \times [0,1]$ for all time, where it is defined (due to uniqueness of integral curves and the case $y \notin \overline{U}$ above). Then using property (i) of $Z$ we see that $\psi_y(t)$ is in fact defined for all $t \in [0,1]$. 
+    
+    So after extending $Z$ to $N \times \R$ (to avoid dealing with flows on manifolds with boundary) we can consider the flowout of $N \times \{0\}$, which is defined on $N \times [0,1]$ by the preceeding observations and hence defines a level-preserving diffeomorphism 
+    \begin{align*}
+        \overline{H} \colon N \times [0,1] &\to N \times [0,1], \\
+                (y,t) & \mapsto \psi_y(t).
+    \end{align*}
+    Finally we define the required isotopy $\overline{h}_t$ by 
+    \[
+    \overline{H}(y,t) = (\overline{h}_t(y),t).
+    \]
+    It remains to show that $\overline{h}_t$ agrees with $h_t$ on $K$. But this follows from property (ii) of $Z$: for $x \in K$ let $\phi_x(t) := (x,t), \; 0 \leq t \leq 1$ be the integral curve of the vector field $\frac{\partial}{\partial t}$ on $M \times [0,1]$. Then 
+    \[
+    H(x,t) = H(\phi_x(t)) = \psi_x(t) = \overline{H}(x,t).
+    \]
+    The theorem follows.
+\end{proof}
+
+\begin{remark}
+    \label{constr_diffeo:rem:isotopy_extension_thm_boundary}
+    If $M$ is a manifold with boundary we can define a smooth isotopy as a map 
+    \[
+    h \colon M \times [0,1] \to N,
+    \]
+    which extends to a smooth isotopy
+    \[
+    \overline{h} \colon M \times \R \to N.
+    \]
+    Then exactly the same proof can be carried out if $M$ is allowed to have boundary by constructing the required vector fields on $N \times \R$ and then restricting everything back to $N \times [0,1]$. Note that this definition of smooth isotpies does not change the isotopy classes of maps in the case $\partial M = \emptyset$ (cf. Lemma \ref{misc:lem:different_def_smooth_homotopy_equivalence}). Of course using the notion of a manifold with edges we can define smooth isotopies in the same way and the proof of Theorem \ref{constr_diffeo:thm:isotopy_extension_theorem} goes through unchanged.
+\end{remark}
 
 Together the Isotopy Lemma and the Isotopy Extension Theorem can be used to extend locally defined diffeomorphisms to the whole manifold as follows: Begin with an orientation preserving embedding $\phi \colon U \to M$ of an open subset $U \subseteq M$. Then - after possibly restricting $\phi$ to a smaller domain - use Lemma \ref{constr_diffeo:lem:isotopy_lemma} to construct an isotopy from $\phi$ to the inclusion $U \hookrightarrow M$. Lastly - after once again restricting the isotopy to a smaller domain - we can use Theorem \ref{constr_diffeo:thm:isotopy_extension_theorem} to extend this isotopy to an an isotopy $\overline{h}_t \colon N \to N$ starting at $\mathrm{id}_N$. Then $h_1 \colon N \to N$ is a diffeomorphism extending $\phi$.
 
@@ -66,7 +137,7 @@ We use Corollary \ref{constr_diffeo:cor:transitivity_of_diffeo_groups} to show a
 \end{corollary}
 
 \begin{proof}
-    We proof the statement inductively. For $k=0$ there is nothing to show. So suppose we already have a diffeomorphism $\psi^\prime \colon M \to M$ smoothly isotopic to the identity, where the isotopy is compactly supported and $\psi^\prime(x_i) = y_i$ for $1 \leq i \leq k-1$. Note that $M - \{y_1,\ldots,y_{k-1}\}$ is connected, so Corollary \ref{constr_diffeo:cor:transitivity_of_diffeo_groups} implies the existence of a diffeomorphism $\phi \colon M \to M$ with $\phi(\psi^\prime(x_k)) = y_k$ and $\phi(y_i) = y_i$ for $1 \leq i \leq k-1$, such that $\phi$ is smoothly isotopy to the identity via a compactly supported isotopy. Now set $\psi := \phi \circ \psi^\prime$ and compose the isotpies to get a compactly supported isotopy from $\psi$ to the identity.
+    We proof the statement inductively. For $k=0$ there is nothing to show. So suppose we already have a diffeomorphism $\psi^\prime \colon M \to M$ smoothly isotopic to the identity, where the isotopy is compactly supported and $\psi^\prime(x_i) = y_i$ for $1 \leq i \leq k-1$. Note that $M - \{y_1,\ldots,y_{k-1}\}$ is connected, so Corollary \ref{constr_diffeo:cor:transitivity_of_diffeo_groups} implies the existence of a diffeomorphism $\phi \colon M \to M$ with $\phi(\psi^\prime(x_k)) = y_k$ and $\phi(y_i) = y_i$ for $1 \leq i \leq k-1$, such that $\phi$ is smoothly isotopy to the identity via a compactly supported isotopy. Now set $\psi := \phi \circ \psi^\prime$ and compose the isotopies to get a compactly supported isotopy from $\psi$ to the identity.
 \end{proof}
 
 This next corollary essentially says, that there are many embeddings of small dimensional manifolds into large dimensional manifolds.
@@ -80,5 +151,5 @@ This next corollary essentially says, that there are many embeddings of small di
     By assumption we can find an embedding $\iota^\prime \colon S \hookrightarrow U \subseteq M$ into any coordinate neighbourhood $U$ around $p$, such that $\iota^\prime(s_0) = p$. We may assume $ p \neq q$, so we can find a smooth path from $\iota^\prime(s_1)$ to $q$, that does not hit $p$ (if $M$ is $1$-dimensional we may arrange the embedding $\iota^\prime$ in such a way, that $\iota^\prime(s_1)$ lies in the same connected component of the manifold $M - \{p\}$ as $q$). Then Corollary \ref{constr_diffeo:cor:transitivity_of_diffeo_groups} implies the existence of a diffeomorphism $\phi \colon M \to M$ with $\phi(\iota^\prime(s_1)) = q$ and $\phi(p) = p$. Now set $\iota := \phi \circ \iota^\prime$.
 \end{proof}
 
-The above corollary should also be true if $M$ is allowed to have boundary, but the proof fails, since Corollary \ref{constr_diffeo:cor:transitivity_of_diffeo_groups} is clearly false if $M$ has non-empty boundary. An interesting consequence of Corollary \ref{constr_diffeo:cor:embeddings} is the existence of embedded paths: For any connected Manifold $M$ (without boundary) and any $p,q \in M$ there exists an embedding $\gamma \colon [0,1] \to M$ with $\gamma(0) = p, \gamma(1) = q$.
+The above corollary should also be true if $M$ is allowed to have boundary, but the proof fails, since Corollary \ref{constr_diffeo:cor:transitivity_of_diffeo_groups} is clearly false if $M$ has non-empty boundary. An interesting consequence of Corollary \ref{constr_diffeo:cor:embeddings} is the existence of \textbf{embedded paths}: For any connected manifold $M$ (without boundary) and any $p,q \in M$ there exists an embedding $\gamma \colon [0,1] \to M$ with $\gamma(0) = p, \gamma(1) = q$.
 

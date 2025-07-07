@@ -217,11 +217,12 @@ For convencience, let us state the definition of a fiber bundle.
         commutes, so $\Gamma$ is a bundle isomorphism. This completes the proof.
      \end{proof}
 
+    \needspace{5em}
      We may also formulate Theorem \ref{thm:fiber_bundle_construction1} slightly different, if we are given the fibers $F_x = p^{-1}(x)$ as sets. This is usually more practical, as the description of the bundle is more explicit:
 
      \begin{theorem}[Fiber bundle construction B]
         \label{thm:fiber_bundle_construction2}
-        Let $B,F$ be (non-empty) topological spaces and $G$ a topological group acting effectively on $F$. Given sets $F_x$ for each $x \in B$ we define $$E := \coprod_{x \in E}F_x$$ and $p \colon E \to B$ by sending each element in $F_x$ to $x$. Suppose we are given the following data:
+        Let $B,F$ be (non-empty) topological spaces and $G$ a topological group acting effectively on $F$. Given sets $F_x$ for each $x \in B$ we define $$E := \coprod_{x \in B}F_x$$ and $p \colon E \to B$ by sending each element in $F_x$ to $x$. Suppose we are given the following data:
         \begin{enumerate}[(i)]
             \item An open cover $\mathcal{U} := (U_\alpha)_\alpha$ of B (where $\alpha$ ranges over some index set $A$)
             \item A collection of bijections $\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha)$, that restrict to bijections $\{x\} \times F \to F_x$
@@ -261,9 +262,30 @@ For convencience, let us state the definition of a fiber bundle.
         since the $U_\alpha$ cover $B$ (and hence $E = \bigcup_\alpha \mathrm{im}\phi_\alpha$). As the $\phi_\alpha$ are homeomorphisms and $p^{-1}(U_\alpha)$ is open, we conclude that $V$ is open. Furthermore, the topology can not be finer than the final topology defined above, such that the two must coincide.
      \end{proof}
 
-    Given a fiber bundle, Theorem \ref{thm:fiber_bundle_construction1} allows to change the fiber:
+     \begin{example}
+        \label{fiber_bundles:example:frame_bundle}
+        Suppose we are given a (toplogical) rank $n$ vector bundle $E \xrightarrow{\pi} B$. We can use Theorem \ref{thm:fiber_bundle_construction2} to define the \textbf{frame bundle} $\mathrm{GL}(E)$ of $E$ as follows. Let $\mathrm{GL}(E_x)$ denote the set of all ordered bases of the vector space $E_x := \pi^{-1}(x)$ and set 
+        \[
+        \mathrm{GL}(E) := \coprod_{x \in B} \mathrm{GL}(E_x).
+        \]
+        Now choose an open cover $(U_\alpha)$ of $B$ over which $E$ is trivial, i.e. there exist local frames $X_1^\alpha,\ldots,X_n^\alpha$ over $U_\alpha$. We define the local trivialisations for the bundle by 
+        \begin{align*}
+            \phi_\alpha \colon U_\alpha \times \mathrm{GL}(n) &\to p^{-1}(U_\alpha) \\
+            (x,A) &\mapsto \left(\sum_{i=1}^n a_{i1}X_i^\alpha(x),\ldots,\sum_{i=1}^n a_{in}X_i^\alpha(x)\right),
+        \end{align*}
+        where $A = (a_{ij})$, i.e. $\phi_\alpha(x,A)$ is the basis of $E_x$, whose coordinates in the frame $(X_i^\alpha)$ are precisely the columns of the matrix $A$. Clearly $\phi_\alpha$ is a bijection. Moreover for $x \in U_\alpha \cap U_\beta$ we have 
+        \[
+        (\phi_\alpha^{-1} \circ \phi_\beta)(x,A) = (x,\tau_{\alpha,\beta}(x)A),
+        \]
+        where $\tau_{\alpha,\beta}(x) \in \mathrm{GL}(n)$ is the change of basis matrix from $(X_i^\beta(x))$ to $(X_i^\alpha(x))$, which depends continuously on $x$. So applying Theorem \ref{thm:fiber_bundle_construction2} we can see $\mathrm{GL}(E)$ as principal $\mathrm{GL}(n)$-bundle over $B$. Using Theorem \ref{thm:fiber_bundle_construction2_smooth} the same construction works in the smooth category. It is interesting to note that $E$ is trivial if and only if $\mathrm{GL}(E)$ admits a global section.
+        
+        If $E$ carries a fiber metric we may similiarly construct the \textbf{orthonormal frame bundle} $O(M)$ as a principal $\mathrm{O}(n)$-bundle and if $E$ is oriented we can construct the \textbf{oriented frame bundle} $\mathrm{GL^+}(M)$ as a principal $\mathrm{GL^+}(n)$-bundle. Of course we can also combine the two to get the \textbf{oriented orthonormal frame bundle} $\mathrm{SO}(M)$.
+     \end{example}
+
+     Given a fiber bundle, Theorem \ref{thm:fiber_bundle_construction1} allows to change the fiber:
 
     \begin{corollary}[Changing the fiber]
+        \label{fiber_bundles:cor:changing_fiber}
         Let $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ be a fiber bundle with structure group $G$. Given a space $F^\prime$ upon which $G$ acts effectively, there exists a unique fiber bundle 
         \[
         F^\prime \hookrightarrow E^\prime \oset[3pt]{\scalebox{0.8}{$p^\prime$}}{\longrightarrow} B
@@ -271,7 +293,15 @@ For convencience, let us state the definition of a fiber bundle.
         which has the same trivialising neighbourhoods $(U_\alpha)$ and the same transition functions $(\tau_{\alpha,\beta})$ as $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$.
     \end{corollary}
 
-    Theorem \ref{thm:fiber_bundle_construction1} tells us, that the new bundle still retains all of the information of the old bundle, as it is uniquely determined by the transition functions.
+    Theorem \ref{thm:fiber_bundle_construction1} tells us, that the new bundle still retains all of the information of the old bundle, as it is uniquely determined by the transition functions, i.e. we can simply change the fiber again to get the original bundle back.
+
+    \begin{example}
+         Given any fiber bundle $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ with structure group $G$ we can apply the above corollary with $F^\prime := G$ upon which $G$ acts effectively by left-translations to get a principal $G$-bundle over $B$. This bundle is called the \textbf{underlying principal bundle} of $E \to B$.
+    \end{example}
+
+    \begin{example}
+        Using the above corollary we can also construct the frame bundle from Example \ref{fiber_bundles:example:frame_bundle} more abstractly by defining it as the underlying principal bundle of $E \to F$. Note that the uniqueness results in Theorem \ref{thm:fiber_bundle_construction1} shows, that the bundle constructed in this way is in fact isomorphic to $\mathrm{GL}(E)$. The construction in Example \ref{fiber_bundles:example:frame_bundle} of course has the benefit of being more concrete.
+    \end{example}
 
     \subsection{Smooth bundles}
 
@@ -298,7 +328,7 @@ For convencience, let us state the definition of a fiber bundle.
         \[
         (\phi_\alpha \circ (h_\alpha \times k_i) \colon W_\alpha \times W_i^F \to E)_{i,\alpha}
         \]
-        defines a smooth atlas for $E$, since the maps $\phi_\alpha^{-1} \circ \phi_\beta$ are diffeomorphisms. It is then easy to verify, that this atlas satisifies the first countability and Hausdorff axioms. Furthermore, this smooth structure is uniquely determined by requiring the local trivialisations to be diffeomorphisms.
+        defines a smooth atlas for $E$, since the maps $\phi_\alpha^{-1} \circ \phi_\beta$ are diffeomorphisms. It is then easy to verify, that this atlas satisifies the second countability and Hausdorff axioms. Furthermore, this smooth structure is uniquely determined by requiring the local trivialisations to be diffeomorphisms.
     \end{proof}
 
     \begin{theorem}[Fiber bundle construction $\mathrm{B}^\prime$]
