@@ -1,0 +1,16 @@
+\subsection{$L^p$ and Sobolev Spaces}
+
+The partial integration rule for $C^1$-functions on open subsets of $\R^n$ is shown using Gauß's Theorem, which in turn motivates the definition of weakly differentiable functions for which the partial integration rule holds by definition. Interestingly this is enough to proof Gauß's Theorem for weakly differentiable functions.
+
+\begin{theorem}[Gauß's Theorem]
+    Let $U \subseteq \R^n$ be open and $\Omega \subseteq U$ a compact smooth manifold with boundary of codimension $0$ with outer unit normal field $\nu \colon \partial\Omega \to \R^n$. Given a weakly differentiable continuous vector field $\xi \in L_{\mathrm{loc}}^1(U,\R^n) \cap C^0(U,\R^n)$ with $\partial_i\xi \in L_{\mathrm{loc}}^1(U,\R^n)$ for $1 \leq i \leq n$, the following holds 
+    \[
+    \int_{\Omega}\mathrm{div}(\xi)\mathrm{vol_{\Omega}} = \int_{\partial\Omega}\langle\xi,\nu\rangle \mathrm{vol}_{\partial\Omega}.
+    \]
+\end{theorem}
+
+\begin{remark}
+    By the Sobolev embedding Theorems, the conditions on $\xi$ are for example satisfied if $\xi \in W^{k,p}(U,\R^n)$ for $pk > n$.
+\end{remark}
+
+\headline{On two equivalent definitions of $L^p(U,\R^n)$}
