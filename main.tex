@@ -23,6 +23,11 @@
 \usepackage{needspace}
 \usepackage{xfrac}
 
+% Needed for \reallywidetilde command
+\usepackage{scalerel}
+\usepackage{stackengine}
+
+
 %Prevents footnotes from breaking across pages
 \interfootnotelinepenalty=10000
 
@@ -61,6 +66,11 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\N}{\mathbb{N}}
+
+%makes a wider tilde symbol, the second argument dictates the width
+\newcommand{\reallywidetilde}[2]{
+  \stackon[-5.5pt]{$#1$}{\vstretch{1.1}{\hstretch{#2}{\widetilde{\phantom{\;}}}}}
+}
 
 %Theorems, lemmas etc.
 \newtheorem{theorem}{Theorem}[section]

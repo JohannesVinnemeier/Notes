@@ -88,7 +88,7 @@ Using the notation introduced at the beginning of the section we can use the abo
 \begin{proof}
     To ensure clarity, we will be more precise with the notation in this proof, as explained at the beginning of the section. Let $X,Y \in \mathscr{X}(M)$ be of the form $X=\tilde{X}_1+\tilde{X}_2, Y=\tilde{Y}_1+\tilde{Y}_2$, where $X_i,Y_i \in \mathscr{X}(M_i)$. By Proposition \ref{riem_mnf:prop:product_connections} it suffices to show that the Levi Civita connection satisfies
     \[
-    \nabla_XY = \widetilde{\nabla^1_{X_1}Y_1} + \widetilde{\nabla^2_{X_2}Y_2}.
+    \nabla_XY = \reallywidetilde{\nabla^1_{X_1}Y_1}{5} + \reallywidetilde{\nabla^2_{X_2}Y_2}{5}.
     \]
     We would like to use the Koszul formula to compute $\nabla_XY$ and begin by simplifying some of the terms involved in this formula. For $Z \in \mathscr{X}(M_1), W \in \mathscr{X}(M_2)$ we claim that 
     \[
@@ -113,11 +113,46 @@ Using the notation introduced at the beginning of the section we can use the abo
     \[
     \frac{\partial \tilde{f}^i}{\partial y^j} =0,
     \]
-    such that $[\tilde{Z},\tilde{W}] = 0$ follows. The Koszul formula now reads 
+    such that $[\tilde{Z},\tilde{W}] = 0$ follows. For $Z$ as above the Koszul formula now reads 
     \begin{align}
         g(\nabla_XY,\tilde{Z}) &= \frac{1}{2}\Big(Xg(Y,\tilde{Z}) + Yg(\tilde{Z},X) - \tilde{Z}g(X,Y) \notag \\
         &\phantom{=} - g(Y,[X,\tilde{Z}]) - g(\tilde{Z},[Y,X]) + g(X,[\tilde{Z},Y])\Big) \notag \\
         &= \frac{1}{2}\Big(\tilde{X}_1g(\tilde{Y}_1,\tilde{Z}) + \tilde{Y}_1g(\tilde{Z},\tilde{X}_1) - \tilde{Z}g(\tilde{X}_1,\tilde{Y}_1) \notag \\
         &\phantom{=} - g(\tilde{Y}_1,[\tilde{X}_1,\tilde{Z}]) - g(\tilde{Z},[\tilde{Y}_1,\tilde{X}_1]) + g(\tilde{X}_1,[\tilde{Z},\tilde{Y}_1])\Big) \label{riem_mnf:eq:koszul1}
     \end{align}
+    Besides the claim about the Lie bracket shown above we have further used, that $g(Y,\tilde{Z}) = g(\tilde{Y}_1,\tilde{Z})$ is constant in the $M_2$-direction, such that $\tilde{X}_2\,g(\tilde{Y}_1,\tilde{Z}) = 0$, hence 
+    \[
+    Xg(Y,\tilde{Z}) = \tilde{X}_2\,g(\tilde{Y}_1,\tilde{Z}).
+    \]
+    An analogous statement holds for the second and third term. Moreover $[\tilde{X}_1,\tilde{Z}] = \reallywidetilde{[X,Z]}{4.5}$, such that $g(\tilde{Y}_2,[\tilde{X}_1,\tilde{Z}]) = 0$, hence 
+    \[
+    g(Y,[X,\tilde{Z}]) = g(\tilde{Y}_1,[\tilde{x}_1,\tilde{Z}]).
+    \]
+    Again analogous statements hold for the last two terms. Applying the Koszul formula to $\nabla^1_{X_1}Y_1$ we get  
+    \begin{align}
+        g_1(\nabla^1_{X_1}Y_1,Z) &= \frac{1}{2}\Big(X_1g_1(Y_1,Z) + Y_1g_1(Z,X_1) - Zg_1(X_1,Y_1) \notag \\
+        &\phantom{=} - g_1(Y_1,[X_1,Z]) - g_1(Z,[Y_1,X_1]) + g_1(X_1,[Z,Y_1])\Big) \label{riem_mnf:eq:koszul2}
+    \end{align}
+    To compare this expression to (\ref{riem_mnf:eq:koszul1}) we note the following identities for $U,V \in \mathscr{X}(M_1)$ and $f \in C^\infty(M_1)$:
+    \[
+    g(\tilde{U},\tilde{V}) = \reallywidetilde{g_1(U,V)}{6}
+    \]
+    just by definition of $g$ and 
+    \[
+    \tilde{V}\tilde{f} = \widetilde{Vf}.
+    \]
+    So (\ref{riem_mnf:eq:koszul1}) and (\ref{riem_mnf:eq:koszul2}) now yield 
+    \[
+    g(\nabla_XY,\tilde{Z}) = \reallywidetilde{g_1(\nabla^1_{X_1}Y_1,Z)}{9} = g(\reallywidetilde{\nabla^1_{X_1}Y_1}{5},\tilde{Z}).
+    \]
+    Similiarly we get for $W \in \mathscr{X}(M_2)$
+    \[
+    g(\nabla_XY,\tilde{Z}) = g(\reallywidetilde{\nabla^2_{X_2}Y_2}{5},\tilde{W}).
+    \]
+    Together this implies
+    \[
+    g(\nabla_XY,\tilde{Z}+\tilde{W}) = g(\reallywidetilde{\nabla^1_{X_1}Y_1}{5} + \reallywidetilde{\nabla^2_{X_2}Y_2}{5},\tilde{Z}+\tilde{W}).
+    \]
+    From which the assertion follows.
+
 \end{proof}
