@@ -19,9 +19,9 @@ for $(p_1,p_2) \in M$. Moreover for a smooth function $f \in C^\infty(M_1)$ we d
 \[
 \tilde{f}:= f \circ \pi_1 \in C^\infty(M),
 \]
-where $\pi_1 \colon M \to M_1$ denotes the projection. The same notation is used for vector fields and smooth functions on $M_2$ So to be precise, equation (\ref{riem_mnf:eq:product_metric}) should read 
+where $\pi_1 \colon M \to M_1$ denotes the projection. The same notation is used for vector fields and smooth functions on $M_2$. So to be precise, equation (\ref{riem_mnf:eq:product_metric}) should read 
 \[
-g(\tilde{X}_1+\tilde{X}_2,\tilde{Y}_1+\tilde{Y}_2) = \widetilde{\mathit{g_1(X_1,Y_1)}} + \widetilde{\mathit{g_2(X_2,Y_2)}}.
+g(\tilde{X}_1+\tilde{X}_2,\tilde{Y}_1+\tilde{Y}_2) = \reallywidetilde{\mathit{g_1(X_1,Y_1)}}{7} + \reallywidetilde{\mathit{g_2(X_2,Y_2)}}{7}.
 \]
 For the sake of notational simplicity we will often suppress these subtleties, if there is no risk of confusion and only write $X_1 + X_2$ instead of $\tilde{X}_1+\tilde{X}_2$ or $f$ instead of $\tilde{f}$. It should always be clear from the context what is meant. Let us moreover denote by $\nabla^1,D_t^1,\mathrm{Rm}_1,\mathrm{Ric}_1,\mathrm{scal}_1$ the Levi-Civita connection, covariant derivative along curves, Riemannian curvature tensor, Ricci tensor and scalar curvature of $(M_1,g_1)$ respectively. Similiarly we denote the same objects on $(M_2,g_2)$ by $\nabla^2,D_t^2,\mathrm{Rm}_2,\mathrm{Ric}_2,\mathrm{scal}_2$ and on $(M,g)$ simply by $\nabla,D_t,\mathrm{Rm},\mathrm{Ric},\mathrm{scal}$. Finally we define $m_1 := \mathrm{dim}(M_1)$ and $m_2 := \mathrm{dim}(M_2)$.
 
@@ -79,6 +79,7 @@ Of course our first step will be to compute $\nabla$ in terms of $\nabla^1$ and 
 Using the notation introduced at the beginning of the section we can use the above proposition to get the following result.
 
 \begin{proposition}
+    \label{riem_mnf:prop:levi_civita}
     The Levi-Civita connection $\nabla$ on $(M,g)$ is given by
     \[
     \nabla = \nabla^1 \times \nabla^2.
@@ -156,3 +157,94 @@ Using the notation introduced at the beginning of the section we can use the abo
     From which the assertion follows.
 
 \end{proof}
+
+Knowing the Levi-Civita connection on $M$, it is now easy to compute the curvature, which behaves just as expected.
+
+\begin{corollary}
+    Let $X = X_1 + X_2,\, Y = Y_1 + Y_2, \,Z = Z_1 + Z_2,\, W = W_1 + W_2$ be smooth vector fields on $M$, where $X_i,Y_i,Z_i,W_i \in \mathscr{X_i}$. Then the following holds
+    \begin{enumerate}[(i)]
+        \item $\mathrm{Rm}(X,Y,Z,W) = \mathrm{Rm}_1(X_1,Y_1,Z_1,W_1) + \mathrm{Rm}_2(X_2,Y_2,Z_2,W_2)$
+        \item $\mathrm{Ric}(X,Y) = \mathrm{Ric}_1(X_1,Y_1) + \mathrm{Ric}_2(X_2,Y_2)$
+        \item $\mathrm{scal} = \mathrm{scal}_1 + \mathrm{scal}_2$
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+    By Proposition \ref{riem_mnf:prop:levi_civita}
+    \[
+    \nabla_X\nabla_YZ = \nabla_X(\nabla^1_{Y_1}Z_1 + \nabla^2_{Y_2}Z_2) = \nabla_{X_1}^1\nabla^1_{Y_1}Z_1 + \nabla_{X_2}^2\nabla^2_{Y_2}Z_2.
+    \]
+    An analogous equation holds for $\nabla_Y\nabla_XZ$. Moreover
+    \[
+    [X,Y] = [X_1,Y_1] + [X_2,Y_2]
+    \]
+    as we have seen in the proof of Proposition \ref{riem_mnf:prop:levi_civita}, such that 
+    \[
+    \nabla_{[X,Y]}Z = \nabla^1_{[X_1,Y_1]}Z_1 +  \nabla^2_{[X_2,Y_2]}Z_2.
+    \]
+    Then $(i)$ follows from the definition of Rm and the product metric $g$. For $(ii)$ write 
+    \[
+    \mathrm{Ric}(X,Y) = \sum_{i=1}^{m_1} \mathrm{Rm}(X,E_i^1,E_i^1,Y) + \sum_{j=1}^{m_2} \mathrm{Rm}(X,E_j^2,E_j^2,Y)
+    \]
+    for local orthonormal frames $E_1^1,\ldots,E_{m_1}^1$ of $TM_1$ and $E_2^2,\ldots,E_{m_2}^2$ of $TM_2$. By $(i)$
+    \begin{align*}
+        \mathrm{Rm}(X,E_i^1,E_i^1,Y) &= \mathrm{Rm}_1(X_1,E_i^1,E_i^1,Y_1) + \mathrm{Rm}_2(X_2,0,0,Y_2)\\
+        &= \mathrm{Rm}_1(X_1,E_i^1,E_i^1,Y_1).
+    \end{align*}
+    An analogous statement holds for the second term, such that 
+    \begin{align*}
+        \mathrm{Ric}(X,Y) &= \sum_{i=1}^{m_1} \mathrm{Rm}_1(X_1,E_i^1,E_i^1,Y_1) + \sum_{j=1}^{m_2} \mathrm{Rm}_2(X_2,E_j^2,E_j^2,Y_2) \\
+        &= \mathrm{Ric}_1(X_1,Y_1) + \mathrm{Ric}_2(X_2,Y_2).
+    \end{align*}
+    Finally $(iii)$ follows from $(ii)$ in the same way.
+\end{proof}
+
+Finally we compute the covariant derivative along curves and geodesics of $M$, which again behave in exactly the way one would expect. 
+
+\begin{corollary}
+    \label{riem_mnf:cor:covariant_derivative_curves}
+    Let $\gamma = (\gamma_1,\gamma_2) \colon I \to M$ be a smooth curve and $V \colon I \to \gamma^\ast TM \cong \gamma_1^\ast TM_1 \oplus \gamma_2^\ast TM_2$ a smooth vector field along $\gamma$. Write $V= V_1 + V_2$ for $V_i \colon I \to \gamma_i^\ast TM$. Then 
+    \[
+    D_tV = D_t^1V_1 + D_t^2V_2.
+    \]
+\end{corollary}
+
+\begin{proof}
+    As in the proof of Proposition \ref{riem_mnf:prop:levi_civita}, we will take some care with the notation in this proof. To show the statement we compute both sides locally. To this end let $E_1^1,\ldots,E_{m_1}^1$ be a local frame of $TM_1$ and $E_2^2,\ldots,E_{m_2}^2$ a local frame of $TM_2$. Write 
+    \[
+    V_1(t) = V_1^i(t) E_i^1|_{\gamma_1(t)}
+    \]
+    and 
+    \[
+    V_2(t) = V_2^j(t) E_j^2|_{\gamma_2(t)}.
+    \]
+    Then 
+    \[
+    V(t) = V_1^i(t) \tilde{E}_i^1|_{\gamma(t)} + V_2^j(t) \tilde{E}_j^2|_{\gamma(t)}
+    \]
+    and hence 
+    \begin{align*}
+        D_tV & = \dot{V}_1^i(t)\tilde{E}_i^1|_{\gamma(t)} + V_1^i(t)\nabla_{\dot{\gamma}(t)}\tilde{E}_i^1 \\[.3em]
+        &\phantom{=}+ \dot{V}_2^j(t)\tilde{E}_j^2|_{\gamma(t)} + V_2^j(t)\nabla_{\dot{\gamma}(t)}\tilde{E}_j^2.
+    \end{align*}
+Moreover 
+\[
+D_t^1V_1 = \dot{V}_1^i(t)E_i^1|_{\gamma_1(t)} + V_1^i(t)\nabla^1_{\dot{\gamma}_1(t)}E_i^1
+\]
+and similiarly for $D_t^2V_2$. By Proposition \ref{riem_mnf:prop:levi_civita}
+\[
+\nabla_{\dot{\gamma}(t)}\tilde{E}_i^1 = \reallywidetilde{\nabla^1_{\dot{\gamma}_1(t)}E_i^1}{6} \quad \text{ and } \quad \nabla_{\dot{\gamma}(t)}\tilde{E}_j^2 = \reallywidetilde{\nabla^2_{\dot{\gamma}_2(t)}E_j^2}{6}
+\]
+and thus 
+\[
+D_tV = \reallywidetilde{D_t^1V_1}{4} + \reallywidetilde{D_t^2V_2}{4}.
+\]
+\end{proof}
+
+\begin{corollary}
+    Let $\gamma = (\gamma_1,\gamma_2) \colon I \to M$ be a smooth curve. Then $\gamma$ is a geodesic if and only if $\gamma_1$ and $\gamma_2$ are geodesics.
+\end{corollary}
+\begin{proof}
+   This now follows immediately form the formula from Corollary \ref{riem_mnf:cor:covariant_derivative_curves}.
+\end{proof}
+

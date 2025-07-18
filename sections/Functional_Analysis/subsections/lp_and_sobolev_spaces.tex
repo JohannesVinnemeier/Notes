@@ -3,6 +3,7 @@
 The partial integration rule for $C^1$-functions on open subsets of $\R^n$ is shown using Gauß's Theorem, which in turn motivates the definition of weakly differentiable functions for which the partial integration rule holds by definition. Interestingly this is enough to proof Gauß's Theorem for weakly differentiable functions.
 
 \begin{theorem}[Gauß's Theorem]
+    \label{funkana:thm:gauß}
     Let $U \subseteq \R^n$ be open and $\Omega \subseteq U$ a compact smooth manifold with boundary of codimension $0$ with outer unit normal field $\nu \colon \partial\Omega \to \R^n$. Given a weakly differentiable continuous vector field $\xi \in L_{\mathrm{loc}}^1(U,\R^n) \cap C^0(U,\R^n)$ with $\partial_i\xi \in L_{\mathrm{loc}}^1(U,\R^n)$ for $1 \leq i \leq n$, the following holds 
     \[
     \int_{\Omega}\mathrm{div}(\xi)\mathrm{vol_{\Omega}} = \int_{\partial\Omega}\langle\xi,\nu\rangle \mathrm{vol}_{\partial\Omega}.
@@ -12,5 +13,139 @@ The partial integration rule for $C^1$-functions on open subsets of $\R^n$ is sh
 \begin{remark}
     By the Sobolev embedding Theorems, the conditions on $\xi$ are for example satisfied if $\xi \in W^{k,p}(U,\R^n)$ for $pk > n$.
 \end{remark}
+
+\begin{proof}[Proof of Theorem \ref{funkana:thm:gauß}]
+    The idea of the proof is to construct a particular sequence of cutoff functions 
+    \[
+    \phi_k \colon U \to \R,
+    \]
+    which will allow us to approximate both sides of the equation and at the same time lets us relate them by the partial integration rule for $\xi$. We begin by extending $\nu$ arbitarily to a smooth vector field $\tilde{\nu}$ on all of $U$. Since $\partial \Omega$ is compact, there exists $\epsilon > 0$, such that the integral curves of $-\tilde{\nu}$ starting at points in $\partial \Omega$ are defined on $(-\epsilon,\epsilon)$. Hence we can define the following bicollar neighbourhood of $\partial \Omega$ using the flow of $-\tilde{\nu}$:
+    \begin{align*}
+        \Psi \colon \partial \Omega \times (-\epsilon,\epsilon) &\to U \\
+        (x,t) &\mapsto \gamma_x(t),
+    \end{align*}
+    where $\gamma_x(t)$ is the integral curve of $-\tilde{\nu}$ with $\gamma_x(0) = x$. We will now use this bicollar neighbourhood to construct $\phi_k$ out of cutoff functions $\lambda_k \in C^\infty(\R)$, with the following properties 
+    \begin{enumerate}[(i)]
+        \item $\mathrm{supp}\lambda_k \subseteq (-\frac{1}{k},\frac{1}{k})$
+        \item $\int_{-\infty}^\infty \lambda_k = 1$
+        \item $\lambda_k(t) = \lambda_k(-t)$
+    \end{enumerate}
+    So $\lambda_k$ is a special kind of Dirac-sequence. The reason for this definition will become clear later. Define 
+    \[
+    \Lambda_k \colon \partial\Omega \times (-\epsilon,\epsilon) \to \R, \; (x,t) \mapsto \int_{-\infty}^{t} \lambda_k(s) ds.
+    \]
+    Note that for $k$ sufficiently large we have 
+    \[
+    \Lambda_k(x,t) = \begin{dcases}
+        1, & t > \frac{\epsilon}{3} \\
+        0, & t < \frac{\epsilon}{3}
+    \end{dcases}
+    \]
+    Moreover choosing $\epsilon$ sufficiently small we may assume, that $\Psi(\partial \Omega \times (0,\epsilon)) \subseteq \mathrm{int} \Omega$ and $\Psi(\partial \Omega \times (-\epsilon,0)) \subseteq U\setminus\Omega$ (here we need compactness of $\partial \Omega$ again). This now allows us to define the desired cutoff functions (for large $k$) as 
+    \[
+    \phi_k(y) := \begin{dcases}
+        \Lambda_k(\Psi^{-1}(y)), & y \in \mathrm{im}\Psi \\
+        1, & y \in \mathrm{int}\Omega \setminus \Psi\left(\partial \Omega \times \left[0,\frac{\epsilon}{2}\right]\right) \\
+        0, & y \in (U\setminus\Omega) \setminus \Psi\left(\partial \Omega \times \left[-\frac{\epsilon}{2},0\right]\right)
+    \end{dcases}
+    \]
+    By construction $\phi_k \in C_c^\infty(U)$, since $\Omega$ is compact and as $k \to \infty$
+    \[
+    \phi_k(y) \to \chi_\Omega(y) := \begin{dcases}
+        1, & y \in \Omega \\
+        0, & y \notin \Omega
+    \end{dcases}
+    \]
+    for almost all $y \in U$ (for $y \in \partial \Omega = \Psi(\partial \Omega \times \{0\})$ we have $\phi_k(y) = \frac{1}{2}$ for all $k$). By definition of weak differentiablity we now get\footnote{For better readibility we will sometimes not write the volume forms $\mathrm{vol}_\Omega$ and $\mathrm{vol}_{\partial \Omega}$ in the integrals}
+    \begin{equation}
+        \label{funkana:eq:gauß_eq1}
+        \int_U \mathrm{div}(\xi) \phi_k  = - \sum_{i=1}^{n} \int_U \xi_i\, \partial_i\phi_k = - \int_U\langle \xi, \nabla\phi_k \rangle.
+    \end{equation}
+    Since $\partial_i\xi_i \in L_{\mathrm{loc}}^1(U)$ we can use the dominated convergence theorem to conclude that the left hand side converges to 
+    \[
+    \int_\Omega \mathrm{div}(\xi)
+    \]
+    as $k\to\infty$. To show convergence of the right hand side to 
+    \[
+    \int_{\partial \Omega} \langle \xi,\nu\rangle
+    \]
+    we will have to analyze this term more closely, which is where our very deliberate construction of $\phi_k$ comes into play. We begin by computing the gradient $\nabla\phi_k$. Let 
+    \[
+    \beta_k \colon U \to \R, \; y \mapsto \begin{dcases}
+        \lambda_k(t), & y = \Psi(x,t) \\
+        0 , & \mathrm{otherwise}
+    \end{dcases}
+    \] 
+    Again for $k$ sufficiently large this is a well defined smooth function. Moreover let 
+    \[
+    \pi \colon \mathrm{im}(\Psi) \to \R, \; \Psi(x,t) \mapsto t.
+    \]
+    We now claim that 
+    \[
+    \nabla \phi_k = \beta_k \nabla \pi
+    \]
+    where the right hand side is to be understood to vanish outisde of $\mathrm{im}(\Psi)$, so clearly equality holds outside of $\mathrm{im}(\Psi)$. Note that $\Lambda_k$ is the composition of the projection $\partial \Omega \times (-\epsilon,\epsilon) \to (-\epsilon,\epsilon) $ with the map 
+    \[
+    t \mapsto \int_{-\infty}^t\lambda_k(s) ds,
+    \]
+    so for $y = \Psi(x,t)$ we get by the chain rule 
+    \[
+    d_y\phi_k = d_{(x,t)} \Lambda_k \circ d_y\Psi^{-1} = \lambda_k(t) d_y\pi.
+    \]
+    Since $\lambda_k(t) = \beta_k(y)$ the assertion follows. Furthermore for $y \in \partial\Omega$ and $\tau \in T_y\partial\Omega$ we have 
+    \[
+    d_y\pi(\tau) = 0
+    \] 
+    and 
+    \[
+    d_y\pi(-\nu(y)) = d_y\pi(\dot{\gamma}_y(0)) = 1,
+    \]
+    such that $\nabla \pi = - \nu$ on $\partial \Omega$. We can now compute the right hand side of (\ref{funkana:eq:gauß_eq1}) as
+    \begin{equation}
+        \label{funkana:eq:gauß_eq2}
+        \int_U\langle\xi ,\nabla\phi_k\rangle \mathrm{vol}_U = \int_{\mathrm{im}\Psi} \langle \xi,\nabla\pi \rangle \beta_k \mathrm{vol}_{\mathrm{im}\Psi} = \int_{\partial \Omega \times (-\epsilon,\epsilon)} (\langle \xi,\nabla \pi \rangle \circ \Psi) (\beta_k \circ \Psi) \Psi^\ast\mathrm{vol}_{\mathrm{im}\Psi}
+    \end{equation}
+    Write $$\Psi^\ast\mathrm{vol}_{\mathrm{im}\Psi} = \mu \mathrm{vol}_{\partial \Omega \times (-\epsilon,\epsilon)}$$ for a smooth function $\mu \in C^\infty(\partial \Omega \times (-\epsilon,\epsilon))$. By construction 
+    \[
+    d_{(y,0)}\Psi \left(\frac{\partial}{\partial t}\right) = -\nu(y)
+    \]
+    and $d_{(y,0)}\Psi(\tau) = \tau$ for all $\tau \in T_y\partial \Omega$. It follows that $\mu(y,0) = 1$ (if we choose the orientation on $\partial \Omega$ correctly). \needspace{3em}
+    \noindent Write 
+    \[
+    f := (\langle \xi,\nabla \pi \rangle \circ \Psi)\mu \colon \partial \Omega \times (-\epsilon,\epsilon) \to \R.
+    \]
+    Then (\ref{funkana:eq:gauß_eq2}) becomes 
+    \begin{equation}
+        \label{funkana:eq:gauß_eq3}
+        \int_{\partial \Omega \times (-\epsilon,\epsilon)} f (\beta_k \circ \Psi) \mathrm{vol}_{\partial \Omega \times (-\epsilon,\epsilon)} = \int_{-\epsilon}^{\epsilon}\int_{\partial\Omega}f(-,t)\lambda_k(t) \mathrm{vol}_{\partial \Omega} dt
+    \end{equation}
+    Let 
+    \[
+    \rho(t) := \int_{\partial\Omega}f(-,t) \mathrm{vol}_{\partial \Omega}.
+    \]
+    Since $\partial \Omega$ is compact and $f$ is continuous (here our assumption $\xi \in C^0(U,\R^n)$ finally comes into play) it follows that $\rho$ is continuous as well. Using this we can simplify (\ref{funkana:eq:gauß_eq3}):
+    \begin{equation}
+        \label{funkana:eq:gauß_eq4}
+        \int_{-\epsilon}^{\epsilon} \lambda_k(t)\rho(t) dt = \int_{-\epsilon}^{\epsilon} \lambda_k(-t)\rho(t) dt
+    \end{equation}
+    For large $k$ this integral only depends on the values of $\rho$ near $0$, so using a cutoff function we may assume that $\rho$ is a continuous bounded function defined on all of $\R$. Then finally we can write (\ref{funkana:eq:gauß_eq4}) as 
+    \[
+    \int_{-\infty}^{\infty}\lambda_k(-t)\rho(t) dt = (\rho \ast \lambda_k)(0),
+    \]  
+    where $\rho \ast \lambda_k$ denotes the convolution. Since $\lambda_k$ is a Dirac-sequence it follows from \cite{schmidt_ana3} Theorem 4.16. (ii), that 
+    \[
+    (\rho \ast \lambda_k)(0) \to \rho(0)
+    \]
+    as $k\to \infty$. Hence we have shown, that the right hand side of (\ref{funkana:eq:gauß_eq1}) converges to 
+    \[
+    -\rho(0) = -\int_{\partial\Omega}f(-,0)\mathrm{vol}_{\partial\Omega}.
+    \]
+    But $\mu(y,0) = 1$ and $\nabla\pi(y) = - \nu(y)$ for $y \in \partial\Omega$, so by definition of $f$
+    \[
+    f(y,0) = -\langle \xi(y),\nu(y) \rangle,
+    \]
+    from which the theorem follows.
+    
+\end{proof}
 
 \headline{On two equivalent definitions of $L^p(U,\R^n)$}
