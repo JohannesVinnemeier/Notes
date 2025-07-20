@@ -149,3 +149,43 @@ The partial integration rule for $C^1$-functions on open subsets of $\R^n$ is sh
 \end{proof}
 
 \headline{On two equivalent definitions of $L^p(U,\R^n)$}
+
+Let $U \subseteq \R^n$ be open. Starting with the space $L^p(U)$ of real valued $L^p$ functions, there are two possible defintions for the space $L^p(U,\R^k)$ of $\R^k$ valued $L^p$ functions. The first definition requires each component function to be $L^p$:
+
+\begin{definition}
+    $L^p(U,\R^k) := \{f \colon U \to \R^k \text{ measurable } \mid f_i \in L^p(U) \text{ for all } 1 \leq i \leq k\}$
+\end{definition}
+
+The second definition is more similar to the definition of $L^p(U)$:
+
+\begin{definition}
+    $L^p(U,\R^k) := \{ f\colon U \to \R^k \text{ measurable } \mid ||f|| \in L^p(U) \}$
+\end{definition}
+
+These definitions are however equivalent (as one would certainly hope). To see this we compute for a measurable function $f \colon U \to \R^k$:
+\[
+    ||f_i||_p^p = \int_U |f_i|^p d\lambda \leq \int_U \sqrt{|f_1|^2 + \ldots + |f_k|^2}^{\,p} d\lambda = \int_U ||f||^p d\lambda
+\]
+and 
+\[
+\int_U ||f||^p d\lambda \leq \int_U (|f_1| + \ldots + |f_k|)^p d\lambda \leq \frac{1}{k} \sum_{i=1}^{k} \int_U |f_i|^p d\lambda,
+\]
+where we used the fact that 
+\[
+a^2 + b^2 \leq (a+b)^2
+\]
+for $a,b \geq 0$ in the first inequality and made use of Jensen's inequality in the second inequality. We may also define two norms on $L^p(U,\R^k)$ corresponding to the two definitons:
+\begin{enumerate}
+    \item $||f||_{p,1} := \sum_{i=1}^{k} ||f_i||_p$
+    \item $||f||_{p,2} := || \,||f||\, ||_p =\left( \int_U ||f||^p d\lambda\right)^{\frac{1}{p}}$
+\end{enumerate} 
+Again these norms turn out to be equivalent, which can be seen by a similar computation as above:
+\[
+||f||_{p,1} \leq \sum_{i=1}^{k}\left( \int_U ||f||^p d\lambda\right)^{\frac{1}{p}} = k ||f||_{p,2}
+\]
+and conversely 
+\begin{align*}
+    ||f||_{p,2} &\leq \left(\left(\frac{1}{k}\right)\sum_{i=1}^{k} \int_U |f_i|^p d\lambda\right)^{\frac{1}{p}} = \left(\frac{1}{k}\right)^{\frac{1}{p}} \left( \sum_{i=1}^{k} ||f_i||_p^p\right)^{\frac{1}{p}} \\
+    &\leq \left(\frac{1}{k}\right)^{\frac{1}{p}}\left( \sum_{i=1}^{k} \max_{1\leq i\leq k} ||f_i||_p^p\right)^{\frac{1}{p}} =\max_{1\leq i\leq k} ||f_i||_p \leq \sum_{i=1}^{k} ||f_i||_p = ||f||_{p,1}.
+\end{align*}
+Note that for $p=2$ the second norm is the one induced by the $L^2$-scalar product on $L^2(U,\R^k)$.
