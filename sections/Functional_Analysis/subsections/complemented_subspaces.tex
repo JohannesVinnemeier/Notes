@@ -1,0 +1,56 @@
+\subsection{Complemented Subspaces}
+
+Given a vector space $X$ and a subspace $X_0 \subseteq X$ we may want to decompose $X$ as the direct sum of $X_0$ and some other subspace $X_1 \subseteq X$. More precisely this means that the canonical map 
+\[
+X_0 \oplus X_1 \to X
+\]
+induced by the inclusions $X_i \hookrightarrow X$ should be an isomorphism. In the category of vector spaces this is of course always possible and we call $X_1$ and \textbf{algebraic complement} of $X_0$. However the situation looks quite a bit different in the category of topological vector spaces, where such $X_1$ may not always exist. If it exists we call $X_1$ a \textbf{topological complement} of $X_0$ and the space $X_0$ \textbf{complemented}. The following Lemma gives a characterization for when an algebraic complement is also a topological complement (at least in the case of Banach spaces).
+
+\begin{lemma}
+    \label{funkana:lem:alg_vs_top_complement}
+    Let $X$ be a Banach space and $X_0,X_1 \subseteq X$ subspaces, where $X_1$ is an algebraic complement of $X_0$. Then $X_1$ is a topological complement of $X_0$ if and only if $X_0$ and $X_1$ are closed.
+\end{lemma}
+\begin{proof}
+    Clearly $X_0,X_1 \subseteq X_0 \oplus X_1$ are closed, so if $X$ is toplinearly isomorphic to $X_0 \oplus X_1$ they are also closed in $X$. On the contrary if $X_0$ and $X_1$ are closed, they are again Banach spaces and since we assume the canonical map 
+    \[
+    X_0 \oplus X_1 \to X
+    \]
+    to be a bijection it follows from the open mapping theorem that this map is already a toplinear isomorphism.
+\end{proof}
+
+Here are two simple sufficient conditions for the existence of topological complements. For a vector space $X$ and a subspace $X_0 \subseteq X$ we define its \textbf{codimension} by 
+\[
+\mathrm{codim}(X_0) := \mathrm{dim}\left(\modulo{X}{X_0}\right).
+\]
+
+\begin{lemma}
+    Let $X$ be a Banach space and $X_0 \subseteq X$ a subspace. The following two conditions are both sufficient for the existence of a topological complement of $X_0$: 
+    \begin{enumerate}[(i)]
+        \item $\mathrm{dim}(X_0) < \infty$
+        \item $\mathrm{codim}(X_0) < \infty$ and $X_0$ is closed
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    First assume $(i)$. Choose a basis $e_1,\ldots,e_n$ of $X_0$ and define linear maps $\phi_i \colon X_0 \to \R$ by 
+    \[
+    \phi_i(e_j) = \delta_{ij}.
+    \]
+    Since $X_0$ is finite dimensional the $\phi_i$ are continuous. So using the Hahn-Banach theorem we can extend them to continuous linear functionals $\Phi_i$ defined on all of $X$. Now set 
+    \[
+    X_1 := \{x \in X \mid \Phi_1(x) = \ldots = \Phi_n(x) = 0\}.
+    \]
+    Clearly $X_1\subseteq X$ is closed, so by Lemma \ref{funkana:lem:alg_vs_top_complement} we only have to show that $X_1$ is an algebraic complement of $X_0$. To this end let $x \in X$ be arbitary and define 
+    \[
+    x_0 := \sum_{i=1}^{n} \Phi_i(x)e_i \in X_0.
+    \]
+    Then $x_1 := x - x_0 \in X_1$ and $x = x_0 + x_1$. Finally observe that $X_0 \cap X_1 = 0$ from which the statement follows. 
+
+    For $(ii)$ we begin by choosing any algebraic complement $X_1$ of $X_0$. Since the restriction of the projection
+    \[
+    X \to \modulo{X}{X_0}
+    \]
+    to $X_1$ is an isomorphism, our assumption tells us that $X_1$ is finite dimensional and so in particular closed. Thus the statement follows again from Lemma \ref{funkana:lem:alg_vs_top_complement}.
+\end{proof}
+
+

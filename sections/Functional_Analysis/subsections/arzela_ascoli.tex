@@ -1,0 +1,108 @@
+\subsection{The Arzelà-Ascoli Theorem}
+
+In this section we give a quite general formulation of the Arzelà-Ascoli theorem. The proof we give here is a very straightforward generalization of the one found in \cite{werner2007funktionalanalysis}. Before stating the theorem let us recall two definitions. Given metric spaces $(X,d_X)$ and $(Y,d_Y)$ and a sequence $(f_n)_{n\in\N} \subseteq \mathrm{C}(X,Y)$ of continuous functions we say that $(f_n)_{n\in\N}$ is \textbf{pointwise relatively compact} if for all $x\in X$ the set 
+\[
+\{f_n(x) \mid n \in \N\} \subseteq Y
+\] 
+is compact, i.e. has compact closure. Moreover we call $(f_n)_{n\in\N}$ \textbf{uniformly equicontinuous} if for all $\epsilon>0$ there exists $\delta>0$, such that 
+\[
+f_n(B_\delta(x)) \subseteq B_\epsilon(f_n(x))
+\]
+for all $x\in X$ and $n\in \N$.
+
+\begin{theorem}[Arzelà-Ascoli]
+    \label{funkana:thm:arzela_ascoli}
+    Let $(X,d_X)$ be a compact metric space, $(Y,d_Y)$ a complete metric space and $(f_n)_{n\in\N} \subseteq \mathrm{C}(X,Y)$ a sequence of continuous functions, which is pointwise relatively compact and uniformly equicontinuous. Then there exists a subsequence that converges uniformly.
+\end{theorem}
+
+\begin{proof}
+    We begin by showing that any compact metric space is seperable. Since $X$ is compact the open cover 
+    \[
+    \{B_{\sfrac{1}{n}}(x)\}_{x\in X}
+    \]
+    of $X$ admits a finite subcover for any $n\in\N$. So there exist finitely many points $x_{n,1},\ldots,x_{n,k(n)} \in X$, such that 
+    \[
+    B_{\sfrac{1}{n}}(x_{n,1}),\ldots,B_{\sfrac{1}{n}}(x_{n,k(n)})
+    \]
+    covers $X$. Then the countable set 
+    \[
+    \bigcup_{n\in\N}\{x_{n,1},\ldots,x_{n,k(n)}\}.
+    \]
+    is easily seen to be dense. 
+    
+    With this fact at hand we can now actually proof the theorem. Let $x_1, x_2, \ldots \in X$ be a dense sequence. Using a diagonalization argument we first construct a subseqence of $(f_n)_{n\in\N}$ which converges pointwise at all $x_k$. By assumption 
+    \[
+    \{f_n(x_1) \mid n \in \N\} \subseteq Y
+    \]
+    is relatively compact, such that there exists a subseqence $(f_{k^1_n})_{n\in\N}$ of $(f_n)_{n\in\N}$ for which $(f_{k^1_n}(x_1))_{n\in\N}$ converges in $Y$. By the same argument we can find a subsequence $(f_{k^2_n})_{n\in\N}$ of $(f_{k^1_n})_{n\in\N}$ for which $(f_{k^2_n})_{n\in\N}(x_2)$ converges in $Y$ and so on. Then the sequence 
+    \[
+    g_n := f_{k_n^n}
+    \]
+    is a subsequence of $(f_n)_{n\in\N}$ for which $(g_n(x_k))_{n\in\N}$ converges in $Y$ for any $k\in\N$. 
+    
+    We now claim that $(g_n)_{n\in\N}$ is already a Cauchy sequence in $C(X,Y)$ with respect to the metric of uniform convergence. Since $Y$ is complete the same holds for $C(X,Y)$ thus proving the theorem. To show the claim let $\epsilon>0$ be arbitary. By uniform equicontinuity we can find $\delta>0$, such that 
+    \[
+    g_n(B_\delta(x)) \subseteq B_\epsilon(g_n(x))
+    \]
+    for all $x\in X$ and $n\in \N$. Using the fact that $x_1,x_2,\ldots$ is dense in the compact space $X$ we can find $N\in\N$, such that
+    \[
+    B_\delta(x_1),\ldots,B_\delta(x_N)
+    \]
+    cover $X$. Finally choose $L\in\N$, such that 
+    \[
+    d_Y(g_n(x_k),g_m(x_k)) < \epsilon
+    \]
+    for all $n,m \geq L$ and all $k=1,\ldots,N$. Then for arbitary $x\in X$ there exists some $1\leq k\leq N$ with $x\in B_\delta(x_k)$. So for $n,m \geq L$ we compute 
+    \[
+    d_Y(g_n(x),g_m(x)) \leq  d_Y(g_n(x),g_n(x_k)) +  d_Y(g_n(x_k),g_m(x_k)) +  d_Y(g_m(x_k),g_m(x)) < 3\epsilon
+    \]
+    The claim follows.
+\end{proof}
+
+Theorem \ref{funkana:thm:arzela_ascoli} is usually stated differently in the case $Y = \R^k$ by replacing the condition of pointiwse relative compactness with the stronger condition of \textbf{uniform boundedness}, i.e. there exists some constant $C>0$, such that 
+\[
+\max_{x\in X} |f_n(x)| < C
+\]
+for all $n\in \N$. Since this is usually easier to check in practice let us note this version of the theorem down as well. 
+
+\begin{theorem}[$\R^k$-valued Arzelà-Ascoli]
+    Let $(X,d_X)$ be a compact metric space and 
+    \[
+    f_n \colon X \to \R^k
+    \] 
+    a sequence of continuous functions, which is uniformly bounded and uniformly equicontinuous. Then there exists a subsequence that converges uniformly.
+\end{theorem}
+
+As an application of Theorem \ref{funkana:thm:arzela_ascoli} we show that the dual of a compact operator is again compact.
+
+\begin{lemma}
+    Let $K \colon X \to Y$ be a compact operator between normed spaces. Then its dual $K^\ast \colon Y^\ast \to X^\ast$ is compact as well.
+\end{lemma}
+
+\begin{proof}
+    Let $(\psi_n)_{n\in\N}\subseteq Y^\ast$ be a sequence bounded in the operator norm by $1$. We have to show that 
+    \[
+    \phi_n := K^\ast\psi_n
+    \]
+    admits a convergent subsequence. Since 
+    \[
+    C := \overline{K(B_1(0))}
+    \]
+    is compact (by definition of compact operators) we can try and apply the Arzelà-Ascoli theorem to the sequence 
+    \[
+    f_n := \psi_n|_C.
+    \]
+    For uniform boundedness note that since $C$ is compact it must be contained in some large ball of radius $R$, such that for $y\in C$
+    \[
+    \abs{f_n(y)} = R \left\lvert \psi_n(\frac{y}{R})\right\lvert \leq R \norm{\psi_n}_\mathrm{op} \leq R.
+    \]
+    To see uniform equicontinuity note that for $y,z \in C$ 
+    \[
+    \abs{f_n(y) - f_n(z)} = \abs{\psi(y-z)} \leq \norm{y-z}.
+    \]
+    So by the Arzelà-Ascoli theorem we may assume that $(f_n)_{n\in\N}$ converges uniformly (at least after restriction to a subsequence). We now claim that $(\phi_n)_{n\in\N}$ is Cauchy with respect to the operator norm. For $x \in B_1(0)$ we compute 
+    \[
+    \abs{\phi_n(x) - \phi_m(x)} = \abs{f_n(Kx) - f_m(Kx)} \leq \max \abs{f_n-f_m}.
+    \]
+    Since $(f_n)_{n\in\N}$ is Cauchy the statement follows.
+\end{proof}

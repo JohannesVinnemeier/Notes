@@ -50,6 +50,10 @@
 \definecolor{custom_blue2}{rgb}{0.16, 0.32, 0.75}
 \definecolor{cardinal}{rgb}{0.77, 0.12, 0.23}
 
+% Absolute value and norm bars command. Write \abs{x} or \norm{x}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert} 
+
 % new \oset macro:
 \makeatletter
 \newcommand{\oset}[3][0ex]{%
@@ -57,9 +61,6 @@
     \vbox to#1{\kern-2\ex@
     \hbox{$\scriptstyle#2$}\vss}}}}
 \makeatother
-
-% Absolute value bars command. Write \abs{x}.
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 
 %Real, complex, natural numbers and integers symbols
 \newcommand{\R}{\mathbb{R}}
@@ -70,6 +71,11 @@
 %makes a wider tilde symbol, the second argument dictates the width
 \newcommand{\reallywidetilde}[2]{
   \stackon[-5.5pt]{$#1$}{\vstretch{1.1}{\hstretch{#2}{\widetilde{\phantom{\;}}}}}
+}
+
+% Custom command for fancy quotients
+\newcommand{\modulo}[2]{%
+  {#1}\raisebox{-2.5pt}{\scalebox{1.15}{\hspace{-1pt}$/$}}\raisebox{-3.5pt}{$#2$}
 }
 
 %Theorems, lemmas etc.
