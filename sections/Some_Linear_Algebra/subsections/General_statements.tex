@@ -34,3 +34,39 @@
     \]
     i.e. $B = A^T$.
 \end{proof}
+
+\begin{lemma}
+	Let $V, V_1,\ldots,V_k$ be finite dimensional vector spaces. There exist natural isomorphisms
+	\begin{align*}
+		V_1^\ast \otimes \ldots \otimes V_k^\ast & \xrightarrow{\cong} (V_1 \otimes \ldots \otimes V_k)^\ast \\
+		\Lambda^k V^\ast &\xrightarrow{\cong} (\Lambda^k V)^\ast \\
+		\Sigma^k V^\ast &\xrightarrow{\cong} (\Sigma^k V)^\ast \\
+	\end{align*}
+	where $\Lambda^k V$ denotes the $k$-th exterior power and $\Sigma^k V$ the $k$-th symmetric power (see section \ref{linalg:sec:the_exterior_algebra}).
+\end{lemma}
+
+\begin{proof}
+	Define the first isomorphism $V_1^\ast \otimes \ldots \otimes V_k^\ast \to (V_1 \otimes \ldots \otimes V_k)^\ast $ by 
+	\[
+	\phi_1 \otimes \ldots \otimes \phi_k \mapsto \left(v_1 \otimes \ldots \otimes v_k \mapsto \prod_{i=1}^k \phi_i(v_i)\right).
+	\]
+	using the universal property of the tensor product. This map is clearly injective, hence indeed an isomorphism. Moreover this map induces the second isomorphism $\Lambda^k V^\ast \to (\Lambda^k V)^\ast$ by 
+		\[\begin{tikzcd}
+		{(V^\ast)^{\otimes k}} & {(V^{\otimes k})^\ast} \\
+		{\Lambda^kV^\ast} & {(\Lambda^kV)^\ast}
+		\arrow["\cong", from=1-1, to=1-2]
+		\arrow[from=1-2, to=2-2]
+		\arrow[from=2-1, to=1-1]
+		\arrow[from=2-1, to=2-2]
+		\end{tikzcd}\]
+	where the vertical maps are (induced by) the inclusions $\Lambda^kV^\ast \to (V^\ast)^{\otimes k}$ and $\Lambda^kV \to V^{\otimes k}$. To see that this does in fact define an isomorphism note that an inverse is explicitly given by 
+		\[\begin{tikzcd}
+		{(V^\ast)^{\otimes k}} & {(V^{\otimes k})^\ast} \\
+		{\Lambda^kV^\ast} & {(\Lambda^kV)^\ast}
+		\arrow["\cong", from=1-1, to=1-2]
+		\arrow["{\mathrm{Alt}}"', from=1-1, to=2-1]
+		\arrow["{\mathrm{Alt}^\ast}"', from=2-2, to=1-2]
+		\arrow[from=2-2, to=2-1]
+		\end{tikzcd}\]
+	where $\mathrm{Alt}$ denotes the antisymmetrization map (again see section \ref{linalg:sec:the_exterior_algebra}). The third isomorphism $\Sigma^k V^\ast \to (\Sigma^k V)^\ast$ is defined analogously using the symmetrization map instead. Naturality of the defined isomorphisms follows directly from the definiton by a straightforward computation.
+\end{proof}

@@ -1,0 +1,157 @@
+\subsection{The Exterior Algebra}
+\label{linalg:sec:the_exterior_algebra}
+
+This section is meant to give a quick overview of the definition and most essential properties of the exterior algebra $\Lambda^\ast V$ of a finite dimensional vector space $V$ (over some field $\mathbb{K}$). To define the $k$-fold exterior power $\Lambda^k V$ consider the permutation maps 
+\[
+P_\sigma \colon V^{\otimes k} \to V^{\otimes k} 
+\]
+for $\sigma \in S(k) \footnote{S(k) \text{ denotes the symmetric group on $n$ elements}}$ given by 
+\[
+P_\sigma(v_1\otimes \ldots \otimes v_k) := \mathrm{sgn}(\sigma)v_{\sigma(1)}\otimes \ldots \otimes v_{\sigma(k)}.
+\]
+These are well-defined by the universal property of the tensor product. We then call a vector $\alpha \in V^{\otimes k}$ \textbf{alternating} if 
+\[
+P_\sigma(\alpha) = \alpha \quad \forall \sigma \in S(k)
+\]
+and define $\Lambda^k V \subseteq V^{\otimes k}$ as the subspace of all alternating vectors. Given any vector in $V^{\otimes k}$ there is a canonical way to make it into an alternating one using the \textbf{antisymmetrization map}
+\[
+\mathrm{Alt} \colon V^{\otimes k} \to \Lambda^k V, \quad \alpha \mapsto \frac{1}{k!}\sum_{\sigma \in S(k)} P_\sigma(\alpha).
+\]
+Note that this map is surjective and $\mathrm{Alt}(\alpha) = \alpha$ if and only if $\alpha$ is alternating. Using the antisymmetrization map we can define the \textbf{exterior product} (or \textbf{wedge product}) as the bilinear map 
+\begin{align*}
+\Lambda^k V \times \Lambda^l V & \to \Lambda^{k+l} V, \\
+(\alpha,\beta) &\mapsto \alpha \wedge \beta := \mathrm{Alt}(\alpha \otimes \beta).
+\end{align*}
+Without proof we state the facts, that this product is associative and graded commutative. Moreover if $e_1,\ldots,e_n \in V$ is a basis of $V$ then 
+\[
+\{e_{i_1} \wedge \ldots \wedge e_{i_k}\}_{1 \leq i_1 \leq \ldots \leq i_k \leq n}
+\]
+is a basis of $\Lambda^k V$. The exterior algebra is then defined as 
+\[
+\Lambda^\ast V := \bigoplus_{k=0}^\infty \Lambda^k V
+\]
+with multiplication given by the wedge product (we set $V^{\otimes 0} = \Lambda^0 V := \mathbb{K}$).
+
+We can also characterize the exterior power and the exterior algebra by means of a universal property. To this end let 
+\[
+S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists 1 \leq i,j \leq k, i \neq j \text{ with } v_i = v_j\} \subseteq V^{\otimes k}
+\]
+\begin{definition}[Universal property of the exterior power]
+    \label{linalg:def:universal_property_exterior_power}
+    The ($k$-fold) exterior power of $V$, denoted $\Lambda^k V$, is a vector space together with a linear map 
+    \[
+    \phi \colon V^{\otimes k} \to \Lambda^k V,
+    \]
+    which vanishes on $S^k(V)$, such that for any linear map 
+    \[
+    T \colon V^{\otimes k} \to W
+    \]
+    into a vector space $W$ with $T|_{S^k(V)} = 0$ there exists a unique linear map 
+    \[
+    \widetilde{T} \colon \Lambda^k V \to W
+    \]
+    making the following diagram commute 
+    \[\begin{tikzcd}[column sep = 3em]
+	{V^{\otimes k}} & W \\
+	{\Lambda^k V}
+	\arrow["T", from=1-1, to=1-2]
+	\arrow["\phi"', from=1-1, to=2-1]
+	\arrow["\widetilde{T}"', dashed, end anchor = {[xshift = 5, yshift = -3]}, from=2-1, to=1-2]
+\end{tikzcd}\]
+\end{definition}
+
+\begin{definition}[Universal property of the exterior algebra]
+    \label{linalg:def:universal_property_exterior_algebra}
+    The exterior algebra of $V$, denoted $\Lambda^\ast V$, is an algebra together with a linear map 
+    \[
+    \psi \colon V \to \Lambda^\ast V,
+    \]
+    which satisfies $\psi(v)^2 = 0$ for all $v\in V$ and such that for any linear map 
+    \[
+    \psi^\prime \colon V \to A^\prime
+    \]
+    into an algebra $A^\prime$ with $\psi^\prime(v)^2 = 0$ for all $v\in V$ there exists a unique algebra homomorphism
+    \[
+    L \colon \Lambda^k V \to A^\prime
+    \]
+    making the following diagram commute 
+    \[\begin{tikzcd}[column sep = 3em]
+	{V} & \Lambda^\ast V\\
+	& {A^\prime}
+	\arrow["\psi", from=1-1, to=1-2]
+	\arrow["\psi^\prime"', from=1-1, to=2-2]
+	\arrow["L", dashed, from=1-2, to=2-2]
+\end{tikzcd}\]
+\end{definition}
+
+
+\begin{remark}
+    In Definition \ref{linalg:def:universal_property_exterior_power} we can think of $T$ descending to a map $\widetilde{T}$, whereas in Definition \ref{linalg:def:universal_property_exterior_algebra} we can think of $L$ extending the map $\psi^\prime$.
+\end{remark}
+
+\begin{lemma}
+    \label{linalg:lem:universal_property_exterior_power}
+    The construction of $\Lambda^k V \subseteq V^{\otimes k}$ at the beginning of the section together with the antisymmetrization map $\mathrm{Alt}$ satisifes the universal property in Definition \ref{linalg:def:universal_property_exterior_power}.
+\end{lemma}
+
+\begin{proof}
+    First of all it follows easily from the definition, that $\mathrm{Alt}$ vanishes on $S^k(V)$. Uniqueness is also clear. To show existence choose a basis $e_1,\ldots,e_n \in V$ of $V$. As mentioned above this yields a basis of $\Lambda^kV$ and we define $\widetilde{T}$ on this basis (necessarily) by 
+    \[
+    \widetilde{T}(e_{i_1} \wedge \ldots \wedge e_{i_k}) := T(e_{i_1} \otimes \ldots \otimes e_{i_k})
+    \]
+    for $1 \leq i_1 < \ldots < i_k \leq n$. To see that 
+    \[\begin{tikzcd}[column sep = 3em]
+	{V^{\otimes k}} & W \\
+	{\Lambda^k V}
+	\arrow["T", from=1-1, to=1-2]
+	\arrow["\phi"', from=1-1, to=2-1]
+	\arrow["\widetilde{T}"', dashed, end anchor = {[xshift = 5, yshift = -3]}, from=2-1, to=1-2]
+\end{tikzcd}\]
+does in fact commute it suffices to verify commutativity on basis vectors $e_{i_1} \otimes \ldots \otimes e_{i_k}$ of $V^{\otimes k}$ (where the tuple $(i_1,\ldots,i_k)$ is not necessarily ordered!). But from $T|_{S^k(V)} = 0$ we can deduce that 
+\[
+T(v_1 \otimes \ldots \otimes v_i \otimes \ldots \otimes v_j \otimes \ldots \otimes v_k) = -T(v_1 \otimes \ldots \otimes v_j \otimes \ldots \otimes v_i \otimes \ldots \otimes v_k)
+\]
+for any $v_1,\ldots,v_k \in V$ and $1 \leq i,j \leq k$ with $i\neq j$. So after a suitable permutation of $(i_1,\ldots,i_k)$ we can assume this tuple to be ordered, such that the statement follows from the definiton of $\widetilde{T}$.
+\end{proof}
+
+\begin{lemma}
+    The construction of $\Lambda^\ast V$ at the beginning of the section together with the canonical inclusion map $V \hookrightarrow \Lambda^\ast V$ satisifes the universal property in Definition \ref{linalg:def:universal_property_exterior_algebra}.
+\end{lemma}
+
+\begin{proof}
+    Again uniqueness is clear. For the existence of $L$ we define it on $\Lambda^k V$ (necessarily) by 
+    \[
+    L(v_1 \wedge \ldots \wedge v_k) := \prod_{i=1}^k \psi^\prime(v_i)
+    \]
+    using the universal property of the exterior power shown in Lemma \ref{linalg:lem:universal_property_exterior_power}.
+\end{proof}
+
+To conclude this section let us mention another commonly used construction of the exterior power and exterior algebra. Firstly note that the quotient $\modulo{V^{\otimes k}}{S^k(V)}$ together with the quotient map 
+\[
+V^{\otimes k} \to \modulo{V^{\otimes k}}{S^k(V)}
+\]
+also clearly satisifies the universal property in Definition \ref{linalg:def:universal_property_exterior_power}. Hence this is also a valid and commonly used construction of the exterior power. In particular this implies that there exists a unique isomorphism 
+\[
+\Lambda^k V \xrightarrow{\cong} \modulo{V^{\otimes k}}{S^k(V)}
+\]
+making the following diagram commute 
+\[\begin{tikzcd}[column sep = 3em]
+	{V^{\otimes k}} & \modulo{V^{\otimes k}}{S^k(V)} \\
+	{\Lambda^k V}
+	\arrow[from=1-1, to=1-2]
+	\arrow["\mathrm{Alt}"', from=1-1, to=2-1]
+	\arrow["\cong", end anchor = {[xshift = 5, yshift = -3]}, from=2-1, to=1-2]
+\end{tikzcd}\]
+(where $\Lambda^k V \subseteq V^{\otimes k}$ denotes our original construction of the exterior power given at the beginning of the section). This gives us an explicit description of the kernel of $\mathrm{Alt}$, namely 
+\[
+\mathrm{ker(Alt)} = S^k(V).
+\]
+Similiarly we can also define the exterior algebra as a quotient of the tensor algebra
+\[
+T(V) := \bigoplus_{k=0}^\infty V^{\otimes k},
+\]
+by dividing out the two sided ideal $I \subseteq T(V)$ generated by elements of the form $v \otimes v \in T(V)$ for $v \in V$, i.e. 
+\[
+\Lambda^\ast V := \modulo{T(V)}{I}.
+\]
+Together with the canonical map $V \to \Lambda^\ast V$ this definition is also easily seen to satisfy the universal property in Definition \ref{linalg:def:universal_property_exterior_algebra}.
