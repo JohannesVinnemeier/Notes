@@ -1,25 +1,27 @@
 \section{Solutions to selected exercises}
 
+%%%%% MISTAKE IN PROOF %%%%%
 
-\begin{exercise}[Exercise 10-10 from \cite{lee2011smooth}]
-Let $M$ be a manifold without boundary of dimension $n$ and $E \to M$ a rank $k$ vector bundle over $M$. Then there exists a section $\sigma \colon M \to E$ with the following properties:
-\begin{enumerate}
-    \item If $k > n$, then $\sigma$ is nowhere vanishing
-    \item If $k \leq n$, then the zeros of $\sigma$ form a closed codimension $k$ submanifold of $M$
-\end{enumerate}
-In particular, there exists a smooth vector field $X$ on $M$, where the zeros of $X$ are a discrete closed subset. Hence, every compact manifold with or without boundary admits a smooth vector field with only finitely many zeros. 
-\end{exercise}
+% \begin{exercise}[Exercise 10-10 from \cite{lee2011smooth}]
+% Let $M$ be a manifold without boundary of dimension $n$ and $E \to M$ a rank $k$ vector bundle over $M$. Then there exists a section $\sigma \colon M \to E$ with the following properties:
+% \begin{enumerate}
+%     \item If $k > n$, then $\sigma$ is nowhere vanishing
+%     \item If $k \leq n$, then the zeros of $\sigma$ form a closed codimension $k$ submanifold of $M$
+% \end{enumerate}
+% In particular, there exists a smooth vector field $X$ on $M$, where the zeros of $X$ are a discrete closed subset. Hence, every compact manifold with or without boundary admits a smooth vector field with only finitely many zeros. 
+% \end{exercise}
 
-\begin{proof}
-    Consider the zero section $\xi \colon M \to E$ and let $M^\prime := \mathrm{im}(\xi)$. Then $M^\prime$ is a codimension $0$ submanifold (without boundary) of $E$. By the transversality homotopy theorem (Theorem \ref{thm:transversality_homotopy}) any section $M \to E$ is homotopic to a section $\sigma \colon M \to E$ that is transversal to $M^\prime$. If $k > n$ this is equivalent to 
-    \[
-    \sigma(M) \cap M^\prime = \emptyset,
-    \]
-    which in turn is equivalent to $\sigma(p) \neq 0$ for all $p \in M$. If $k \leq M$, then 
-    \[\{p \in M \mid \sigma(p) = 0\} = \sigma^{-1}(M^\prime) \]
-    and $\sigma^{-1}(M^\prime)$ is a closed codimension $k$ submanifold of $M$. This shows the first two statements. Applying these results to $E := TM$, we see that the zeros of $\sigma$ are a closed codimension $0$ submanifold, thus discrete. If $M$ is compact this is equivalent to $\{p \in M \mid \sigma(p) = 0\}$ being finite. If $M$ has non-empty boundary, we can construct a vector field with finitely many zeros on the double and restrict it to $M$.  
-\end{proof}
+% \begin{proof}
+%     Consider the zero section $\xi \colon M \to E$ and let $M^\prime := \mathrm{im}(\xi)$. Then $M^\prime$ is a codimension $0$ submanifold (without boundary) of $E$. By the transversality homotopy theorem (Theorem \ref{thm:transversality_homotopy}) any section $M \to E$ is homotopic to a section $\sigma \colon M \to E$ that is transversal to $M^\prime$. If $k > n$ this is equivalent to 
+%     \[
+%     \sigma(M) \cap M^\prime = \emptyset,
+%     \]
+%     which in turn is equivalent to $\sigma(p) \neq 0$ for all $p \in M$. If $k \leq M$, then 
+%     \[\{p \in M \mid \sigma(p) = 0\} = \sigma^{-1}(M^\prime) \]
+%     and $\sigma^{-1}(M^\prime)$ is a closed codimension $k$ submanifold of $M$. This shows the first two statements. Applying these results to $E := TM$, we see that the zeros of $\sigma$ are a closed codimension $0$ submanifold, thus discrete. If $M$ is compact this is equivalent to $\{p \in M \mid \sigma(p) = 0\}$ being finite. If $M$ has non-empty boundary, we can construct a vector field with finitely many zeros on the double and restrict it to $M$.  
+% \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}[Own exercise]
     \label{ex:pullback_of_moebius_bundle}

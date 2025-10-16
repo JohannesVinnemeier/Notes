@@ -20,13 +20,21 @@ and define $\Lambda^k V \subseteq V^{\otimes k}$ as the subspace of all alternat
 Note that this map is surjective and $\mathrm{Alt}(\alpha) = \alpha$ if and only if $\alpha$ is alternating. Using the antisymmetrization map we can define the \textbf{exterior product} (or \textbf{wedge product}) as the bilinear map 
 \begin{align*}
 \Lambda^k V \times \Lambda^l V & \to \Lambda^{k+l} V, \\
-(\alpha,\beta) &\mapsto \alpha \wedge \beta := \mathrm{Alt}(\alpha \otimes \beta).
+(\alpha,\beta) &\mapsto \alpha \wedge \beta := \frac{(k+l)!}{k!l!}\mathrm{Alt}(\alpha \otimes \beta).
 \end{align*}
 Without proof we state the facts, that this product is associative and graded commutative. Moreover if $e_1,\ldots,e_n \in V$ is a basis of $V$ then 
 \[
 \{e_{i_1} \wedge \ldots \wedge e_{i_k}\}_{1 \leq i_1 \leq \ldots \leq i_k \leq n}
 \]
-is a basis of $\Lambda^k V$. The exterior algebra is then defined as 
+is a basis of $\Lambda^k V$. If we identify $\Lambda^k V$ with the space of alternating maps $V^\ast \times \ldots \times V^\ast \to \R$, these basis vectors satisfy 
+\[
+(e_{i_1} \wedge \ldots \wedge e_{i_k})(\epsilon^{j_1},\ldots,\epsilon^{j_k}) = \begin{dcases}
+    1 &, (i_1,\ldots,i_k) = (j_1,\ldots,j_k) \\
+    0 & \text{otherwise}
+\end{dcases}
+\]
+where $\epsilon^1, \ldots, \epsilon^n \in V^\ast$ is the dual basis of $e_1,\ldots,e_n$ and $1 \leq j_1 < \ldots < j_k \leq n$ is any ordered tuple. This is the reason for the normalization factor in the definition of the wedge product. 
+The exterior algebra is then defined as 
 \[
 \Lambda^\ast V := \bigoplus_{k=0}^\infty \Lambda^k V
 \]
@@ -36,11 +44,12 @@ We can also characterize the exterior power and the exterior algebra by means of
 \[
 S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists 1 \leq i,j \leq k, i \neq j \text{ with } v_i = v_j\} \subseteq V^{\otimes k}
 \]
+
 \begin{definition}[Universal property of the exterior power]
     \label{linalg:def:universal_property_exterior_power}
     The ($k$-fold) exterior power of $V$, denoted $\Lambda^k V$, is a vector space together with a linear map 
     \[
-    \phi \colon V^{\otimes k} \to \Lambda^k V,
+    \pi \colon V^{\otimes k} \to \Lambda^k V,
     \]
     which vanishes on $S^k(V)$, such that for any linear map 
     \[
@@ -55,7 +64,7 @@ S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists 1 \leq i,j \le
 	{V^{\otimes k}} & W \\
 	{\Lambda^k V}
 	\arrow["T", from=1-1, to=1-2]
-	\arrow["\phi"', from=1-1, to=2-1]
+	\arrow["\pi"', from=1-1, to=2-1]
 	\arrow["\widetilde{T}"', dashed, end anchor = {[xshift = 5, yshift = -3]}, from=2-1, to=1-2]
 \end{tikzcd}\]
 \end{definition}
@@ -72,7 +81,7 @@ S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists 1 \leq i,j \le
     \]
     into an algebra $A^\prime$ with $\psi^\prime(v)^2 = 0$ for all $v\in V$ there exists a unique algebra homomorphism
     \[
-    L \colon \Lambda^k V \to A^\prime
+    L \colon \Lambda^\ast V \to A^\prime
     \]
     making the following diagram commute 
     \[\begin{tikzcd}[column sep = 3em]
@@ -86,16 +95,17 @@ S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists 1 \leq i,j \le
 
 
 \begin{remark}
-    In Definition \ref{linalg:def:universal_property_exterior_power} we can think of $T$ descending to a map $\widetilde{T}$, whereas in Definition \ref{linalg:def:universal_property_exterior_algebra} we can think of $L$ extending the map $\psi^\prime$.
+    The universal property of the exterior power is very similiar to the one of the tensor product, where we think of $\pi$ as the product map $v_1\otimes \ldots \otimes v_k \mapsto v_1 \wedge \ldots \wedge v_k$. 
+    In Definition \ref{linalg:def:universal_property_exterior_algebra} we think of $\psi$ as an inlcusion and of $L$ as extending the map $\psi^\prime$.
 \end{remark}
 
 \begin{lemma}
     \label{linalg:lem:universal_property_exterior_power}
-    The construction of $\Lambda^k V \subseteq V^{\otimes k}$ at the beginning of the section together with the antisymmetrization map $\mathrm{Alt}$ satisifes the universal property in Definition \ref{linalg:def:universal_property_exterior_power}.
+    The construction of $\Lambda^k V \subseteq V^{\otimes k}$ at the beginning of the section together with the product map $\pi \colon V^{\otimes k} \to \Lambda^k V, \; v_1\otimes \ldots \otimes v_k \mapsto v_1 \wedge \ldots \wedge v_k$ satisifes the universal property in Definition \ref{linalg:def:universal_property_exterior_power}.
 \end{lemma}
 
 \begin{proof}
-    First of all it follows easily from the definition, that $\mathrm{Alt}$ vanishes on $S^k(V)$. Uniqueness is also clear. To show existence choose a basis $e_1,\ldots,e_n \in V$ of $V$. As mentioned above this yields a basis of $\Lambda^kV$ and we define $\widetilde{T}$ on this basis (necessarily) by 
+    First of all it follows from the graded commutativity of the wedge product, that $\pi$ vanishes on $S^k(V)$. Uniqueness is also clear. To show existence choose a basis $e_1,\ldots,e_n \in V$ of $V$. As mentioned above this yields a basis of $\Lambda^kV$ and we define $\widetilde{T}$ on this basis (necessarily) by 
     \[
     \widetilde{T}(e_{i_1} \wedge \ldots \wedge e_{i_k}) := T(e_{i_1} \otimes \ldots \otimes e_{i_k})
     \]
@@ -104,7 +114,7 @@ S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists 1 \leq i,j \le
 	{V^{\otimes k}} & W \\
 	{\Lambda^k V}
 	\arrow["T", from=1-1, to=1-2]
-	\arrow["\phi"', from=1-1, to=2-1]
+	\arrow["\pi"', from=1-1, to=2-1]
 	\arrow["\widetilde{T}"', dashed, end anchor = {[xshift = 5, yshift = -3]}, from=2-1, to=1-2]
 \end{tikzcd}\]
 does in fact commute it suffices to verify commutativity on basis vectors $e_{i_1} \otimes \ldots \otimes e_{i_k}$ of $V^{\otimes k}$ (where the tuple $(i_1,\ldots,i_k)$ is not necessarily ordered!). But from $T|_{S^k(V)} = 0$ we can deduce that 
@@ -130,23 +140,31 @@ To conclude this section let us mention another commonly used construction of th
 \[
 V^{\otimes k} \to \modulo{V^{\otimes k}}{S^k(V)}
 \]
-also clearly satisifies the universal property in Definition \ref{linalg:def:universal_property_exterior_power}. Hence this is also a valid and commonly used construction of the exterior power. In particular this implies that there exists a unique isomorphism 
+also clearly satisifies the universal property in Definition \ref{linalg:def:universal_property_exterior_power}. Hence this is also a valid and commonly used construction of the exterior power. With this definition 
 \[
-\Lambda^k V \xrightarrow{\cong} \modulo{V^{\otimes k}}{S^k(V)}
+\alpha \wedge \beta = [\alpha \otimes \beta].
 \]
-making the following diagram commute 
-\[\begin{tikzcd}[column sep = 3em]
-	{V^{\otimes k}} & \modulo{V^{\otimes k}}{S^k(V)} \\
-	{\Lambda^k V}
-	\arrow[from=1-1, to=1-2]
-	\arrow["\mathrm{Alt}"', from=1-1, to=2-1]
-	\arrow["\cong", end anchor = {[xshift = 5, yshift = -3]}, from=2-1, to=1-2]
-\end{tikzcd}\]
-(where $\Lambda^k V \subseteq V^{\otimes k}$ denotes our original construction of the exterior power given at the beginning of the section). This gives us an explicit description of the kernel of $\mathrm{Alt}$, namely 
-\[
-\mathrm{ker(Alt)} = S^k(V).
-\]
-Similiarly we can also define the exterior algebra as a quotient of the tensor algebra
+
+
+% In particular this implies that there exists a unique isomorphism 
+% \[
+% \Lambda^k V \xrightarrow{\cong} \modulo{V^{\otimes k}}{S^k(V)}
+% \]
+% making the following diagram commute 
+% \[\begin{tikzcd}[column sep = 3em]
+% 	{V^{\otimes k}} & \modulo{V^{\otimes k}}{S^k(V)} \\
+% 	{\Lambda^k V}
+% 	\arrow[from=1-1, to=1-2]
+% 	\arrow["\mathrm{Alt}"', from=1-1, to=2-1]
+% 	\arrow["\cong", end anchor = {[xshift = 5, yshift = -3]}, from=2-1, to=1-2]
+% \end{tikzcd}\]
+% (where $\Lambda^k V \subseteq V^{\otimes k}$ denotes our original construction of the exterior power given at the beginning of the section). This gives us an explicit description of the kernel of $\mathrm{Alt}$, namely 
+% \[
+% \mathrm{ker(Alt)} = S^k(V).
+% \]
+
+
+\noindent Similiarly we can also define the exterior algebra as a quotient of the tensor algebra
 \[
 T(V) := \bigoplus_{k=0}^\infty V^{\otimes k},
 \]

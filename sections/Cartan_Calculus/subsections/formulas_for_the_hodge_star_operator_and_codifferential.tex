@@ -1,0 +1,82 @@
+\subsection{Formulas for the Hodge star operator and codifferential}
+
+In this section we briefly discuss the definition of the Hodge star operator and codifferential as well as their basic properties. This is supposed to serve as a canonical reference for the correct signs in the formulas involved. After the basic properties we proof a few more formulas that might be interesting. 
+
+\par
+
+Let $(V,\langle\cdot,\cdot\rangle)$ be an oriented $n$-dimensional euclidian vector space. Then the Hodge star operator is the unique linear map 
+\[
+\star \colon \Lambda^kV \to \Lambda^{n-k}V
+\]
+satisfying 
+\[
+\alpha \wedge \star \beta = \langle\alpha,\beta\rangle \mathrm{vol},
+\]
+for all $\alpha,\beta \in \Lambda^k V$, where $\mathrm{vol} \in \Lambda^nV$ is the canonical volume form on $V$. If $e_1,\ldots,e_n \in V$ is an oriented orthonormal basis we see that for any ordered tuple $(i_1,\ldots,i_k)$
+\[
+\star(e_{i_1} \wedge \ldots \wedge e_{i_k}) = e_{j_1} \wedge \ldots \wedge e_{j_{n-k}},
+\]
+where $(j_1,\ldots,j_{n-k})$ is the complementary ordered tuple. Since tuples of this form define an orthonormal basis it follows that $\star$ is an isometry. Using this fact we compute
+\begin{align*}
+    \langle\star\star\beta,\alpha\rangle \mathrm{vol} &= \star\star\beta\wedge\star\alpha = (-1)^{k(n-k)}\star\alpha\wedge\star\star\beta \\ 
+    &= (-1)^{k(n-k)}\langle\star\alpha,\star\beta\rangle\mathrm{vol}
+    = (-1)^{k(n-k)}\langle\alpha,\beta\rangle\mathrm{vol}
+\end{align*}
+from which we conclude that 
+\[
+\star\star = (-1)^{k(n-k)} \mathrm{id}_{\Lambda^kV}.
+\]
+The Hodge star operator can also be used to relate the interior and exterior product. For $v \in V$ and $\omega \in \Lambda^k V^\ast$ we denote the interior product by $v \intprod \omega \in \Lambda^{k-1}V^\ast$, that is
+\[
+(v \intprod \omega )(v_1,\ldots,v_{k-1}) := \omega(v,v_1,\ldots,v_{k-1}).
+\]
+Moreover the notation $v \wedge \omega \in \Lambda^{k+1}V^\ast$ is to be understood as first dualizing $v$ and then taking the usual wedge product, that is 
+\[
+v \wedge \omega := \langle v,-\rangle\wedge\omega.
+\]
+We then have the following Lemma.
+
+\begin{lemma}
+    \label{cartan_calc:lem:interior_product_and_hodge_star}
+    For $v\in V$, $\omega \in \Lambda^k V$ and $\eta \in \Lambda^{k-1}V$ the following holds 
+    \begin{enumerate}[(i)]
+        \item $\langle \eta, v \intprod \omega \rangle = \langle v \wedge\eta, \omega \rangle$
+        \item $v \intprod \omega = (-1)^{kn + n} \star (v \wedge \star \omega)$
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    For $(i)$ note that the expression on both sides is linear in $v, \omega$ and $\eta$, such that it suffices to show equality on basis vectors. So let $e_1,\ldots,e_n \in V$ be an oriented orthonormal basis and $\epsilon^1,\ldots,\epsilon^n \in V^\ast$ its dual basis. We have to compute $(i)$ for
+    \[
+    v = e_m, \;\; \omega = \epsilon^{i_1} \wedge \ldots \wedge \epsilon^{i_k}, \;\; \eta = \epsilon^{j_1} \wedge \ldots \wedge \epsilon^{j_{k-1}}.
+    \]
+    First note that we may assume $m = i_p$ and
+    \[
+    (i_1,\ldots,\widehat{i_p},\ldots,i_k) = (j_1,\ldots,j_{k-1}).
+    \] 
+    for some $1 \leq p \leq k$ since otherwise both sides vanish. But then
+    \[
+    v \intprod \omega = (-1)^{p-1} \eta
+    \]
+    and 
+    \[
+    v \wedge \eta = (-1)^{p-1} \omega
+    \]
+    from which $(i)$ follows. Using this we can show $(ii)$:
+    \begin{align*}
+        \langle \eta , v \intprod \omega \rangle \mathrm{vol} & = \langle v \wedge \eta, \omega \rangle \mathrm{vol}\\
+        &= v \wedge \eta \wedge \star \omega \\
+        &= (-1)^{k-1} \eta \wedge v \wedge \star \omega \\
+        &= (-1)^{k-1 + (n-k+1)(k-1)} \eta \wedge \star\star(v \wedge \star \omega) \\
+        &= (-1)^{(n-k+2)(k-1)} \langle \eta, \star (v \wedge \star \omega)\rangle \mathrm{vol}
+    \end{align*}
+    Moreover we compute modulo $2$:
+    \[
+        (n-k + 2) (k-1) = (n-k)(k-1) = n(k-1) - k(k-1) = n(k+1)
+    \]
+    Since $\eta$ was arbitrary the statement follows.
+\end{proof}
+
+\begin{remark}
+    Part $(i)$ of Lemma \ref{cartan_calc:lem:interior_product_and_hodge_star} states that the interior product is the adjoint of the exterior product.
+\end{remark}
