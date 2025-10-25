@@ -1,0 +1,19 @@
+\subsection{Formulas for connections}
+
+\begin{proposition}
+    Let $E_1 \to M$ and $E_2 \to M$ be smooth vector bundles and let $\nabla^1, \nabla^2$ be connections on $E_1,E_2$ respectively. Then there exists a unique connection $\nabla$ on the tensor product bundle
+    \[
+    E_1\otimes E_2 \to M,
+    \]
+    such that for any vector field $X \in \mathscr{X}(M)$ and sections $s_1 \in \Gamma(E_1)$ and $s_2 \in \Gamma(E_2)$ the following holds:
+    \[
+    \nabla_X (s_1 \otimes s_2) = \nabla^1_{X}s_1 \otimes s_2 + s_1 \otimes \nabla^2_{X}s_2.
+    \]
+\end{proposition}
+\begin{proof}
+    The proof is analogous to the proof of Proposition \ref{riem_mnf:prop:product_connections}, so we only summarize the idea brielfy. One notes that any section $s \in \Gamma(E_1 \otimes E_2)$ can be written locally as 
+    \[
+    s = \sum_{i,j} s_1^i \otimes s_2^j,
+    \]
+    where $s_1^i$ and $s_2^j$ are local sections of $E_1$ and $E_2$ respectively. This then shows uniqueness and moreover gives us a way to define $\nabla$ locally, which can be pasted to together to define $\nabla$ globally just as in Proposition \ref{riem_mnf:prop:product_connections}.
+\end{proof}

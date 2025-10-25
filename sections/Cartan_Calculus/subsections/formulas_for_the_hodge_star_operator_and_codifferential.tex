@@ -30,7 +30,7 @@ The Hodge star operator can also be used to relate the interior and exterior pro
 \[
 (v \intprod \omega )(v_1,\ldots,v_{k-1}) := \omega(v,v_1,\ldots,v_{k-1}).
 \]
-Moreover the notation $v \wedge \omega \in \Lambda^{k+1}V^\ast$ is to be understood as first dualizing $v$ and then taking the usual wedge product, that is 
+(Some authors define this with the opposite sign, i.e. $v \intprod \omega := - \omega(v,-)$). Moreover the notation $v \wedge \omega \in \Lambda^{k+1}V^\ast$ is to be understood as first dualizing $v$ and then taking the usual wedge product, that is 
 \[
 v \wedge \omega := \langle v,-\rangle\wedge\omega.
 \]
@@ -41,7 +41,7 @@ We then have the following Lemma.
     For $v\in V$, $\omega \in \Lambda^k V$ and $\eta \in \Lambda^{k-1}V$ the following holds 
     \begin{enumerate}[(i)]
         \item $\langle \eta, v \intprod \omega \rangle = \langle v \wedge\eta, \omega \rangle$
-        \item $v \intprod \omega = (-1)^{kn + n} \star (v \wedge \star \omega)$
+        \item $v \intprod \omega = (-1)^{n(k+1)} \star (v \wedge \star \omega)$
     \end{enumerate}
 \end{lemma}
 
@@ -80,3 +80,110 @@ We then have the following Lemma.
 \begin{remark}
     Part $(i)$ of Lemma \ref{cartan_calc:lem:interior_product_and_hodge_star} states that the interior product is the adjoint of the exterior product.
 \end{remark}
+
+Next we show a useful formula for the exterior derivative and codifferential in terms of the Levi-Civita connection. Let $(M,g)$ be an oriented $n$-dimensional Riemannian manfiold. First let's fix a sign convention for the codifferential $\delta$. On $k$-forms we define $\delta$ by 
+\[
+\begin{tikzcd}
+	{\Omega^k(M)} & {\Omega^{k-1}(M)} \\
+	{\Omega^{n-k}(M)} & {\Omega^{n-k+1}(M)}
+	\arrow["{\textstyle (-1)^k\delta}", from=1-1, to=1-2]
+	\arrow["{\textstyle \star}", from=1-1, to=2-1]
+	\arrow["{\textstyle \star}", from=1-2, to=2-2]
+	\arrow["{\textstyle d}", from=2-1, to=2-2]
+\end{tikzcd}
+\]
+or in formulas 
+\[
+\delta := (-1)^k\star^{-1} d \star = (-1)^{n(k-1)+1} \star d \star \colon \Omega^k(M) \to \Omega^{k-1}(M).
+\]
+With this sign convention we have for $\omega \in \Omega^k(M)$ and $\eta \in \Omega^{k+1}(M)$
+\begin{equation}
+    d(\omega \wedge \star \eta) = d\omega \wedge \star\eta - \omega \wedge \star \delta \eta. \label{cartan_calc:eq:product_rule_with_codifferential}
+\end{equation}
+If $\alpha,\beta \in \Omega^k(M)$, such that the intersection of their supports is compact, we denote by 
+\[
+\langle\langle \alpha,\beta \rangle\rangle := \int_M \langle \alpha,\beta \rangle \mathrm{vol}
+\]
+their $L^2$-scalar product. Usign Stoke's Theorem it then follows from (\ref{cartan_calc:eq:product_rule_with_codifferential}):
+
+\begin{lemma}
+    Let $\omega \in \Omega^k(M)$ and $\eta \in \Omega^{k+1}(M)$, such that the intersection of their supports is compact and contained in $M \setminus \partial M$. Then 
+    \[
+    \langle\langle d\omega,\eta \rangle\rangle = \langle\langle \omega,\delta\eta \rangle\rangle.
+    \]
+\end{lemma}
+
+With this sign conventions in mind we can now show:
+
+\begin{lemma}
+    Let $M$ be a Riemannian manifold and $\omega \in \Omega^\ast(M)$. Let $e_1,\ldots,e_n$ be an orthonormal local frame of $TM$, then 
+    \[
+    d\omega = \sum_{i=1}^n e_i \wedge \nabla_i\omega,
+    \]
+    where $\nabla_i \omega := \nabla_{e_i}\omega$ denotes the connection on the bundle $\Lambda^\ast T^\ast M$ induced by the Levi-Civita connection on $M$. Moreover, if $M$ is oriented we have 
+    \[
+    \delta\omega =  - \sum_{i=1}^n e_i \intprod \nabla_i\omega.
+    \]
+\end{lemma}
+
+\begin{proof}
+    We first show the formula for the exterior derivative for $1$-forms $\alpha \in \Omega^1(M)$. Using Corollary \ref{cartan_cal:cor:formula_d_alpha} and the symmetry of the Levi-Civita connection we get
+    \begin{align*}
+        d\alpha(X,Y) &= X \cdot \alpha(Y) - Y \cdot \alpha(X) - \alpha([X,Y]) \\
+        &= \nabla_X(\alpha(Y)) - \nabla_Y(\alpha(X)) - \alpha(\nabla_XY - \nabla_YX) \\
+        &= (\nabla_X\alpha)(Y) - (\nabla_Y\alpha)(X)
+    \end{align*}
+    for any smooth vector fields $X,Y \in \mathscr{X}(M)$. Let $\epsilon^1,\ldots,\epsilon^n$ be the dual frame of $e_1,\ldots,e_n$. It then follows that 
+    \begin{align*}
+        d\alpha &= \sum_{i,j=1}^n d\alpha(e_i,e_j) \epsilon^i \otimes \epsilon^j \\ 
+        &= \sum_{i=1}^{n} \epsilon^i \otimes \left(\sum_{j=1}^{n} (\nabla_i\alpha)(e_j)\epsilon^j\right) - \sum_{j=1}^{n} \left(\sum_{i=1}^{n} (\nabla_j\alpha)(e_i)\epsilon^i\right) \otimes \epsilon^j \\
+        &= \sum_{i=1}^{n} \epsilon^i \otimes \nabla_i\alpha - \sum_{j=1}^{n} \nabla_j\alpha \otimes \epsilon^j \\ 
+        &= \sum_{i=1}^n \epsilon^i \wedge \nabla_i\alpha \\
+        &=  \sum_{i=1}^n e_i \wedge \nabla_i\alpha
+    \end{align*}
+    where we have used $\epsilon^i = \langle e_i,- \rangle$ in the last equality (since $e_1,\ldots,e_n$ is orthonormal). Now define a differential operator $D$ by 
+    \[
+    D\omega := \sum_{i=1}^n e_i \wedge \nabla_i\omega.
+    \]
+    Clearly $D$ agrees with the exterior derivative on $0$-forms and we have shown above that they furthermore agree on $1$-forms. Moreover
+    \begin{align*}
+        D(\omega\wedge\eta) &= \sum_{i=}^{n} e_i \wedge \nabla_i\omega \wedge \eta + e_i \wedge \omega \wedge\nabla_i\eta \\
+        &= (D\omega)\wedge\eta + (-1)^{\abs{\omega}}\omega \wedge D\eta.
+    \end{align*}
+    So $D$ and $d$ also satisfy the same Leibniz rule. It follows that $D=d$. From this we can deduce the formula for the codifferential by using Lemma \ref{cartan_calc:lem:interior_product_and_hodge_star}. So let $\omega \in \Omega^k(M)$.
+    \begin{align*}
+        \delta \omega &= (-1)^{n(k-1)+1} \star d \star \omega\\
+        &= (-1)^{n(k-1)+1} \sum_{i=1}^n \star (e_i \wedge \nabla_i\star\omega) \\
+        &=(-1)^{n(k-1)+1} \sum_{i=1}^n \star (e_i \wedge \star\nabla_i\omega) \\
+        &=(-1)^{n(k-1)+1 + n(k+1)} \sum_{i=1}^{n} e_i \intprod \nabla_i\omega \\
+        &= -\sum_{i=1}^{n} e_i \intprod \nabla_i\omega.
+    \end{align*}
+    In the third equality we used the fact that covariant differentiation and the Hodge star operator commute, as shown in the Lemma \ref{cartan_cal:lem:hodge_star_and_connection_commute} below.
+\end{proof}
+
+
+\begin{lemma}
+    \label{cartan_cal:lem:hodge_star_and_connection_commute}
+    Let $M$ a an oriented Riemannian manifold, $\omega \in \Omega^\ast(M)$ and $X \in \mathscr{X}(M)$. Then 
+    \[
+    \nabla_X\star\omega=\star\nabla_X\omega.
+    \]
+\end{lemma}
+\begin{proof}
+    Let $\omega \in \Omega^k(M)$ and $\eta \in \Omega^{n-k}(M)$. Recall that the volume form $\mathrm{vol} \in \Omega^n(M)$ is parallel, i.e. $\nabla_X\mathrm{vol} = 0$. Hence 
+    \begin{align*}
+        \nabla_X(\langle\eta,\star\omega\rangle\mathrm{vol}) = (\langle\nabla_X\eta,\star\omega\rangle + \langle\eta,\nabla_X\star\omega\rangle)\mathrm{vol}
+    \end{align*}
+    On the other hand 
+    \begin{align*}
+        \nabla_X(\langle\eta,\star\omega\rangle\mathrm{vol}) &= \nabla_X(\eta \wedge \star\star\omega) \\
+        &= (-1)^{k(n-k)}(\nabla_X\eta \wedge \omega + \eta \wedge \nabla_X\omega) \\
+        &=\nabla_X\eta \wedge \star\star\omega + \eta \wedge \star\star\nabla_X\omega \\
+        &= (\langle\nabla_X\eta,\star\omega\rangle + \langle\eta,\star\nabla_X\omega\rangle)\mathrm{vol}.
+    \end{align*}
+    Thus 
+    \[
+    \langle\eta,\nabla_X\star\omega\rangle = \langle\eta,\star\nabla_X\omega\rangle.
+    \]
+    Since $\eta$ was arbitrary the statement follows.
+\end{proof}
