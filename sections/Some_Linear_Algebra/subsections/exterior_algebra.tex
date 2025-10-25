@@ -40,28 +40,25 @@ The exterior algebra is then defined as
 \]
 with multiplication given by the wedge product (we set $V^{\otimes 0} = \Lambda^0 V := \mathbb{K}$).
 
-We can also characterize the exterior power and the exterior algebra by means of a universal property. To this end let 
-\[
-S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists 1 \leq i,j \leq k, i \neq j \text{ with } v_i = v_j\} \subseteq V^{\otimes k}
-\]
+We can also characterize the exterior power and the exterior algebra by means of a universal property. 
 
 \begin{definition}[Universal property of the exterior power]
     \label{linalg:def:universal_property_exterior_power}
-    The ($k$-fold) exterior power of $V$, denoted $\Lambda^k V$, is a vector space together with a linear map 
+    The ($k$-fold) exterior power of $V$, denoted $\Lambda^k V$, is a vector space together with an alternating multilinear map 
     \[
-    \pi \colon V^{\otimes k} \to \Lambda^k V,
+    \pi \colon V^{\times k} \to \Lambda^k V,
     \]
-    which vanishes on $S^k(V)$, such that for any linear map 
+    such that for any other alternating multilinear map 
     \[
-    T \colon V^{\otimes k} \to W
+    T \colon V^{\times k} \to W
     \]
-    into a vector space $W$ with $T|_{S^k(V)} = 0$ there exists a unique linear map 
+    into a vector space $W$ there exists a unique linear map 
     \[
     \widetilde{T} \colon \Lambda^k V \to W
     \]
     making the following diagram commute 
     \[\begin{tikzcd}[column sep = 3em]
-	{V^{\otimes k}} & W \\
+	{V^{\times k}} & W \\
 	{\Lambda^k V}
 	\arrow["T", from=1-1, to=1-2]
 	\arrow["\pi"', from=1-1, to=2-1]
@@ -73,13 +70,13 @@ S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists 1 \leq i,j \le
     \label{linalg:def:universal_property_exterior_algebra}
     The exterior algebra of $V$, denoted $\Lambda^\ast V$, is an algebra together with a linear map 
     \[
-    \psi \colon V \to \Lambda^\ast V,
+    \iota \colon V \to \Lambda^\ast V,
     \]
-    which satisfies $\psi(v)^2 = 0$ for all $v\in V$ and such that for any linear map 
+    which satisfies $\iota(v)^2 = 0$ for all $v\in V$ and such that for any linear map 
     \[
-    \psi^\prime \colon V \to A^\prime
+    \psi \colon V \to A^\prime
     \]
-    into an algebra $A^\prime$ with $\psi^\prime(v)^2 = 0$ for all $v\in V$ there exists a unique algebra homomorphism
+    into an algebra $A^\prime$ with $\psi(v)^2 = 0$ for all $v\in V$ there exists a unique algebra homomorphism
     \[
     L \colon \Lambda^\ast V \to A^\prime
     \]
@@ -87,41 +84,37 @@ S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists 1 \leq i,j \le
     \[\begin{tikzcd}[column sep = 3em]
 	{V} & \Lambda^\ast V\\
 	& {A^\prime}
-	\arrow["\psi", from=1-1, to=1-2]
-	\arrow["\psi^\prime"', from=1-1, to=2-2]
+	\arrow["\iota", from=1-1, to=1-2]
+	\arrow["\psi"', from=1-1, to=2-2]
 	\arrow["L", dashed, from=1-2, to=2-2]
 \end{tikzcd}\]
 \end{definition}
 
 
 \begin{remark}
-    The universal property of the exterior power is very similiar to the one of the tensor product, where we think of $\pi$ as the product map $v_1\otimes \ldots \otimes v_k \mapsto v_1 \wedge \ldots \wedge v_k$. 
-    In Definition \ref{linalg:def:universal_property_exterior_algebra} we think of $\psi$ as an inlcusion and of $L$ as extending the map $\psi^\prime$.
+    The universal property of the exterior power is analogous to the one of the tensor product, where we think of $\pi$ as the product map $(v_1, \ldots, v_k) \mapsto v_1 \wedge \ldots \wedge v_k$. So alternating multilinear maps on $V^{\times k}$ are in $1:1$ correspondence to linear maps on $\Lambda^k V$.
+    In Definition \ref{linalg:def:universal_property_exterior_algebra} we think of $\iota$ as an inlcusion and of $L$ as extending the map $\psi$.
 \end{remark}
 
 \begin{lemma}
     \label{linalg:lem:universal_property_exterior_power}
-    The construction of $\Lambda^k V \subseteq V^{\otimes k}$ at the beginning of the section together with the product map $\pi \colon V^{\otimes k} \to \Lambda^k V, \; v_1\otimes \ldots \otimes v_k \mapsto v_1 \wedge \ldots \wedge v_k$ satisifes the universal property in Definition \ref{linalg:def:universal_property_exterior_power}.
+    The construction of $\Lambda^k V \subseteq V^{\otimes k}$ at the beginning of the section together with the product map $\pi \colon V^{\times k} \to \Lambda^k V, \; (v_1, \ldots, v_k) \mapsto v_1 \wedge \ldots \wedge v_k$ satisifes the universal property in Definition \ref{linalg:def:universal_property_exterior_power}.
 \end{lemma}
 
 \begin{proof}
-    First of all it follows from the graded commutativity of the wedge product, that $\pi$ vanishes on $S^k(V)$. Uniqueness is also clear. To show existence choose a basis $e_1,\ldots,e_n \in V$ of $V$. As mentioned above this yields a basis of $\Lambda^kV$ and we define $\widetilde{T}$ on this basis (necessarily) by 
+    First of all it follows from the graded commutativity of the wedge product, that $\pi$ is alternating. Uniqueness of $\widetilde{T}$ is also clear. To show existence choose a basis $e_1,\ldots,e_n \in V$ of $V$. As mentioned above this yields a basis of $\Lambda^kV$ and we define $\widetilde{T}$ on this basis (necessarily) by 
     \[
-    \widetilde{T}(e_{i_1} \wedge \ldots \wedge e_{i_k}) := T(e_{i_1} \otimes \ldots \otimes e_{i_k})
+    \widetilde{T}(e_{i_1} \wedge \ldots \wedge e_{i_k}) := T(e_{i_1},  \ldots, e_{i_k})
     \]
     for $1 \leq i_1 < \ldots < i_k \leq n$. To see that 
     \[\begin{tikzcd}[column sep = 3em]
-	{V^{\otimes k}} & W \\
+	{V^{\times k}} & W \\
 	{\Lambda^k V}
 	\arrow["T", from=1-1, to=1-2]
 	\arrow["\pi"', from=1-1, to=2-1]
 	\arrow["\widetilde{T}"', dashed, end anchor = {[xshift = 5, yshift = -3]}, from=2-1, to=1-2]
 \end{tikzcd}\]
-does in fact commute it suffices to verify commutativity on basis vectors $e_{i_1} \otimes \ldots \otimes e_{i_k}$ of $V^{\otimes k}$ (where the tuple $(i_1,\ldots,i_k)$ is not necessarily ordered!). But from $T|_{S^k(V)} = 0$ we can deduce that 
-\[
-T(v_1 \otimes \ldots \otimes v_i \otimes \ldots \otimes v_j \otimes \ldots \otimes v_k) = -T(v_1 \otimes \ldots \otimes v_j \otimes \ldots \otimes v_i \otimes \ldots \otimes v_k)
-\]
-for any $v_1,\ldots,v_k \in V$ and $1 \leq i,j \leq k$ with $i\neq j$. So after a suitable permutation of $(i_1,\ldots,i_k)$ we can assume this tuple to be ordered, such that the statement follows from the definiton of $\widetilde{T}$.
+does in fact commute it suffices to verify commutativity on basis vectors $(e_{i_1}, \ldots, e_{i_k})$ of $V^{\times k}$ (where the tuple $(i_1,\ldots,i_k)$ is not necessarily ordered!). But since $T$ and $\pi$ are both alternating we may assume after a suitable permutation of $(i_1,\ldots,i_k)$, that this tuple is ordered, such that the statement follows from the definiton of $\widetilde{T}$.
 \end{proof}
 
 \begin{lemma}
@@ -129,18 +122,23 @@ for any $v_1,\ldots,v_k \in V$ and $1 \leq i,j \leq k$ with $i\neq j$. So after 
 \end{lemma}
 
 \begin{proof}
-    Again uniqueness is clear. For the existence of $L$ we define it on $\Lambda^k V$ (necessarily) by 
+    Again uniqueness of $L$ is clear. For the existence of $L$ we define it on $\Lambda^k V$ (necessarily) by 
     \[
     L(v_1 \wedge \ldots \wedge v_k) := \prod_{i=1}^k \psi^\prime(v_i)
     \]
     using the universal property of the exterior power shown in Lemma \ref{linalg:lem:universal_property_exterior_power}.
 \end{proof}
 
-To conclude this section let us mention another commonly used construction of the exterior power and exterior algebra. Firstly note that the quotient $\modulo{V^{\otimes k}}{S^k(V)}$ together with the quotient map 
+
+To conclude this section let us mention another commonly used construction of the exterior power and exterior algebra. To this end let 
 \[
-V^{\otimes k} \to \modulo{V^{\otimes k}}{S^k(V)}
+S^k(V) := \mathrm{span}\{v_1\otimes\ldots\otimes v_k \mid \exists \; 1 \leq i,j \leq k, i \neq j \text{ with } v_i = v_j\} \subseteq V^{\otimes k}
 \]
-also clearly satisifies the universal property in Definition \ref{linalg:def:universal_property_exterior_power}. Hence this is also a valid and commonly used construction of the exterior power. With this definition 
+Then it is not hard to show that $\modulo{V^{\otimes k}}{S^k(V)}$ together with the canonical map 
+\[
+V^{\times k} \to V^{\otimes k} \to \modulo{V^{\otimes k}}{S^k(V)}
+\]
+also satisifies the universal property in Definition \ref{linalg:def:universal_property_exterior_power}. Hence this is also a valid and commonly used construction of the exterior power. With this definition 
 \[
 \alpha \wedge \beta = [\alpha \otimes \beta].
 \]

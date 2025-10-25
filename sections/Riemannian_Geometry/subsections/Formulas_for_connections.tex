@@ -17,3 +17,49 @@
     \]
     where $s_1^i$ and $s_2^j$ are local sections of $E_1$ and $E_2$ respectively. This then shows uniqueness and moreover gives us a way to define $\nabla$ locally, which can be pasted to together to define $\nabla$ globally just as in Proposition \ref{riem_mnf:prop:product_connections}.
 \end{proof}
+
+\begin{lemma}
+    Let $M$ be a Riemannian manifold, $\omega,\eta \in \Omega^\ast(M)$ differential forms and $X \in \mathscr{X}(M)$ a vector field. Then 
+    \[
+    \nabla_X(\omega \wedge \eta) = \nabla_X \omega \wedge \eta + \omega \wedge \nabla_X\eta,
+    \]
+    where $\nabla_X$ denotes the connection on the bundle $\Lambda^\ast T^\ast M$ induced by the Levi-Civita connection on $M$.
+\end{lemma}
+
+\begin{proof}
+    By definition of the wedge product it suffices to show that $\nabla_X$ commutes with the antisymmetrization map 
+    \[
+    \mathrm{Alt} \colon (T^\ast M)^{\otimes k} \to (T^\ast M)^{\otimes k}.
+    \]
+    To see this let $\alpha_1,\ldots,\alpha_k \in \Omega^1(M)$. Then 
+    \begin{align*}
+        \nabla_X (\mathrm{Alt}(\alpha_1\otimes\ldots\otimes\alpha_k)) &= \nabla_X\left(\frac{1}{k!}\sum_{\sigma} \mathrm{sgn}(\sigma) \alpha_{\sigma(1)} \otimes \ldots \otimes \alpha_{\sigma(k)}\right) \\
+        &= \frac{1}{k!}\sum_{\sigma}\sum_{i}\mathrm{sgn}(\sigma) \alpha_{\sigma(1)} \otimes \ldots \otimes \nabla_X\alpha_{\sigma(i)}\otimes \ldots \otimes \alpha_{\sigma(k)}
+    \end{align*}
+    and 
+    \begin{align*}
+        \mathrm{Alt}(\nabla_X (\alpha_1\otimes\ldots\otimes\alpha_k)) &= \mathrm{Alt}\left(\sum_i \alpha_1 \otimes \ldots \otimes \nabla_X\alpha_i \otimes \ldots \otimes \alpha_k\right) \\
+        &= \sum_{i}\sum_{\sigma}\frac{1}{k!}\mathrm{sgn}(\sigma) \alpha_{\sigma(1)} \otimes \ldots \otimes \nabla_X\alpha_{\sigma(i)}\otimes \ldots \otimes \alpha_{\sigma(k)}.
+    \end{align*}
+    Since locally any section $\omega \in \Gamma((T^\ast M)^{\otimes k})$ can be written as a sum of tensor products of $1$-forms the statement follows.
+\end{proof}
+
+\begin{lemma}
+    Let $E \to M$ be a smooth vector bundle equipped with a metric and compatible connection. Then for any $X \in \mathscr{X}(M)$ the following diagram commutes 
+    \[\begin{tikzcd}
+	{\Gamma(E)} & {\Gamma(E)} \\
+	{\Gamma(E^\ast)} & {\Gamma(E^\ast)}
+	\arrow["{\nabla_X}", from=1-1, to=1-2]
+	\arrow["\cong", from=1-1, to=2-1]
+	\arrow["\cong", from=1-2, to=2-2]
+	\arrow["{\nabla_X}", from=2-1, to=2-2]
+\end{tikzcd}\]
+where the vertical isomorphisms are given by dualizing and the connection on $E^\ast$ is the unique connection defined by
+\[
+X\cdot (\alpha(s)) = (\nabla_X\alpha)(s) + \alpha(\nabla_Xs)
+\] 
+for $s \in \Gamma(E), \alpha \in \Gamma(E^\ast)$.
+\end{lemma}
+\begin{proof}
+    This follows immediately from the definition of the connection on $E^\ast$ and the compatibility of the metric.
+\end{proof}
