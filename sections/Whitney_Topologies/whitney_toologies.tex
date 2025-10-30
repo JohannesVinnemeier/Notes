@@ -1,0 +1,126 @@
+\section{Whitney Topologies}
+
+Let $X,Y$ be smooth manifolds. In this section we discuss the concept of $C^k$-convergence for sequences of functions $(f_n) \subseteq C^k(X,Y)$ with respect to the Whitney topolgies. The notation and terminology used will be the same as in \cite{golubitsky2012stable}. First we remark that $X$ or $Y$ is also allowed to have boundary. The definition of the jet bundles $J^k(X,Y)$ and the Whitney topologies works exactly the same (if both have boundary, $J^k(X,Y)$ will be a manifold with corners, so we might want to avoid that). Let us begin by understanding the $C^0$-topology.
+
+\begin{lemma}
+    Let $X,Y$ be smooth manifolds with $X$ compact. Then the Whitney $C^0$-topology (as described in \cite{golubitsky2012stable}) and the exponential topology (as described in \cite{steimle_topo}) on $C^0(X,Y)$ agree.
+\end{lemma}
+
+\begin{remark}
+    If $X$ is not compact the $C^0$-topology will in general be strictly finer than the exponential topology. To see this recall that a subbase for the exponential topology on $C^0(X,Y)$ is given by sets of the form
+    \[
+    F(K,V) := \{f \in C^0(X,Y) \mid f(K) \subseteq V\}
+    \]
+    for compact sets $K \subseteq X$ and open sets $V \subseteq Y$. Set 
+    \[
+    W := X \times V \cup (X\setminus K) \times Y.
+    \]
+    Then $W \subseteq X \times Y$ is open and 
+    \[
+    F(K,V) = M(W).
+    \]
+    To see that the $C^0$ is finer in general consider the following example. ??????????????
+    To differentiate between the two topologies on $C^0(X,Y)$ we shall use the term $C^0_\mathrm{exp}$-convergence to refer to convergence with respect to the exponential topology.
+\end{remark}
+
+Next we understand convergence in the $C^k$-topology. Before stating the main proposition we shall introduce another type of convergence which is better suited for non-compact domains, since in the non-compact case usual $C^k$-convergence is often too strong, because 
+\[
+f_n \xrightarrow{C^k} f
+\]
+necessarily requires for $f_n$ and $f$ to agree outside a compact subset (see \cite{golubitsky2012stable}).
+
+\begin{definition}
+    Let $X,Y$ be smooth manifolds and $f,f_n \in C^k(X,Y)$. We say that 
+    \[
+    f_n \xrightarrow{C^k_{\mathrm{loc}}} f
+    \]
+    if for every compact codimension $0$-submanifold $K \subseteq X$ we have 
+    \[
+    f_n|_K \xrightarrow{C^k} f|_K.
+    \]
+\end{definition}
+
+Note that for compact domains $C^k_{\mathrm{loc}}$-convergence and $C^k$-convergence coincide, so we are actually interested in understanding $C^k_{\mathrm{loc}}$-convergence. The following two propositions give a useful characterization of $C^k_{\mathrm{loc}}$-convergence to work with in practice. 
+
+\begin{proposition}
+    \label{whitney_top:prop:ck_conv_on_rn}
+    Let $D\subseteq \R^n$ be a compact codimension $0$ submanifold, $V \subseteq \R^m$ open and $f,f_n \in C^k(D,V)$. Then
+    \[
+    f_n \xrightarrow{C^k} f
+    \]
+    if and only if for every multiindex $\alpha \in \N^n_0$ with $0\leq\abs{\alpha} \leq k$
+    \[
+    \frac{\partial^{\abs{\alpha}}f_n}{\partial x^\alpha} \xrightarrow{\mathrm{uniformly}}\frac{\partial^{\abs{\alpha}}f}{\partial x^\alpha}.
+    \]
+\end{proposition}
+
+\begin{proposition}
+    Let $X,Y$ be smooth manifolds and $f,f_n \in C^k(X,Y)$. Then the following statements are equivalent.
+    \begin{enumerate}[(i)]
+        \item $f_n \xrightarrow{C^k_{\mathrm{loc}}} f$,
+        \item $j^kf_n \xrightarrow{C^0_{\mathrm{loc}}} j^kf$,
+        \item For all charts $\phi \colon U \to U^\prime \subseteq X$ and $\psi \colon V \to V^\prime \subseteq Y$ with $f(U^\prime), f_n(U^\prime) \subseteq V^\prime$ (for $n$ sufficiently large) we have 
+        \[
+        \psi^{-1} \circ f_n \circ \phi \xrightarrow{C^k_{\mathrm{loc}}} \psi^{-1} \circ f \circ \phi,
+        \]
+        \item For every $p \in X$ there exist charts $\phi \colon U \to U^\prime \subseteq X$ around $p$ and $\psi \colon V \to V^\prime \subseteq Y$ around $f(p)$ with $f(U^\prime), f_n(U^\prime) \subseteq V^\prime$ (for $n$ sufficiently large) such that
+        \[
+        \psi^{-1} \circ f_n \circ \phi \xrightarrow{C^k_{\mathrm{loc}}} \psi^{-1} \circ f \circ \phi.
+        \]
+    \end{enumerate}
+\end{proposition}
+
+Before proving the propositions we recall a few facts about the exponential topology not mentioned in \cite{steimle_topo}, which will be used in the proofs.
+
+\begin{lemma}
+    Let $X,Y,Z$ be topological spaces and $A \subseteq X$, $B \subseteq Y$ subspaces. Then the following holds (assuming the exponential topology exists on each space)
+    \begin{enumerate}[(i)]
+        \item The canonical map $C^0(X,B) \hookrightarrow C^0(X,Y)$ is an embedding
+        \item The restriction map $C^0(X,Y) \to C^0(A,Y)$ is continuous
+        \item The canonical bijection $C^0(X,Y) \times C^0(X,Z) \to C^0(X,Y \times Z)$ is a homeomorphism
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    For (i) we show that the exponential topology on $C^0(X,B)$ agrees with the topology induced by the map  $C^0(X,B) \hookrightarrow C^0(X,Y)$ by showing the corresponding universal property. So let
+    \[\begin{tikzcd}
+	& {C^0(X,Y)} \\
+	Z & {C^0(X,B)}
+	\arrow["{F}", from=2-1, to=1-2]
+	\arrow["f", from=2-1, to=2-2]
+	\arrow[hook, from=2-2, to=1-2]
+\end{tikzcd}\]
+commute with $F$ being continuous. We have to show that $f$ is continuous, but by definiton of the exponential topology this is equivalent to 
+\[
+Z \times X \to B, \; (z,x) \mapsto f(z)(x)
+\]
+being continuous and continuity of $F$ is equivalent to continuity of 
+\[
+Z \times X \to Y, \; (z,x) \mapsto F(z)(x),
+\]
+so (i) follows. For (ii) note that the restriction map is continuous if and only if 
+\[
+C^0(X,Y) \times A \to Y, \; (f,x) \mapsto f|_A(x)
+\]
+is continuous. But this is just the restriction of the evaluation map which is continuous by \cite{steimle_topo}. Similiarly the map in (iii) is continuous if and only if 
+\[
+C^0(X,Y) \times C^0(X,Z) \times X \to Y \times Z, \; (f,g,x) \mapsto (f(x),g(x))
+\]
+is. But again the continuity follows from the continuity of the evaluation map.
+\end{proof}
+
+\begin{proof}[Proof of Proposition \ref{whitney_top:prop:ck_conv_on_rn}]
+    In \cite{golubitsky2012stable} it was shown that for compact domains $C^k$-convergence is equivalent to the $k$-jets converging uniformly with respect to any metric on the Jet-bundle compatible with its topology, that is 
+    \[
+    f_n \xrightarrow{C^k} f \; \Leftrightarrow \; j^kf_n \xrightarrow{\mathrm{uniformly}} j^kf
+    \]
+    Note that for compact domains uniform convergence and $C^0_\mathrm{exp}$-convergence agree (see \cite{steimle_topo}). Now let $d(n,k) = \frac{(n+k)!}{n!k!}$ be the total number of all partial derivatives $\partial^\alpha$ of order $1 \leq \abs{\alpha} \leq k$ and let 
+    \[
+    \tau \colon D \times V \times \R^{d(n,k)} \to J^k(D,V)
+    \]
+    be the canonical diffeomorphism. Then 
+    \[
+    j^kf_n \xrightarrow{C^0_\mathrm{exp}} j^kf \; \Leftrightarrow \; j^kf_n \circ \tau \xrightarrow{C^0_\mathrm{exp}} j^kf \circ \tau.
+    \]
+    But a sequence of maps with values in a product $C^0_\mathrm{exp}$-converges if and only if each component $C^0_\mathrm{exp}$-converges. Since the components of $j^kf_n \circ \tau$ and $j^kf \circ \tau$ are precisely the partial derivatives of $f_n$ and $f$ up to order $k$ the statement follows (after again applying the equivalence of uniform and $C^0_\mathrm{exp}$-convergence on compact domains).
+\end{proof}
