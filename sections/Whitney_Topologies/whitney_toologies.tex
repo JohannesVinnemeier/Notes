@@ -3,11 +3,54 @@
 Let $X,Y$ be smooth manifolds. In this section we discuss the concept of $C^k$-convergence for sequences of functions $(f_n) \subseteq C^k(X,Y)$ with respect to the Whitney topolgies. The notation and terminology used will be the same as in \cite{golubitsky2012stable}. First we remark that $X$ or $Y$ is also allowed to have boundary. The definition of the jet bundles $J^k(X,Y)$ and the Whitney topologies works exactly the same (if both have boundary, $J^k(X,Y)$ will be a manifold with corners, so we might want to avoid that). Let us begin by understanding the $C^0$-topology.
 
 \begin{lemma}
+    \label{whitney_top:lem:c0_and_exponential_topology_agree}
     Let $X,Y$ be smooth manifolds with $X$ compact. Then the Whitney $C^0$-topology (as described in \cite{golubitsky2012stable}) and the exponential topology (as described in \cite{steimle_topo}) on $C^0(X,Y)$ agree.
 \end{lemma}
 
+\begin{proof}
+    We identify $J^0(X,Y) \cong X \times Y$. Then by definition the sets of the form 
+    \[
+    \mathrm{M}(W) := \{f \in C^0(X,Y) \mid j^0f(X) = \mathrm{Graph}(f) \subseteq W\}
+    \]
+    for $W\subseteq X \times Y$ open are a basis of the $C^0$-topology on $C^0(X,Y)$. To see that this topology agrees with the exponential topology we show that it satisfies the correct universal property. So let $S$ be any topological space. We have to show that a map 
+    \[
+    F \colon S \to C^0(X,Y)
+    \]
+    is continuous if and only if 
+    \[
+    \widetilde{F} \colon S \times X \to Y, \; (s,x) \mapsto F(s)(x)
+    \]
+    is continuous. First assume $F$ to be continuous. Let $V\subseteq Y$ be open and $(s_0,x_0) \in \widetilde{F}^{-1}(V)$. Define $f_0 := F(s_0) \in C^0(X,Y)$, then 
+    \[
+    U := f_0^{-1}(V)
+    \]
+    is open in $X$. and $x_0 \in U$. Choose some smaller open neighbourhood $U_0 \subseteq X$ of $x_0$ with $\overline{U}_0 \subseteq U$ and set 
+    \[
+    W := U \times V \cup (X\setminus \overline{U}_0) \times Y \subseteq X \times Y.
+    \]
+    By assumption $S_0 := F^{-1}(\mathrm{M}(W)) \subseteq S$ is open and we have constructed $W$, such that $s_0 \in S_0$. But then 
+    \[
+    S_0 \times U_0 \subseteq S \times X
+    \]
+    is an open neighbourhood of $(s_0,x_0)$ and $S_0 \times U_0 \subseteq \widetilde{F}^{-1}(V)$.
+
+    Now assume that $\widetilde{F}$ is continuous. Let $W\subseteq X \times Y$ be open and $s_0 \in F^{-1}(\mathrm{M}(W))$. Again define $f_0 := F(s_0) \in C^0(X,Y)$. Then $\mathrm{Graph}(f_0) \subseteq W$ and around each $(x,f_0(x)) \in \mathrm{Graph}(f_0)$ we can find a product neighbourhood $U_x \times V_x \subseteq W$, where $U_x \subseteq X$ is an open neighbourhood of $x$ and $V_x \subset Y$ is an open neighbourhood of $f_0(x)$. After possibly shrinking $U_x$ we may further assume that $\overline{U}_x \subseteq f_0^{-1}(V_x)$. Since $X$ is compact we can cover $\mathrm{Graph}(f_0)$ with finitely many such neighbourhoods $U_1 \times V_1,\ldots,U_n\times V_n$. Now for each $V_i$ we have that 
+    \[
+    \{s_0\} \times \overline{U}_i \subseteq \widetilde{F}^{-1}(V_i).
+    \]
+    But $\widetilde{F}^{-1}(V_i) \subseteq S \times X$ is open by assumption and $\overline{U}_i$ is compact, so we can find open neighbourhoods $S_i \subseteq S$ of $s_0$ with 
+    \[
+    S_i \times \overline{U}_i \subseteq \widetilde{F}^{-1}(V_i).
+    \]
+    Set $S_0 := S_1 \cap \ldots \cap S_n$. Then $S_0 \subseteq S$ is an open neighbourhood of $s_0$ and for any $(s,x) \in S_0 \times X$ there exists $U_i$ with $x \in U_i$, hence 
+    \[
+    F(s)(x) = \widetilde{F}(s,x) \in V_i.
+    \]
+    It follows that $\mathrm{Graph}(F(s)) \subseteq \bigcup_{i=1}^n U_i \times V_i \subseteq W$ for all $s \in S_0$ and thus $S_0 \subseteq F^{-1}(\mathrm{M}(W))$.
+\end{proof}
+
 \begin{remark}
-    If $X$ is not compact the $C^0$-topology will in general be strictly finer than the exponential topology. To see this recall that a subbase for the exponential topology on $C^0(X,Y)$ is given by sets of the form
+    If $X$ is not compact the $C^0$-topology will in general be finer than the exponential topology. To see this recall that a subbase for the exponential topology on $C^0(X,Y)$ is given by sets of the form
     \[
     F(K,V) := \{f \in C^0(X,Y) \mid f(K) \subseteq V\}
     \]
@@ -19,7 +62,7 @@ Let $X,Y$ be smooth manifolds. In this section we discuss the concept of $C^k$-c
     \[
     F(K,V) = M(W).
     \]
-    To see that the $C^0$ is finer in general consider the following example. ??????????????
+    To see that the $C^0$-topology can be strictly finer consider the following example. ??????????????
     To differentiate between the two topologies on $C^0(X,Y)$ we shall use the term $C^0_\mathrm{exp}$-convergence to refer to convergence with respect to the exponential topology.
 \end{remark}
 
@@ -55,6 +98,7 @@ Note that for compact domains $C^k_{\mathrm{loc}}$-convergence and $C^k$-converg
 \end{proposition}
 
 \begin{proposition}
+    \label{whitney_top:prop:ck_conv_equivalent_characterizations}
     Let $X,Y$ be smooth manifolds and $f,f_n \in C^k(X,Y)$. Then the following statements are equivalent.
     \begin{enumerate}[(i)]
         \item $f_n \xrightarrow{C^k_{\mathrm{loc}}} f$,
@@ -73,6 +117,7 @@ Note that for compact domains $C^k_{\mathrm{loc}}$-convergence and $C^k$-converg
 Before proving the propositions we recall a few facts about the exponential topology not mentioned in \cite{steimle_topo}, which will be used in the proofs.
 
 \begin{lemma}
+    \label{whitney_top:lem:exponential_topology_facts}
     Let $X,Y,Z$ be topological spaces and $A \subseteq X$, $B \subseteq Y$ subspaces. Then the following holds (assuming the exponential topology exists on each space)
     \begin{enumerate}[(i)]
         \item The canonical map $C^0(X,B) \hookrightarrow C^0(X,Y)$ is an embedding
@@ -116,11 +161,63 @@ is. But again the continuity follows from the continuity of the evaluation map.
     \]
     Note that for compact domains uniform convergence and $C^0_\mathrm{exp}$-convergence agree (see \cite{steimle_topo}). Now let $d(n,k) = \frac{(n+k)!}{n!k!}$ be the total number of all partial derivatives $\partial^\alpha$ of order $1 \leq \abs{\alpha} \leq k$ and let 
     \[
-    \tau \colon D \times V \times \R^{d(n,k)} \to J^k(D,V)
+    \tau \colon D \times V \times \R^{d(n,k)} \xrightarrow{\cong} J^k(D,V)
     \]
     be the canonical diffeomorphism. Then 
     \[
     j^kf_n \xrightarrow{C^0_\mathrm{exp}} j^kf \; \Leftrightarrow \; j^kf_n \circ \tau \xrightarrow{C^0_\mathrm{exp}} j^kf \circ \tau.
     \]
     But a sequence of maps with values in a product $C^0_\mathrm{exp}$-converges if and only if each component $C^0_\mathrm{exp}$-converges. Since the components of $j^kf_n \circ \tau$ and $j^kf \circ \tau$ are precisely the partial derivatives of $f_n$ and $f$ up to order $k$ the statement follows (after again applying the equivalence of uniform and $C^0_\mathrm{exp}$-convergence on compact domains).
+\end{proof}
+
+\begin{proof}[Proof of Proposition \ref{whitney_top:prop:ck_conv_equivalent_characterizations}]
+    Let $K \subseteq X$ be any compact codimension $0$ submanifold. It then has been shown in \cite{golubitsky2012stable} that 
+    \[
+    f_n|_K \xrightarrow{C^k} f|_K
+    \]
+    is equivalent to 
+    \[
+    j^kf_n|_K \xrightarrow{\mathrm{uniformly}}j^kf|_K
+    \]
+    with respect to any metric on $J^k(X,Y)$ compatible with the topology. But again uniform convergence on compact domains is equivalent to $C^0_\mathrm{exp}$-convergence, which in turn is equivalent to $C^0$-convergence by Lemma \ref{whitney_top:lem:c0_and_exponential_topology_agree}. This shows the equivalence of (i) and (ii). 
+    
+    For (ii) $\Rightarrow$ (iii) let $\phi,\psi$ be as in (iii) and let $D\subseteq U$ be any compact codimension $0$ submanifold. Then by Lemma \ref{whitney_top:lem:c0_and_exponential_topology_agree} we again observe that $C^0$-convergence of $j^kf_n$ on $\phi(D)$ is equivalent to $C^0_\mathrm{exp}$-convergence and since the exponential topology behaves nicely with respect to restiction in the codomain (see Lemma \ref{whitney_top:lem:exponential_topology_facts}) we get that the restricted maps 
+    \[
+    j^kf_n|_{\phi(D)} \colon \phi(D) \to J^k(U^\prime,V^\prime)
+    \]
+    $C^0_\mathrm{exp}$-converge to 
+    \[
+    j^kf|_{\phi(D)} \colon \phi(D) \to J^k(U^\prime,V^\prime),
+    \]
+    where $J^k(U^\prime,V^\prime) \subseteq J^k(X,Y)$ is considered an open subset. Under the diffeomorphisms
+    \begin{align*}
+        D &\xrightarrow{\cong} \phi(D), \\
+        U \times V \times \R^{d(n,k)} &\xrightarrow{\cong} J^k(U^\prime,V^\prime)
+    \end{align*}
+    induced by $\phi$ and $\psi$ the maps $j^kf_n|_{\phi(D)}, j^kf|_{\phi(D)}$ correspond to maps 
+    \[
+    g_n,g \colon D \to U \times V \times \R^{d(n,k)}
+    \]
+    and $g_n \xrightarrow{C^0_\mathrm{exp}} g$. But a sequence of maps with values in a product $C^0_\mathrm{exp}$-converges if and only if each component converges (again see Lemma \ref{whitney_top:lem:exponential_topology_facts}). Since the components of $g_n$ are $\mathrm{id}_U$ and the partial derivatives of $\psi^{-1} \circ f_n \circ \phi$ of order less than $k$ (and similiarly for $g$) we conclude that 
+    \[
+    \frac{\partial^\alpha(\psi^{-1} \circ f_n \circ \phi)}{\partial x^\alpha}\scalebox{1}[1.8]{$|$}_D \xrightarrow{C^0_\mathrm{exp}} \frac{\partial^\alpha(\psi^{-1} \circ f \circ \phi)}{\partial x^\alpha}\scalebox{1}[1.8]{$|$}_D
+    \]    
+    for all $\alpha \in \N_0^n$ with $0 \leq |\alpha| \leq k$. Now (iii) follows from Proposition \ref{whitney_top:prop:ck_conv_on_rn} (and the equivalence of uniform and $C^0_\mathrm{exp}$-convergence on compact domain). 
+
+    Clearly (iii) $\Rightarrow$ (iv), so let's assume (iv). Using the same notation and argument as above but reversed we see that 
+    \[
+    (\psi^{-1} \circ f_n \circ \phi)|_D \xrightarrow{C^k} (\psi^{-1} \circ f \circ \phi)|_D
+    \]
+    if and only if 
+    \[
+    j^kf_n|_{\phi(D)} \xrightarrow{C^0_\mathrm{exp}} j^kf|_{\phi(D)},
+    \]
+    where we consider $j^kf_n|_{\phi(D)}$ and $j^kf|_{\phi(D)}$ as maps 
+    \[
+    \phi(D) \to J^k(X,Y).
+    \]
+    Now choose any metric on $J^k(X,Y)$ compatible with the topology. Then $C^0_\mathrm{exp}$-convergence of $j^kf_n|_{\phi(D)}$ is equivalent to uniform convergence with respect to that metric. Thus we have shown that around each point $p \in X$ theres exists some neighbourhood $\phi(D)$ of $p$, such that $j^kf_n$ converges uniformly to $j^kf$ on $\phi(D)$. But any compact codimension $0$ submanifold $K\subseteq X$ is covered by finitely many such neighbourhoods and it is easily seen that this already implies uniform convergence of $j^kf_n$ to $j^kf$ on all of $K$. Then again using the equivalence of uniform convergence and $C^0_\mathrm{exp}$-convergence on compact domains as well as Lemma \ref{whitney_top:lem:c0_and_exponential_topology_agree} we conclude that 
+    \[
+    j^kf_n \xrightarrow{C^0_\mathrm{loc}} j^kf.
+    \]
 \end{proof}

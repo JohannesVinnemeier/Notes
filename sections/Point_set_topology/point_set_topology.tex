@@ -11,3 +11,49 @@
 \begin{proof}
     Let $p:= \pi|_{A} \colon A \to \pi(A)$ be the restriction and $A$ be open. Given $V \subseteq \pi(A)$ such that $U:=p^{-1}(V) \subseteq A$ is open we get from our assumptions on $A$ that $U$ is also open in $X$ and that $ U = \pi^{-1}(V)$, hence $V$ is also open in $Y$ and thus $V$ is open in $\pi(A)$. The same argument shows the statement if $A$ is closed, since we can equivalently describe the quotient topology in terms of closed sets.  
 \end{proof}
+
+\begin{lemma}
+    Let $(X_i)_{i \in I}$ be a family of connected topological spaces. Then the product $\prod_{i \in I} X_i$ is again connected. 
+\end{lemma}
+
+\begin{proof}
+    We first show that the statement holds if $I$ is finite. So let $X_1$ and $X_2$ be connected and let 
+    \[
+    f \colon X_1 \times X_2 \to \{0,1\}
+    \]
+    be continuous. Let $(p_1,p_2), (p_1^\prime,p_2^\prime) \in X_1 \times X_2$. Since the subspaces $X_1 \times \{p_2\}$ and $\{p_1^\prime\} \times X_2$ are connected (they are images of inclusion maps $X_i \to X_1 \times X_2$) and both contain the point $(p_1^\prime,p_2)$ it follows that
+    \[
+    Z:= X_1 \times \{p_2\} \cup \{p_1^\prime\} \times X_2
+    \]
+    is connected and thus $f$ is constant on $Z$. But the points $(p_1,p_2)$ and $(p_1^\prime,p_2^\prime)$ were chosen arbitrarily, thus $f$ is constant. It follows inductively, that the lemma holds for all finite $I$. Now let $I$ be arbitrary and again 
+    \[
+    f \colon \prod_{i \in I} X_i \to \{0,1\}
+    \]
+    continuous and $(p_i),(p_i^\prime) \in \prod_{i \in I} X_i$. Consider the set 
+    \[
+    D := \left\{\prod_{i \in I} U_i \mid p_i^\prime \in U_i \text{ and }U_i = X_i \text{ for all but finitely many } i \in I\right\}
+    \]
+    of open product neighbourhoods of $(p_i^\prime)$. Together with the relation 
+    \[
+    \prod_{i \in I} U_i \geq \prod_{i \in I} V_i :\Leftrightarrow \prod_{i \in I} U_i \subseteq \prod_{i \in I} V_i 
+    \]
+    $D$ has the structure of a directed set. For $\alpha =  \prod_{i \in I} U_i \in D$ define 
+    \[
+    x_i^\alpha := \begin{dcases}
+        p_i &, \text{ if } U_i = X_i\\
+        p_i^\prime &, \text{ otherwise}
+    \end{dcases}
+    \]
+    By construction the net $(x_i^\alpha)_\alpha$ converges to $(p_i^\prime)$. It moreover follows from the case where $I$ is finite, that 
+    \[
+    f((x_i^\alpha)_i) = f((p_i)_i)
+    \]
+    for all $\alpha \in D$, since for $\alpha =  \prod_{i \in I} U_i \in D$ both points lie in the connected subspace 
+    \[
+    A := \prod_{i \in I} A_i,
+    \]
+    where $A_i = \{p_i\}$ if $U_i = X_i$ and $A_i = X_i$ for the finitely many exceptions. Thus 
+    \[
+    f((p_i^\prime)_i) = \lim_{\alpha \in D} f((x_i^\alpha)_i) = f((p_i)_i).
+    \] 
+\end{proof}
