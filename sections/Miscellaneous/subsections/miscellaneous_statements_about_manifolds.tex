@@ -1,0 +1,54 @@
+\subsection{Miscellaneous Statements about Manifolds}
+
+To show smoothness of a function which is defined implicitly, the following theorem is often useful.
+\begin{theorem}[Implicit function theorem]
+    Let $M,N,S$ be smooth manifolds (without boundary) with $\mathrm{dim}(N) = \mathrm{dim}(S)$ and $f \colon M \times N \to S$ a smooth function. Moreover let $p_0 \in M, q_0 \in N$ and $s_0 = f(p_0,q_0) \in S$. Suppose that the map
+    \[
+    N \to S, \; q \mapsto f(p_0,q)
+    \]
+    is regular at $q_0$, then around $p_0$ the equation 
+    \[
+    f(p,q) = s_0
+    \]
+    can be solved implicitly for $q$, i.e. there exists an open neighbourhood $U \subseteq M$ of $p_0$ and a smooth function $g\colon U \to N$, such that 
+    \[
+    f(p,g(p)) = s_0
+    \]
+    for all $p\in U$.
+\end{theorem}
+
+\begin{proof}
+    By the regular value theorem there exists some open neighbourhood $V \subseteq M \times N$ of $(p_0,q_0)$, such that 
+    \[
+    P:= f^{-1}(s_0) \cap V \subseteq M \times N
+    \]
+    is a submanifold. Let $\pi_M \colon M \times N \to M$ be the projection. Suppose we have shown that $\pi_M|_P$ is a local diffeomorphism around $(p_0,q_0)$, then we can find a local inverse 
+    \[
+    \hat{g} \colon U \to P
+    \]
+    defined on some open neighbourhood $U \subseteq M$ of $p_0$. Since $\pi_M \circ \hat{g} = \mathrm{id}_U$ we get that $\hat{g}$ is of the form 
+    \[
+    \hat{g}(p) = (p,g(p))
+    \]
+    for some smooth map $g \colon U \to N$ and thus 
+    \[
+    f(p,g(p)) = s_0.
+    \]
+    To see that $\pi_M|_P$ is a local diffeomorphism around $(p_0,q_0)$ it suffices to show that 
+    \[
+    d_{(p_0,q_0)}(\pi_M|_P) \colon T_{(p_0,q_0)}P \to T_{p_0}M
+    \]
+    is injective since $\mathrm{dim}(P) = \mathrm{dim}(M)$. The kernel of $d_{(p_0,q_0)}\pi_M \colon T_{p_0}M \oplus T_{q_0}N \to T_{p_0}M$ is precisely $T_{q_0}N$ and 
+    \[
+    T_{(p_0,q_0)}P = \mathrm{ker}\,d_{(p_0,q_0)}f,
+    \]
+    so
+    \[
+    \mathrm{ker}\,d_{(p_0,q_0)}(\pi_M|_P) = T_{q_0}N \cap \mathrm{ker}\,d_{(p_0,q_0)}f.
+    \]
+    But given $v \in T_{q_0}N \cap \mathrm{ker}\,d_{(p_0,q_0)}f$ we get that 
+    \[
+    0 = d_{(p_0,q_0)}f(v) = d_{q_0}(q \mapsto f(p_0,q))(v)
+    \]
+    and since we assumed $q \mapsto f(p_0,q)$ to be regular at $q_0$ we conclude that $v=0$.
+\end{proof}

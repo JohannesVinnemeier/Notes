@@ -57,3 +57,14 @@
     f((p_i^\prime)_i) = \lim_{\alpha \in D} f((x_i^\alpha)_i) = f((p_i)_i).
     \] 
 \end{proof}
+
+\begin{lemma}
+    \label{point_set_topo:lem:tube_lemma}
+    Let $K$ be a compact topological space, $(Y,d)$ a metric space and $f \colon K \to Y$ continuous. Then for any open neighbourhood $U \subseteq K \times Y$ of the graph $\Gamma_f \subseteq K \times Y$ of $f$, there exists $\epsilon >0$, such that the $\epsilon$-tube 
+    \[
+    \{
+        (x,y) \in K \times Y \mid d(f(x),y) < \epsilon
+    \}
+    \]
+    is contained in $U$.
+\end{lemma}
