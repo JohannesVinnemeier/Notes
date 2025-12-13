@@ -140,6 +140,42 @@
         % is open and $M \times {0} \subseteq U$.
     \end{proof}
 
+    In the above theorems the submanifold $X$ which we pulled back by $f$ was always assumed to be without boundary. Here is a version, which allows for $X$ to have boundary as well.
+
+    \begin{lemma}
+            Let $M,N$ be smooth manifolds where $M$ has no boundary and let $f \colon M \to N$ be a submersion. Given a submanifold $X \subseteq N$ with boundary the preimage $f^{-1}() \subseteq M$ is a submanifold with boundary 
+            \[
+            \partial f^{-1}(X) = f^{-1}(\partial X)
+            \]
+            and $\mathrm{codim}(f^{-1}(X)) = \mathrm{codim}(X)$. 
+        \end{lemma}
+        \begin{proof}
+            First we may also assume $\partial N = \emptyset$, otherwise embed $N$ into its double. Let $p \in f^{-1}(\partial X), q = f(p) \in \partial X$ and choose a chart $\psi \colon V \to N$ around $q$, such that 
+            \[
+            \psi^{-1}(X) = V \cap \{(x_1,\ldots,x_n) \mid x_1 \leq 0, x_2 = \ldots = x_{s+1} = 0\},
+            \]
+            where $n = \mathrm{dim}(N)$ and $s = \mathrm{codim}(X)$. Since $f$ is a submersion we can find a chart $\phi \colon U \to M$ around $p$, such that 
+            \[
+            \psi^{-1} \circ f \circ \phi \colon U \to V
+            \]
+            is given by projection onto the first $n$ coordinates, i.e. $(x_1,\ldots,x_m) \mapsto (x_1,\ldots, x_n)$ for $m = \mathrm{dim}(M) \geq n$. Thus in the coordinates of $\phi$, $f^{-1}(X)$ is given by 
+            \[
+            \phi^{-1}(f^{-1}(X)) = U \cap \{(x_1,\ldots,x_m) \mid x_1 \leq 0, x_2 = \ldots = x_{s+1} = 0\},
+            \]
+            such that $\phi$ is a submanifold chart for $f^{-1}(X)$ around $p$ and $\partial(f^{-1}(X) \cap \phi(U)) = f^{-1}(X) \cap \phi(U)$. Similiarly we construct submanifold charts around points $p \in f^{-1}(\mathrm{int}(X))$ from which the statement follows.
+        \end{proof}
+
+        \begin{remark}
+            The above Lemma becomes false if $\partial M \neq \emptyset$. Consider for example the inclusion $f \colon [0,1] \hookrightarrow \R$ and $S := [1,2] \subseteq \R$. Then 
+            \[
+            \partial f^{-1}(S) = \emptyset \neq f^{-1}(\partial S).
+            \]
+            Moreover we cannot replace the sumbersion condition by only a transversality condition. Consider for example the map 
+            \[
+            f \colon \R \to \R^2, x \mapsto (0,x),
+            \]
+            which is transversal to $S := [0,1] \times \{0\} \subseteq \R^2$. Then again $\partial f^{-1}(S) = \emptyset \neq f^{-1}(\partial S)$.
+        \end{remark}
     % To conclude this section we briefly discuss the so called vertical differential of a map, which can be useful in the context of transversality. 
     
  
