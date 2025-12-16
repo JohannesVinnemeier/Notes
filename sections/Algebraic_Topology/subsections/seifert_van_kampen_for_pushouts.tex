@@ -1,0 +1,42 @@
+\subsection{Seifert-Van Kampen for Pushouts}
+
+\begin{theorem}[Seifert-Van Kampen for Pushouts]
+    Let  
+    \[\begin{tikzcd}
+	{X_0} & {X_2} \\
+	{X_1} & X
+	\arrow["{i_2}", from=1-1, to=1-2]
+	\arrow["{i_1}"', from=1-1, to=2-1]
+	\arrow["{j_2}", from=1-2, to=2-2]
+	\arrow["{j_1}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+    be a pushout of topological spaces, where $X_0$ is path connected and $i_1$ and $i_2$ are inclusions of neighbourhood deformation retracts. Then for any base point $x \in X_0$ the following diagram is a pushout
+    \[\begin{tikzcd}
+	{\pi_1(X_0,x)} & {\pi_1(X_2,i_2(x))} \\
+	{\pi_1(X_1,i_1(x))} & {\pi_1(X,j(x))}
+	\arrow["{(i_2)_\ast}", from=1-1, to=1-2]
+	\arrow["{(i_1)_\ast}"', from=1-1, to=2-1]
+	\arrow["{(j_2)_\ast}", from=1-2, to=2-2]
+	\arrow["{(j_1)_\ast}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+where $ j = j_1 \circ i_1 = j_2 \circ i_2$.
+\end{theorem}
+\begin{proof}
+    Under these assumptions we can find open neighbourhoods $U_1, U_2 \subseteq X$ of $j_1(X_1), j_2(X_2)$ respectively, such that $j_i \colon X_i \to U_i$ are deformation retractions. From the construction of these open neighbourhoods it is clear that $j \colon X_0 \to U_1 \cap U_2$ is also a deformation retraction. From the ordinary Seifert-Van Kampen Theorem it follows that 
+    \[\begin{tikzcd}
+	{\pi_1(U_1 \cap U_2,j(x))} & {\pi_1(U_2,j(x))} \\
+	{\pi_1(U_1,j(x))} & {\pi_1(X,j(x))}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+\end{tikzcd}\]
+is a pushout, where all maps are induced by inclusions. The theorem now follows from the commutativity of the following diagram 
+\[\begin{tikzcd}[row sep={40,between origins}, column sep={60,between origins}]
+      & \pi_1(X_2,i_2(x)) \ar["\cong"]{rr}\ar{dd}& & \pi_1(U_2,j(x)) \ar{dd} \\
+    \pi_1(X_0,x) \ar["\cong"{pos=0.45}, crossing over]{rr} \ar{dd}\ar{ur} & & \pi_1(U_1 \cap U_2,j(x))\ar{ur} \\
+      & \pi_1(X,j(x))  \ar["\cong"{pos=0.35}]{rr} & &  \pi_1(X,j(x)) \\
+    \pi_1(X_1,i_1(x)) \ar["\cong"]{rr}\ar{ur} && \pi_1(U_1,j(x)) \ar[from=uu,crossing over]\ar{ur}
+\end{tikzcd}\]
+where the right side square is the pushout from above, the left side square is the supposed pushout and the horizontal maps in between are induced by the deformation retractions and in particular isomorphims.
+\end{proof}
