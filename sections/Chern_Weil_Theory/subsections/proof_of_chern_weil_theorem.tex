@@ -1,0 +1,53 @@
+\subsection{Proof of the Chern-Weil Theorem}
+
+The hard part of the proof is to show that $\eta(\Omega)$ is closed. For this we basically do the computation outlined in \cite{emilia_globale_ana} but add the missing details and fix a few mistakes. We need the following two Lemmas.
+
+\begin{lemma}
+    Let $\overline{\eta} \in I_r(k)$ and $X_1,\ldots,X_r,Y \in \R^{k \times k}$. Then 
+    \[
+    \sum_{i=1}^{r} \overline{\eta}(X_1,\ldots,[X_i,Y],\ldots,X_r) = 0,
+    \]
+    where $[X_i,Y] = X_iY - YX_i$ is the commutator.
+\end{lemma}
+
+\begin{proof}
+    Let $A(t) \in \mathrm{GL}(k)$ be a smooth curve with $A(0) = \mathrm{id}$ and $\dot{A}(0) = Y$. Then 
+    \begin{align*}
+         \frac{d}{dt}|_{t=0} A(t)^{-1}X_iA(t) &= \frac{d}{dt}|_{t=0}A(t)^{-1}X_i + \frac{d}{dt}|_{t=0}X_iA(t) \\ &= -YX_i + X_iY \\ &= [X_i,Y],
+    \end{align*}
+    where we used that 
+    \[
+    0 = \frac{d}{dt}|_{t=0} A(t)A(t)^{-1} = \frac{d}{dt}|_{t=0} A(t) + \frac{d}{dt}|_{t=0} A(t)^{-1} = Y + \frac{d}{dt}|_{t=0} A(t)^{-1},
+    \]
+    such that 
+    \[
+    \frac{d}{dt}|_{t=0} A(t)^{-1} = -Y.
+    \]
+    The invariance of $\overline{\eta}$ now yields 
+    \begin{align*}
+        0 &= \frac{d}{dt}|_{t=0} \, \overline{\eta}(A(t)^{-1}X_1A(t),\ldots,A(t)^{-1}X_rA(t)) \\
+        &= \sum_{i=1}^{r}\overline{\eta}(X_1,\ldots,\frac{d}{dt}|_{t=0}A(t)^{-1}X_iA(t),\ldots,X_r)\\
+        &= \sum_{i=1}^{r} \overline{\eta}(X_1,\ldots,[X_i,Y],\ldots,X_r).
+    \end{align*}
+\end{proof}
+
+Before stating the second Lemma let us define the commutator of two differential forms $\Omega_1 \in \Omega^{l_1}(M,\R^{k \times k})$ and $\Omega_2 \in \Omega^{l_2}(M,\R^{k \times k})$ by 
+\[
+[\Omega_1,\Omega_2] := \Omega_1 \wedge \Omega_2 - (-1)^{l_1l_2} \, \Omega_2 \wedge \Omega_1.
+\]
+If $\Omega_i = \omega_i \otimes A_i$ for some $\omega_i \in \Omega^{l_i}(M)$ and $A_i \in \Omega^0(M,\R^{k \times k})$ then this can also be written as 
+\[
+[\Omega_1,\Omega_2] = \omega_1 \wedge \omega_2 \otimes [A_1,A_2],
+\]
+such that this definition agrees with the one in \cite{emilia_globale_ana}, but again has the benefit of being coordinate independent.
+
+\begin{lemma}[Bianchi Identity]
+    Let $E \to M$ be a vector bundle with a connection, let $\Theta$ be the associated connection form (with respect to some local frame) and let $\Omega$ be the curvature form. Then 
+    \[
+    d \Omega + [\Theta,\Omega] = 0.
+    \]
+\end{lemma}
+\begin{proof}
+    This is just a matter of writing out the definitions.
+\end{proof}
+

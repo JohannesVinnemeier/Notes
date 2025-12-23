@@ -1,4 +1,52 @@
-\subsection{Formulas for connections}
+\subsection{Induced connections}
+Given any vector bundle there are many ways to construct new ones from it. In this section we show how a connection on the new bundle is induced by a connection on the bundle we started with.
+
+In the following proposition we shall use the same notational convention for sections in the product bundle as for vector fields
+introduced at the beginning of the last section.
+
+\begin{proposition}
+    \label{riem_mnf:prop:product_connections}
+    Let $E_1 \to M_1$ and $E_2 \to M_2$ be smooth vector bundles and let $\nabla^1, \nabla^2$ be connections on $E_1,E_2$ respectively. Then there exists a unique connection $\nabla$ on the product bundle
+    \[
+    E_1\times E_2 \to M_1\times M_2,
+    \]
+    such that for sections $s \in \Gamma(E_1\times E_2)$ of the form $s = s_1 + s_2$, where $s_i \in \Gamma(E_i)$, and vector fields $X \in \mathscr{X}(M_1\times M_2)$ of the form $X=X_1 + X_2$, where $X_i \in \mathscr{X}(M_i)$, the following holds:
+    \[
+    \nabla_X s = \nabla^1_{X_1}s_1 + \nabla^2_{X_2}s_2.
+    \]
+    We call $\nabla$ the product connection of $\nabla^1$ and $\nabla^2$ and write $\nabla = \nabla^1 \times \nabla^2$.
+\end{proposition}
+
+\begin{proof}
+    We first show uniqueness. Let $X \in \mathscr{X}(M_1\times M_2)$ be an arbitary vector field and $s \in \Gamma(E_1\times E_2)$ an arbitary section. For $(p_1,p_2) \in M_1 \times M_2$ we can find open neighbourhoods $U_i \subseteq M_i$ of $p_i$, such that there exist local frames 
+    \[
+    \sigma_1^i,\ldots,\sigma_{n_i}^i \in \Gamma(E_i|_{U_i}),
+    \]
+    where $n_i$ is the rank of $E_i$ and there exist local frames 
+    \[
+    E_1^i,\ldots,E_{m_i}^i \in \Gamma(TM_i|_{U_i}),
+    \]
+    On $U:= U_1 \times U_2$ we can write
+    \[
+    s = s_1^{j_1}\sigma_{j_1}^1 + s_2^{j_2}\sigma_{j_2}^2
+    \]
+    and
+    \[
+    X = X_1^{k_1}E_{k_1}^1 + X_2^{k_2}E_{k_2}^2
+    \]
+    for smooth functions $s_1^{j_1},s_2^{j_2},X_1^{k_1},X_2^{k_2} \in C^\infty(U)$. Then
+    \begin{align}
+        \nabla_X s &= X_1^{k_1}\left(\nabla_{E_{k_1}^1}(s_1^{j_1}\sigma_{j_1}^1) + \nabla_{E_{k_1}^1}(s_2^{j_2}\sigma_{j_2}^2)\right) + X_2^{k_2}\left(\nabla_{E_{k_2}^2}(s_1^{j_1}\sigma_{j_1}^1) + \nabla_{E_{k_2}^2}(s_2^{j_2}\sigma_{j_2}^2)\right) \notag \\
+        &= X_1^{k_1}\left((E_{k_1}^1 \cdot s_1^{j_1})\sigma_{j_1}^1 + s_1^{j_1}\nabla^1_{E_{k_1}^1}\sigma_{j_1}^1 + (E_{k_1}^1 \cdot s_2^{j_2})\sigma_{j_2}^2\right) \notag\\
+        &\phantom{=} + X_2^{k_2}\left((E_{k_2}^2 \cdot s_1^{j_1})\sigma_{j_1}^1 + (E_{k_2}^2 \cdot s_2^{j_2})\sigma_{j_2}^2 + s_2^{j_2}\nabla^2_{E_{k_2}^2}\sigma_{j_2}^2 \right) \label{riem_mnf:eq:product_connection}
+    \end{align}
+    Since the last expression does not depend on $\nabla$ this shows uniqueness. To show existence define a connection $\nabla^U$ on $U$ by formula (\ref{riem_mnf:eq:product_connection}). It is easy to see that this does in fact define a connection on $E_1 \times E_2|_U$, which is compatible with the restricted connections $\nabla^1|_{U_1}$ and $\nabla^2|_{U_2}$ in the sense of the statement of the proposition. So by the uniqueness result this connection does not depend on the chosen frames, thus we get a well-defined connection $\nabla$ on $E_1\times E_2$ by 
+    \[
+    (\nabla_Xs)|_U := \nabla^U_{X|_U}s|_U.
+    \]
+\end{proof}
+
+The next propostion is very similiar and concerned with the induced connection on a tensor bundle.
 
 \begin{proposition}
     Let $E_1 \to M$ and $E_2 \to M$ be smooth vector bundles and let $\nabla^1, \nabla^2$ be connections on $E_1,E_2$ respectively. Then there exists a unique connection $\nabla$ on the tensor product bundle
@@ -17,6 +65,22 @@
     \]
     where $s_1^i$ and $s_2^j$ are local sections of $E_1$ and $E_2$ respectively. This then shows uniqueness and moreover gives us a way to define $\nabla$ locally, which can be pasted to together to define $\nabla$ globally just as in Proposition \ref{riem_mnf:prop:product_connections}.
 \end{proof}
+
+Finally we discuss the induced connection on the pullback bundle $f^\ast E$ of some vector bundle $E \to M$ under a smooth map $f \colon N \to M$. For this we introduce the following notation: given a section $s$ of $E$ we can define a section $f^\ast s$ of $f^\ast E$ by $(f^\ast s)(p) := s(f(p))$. 
+
+\begin{proposition}
+    \label{riem_mnf:prop:pullback_connections}
+    Let $E \to M$ be a vector bundle with connection $\nabla$ and let $f \colon N \to M$ be a smooth map. Then there exists a unique connection $f^\ast \nabla$ on the pullback bundle $f^\ast E$, such that for all sections $s \in \Gamma(E)$ and tangent vectors $v \in T_qN$ the following holds:
+    \[
+    (f^\ast \nabla)_v (f^\ast s) = f^\ast( \nabla_{f_\ast v} s),
+    \]
+    where $f_\ast v = d_qf(v)$.
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+
+To conclude this section we present two useful formulas for induced connections.
 
 \begin{lemma}
     Let $M$ be a Riemannian manifold, $\omega,\eta \in \Omega^\ast(M)$ differential forms and $X \in \mathscr{X}(M)$ a vector field. Then 
