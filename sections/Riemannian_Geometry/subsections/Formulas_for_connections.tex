@@ -72,12 +72,24 @@ Finally we discuss the induced connection on the pullback bundle $f^\ast E$ of s
     \label{riem_mnf:prop:pullback_connections}
     Let $E \to M$ be a vector bundle with connection $\nabla$ and let $f \colon N \to M$ be a smooth map. Then there exists a unique connection $f^\ast \nabla$ on the pullback bundle $f^\ast E$, such that for all sections $s \in \Gamma(E)$ and tangent vectors $v \in T_qN$ the following holds:
     \[
-    (f^\ast \nabla)_v (f^\ast s) = f^\ast( \nabla_{f_\ast v} s),
+    (f^\ast \nabla)_v (f^\ast s) = \nabla_{f_\ast v} s,
     \]
     where $f_\ast v = d_qf(v)$.
 \end{proposition}
 \begin{proof}
-    
+    As usual we begin by showing uniqueness. So suppose we are given a connection $f^\ast \nabla$ with this property. Let $s \in \Gamma(f^\ast E)$ be any section and choose a local frame $e_1,\ldots,e_k$ of $E$. Then by definition of the pullback bundle $f^\ast e_1,\ldots, f^\ast e_k$ is a local frame of $f^\ast E$. Write $s = s^i f^\ast e_i$. Then
+    \[
+    (f^\ast \nabla)_v s = v \cdot s^i f^\ast e_i + s^i \nabla_{f_\ast v} e_i.
+    \]
+    Since the right hand side does not depend on the connection on $f^\ast E$, this shows uniqueness. Now use the above formula to define $f^\ast \nabla$. As this is a pointwise definition we still need to check smoothness, i.e. that $(f^\ast \nabla)_X s$ is a smooth section for $X \in \mathscr{X}(N)$ a smooth vector field. As a composition of smooth maps the map $f_\ast X = df \circ X \colon N \to TM$ is smooth, hence can be written locally as 
+    \[
+    f_\ast X = g^j f^\ast \partial_j 
+    \]
+    for smooth functions $g^j \colon N \to \R$ and a local frame $\partial_1,\ldots,\partial_n$ of $TM$. Then 
+    \[
+    \nabla_{f_\ast X} e_i = g^j \nabla_{f^\ast \partial_j} e_i = g^j f^\ast(\nabla_{\partial_j} e_i),
+    \]
+    which is clearly smooth. The other properties of a connection are also evidently satisified by $f^\ast \nabla$, such that the statement follows.
 \end{proof}
 
 To conclude this section we present two useful formulas for induced connections.

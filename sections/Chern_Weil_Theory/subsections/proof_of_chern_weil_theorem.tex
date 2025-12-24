@@ -1,8 +1,9 @@
 \subsection{Proof of the Chern-Weil Theorem}
 
-The hard part of the proof is to show that $\eta(\Omega)$ is closed. For this we basically do the computation outlined in \cite{emilia_globale_ana} but add the missing details and fix a few mistakes. We need the following two Lemmas.
+We will now proof Theorem \ref{chern_weil:thm:chern_weil_thm}. The hard part of the proof is to show that $\eta(\Omega)$ is closed. For this we basically do the computation outlined in \cite{emilia_globale_ana} but add the missing details and fix a few mistakes. We need the following two Lemmas.
 
 \begin{lemma}
+    \label{chern_weil:lem:technical_lemma1}
     Let $\overline{\eta} \in I_r(k)$ and $X_1,\ldots,X_r,Y \in \R^{k \times k}$. Then 
     \[
     \sum_{i=1}^{r} \overline{\eta}(X_1,\ldots,[X_i,Y],\ldots,X_r) = 0,
@@ -42,6 +43,7 @@ If $\Omega_i = \omega_i \otimes A_i$ for some $\omega_i \in \Omega^{l_i}(M)$ and
 such that this definition agrees with the one in \cite{emilia_globale_ana}, but again has the benefit of being coordinate independent.
 
 \begin{lemma}[Bianchi Identity]
+    \label{chern_weil:lem:bianchi_identity}
     Let $E \to M$ be a vector bundle with a connection, let $\Theta$ be the associated connection form (with respect to some local frame) and let $\Omega$ be the curvature form. Then 
     \[
     d \Omega + [\Theta,\Omega] = 0.
@@ -50,4 +52,70 @@ such that this definition agrees with the one in \cite{emilia_globale_ana}, but 
 \begin{proof}
     This is just a matter of writing out the definitions.
 \end{proof}
+
+We are now ready to proof the Chern-Weil Theorem.
+
+\begin{proof}[Proof of Theorem \ref{chern_weil:thm:chern_weil_thm}]
+    Since closedness is a local propery we can directly use the local definition of $\eta(\Omega)$, i.e. we can assume that $\Omega$ is a matrix valued $2$-form. Let $\overline{\eta} = \Phi_r^{-1}(\eta) \in S_r(k)$. In order to compute $d \eta(\Omega) = d\overline{\eta}(\Omega,\ldots,\Omega)$, let us more generally show that 
+    \begin{equation}
+        \label{chern_weil:eq:equation1}
+    d \overline{\eta}(\Omega_1,\ldots,\Omega_r) = \sum_{i=1}^{r} \overline{\eta}(\Omega_1,\ldots,d\Omega_i,\ldots,\Omega_r)
+    \end{equation}
+    for matrix valued $2$-forms $\Omega_i \in \Omega^2(M,\R^{k \times k})$. By linearity we may assume that all except for one entry in the matrix $\Omega_i = (\Omega_i^{jl})_{j,l=1}^k$ of $2$-forms vanish, so in particular
+    \[
+    \Omega_i = \omega_i \otimes E_i,
+    \]
+    where $E_i$ is a constant matrix (with only one non-zero entry being equal to $1$). We then compute 
+    \begin{align*}
+        d \overline{\eta}(\Omega_1,\ldots,\Omega_r) &= d \left(\sum_{i=1}^{r} \omega_1 \wedge \ldots \wedge \omega_r \overline{\eta}(E_1,\ldots,E_r)\right) \\
+        &= \sum_{i=1}^{r} \omega_1 \wedge \ldots \wedge d\omega_i \wedge \ldots \omega_r \overline{\eta}(E_1,\ldots,E_r) \\
+        &= \sum_{i=1}^{r} \overline{\eta}(\omega_1 \otimes E_1,\ldots, d\omega_i \otimes E_i, \ldots, \omega_r \otimes E_r) \\
+        &= \sum_{i=1}^{r} \overline{\eta}(\Omega_1,\ldots,d\Omega_i,\ldots,\Omega_r)
+    \end{align*}
+    Note that $d E_i = 0, d \overline{\eta}(E_1,\ldots,E_r) = 0$ since both are constant. Next we claim that 
+    \begin{equation}
+        \label{chern_weil:eq:equation2}
+    \sum_{i=1}^{r} \overline{\eta}(\Omega_1,\ldots,[\Theta,\Omega_i],\ldots, \Omega_r) = 0,
+    \end{equation}
+    where $\Theta$ is the connection form (or any matrix valued $1$-form for that matter). Again we may assume by linearity that $\Theta = \theta \otimes E$ for some constant matrix $E$, such that 
+    \begin{align*}
+        \overline{\eta}(\Omega_1,\ldots,[\Theta,\Omega_i],\ldots, \Omega_r) & = \overline{\eta}(\omega_1 \otimes E_1,\ldots, \theta \wedge \omega_i \otimes [E,E_i], \ldots, \omega_r \otimes E_r) \\
+        & = \theta \wedge \omega_1 \wedge \ldots \wedge \omega_r \, \overline{\eta}(E_1,\ldots,[E,E_i],\ldots,E_r),
+    \end{align*}
+    where we used commutativity of the wedge product for $2$-forms. Taking the sum over $i$ the claim follows from Lemma \ref{chern_weil:lem:technical_lemma1}. Now we plug in $\Omega = \Omega_i$ for the curvature form $\Omega$ and compute 
+    \begin{align*}
+        d \eta(\Omega) & = d\overline{\eta}(\Omega,\ldots,\Omega) \\
+            & \oset[4pt]{(\ref{chern_weil:eq:equation1})}{=} \sum_{i=1}^{r} \overline{\eta}(\Omega,\ldots,d\Omega,\ldots,\Omega) \\
+            & \oset[4pt]{(\ref{chern_weil:eq:equation2})}{=} \sum_{i=1}^{r} \overline{\eta}(\Omega,\ldots,d\Omega + [\Theta,\Omega],\ldots,\Omega) = 0,
+    \end{align*}
+    where we used the Bianchi identity (Lemma \ref{chern_weil:lem:bianchi_identity}) in the last equation.
+
+    Next we show the independence of the chosen connection. This is basically taken from \cite{rahman2017} but with a few more details added. Let $\nabla^0, \nabla^1$ be two different connections on $E$ with curvature forms $\Omega_0, \Omega_1$ and consider the pullback bundle $\pi^\ast E$ under the projection $\pi \colon M \times \R$. We want to define a connection $\nabla$ on $\pi^\ast E$ that smoothly interpolates between the connections $\nabla^0$ and $\nabla^1$. To this end let $\lambda \colon M \times \R \to \R$ be the projection and set 
+    \[
+    \nabla := \lambda \pi^\ast \nabla^1 + (1 - \lambda) \pi^\ast \nabla^0.
+    \]
+    It is easily seen that a convex combination of connections is again a connection (even if the coefficients are smooth functions). Now let $\iota_t \colon M \to M \times \R, \; p \mapsto (p,t)$ be the inclusions. We claim that $\iota_0^\ast \nabla = \nabla^0$ and $\iota_1^\ast \nabla = \nabla^1$. For this we have to check the characteristic property of pullback connections (cf. \ref{riem_mnf:prop:pullback_connections}). So let $s \in \Gamma(\pi^\ast E)$ and $v \in T_p M$. The claim now is that
+    \[
+    \nabla^0_v (\iota_0^\ast s) = \nabla_{(\iota_0)_\ast v} s.
+    \]
+    Let us abbreviate $w:= (\iota_0)_\ast v$. For the right hand side we have
+    \[
+    \nabla_{w} s = (\pi^\ast \nabla^0)_{w} s,
+    \]
+    where we used that $w$ is a tangent vector at $(p,0)$ and $\lambda(p,0) = 0$. We would like to replace $s$ with the section $\pi^\ast\iota_0^\ast s$, since then the claim just follows from the definition of the pullback connection: 
+    \[
+    (\pi^\ast \nabla^0)_{w} (\pi^\ast\iota_0^\ast s) = \nabla^0_v \iota_0^\ast s.
+    \]
+    In order to do this choose a local frame $e_1,\ldots,e_k$ of $E$ and write $s = s^i \pi^\ast e_i$ for smooth functions $s^i \colon M \times \R \to \R$. Then $\pi^\ast\iota_0^\ast s = (s^i \circ \iota_0 \circ \pi) \pi^\ast e_i$ and thus 
+    \begin{align*}
+    (\pi^\ast \nabla^0)_{w} (\pi^\ast\iota_0^\ast s) & = w \cdot (s^i \circ \iota_0 \circ \pi)  e_i(p) + s^i(p,0) \nabla^0_v e_i \\
+        &= w \cdot s^i  e_i(p) + s^i(p,0) \nabla^0_v e_i \\
+        &= (\pi^\ast \nabla^0)_{w} s.
+    \end{align*}
+    The same argument holds for $\iota_1$ and $\nabla^1$. In fact $\iota_t^\ast \nabla = \nabla^t$, where $\nabla^t = t\nabla^1 + (1-t)\nabla^0$. Now let $\Omega$ be the curvature form of $\nabla$, then by Lemma \ref{chern_weil:lem:naturality_of_curvature_form}
+    \[
+    \iota_0^\ast \Omega = \Omega_0, \; \iota_1^\ast \Omega = \Omega_1.
+    \]
+    Thus $\iota_0^\ast \eta(\Omega) = \eta(\Omega_0)$ and $\iota_1^\ast \eta(\Omega) = \eta(\Omega_1)$. Since the maps $\iota_0$ and $\iota_1$ are homotopic they induce the same map on cohomology, such that the statement follows.
+    \end{proof}
 
