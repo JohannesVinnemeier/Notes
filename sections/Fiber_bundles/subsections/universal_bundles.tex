@@ -1,0 +1,90 @@
+\subsection{Universal Bundles}
+
+This section follows ???
+
+\begin{definition}
+    \label{fiber_bundles:def:principal_bundle}
+    Let $G$ be a topological group. A $G$-principal bundle is a fiber bundle with fiber $G$ and structure group $G$ acting by left translations.
+\end{definition}
+
+Further below we give an equivalent definition often found in the literature. The total space of a $G$-principal bundle $P \xrightarrow{\pi} B$ carries a natural right action of $G$ defined as follows. Around $y \in P$ choose a local trivialisation
+\[
+\phi \colon U \times G \to \pi^{-1}(U)
+\]
+and let $\phi^{-1}(y) = (\pi(y),h)$. Then set 
+\[
+y \cdot g := \phi(\pi(y),hg).
+\]
+This is well defned since by definition $G$ acts on itself by \textit{left} translations under a change of local trivialisation. We then have the following Lemma.
+
+\begin{lemma}
+    Let $P \xrightarrow{\pi} B$ be a $G$-principal bundle. Then $\pi$ descends to a homeomorphism $\modulo{P}{G} \to B$.
+\end{lemma}
+
+\begin{proof}
+    Clearly $\pi$ descends to a continuous bijection 
+    \[
+    \hat{\pi} \colon \modulo{P}{G} \to B.
+    \]
+    To show that $\hat{\pi}$ is in fact a homeomorphism let us first assume that $P$ is trivial. Let $\tau\colon B \times G \to P$ be a trivialisation. Consider the commutative diagram
+   \[
+\begin{tikzcd}[every label/.append style={font=\normalsize}]
+	& {B \times G} & P & B \\
+	B & {\modulo{(B \times G)}{G}} & {\modulo{P}{G}}
+	\arrow["\tau", "{\scriptstyle\cong}"', from=1-2, to=1-3]
+	\arrow["p"', from=1-2, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\pi", from=1-3, to=1-4]
+	\arrow[from=1-3, to=2-3]
+	\arrow["\hat{p}"', "{\scriptstyle\cong}", from=2-2, to=2-1, pos = 0.3]
+	\arrow["{\hat{\tau}}", "{\scriptstyle\cong}"', from=2-2, to=2-3]
+	\arrow["{\hat{\pi}}"', from=2-3, to=1-4]
+\end{tikzcd}
+\]
+where the action of $G$ on $B \times G$ corresponds to the action of $G$ on $P$ under $\tau$ and is explicitly given by 
+\[
+(x,h) \cdot g = (x,hg).
+\]
+Moreover $\hat{\tau}$ is the map induced on the quotients by $\tau$ and $\hat{p}$ is the homeomorphism induced by the projection $p \colon B \times G \to B$. Then for the lower route in the diagram we have 
+\[
+\hat{\pi} \circ \hat{\tau} \circ \hat{p}^{-1} = \mathrm{id}_B.
+\]
+Since $\hat{\tau}$ and $\hat{p}^{-1}$ are homeomorphisms, so is $\hat{\pi}$. Now for the general case note that the local triviality of $P$ together with the above shows that $\hat{\pi}$ is a local homeomorphism. Since it is bijective the statement follows.
+\end{proof}
+
+A morphism of $G$-principal bundles should respect this right action, thus we define:
+
+\begin{definition}
+    A morphism of $G$-principal bundles $P \to B$ and $P^\prime \to B^\prime$ is a morphism $(F,f) \colon (P \to B) \to (P^\prime \to B^\prime)$ of the respective fiber bundles (see Definition \ref{fiber_bundles:def:bundle_morphism}), such that $F$ is $G$-equivariant, that is $$F(x \cdot g) = F(x) \cdot g$$ for all $x \in P$ and $g \in G$. Again if $B = B^\prime$, $f$ is understood to be the identity. Accordingly we say that two morphisms of $G$-principal bundles are $G$-homotopic if they are homotopic through morphisms of $G$-principal bundles.
+\end{definition}
+
+The added condition of $G$-equivariance is actually quite strong as illustrated by the following proposition.
+
+\begin{proposition}
+    \label{fiber_bundles:prop:morphisms_of_principal_bundles}
+    Any morphism of $G$-principal bundles over the same base space is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+    First suppose we are given a morphism 
+    \[  
+        F \colon B \times G \to B \times G
+    \]
+    of trivial bundles. Then by definition $F$ is of the form 
+    \[
+    F(x,g) = (x,\phi_x(g))
+    \]
+    for a continuous family of equivariant maps $\phi_x \colon G \to G$. By $G$-equivariance $\phi_x(g) = \phi_x(e) g$ and thus an inverse of $F$ is given by
+    \[
+    F^{-1}(x,g) := (x, \phi_x(e)^{-1} g).
+    \]
+    Since every $G$-principal bundle is locally trivial this shows that we can always find local inverses in the general case and since inverses are unique they fit together to define a global inverse.
+\end{proof}
+
+\begin{corollary}
+    A $G$-principal bundle is trivial if and only if it admits a section.
+\end{corollary}
+
+\begin{proof}
+    Suppose we are given a section $s \colon B \to P$ of $P \to B$. Then $B \times G \to P, \; (x,g) \mapsto s(x) \cdot g$ defines a morphism of $G$-principal bundles and hence is an isomorphism by Proposition \ref{fiber_bundles:prop:morphisms_of_principal_bundles}.
+\end{proof}
