@@ -1,90 +1,181 @@
 \subsection{Universal Bundles}
 
-This section follows ???
+This section is mainly based on \cite{ebert_bordism_script}. Other sources are \cite{mitchell_principalbundles} and \cite{dieck2008algebraic}.
 
 \begin{definition}
-    \label{fiber_bundles:def:principal_bundle}
-    Let $G$ be a topological group. A $G$-principal bundle is a fiber bundle with fiber $G$ and structure group $G$ acting by left translations.
+    A $G$-principal bundle $E \to B$ is called universal if $E$ is contractible as a topological space.
 \end{definition}
 
-Further below we give an equivalent definition often found in the literature. The total space of a $G$-principal bundle $P \xrightarrow{\pi} B$ carries a natural right action of $G$ defined as follows. Around $y \in P$ choose a local trivialisation
+The significance of this definition is established by the following theorem. We say that two morphisms of $G$-principal bundles are $G$-homotopic if they are homotopic through morphisms of $G$-principal bundles.
+
+\begin{theorem}
+    \label{fiber_bundles:thm:universal_principal_bundle}
+    Let $E \to B$ be a universal $G$-principal bundle. Then for any other $G$-principal bundle $P \to X$ over a CW-complex $X$ there exists a morphism $P \to E$ of $G$-principal bundles, which is unique up to $G$-homotopy.
+\end{theorem}
+
+Before showing the Theorem let us discuss its implications. Firstly if we assume, that $B$ is also a $CW$ complex (which we may always do, see Remark \ref{fiber_bundles:rem:base_space_as_cw_complex}) we can equivalently formulate the Theorem by saying that $E \to B$ is a terminal object in the homotopy category of $G$-principal bundles over CW-complexes and thus in particular uniquely determined (up to $G$-homotopy equivalence). This justifies writing $EG:= E$ and $BG := B$. Since any bundle morphism $(F,f) \colon P \to EG$ induces a morphism $P \to f^\ast EG$ (and vice versa, which is true for arbitrary fiber bundles) we moreover conclude from Proposition \ref{fiber_bundles:prop:morphisms_of_principal_bundles} that 
 \[
-\phi \colon U \times G \to \pi^{-1}(U)
+P \cong f^\ast EG.
 \]
-and let $\phi^{-1}(y) = (\pi(y),h)$. Then set 
+So by the homotopy invariance of the pullback we get a well-defined bijection 
 \[
-y \cdot g := \phi(\pi(y),hg).
+\phi_X \colon [X,BG] \to \mathcal{P}_G(X), \; [f] \mapsto [f^\ast EG],
 \]
-This is well defned since by definition $G$ acts on itself by \textit{left} translations under a change of local trivialisation. We then have the following Lemma.
-
-\begin{lemma}
-    Let $P \xrightarrow{\pi} B$ be a $G$-principal bundle. Then $\pi$ descends to a homeomorphism $\modulo{P}{G} \to B$.
-\end{lemma}
-
-\begin{proof}
-    Clearly $\pi$ descends to a continuous bijection 
-    \[
-    \hat{\pi} \colon \modulo{P}{G} \to B.
-    \]
-    To show that $\hat{\pi}$ is in fact a homeomorphism let us first assume that $P$ is trivial. Let $\tau\colon B \times G \to P$ be a trivialisation. Consider the commutative diagram
-   \[
-\begin{tikzcd}[every label/.append style={font=\normalsize}]
-	& {B \times G} & P & B \\
-	B & {\modulo{(B \times G)}{G}} & {\modulo{P}{G}}
-	\arrow["\tau", "{\scriptstyle\cong}"', from=1-2, to=1-3]
-	\arrow["p"', from=1-2, to=2-1]
-	\arrow[from=1-2, to=2-2]
-	\arrow["\pi", from=1-3, to=1-4]
-	\arrow[from=1-3, to=2-3]
-	\arrow["\hat{p}"', "{\scriptstyle\cong}", from=2-2, to=2-1, pos = 0.3]
-	\arrow["{\hat{\tau}}", "{\scriptstyle\cong}"', from=2-2, to=2-3]
-	\arrow["{\hat{\pi}}"', from=2-3, to=1-4]
-\end{tikzcd}
-\]
-where the action of $G$ on $B \times G$ corresponds to the action of $G$ on $P$ under $\tau$ and is explicitly given by 
-\[
-(x,h) \cdot g = (x,hg).
-\]
-Moreover $\hat{\tau}$ is the map induced on the quotients by $\tau$ and $\hat{p}$ is the homeomorphism induced by the projection $p \colon B \times G \to B$. Then for the lower route in the diagram we have 
-\[
-\hat{\pi} \circ \hat{\tau} \circ \hat{p}^{-1} = \mathrm{id}_B.
-\]
-Since $\hat{\tau}$ and $\hat{p}^{-1}$ are homeomorphisms, so is $\hat{\pi}$. Now for the general case note that the local triviality of $P$ together with the above shows that $\hat{\pi}$ is a local homeomorphism. Since it is bijective the statement follows.
-\end{proof}
-
-A morphism of $G$-principal bundles should respect this right action, thus we define:
-
-\begin{definition}
-    A morphism of $G$-principal bundles $P \to B$ and $P^\prime \to B^\prime$ is a morphism $(F,f) \colon (P \to B) \to (P^\prime \to B^\prime)$ of the respective fiber bundles (see Definition \ref{fiber_bundles:def:bundle_morphism}), such that $F$ is $G$-equivariant, that is $$F(x \cdot g) = F(x) \cdot g$$ for all $x \in P$ and $g \in G$. Again if $B = B^\prime$, $f$ is understood to be the identity. Accordingly we say that two morphisms of $G$-principal bundles are $G$-homotopic if they are homotopic through morphisms of $G$-principal bundles.
-\end{definition}
-
-The added condition of $G$-equivariance is actually quite strong as illustrated by the following proposition.
-
-\begin{proposition}
-    \label{fiber_bundles:prop:morphisms_of_principal_bundles}
-    Any morphism of $G$-principal bundles over the same base space is an isomorphism.
-\end{proposition}
-
-\begin{proof}
-    First suppose we are given a morphism 
-    \[  
-        F \colon B \times G \to B \times G
-    \]
-    of trivial bundles. Then by definition $F$ is of the form 
-    \[
-    F(x,g) = (x,\phi_x(g))
-    \]
-    for a continuous family of equivariant maps $\phi_x \colon G \to G$. By $G$-equivariance $\phi_x(g) = \phi_x(e) g$ and thus an inverse of $F$ is given by
-    \[
-    F^{-1}(x,g) := (x, \phi_x(e)^{-1} g).
-    \]
-    Since every $G$-principal bundle is locally trivial this shows that we can always find local inverses in the general case and since inverses are unique they fit together to define a global inverse.
-\end{proof}
+where $\mathcal{P}_G(X)$ denotes the set of isomorphism classes of $G$-principal bundles over $X$. To see that $\phi_X$ is indeed bijective note that the existence result in Theorem \ref{fiber_bundles:thm:universal_principal_bundle} shows that $\phi_X$ is surjective and the uniqueness result shows that it is injective. Moreover $\phi_X$ is clearly natural in $X$. Let us note this important corollary.
 
 \begin{corollary}
-    A $G$-principal bundle is trivial if and only if it admits a section.
+\label{fiber_bundles:cor:universal_bundle_defines_natural_isomorphism}
+    The maps $\phi_X$ define a natural isomorphism of contravaraint functors 
+    \[  
+        [-,BG], \mathcal{P}_G(-) \colon \mathsf{HCW} \to \mathsf{Set},
+    \]
+    where $\mathsf{HCW}$ denotes the homotopy category of CW-complexes.
 \end{corollary}
 
+Theorem \ref{fiber_bundles:thm:universal_principal_bundle} will be an application of the following Theorem.
+
+\begin{theorem}
+    \label{fiber_bundles:thm:extension_theorem}
+    Let $P \to X$ be a $G$-principal bundle over a CW-complex and $A \subseteq X$ a subcomplex. Then any morphism $P|_A \to EG$ can be extended to a morphism $P \to EG$. 
+\end{theorem}
+
 \begin{proof}
-    Suppose we are given a section $s \colon B \to P$ of $P \to B$. Then $B \times G \to P, \; (x,g) \mapsto s(x) \cdot g$ defines a morphism of $G$-principal bundles and hence is an isomorphism by Proposition \ref{fiber_bundles:prop:morphisms_of_principal_bundles}.
+    We follow the outline given in \cite{ebert_bordism_script} but add quite a few details on the explicit construction and especially show that the constructed extension is in fact continuous. Let $F \colon P|_A \to EG$ be a given morphism. By a standard argument using Zorn's Lemma it suffices to show the statement in the case where $X$ is obtained form $A$ by attaching a single cell, that is we have a pushout 
+    \[\begin{tikzcd}
+	{S^{n-1}} & A \\
+	{D^n} & X
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\psi", from=2-1, to=2-2]
+    \end{tikzcd}\]
+    Using homotopy invariance of the pullback we get that $\psi^\ast P$ is trivial. Let $\tau \colon D^n \times G \to \psi^\ast P$ be such a trivialisation and let $\Psi \colon \psi^\ast P \to P$ be the canonical map (cf. paragraph on \hyperlink{fiber_bundles:headline:pullback_bundles}{pullback bundles}). Then by $G$-equivariance the morphism 
+    \[
+    S^{n-1} \times G \xrightarrow{\tau} \psi^\ast P|_{S^{n-1}} \xrightarrow{\Psi} P|_A \xrightarrow{F} EG
+    \]
+    is given by $(x,g) \mapsto \phi(x) \cdot g$ for some continuous map $\phi \colon S^{n-1} \to EG$. Since $\pi_{n-1}(EG) = 0$ we can extend $\phi$ to a map $\phi^\prime \colon D^n \to EG$ and thus we can extend 
+    \[
+     \psi^\ast P|_{S^{n-1}} \xrightarrow{\Psi} P|_A \xrightarrow{F} EG
+    \]
+    to a morphism $H \colon \psi^\ast P \to EG$ by setting 
+    \[
+    H(\tau(x,g)) := \phi^\prime(x) \cdot g.
+    \]
+    With this we can now define an extension $F^\prime \colon P \to EG$ of $F$. To this end let $B^n := D^n - S^{n-1}$ be the open ball and note that $\psi|_{B^n}$ is an embedding and so in particular does $\Psi$ define an isomorphism $\psi^\ast P|_{B^n} \to P|_{\psi(B^n)}$ \;(see Lemma \ref{fiber_bundles:lem:pullback_of_bundle_under_embedding}). Now set 
+    \[
+    F^\prime(y) := \begin{dcases}
+        H(\Psi^{-1}(y)) &, y \in P|_{\psi(B^n)}, \\
+        F(y) &, \text{otherwise}.
+    \end{dcases}
+    \]
+    Clearly $F^\prime$ is $G$-equivariant and so it only remains to show continuity. For this let $y_n \in P$ be a sequence converging to some $y \in P$. Since $P|_{\psi(S^{n-1})} \subseteq P$ is closed the only non-trivial case is wehn $y \in P|_{\psi(S^{n-1})}$ and infinitely many $y_n \in P|_{\psi(B^n)}$. Without loss of generality we may then of course assume that $y_n \in P|_{\psi(B^n)}$ for all $n$. We now claim that (after passing to a subsequence) the sequence 
+    \[
+    y_n^\prime := \Psi^{-1}(y_n)
+    \]
+    converges to some $y^\prime \in \psi^\ast P$. Then $\Psi(y^\prime) = y, \; y^\prime \in \psi^\ast P|_{S^{n-1}}$ and thus 
+    \[
+    F^\prime(y_n) = H(y_n^\prime) \longrightarrow H(y^\prime) = F(\Psi(y^\prime)) = F(y),
+    \]
+    such that continuity of $F^\prime$ follows. To show the claim let $p \colon \psi^\ast P \to D^n$ and $\pi \colon P \to X$ be the bundle projections. By compactness of $D^n$ we may assume that the sequence 
+    \[
+    x_n^\prime := p(y_n^\prime) \in D^n
+    \]
+    converges to some $x^\prime \in D^n$. Now choose some local trivialisation $\kappa \colon U \times G \to P$ around $y$. Then the $y_n$ correspond to points 
+    \[
+    \kappa^{-1}(y_n) = (x_n,g_n) \in U \times G,
+    \]
+    where $x_n = \psi(x_n^\prime) = \pi(y_n)$. By definition of the pullback, $\kappa$ induces a trivialisation 
+    \[
+    \kappa^\prime \colon \psi^{-1}(U) \times G \to \psi^\ast P
+    \]
+    with $(\kappa^\prime)^{-1}(y_n^\prime) = (x_n^\prime,g_n)$. Note that for $n$ sufficiently large $p(y_n^\prime) = x_n^\prime \in \psi^{-1}(U)$, since we assumed that this sequence converges to $x^\prime \in D^n$ and $x := \psi(x^\prime) = \pi(y) \in U$. So we can in fact assume that $y_n^\prime \in \mathrm{im}(\kappa^\prime)$. Since $y_n \longrightarrow y$ we get that 
+    \[
+    (x_n,g_n) \longrightarrow (x,g) := \kappa^{-1}(y)
+    \]
+    and so 
+    \[
+    (x_n^\prime,g_n) \longrightarrow (x^\prime,g).
+    \]
+    Thus $y_n^\prime \longrightarrow \kappa^\prime(x^\prime,g)$, showing the claim.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{fiber_bundles:thm:universal_principal_bundle}]
+    Applying Theorem \ref{fiber_bundles:thm:extension_theorem} to $A = \emptyset$ shows the existence of a morphism $P \to EG$. Now suppose we are given morphisms $F_0,F_1 \colon P \to EG$. Consider the $G$-principal bundle 
+    \[
+    \pi \times \mathrm{id} \colon P \times [0,1] \to X \times [0,1],
+    \]
+    where $\pi \colon P \to X$ is the bundle projection (this is just the pullback bundle of $P$ under the projection $X \times [0,1] \to X$). Then $F_0$ and $F_1$ define a morphism of $G$-principal bundles 
+    \[
+    (F_0,F_1) \colon P \times \{0,1\} = (P \times [0,1])|_{X \times \{0,1\}}\to EG,
+    \]
+    which by Theorem \ref{fiber_bundles:thm:extension_theorem} can be extended to $P \times [0,1]$, thus yielding a $G$-homotopy between $F_0$ and $F_1$.
+\end{proof}
+
+For any topological group $G$ a universal bundle always exists. This can for example be shown using the Milnor construction, which does in fact construct universal bundles in a functorial way.
+
+\begin{theorem}[Milnor Construction]
+    \label{fiber_bundles:thm:milnor_construction}
+    For any topological group $G$ there exists a universal $G$-principal bundle. Moreover this construction is functorial, such that we get a functor 
+    \[
+    \mathsf{TopGrp} \to \mathsf{Prin},
+    \]
+    from the category of topological groups to the category of principal bundles, which is given on objects by $G \mapsto (EG \to BG)$.
+\end{theorem}
+
+\begin{proof}
+    The construction of $EG \to BG$ is shown in \cite{ebert_bordism_script} and we shall only indicate how to construct a morphism $EG \to EH$ from a homomorphism $\phi \colon G \to H$. Recall that $EG$ was defined as the set of formal convex combinations of group elements with a suitable topology. That is an element in $EG$ is of the form 
+    \[
+    \sum_{i=1}^\infty t_i g_i
+    \] 
+    for $t_i \in [0,1]$ with only finitely many $t_i$ not being equal to zero and $\sum_{i=1}^\infty t_i = 1$. Then 
+    \[
+    E \phi \colon EG \to EH, \quad \sum_{i=1}^\infty t_i g_i \mapsto \sum_{i=1}^\infty t_i \phi(g_i)
+    \]
+    defines a continuous map which is $\phi$-invariant and hence descends to a continuous map $$B \phi \colon BG = EG/G \to BH = EH/H.$$
+    Then $(E\phi,B\phi)$ is a morphism of principal bundles and clearly this construction is functorial.
+\end{proof}
+
+\begin{remark}
+    \label{fiber_bundles:rem:base_space_as_cw_complex}
+    The Milnor construction may not yield a CW-complex $BG$ (at least I don't think it does in general) but in \cite{mitchell_principalbundles} it is shown that the existence of a universal $G$-principal bundle always implies the existence of another universal $G$-prinicpal bundle over a CW-complex. The construction of universal bundles over CW-complexes can also be made functorial (though I do not have a clear reference for this).
+\end{remark}
+
+\begin{remark}
+    Let $\phi \colon G \to H$ be a homomorphism of topological groups. Assuming that $BG$ and $BH$ are CW-complexes, we may also construct $B \phi \colon BG \to BH$ more abstractly as follows. Note that for any CW-complex $X$ we have a natural map 
+    \[
+    [X,BG] \xrightarrow{\cong} \mathcal{P}_G(X) \xrightarrow{\times_\phi H} \mathcal{P}_H(X) \xrightarrow{\cong} [X,BH],
+    \]
+    where the isomorphisms are the natural isomorphisms from Corollary \ref{fiber_bundles:cor:universal_bundle_defines_natural_isomorphism} and the middle morphism is the natural transformation from Proposition \ref{fiber_bundles:prop:borel_construction_part2}. Then for $X = BG$, the identity on $BG$ corresponds to a map $B \phi \colon BG \to BH$, which is characterized by 
+    \[
+    (B \phi)^\ast EH \cong EG \times_\phi H.
+    \]
+    To see that this definition agrees with the one made in Theorem \ref{fiber_bundles:thm:milnor_construction} we have to show that the $B \phi$ constructed there satisfies this characteristic property. This is done by again using the uniqueness result from Theorem \ref{thm:fiber_bundle_construction1}: If $U_\alpha, U_\beta \subseteq BG$ are trivialising neighbourhoods for $EG$ as constructed in the Milnor construction (see \cite{ebert_bordism_script}) with transition function $\tau_{\alpha,\beta}$, then $EG \times_\phi H$ will also be trivial over $U_\alpha,U_\beta$ with transition function $\phi \circ \tau_{\alpha,\beta}$ (cf. Proposition \ref{fiber_bundles:prop:borel_construction_part2}). Moreover $(B \phi)^\ast EH$ is also trivial over $U_\alpha, U_\beta$, since $EH$ is trivial over $B\phi(U_\alpha), B\phi(U_\beta)$ and a simple computation shows that the transition function is again $\phi \circ \tau_{\alpha,\beta}$. 
+    
+    Note however that the Milnor construction yields a map $BG \to BH$, while the alternative construction only yields a homotopy class of maps.
+\end{remark}
+
+Using the theory developed above we can generealize the concept of a universal bundle to arbitrary fiber bundles. This will be a generalization of Corollary \ref{fiber_bundles:cor:universal_bundle_defines_natural_isomorphism}.
+
+\begin{theorem}
+    Let $G$ be a topological group acting effectively on a space $F$. Then for any CW-complex $X$ the map 
+    \[
+    [X,BG] \to \mathcal{F}_{F,G}(X), \; \; [f] \mapsto \left[f^\ast(EG \times_G F)\right]
+    \]
+    is a natural bijection, where $\mathcal{F}_{F,G}(X)$ denotes the set of isomorphism classes of fiber bundles with fiber $F$ and structure group $G$ over $X$.
+\end{theorem}
+
+\begin{proof}
+    By Corollary \ref{fiber_bundles:cor:universal_bundle_defines_natural_isomorphism} the map 
+    \[
+    [X,BG] \to \mathcal{P}_G(X), \; \; [f] \mapsto [f^\ast EG]
+    \]
+    is a natural bijection and by Proposition \ref{fiber_bundles:prop:natruality_of_changing_fiber} (or rather the dicussion below) 
+    \[
+    \mathcal{P}_G(X) \to \mathcal{F}_{F,G}(X), \; \; [P] \mapsto \left[P \times_G F\right]
+    \]
+    is a natural bijection. Composing both thus yields the natural bijection 
+    \[
+    [X,BG] \to \mathcal{F}_{F,G}(X), \; \; [f] \mapsto \left[(f^\ast EG) \times_G F\right].
+    \]
+    So the Theorem follows by again applying Proposition \ref{fiber_bundles:prop:natruality_of_changing_fiber}.
 \end{proof}
