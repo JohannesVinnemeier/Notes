@@ -49,7 +49,7 @@ Theorem \ref{fiber_bundles:thm:universal_principal_bundle} will be an applicatio
 	\arrow[from=1-2, to=2-2]
 	\arrow["\psi", from=2-1, to=2-2]
     \end{tikzcd}\]
-    Using homotopy invariance of the pullback we get that $\psi^\ast P$ is trivial. Let $\tau \colon D^n \times G \to \psi^\ast P$ be such a trivialisation and let $\Psi \colon \psi^\ast P \to P$ be the canonical map (cf. paragraph on \hyperlink{fiber_bundles:headline:pullback_bundles}{pullback bundles}). Then by $G$-equivariance the morphism 
+    Using homotopy invariance of the pullback we get that $\psi^\ast P$ is trivial. Let $\tau \colon D^n \times G \to \psi^\ast P$ be such a trivialisation and let $\Psi \colon \psi^\ast P \to P$ be the canonical map (cf. paragraph on \hyperlink{fiber_bundles:headline:pullback_bundles}{pullback bundles}). Then by equivariance the morphism 
     \[
     S^{n-1} \times G \xrightarrow{\tau} \psi^\ast P|_{S^{n-1}} \xrightarrow{\Psi} P|_A \xrightarrow{F} EG
     \]
@@ -68,7 +68,7 @@ Theorem \ref{fiber_bundles:thm:universal_principal_bundle} will be an applicatio
         F(y) &, \text{otherwise}.
     \end{dcases}
     \]
-    Clearly $F^\prime$ is $G$-equivariant and so it only remains to show continuity. For this let $y_n \in P$ be a sequence converging to some $y \in P$. Since $P|_{\psi(S^{n-1})} \subseteq P$ is closed the only non-trivial case is wehn $y \in P|_{\psi(S^{n-1})}$ and infinitely many $y_n \in P|_{\psi(B^n)}$. Without loss of generality we may then of course assume that $y_n \in P|_{\psi(B^n)}$ for all $n$. We now claim that (after passing to a subsequence) the sequence 
+    Clearly $F^\prime$ is equivariant and so it only remains to show continuity. For this let $y_n \in P$ be a sequence converging to some $y \in P$. Since $P|_{\psi(S^{n-1})} \subseteq P$ is closed the only non-trivial case is wehn $y \in P|_{\psi(S^{n-1})}$ and infinitely many $y_n \in P|_{\psi(B^n)}$. Without loss of generality we may then of course assume that $y_n \in P|_{\psi(B^n)}$ for all $n$. We now claim that (after passing to a subsequence) the sequence 
     \[
     y_n^\prime := \Psi^{-1}(y_n)
     \]
@@ -169,7 +169,7 @@ Using the theory developed above we can generealize the concept of a universal b
     \[
     [X,BG] \to \mathcal{P}_G(X), \; \; [f] \mapsto [f^\ast EG]
     \]
-    is a natural bijection and by Proposition \ref{fiber_bundles:prop:natruality_of_changing_fiber} (or rather the dicussion below) 
+    is a natural bijection and by Proposition \ref{fiber_bundles:prop:natruality_of_changing_fiber}
     \[
     \mathcal{P}_G(X) \to \mathcal{F}_{F,G}(X), \; \; [P] \mapsto \left[P \times_G F\right]
     \]

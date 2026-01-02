@@ -57,7 +57,7 @@ A morphism of principal bundles should respect this right action, thus we define
 \end{definition}
 
 
-The added condition of $G$-equivariance is actually quite strong as illustrated by the following proposition.
+The added condition of equivariance is actually quite strong as illustrated by the following proposition.
 
 \begin{proposition}
     \label{fiber_bundles:prop:morphisms_of_principal_bundles}
@@ -73,7 +73,7 @@ The added condition of $G$-equivariance is actually quite strong as illustrated 
     \[
     F(x,g) = (x,\phi_x(g))
     \]
-    for a continuous family of equivariant maps $\phi_x \colon G \to G$. By $G$-equivariance $\phi_x(g) = \phi_x(e) g$ and thus an inverse of $F$ is given by
+    for a continuous family of equivariant maps $\phi_x \colon G \to G$. By equivariance $\phi_x(g) = \phi_x(e) g$ and thus an inverse of $F$ is given by
     \[
     F^{-1}(x,g) := (x, \phi_x(e)^{-1} g).
     \]
@@ -122,14 +122,14 @@ Given any fiber bundle we have seen in Corollary \ref{fiber_bundles:cor:changing
 	\arrow["{\mathrm{proj.}}"', from=1-1, to=2-2]
     \arrow["\pi", from=1-2, to=2-2]
     \end{tikzcd}\]
-    commutes. So $P \times_G F$ is locally trivial. Next we have to compute the transition maps. Let $U_\alpha, U_\beta \subseteq B$ be two trivialising neighbourhoods for $P$ with  local trivialisations $\lambda_\alpha, \lambda_\beta$ and transition map $\tau_{\alpha,\beta} \colon U_\alpha \cap U_\beta \to G$. Moreover let $\kappa_\alpha, \kappa_\beta$ be the corresponding local trivialisations for $P \times_G F$ as constructed above. Then we compute 
+    commutes. So $P \times_G F$ is locally trivial. Next we have to compute the transition functions. Let $U_\alpha, U_\beta \subseteq B$ be two trivialising neighbourhoods for $P$ with  local trivialisations $\lambda_\alpha, \lambda_\beta$ and transition function $\tau_{\alpha,\beta} \colon U_\alpha \cap U_\beta \to G$. Moreover let $\kappa_\alpha, \kappa_\beta$ be the corresponding local trivialisations for $P \times_G F$ as constructed above. Then we compute 
     \begin{align*}
         (\kappa_\alpha^{-1} \circ \kappa_\beta)(x,f) & = \kappa_\alpha^{-1}([(\lambda_\beta(x,e),f)]) = (x,\tau_{\alpha,\beta}(x) f).
     \end{align*}
     So $P \times_G F$ has structure group $G$ and from the uniqueness result of Theorem \ref{thm:fiber_bundle_construction1} it follows that this construction agrees with the one from Corollary \ref{fiber_bundles:cor:changing_fiber}.
 \end{proof}
 
-Given a group homomorphism $\phi \colon G \to H$ of topological groups we can view $H$ as a left $G$-space by $g \cdot h := \phi(g)h$. Of course this action may not be effective anymore but the Borel construction can still be used to construct a $H$-principal bundle out of a $G$-principal bundles using this action:
+Given a group homomorphism $\phi \colon G \to H$ of topological groups we can view $H$ as a left $G$-space by $g \cdot h := \phi(g)h$. Of course this action may not be effective anymore but the Borel construction can still be used to construct an $H$-principal bundle out of a $G$-principal bundles using this action:
 
 \begin{proposition}
     \label{fiber_bundles:prop:borel_construction_part2}
@@ -137,7 +137,7 @@ Given a group homomorphism $\phi \colon G \to H$ of topological groups we can vi
     \[
     P \times_\phi H := \modulo{(P \times H)}{\sim}, \quad (y,h) \sim (y\cdot g, \phi(g)^{-1}h)
     \]
-    together with the map $\pi \colon P \times_\phi H \to B$ given by $[(y,h)] \mapsto p(y)$ is a $H$-principal bundle. Moreover this construction is natural in the sense that if $f \colon B^\prime \to B$ is a continuous map then 
+    together with the map $\pi \colon P \times_\phi H \to B$ given by $[(y,h)] \mapsto p(y)$ is an $H$-principal bundle. Moreover this construction is natural in the sense that if $f \colon B^\prime \to B$ is a continuous map then 
     \[
     (f^\ast P) \times_\phi H \cong f^\ast (P \times_\phi H)
     \]
