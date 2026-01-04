@@ -90,6 +90,18 @@ The added condition of equivariance is actually quite strong as illustrated by t
 
 \needspace{5cm}
 
+\begin{remark}
+    In the defintion of $G$-principal bundles we may also require $G$ to act by right translations instead of left translations on itself. Correspondingly we then get an induced left $G$-action on the total space. Let us call those bundles right $G$-principal bundles and the bundles from Defintion \ref{fiber_bundles:def:principal_bundle} left $G$-principal bundles. Given a right $G$-principal bundle $P \to B$ we can always turn it into a left $G$-principal bundle as follows. Let $\tau \colon U \times G \to P$ be any local trivialisation and set 
+    \[
+    \tau^\prime := U \times G \xrightarrow{\mathrm{id} \times \mathrm{inv}} U \times G \xrightarrow{\tau} P,
+    \]
+    where $\mathrm{inv} \colon G \to G$ is the inversion map. Then the maps $\tau^\prime$ constructed in this way give $P \to B$ the structure of a left $G$-principal bundle. The new right $G$-action on $P$ can be expressed by the left $G$-action as 
+    \[
+    y \cdot g = g^{-1} \cdot y
+    \]
+    Note that any morphism of right principal bundles also respects this new right action and thus defines a morphism of the corresponding left prinicpal bundles. In other words, this construction defines an isomorphism between the categroy of right principal bundles and the category of left principal bundles. Thus there is virtually no difference between these two notions.
+\end{remark}
+
 Given any fiber bundle we have seen in Corollary \ref{fiber_bundles:cor:changing_fiber}, that we can change the fiber. If we start with a principal bundle we can make this construction quite explicit:
 
 \begin{lemma}[Borel Construction]

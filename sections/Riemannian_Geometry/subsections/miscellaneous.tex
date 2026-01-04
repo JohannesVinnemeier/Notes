@@ -1,0 +1,61 @@
+\subsection{Miscellaneous}
+In the following let $M,N$ be Riemannian manifolds (without boundary).
+
+\begin{lemma}
+    \label{riem_mnf:lem:difference_quotient_of_distance_function}
+    Let $\gamma \colon (-\epsilon,\epsilon) \to M$ be a smooth curve. Then 
+    \[
+    \lim_{t \to 0} \frac{d(\gamma(t),\gamma(0))}{\abs{t}} = \norm{\dot{\gamma}(0)},
+    \]
+    where $d$ denotes the Riemannian distance function.
+\end{lemma}
+
+\begin{proof}
+    Choose normal coordinates around $p = \gamma(0)$ and write $\gamma = (\gamma_1,\ldots,\gamma_n)$ in these coordinates. Then the distance from $\gamma(t)$ to $\gamma(0)$ is given by 
+    \[
+    d(\gamma(t),\gamma(0)) = \sqrt{\gamma_1^2(t) + \ldots + \gamma_n^2(t)} = |(\gamma_1(t),\ldots,\gamma_n(t))|,
+    \]
+    where $|\cdot|$ denotes the euclidian norm. Thus 
+    \begin{align*}
+        \lim_{t \to 0} \frac{d(\gamma(t),\gamma(0))}{\abs{t}} & = \lim_{t \to 0} \frac{|(\gamma_1(t),\ldots,\gamma_n(t))|}{\abs{t}} \\
+        &= |(\dot{\gamma}_1(0),\ldots,\dot{\gamma}_n(0))| \\[3pt]
+        &= \norm{\dot{\gamma}(0)},
+    \end{align*}
+    where we used the fact that the metric on $M$ is euclidian at $p$ in normal coordinates.
+\end{proof}
+
+\begin{lemma}
+    A smooth map $f \colon M \to N$ is $\lambda$-Lipschitz if and only if 
+    \[
+    \norm{d_pf(v)} \leq \lambda \norm{v}
+    \]
+    for all $(p,v) \in TM$.
+\end{lemma}
+
+\begin{proof}
+    Suppose that $f$ is $\lambda$-Lipschitz and assume without loss of generality that $\norm{v} = 1$. Let $\gamma \colon (-\epsilon,\epsilon) \to M$ be a geodesic with $\gamma(0) = p$ and $\gamma^\prime(0) = v$ and let $d_M, d_N$ be the Riemannina distance functions on $M,N$ respectively. Then 
+    \begin{align*}
+        d_N(f(\gamma(t)),f(\gamma(0))) &\leq \lambda d_M(\gamma(t),\gamma(0)) \\
+        &= \lambda \, \mathrm{sgn}(t) \int_{0}^t \norm{\gamma^\prime(s)} ds \\
+        &= \lambda \abs{t},
+    \end{align*}
+    where we used $\norm{\gamma^\prime(s)} = \norm{v} = 1$ in the last equality, which holds since $\gamma$ is a geodesic. Thus
+    \[
+    \frac{d_N(f(\gamma(t)),f(\gamma(0)))}{\abs{t}} \leq \lambda
+    \] 
+    Letting $t \to 0$ on both sides we conclude from Lemma \ref{riem_mnf:lem:difference_quotient_of_distance_function}, that 
+    \[
+    \norm{d_pf(v)} = \norm{(f \circ \gamma)^\prime(0)} \leq \lambda,
+    \]
+    which shows the claim. For the converse let $x, y \in M$ and let $\gamma \colon [0,1] \to M$ be any piecewise smooth curve from $x$ to $y$. Then 
+    \begin{align*}
+        d_N(f(x),f(y)) &\leq \int_0^1 \norm{(f \circ \gamma)^\prime(t)} dt \\
+        &= \int_0^1 \norm{d_{\gamma(t)}(\gamma^\prime(0))} dt \\
+        & \leq \lambda \int_0^1 \norm{\gamma^\prime(t)} dt.
+    \end{align*}
+    Taking the infimum over all such curves $\gamma$ shows 
+    \[
+    d_N(f(x),f(y)) \leq \lambda d_M(x,y).
+    \]
+\end{proof}
+
