@@ -4,7 +4,7 @@ We will now proof Theorem \ref{chern_weil:thm:chern_weil_thm}. The hard part of 
 
 \begin{lemma}
     \label{chern_weil:lem:technical_lemma1}
-    Let $\overline{\eta} \in I_r(k)$ and $X_1,\ldots,X_r,Y \in \R^{k \times k}$. Then 
+    Let $\overline{\eta} \in I_r(k)$ and $X_1,\ldots,X_r,Y \in \K^{k \times k}$. Then 
     \[
     \sum_{i=1}^{r} \overline{\eta}(X_1,\ldots,[X_i,Y],\ldots,X_r) = 0,
     \]
@@ -12,7 +12,7 @@ We will now proof Theorem \ref{chern_weil:thm:chern_weil_thm}. The hard part of 
 \end{lemma}
 
 \begin{proof}
-    Let $A(t) \in \mathrm{GL}(k)$ be a smooth curve with $A(0) = \mathrm{id}$ and $\dot{A}(0) = Y$. Then 
+    Let $A(t) \in \mathrm{GL}(k,\K)$ be a smooth curve with $A(0) = \mathrm{id}$ and $\dot{A}(0) = Y$. Then 
     \begin{align*}
          \frac{d}{dt}|_{t=0} A(t)^{-1}X_iA(t) &= \frac{d}{dt}|_{t=0}A(t)^{-1}X_i + \frac{d}{dt}|_{t=0}X_iA(t) \\ &= -YX_i + X_iY \\ &= [X_i,Y],
     \end{align*}
@@ -32,11 +32,11 @@ We will now proof Theorem \ref{chern_weil:thm:chern_weil_thm}. The hard part of 
     \end{align*}
 \end{proof}
 
-Before stating the second Lemma let us define the commutator of two differential forms $\Omega_1 \in \Omega^{l_1}(M,\R^{k \times k})$ and $\Omega_2 \in \Omega^{l_2}(M,\R^{k \times k})$ by 
+Before stating the second Lemma let us define the commutator of two differential forms $\Omega_1 \in \Omega^{l_1}(M,\K^{k \times k})$ and $\Omega_2 \in \Omega^{l_2}(M,\K^{k \times k})$ by 
 \[
 [\Omega_1,\Omega_2] := \Omega_1 \wedge \Omega_2 - (-1)^{l_1l_2} \, \Omega_2 \wedge \Omega_1.
 \]
-If $\Omega_i = \omega_i \otimes A_i$ for some $\omega_i \in \Omega^{l_i}(M)$ and $A_i \in \Omega^0(M,\R^{k \times k})$ then this can also be written as 
+If $\Omega_i = \omega_i \otimes A_i$ for some $\omega_i \in \Omega^{l_i}(M,\K)$ and $A_i \in \Omega^0(M,\K^{k \times k})$ then this can also be written as 
 \[
 [\Omega_1,\Omega_2] = \omega_1 \wedge \omega_2 \otimes [A_1,A_2],
 \]
@@ -61,7 +61,7 @@ We are now ready to proof the Chern-Weil Theorem.
         \label{chern_weil:eq:equation1}
     d \overline{\eta}(\Omega_1,\ldots,\Omega_r) = \sum_{i=1}^{r} \overline{\eta}(\Omega_1,\ldots,d\Omega_i,\ldots,\Omega_r)
     \end{equation}
-    for matrix valued $2$-forms $\Omega_i \in \Omega^2(M,\R^{k \times k})$. By linearity we may assume that all except for one entry in the matrix $\Omega_i = (\Omega_i^{jl})_{j,l=1}^k$ of $2$-forms vanish, so in particular
+    for matrix valued $2$-forms $\Omega_i \in \Omega^2(M,\K^{k \times k})$. By linearity we may assume that all except for one entry in the matrix $\Omega_i = (\Omega_i^{jl})_{j,l=1}^k$ of $2$-forms vanish, so in particular
     \[
     \Omega_i = \omega_i \otimes E_i,
     \]
@@ -106,7 +106,7 @@ We are now ready to proof the Chern-Weil Theorem.
     \[
     (\pi^\ast \nabla^0)_{w} (\pi^\ast\iota_0^\ast s) = \nabla^0_v \iota_0^\ast s.
     \]
-    In order to do this choose a local frame $e_1,\ldots,e_k$ of $E$ and write $s = s^i \pi^\ast e_i$ for smooth functions $s^i \colon M \times \R \to \R$. Then $\pi^\ast\iota_0^\ast s = (s^i \circ \iota_0 \circ \pi) \pi^\ast e_i$ and thus 
+    In order to do this choose a local frame $e_1,\ldots,e_k$ of $E$ and write $s = s^i \pi^\ast e_i$ for smooth functions $s^i \colon M \times \R \to \K$. Then $\pi^\ast\iota_0^\ast s = (s^i \circ \iota_0 \circ \pi) \pi^\ast e_i$ and thus 
     \begin{align*}
     (\pi^\ast \nabla^0)_{w} (\pi^\ast\iota_0^\ast s) & = w \cdot (s^i \circ \iota_0 \circ \pi)  e_i(p) + s^i(p,0) \nabla^0_v e_i \\
         &= w \cdot s^i  e_i(p) + s^i(p,0) \nabla^0_v e_i \\

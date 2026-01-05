@@ -1,0 +1,53 @@
+\subsection{Chern and Pontryagin Classes}
+
+    Let $E \to M$ be a complex vector bundle of rank $d$. For any matrix $A \in \C^{d \times d}$ we can consider the characteristic polynomial in $t$:
+    \[
+    \mathrm{det}\left( \mathrm{id} - \frac{t}{2\pi i} A\right) = \sum_{k=0}^{d} f_k(A)t^k,
+    \]
+    where $f_k \colon \C^{d \times d} \to \C$ are the coefficients of this polynomial and depend on $A$. Using the Leibniz formula for the determinant one can see that $f_k$ is a $k$-homogeneous polynomial and it moreover is invariant since the characteristic polynomial is. Furthermore it follows from the Leibniz formula that 
+    \begin{align*}
+        f_0(A) & = 1, \\
+        f_1(A) &= \mathrm{tr}\left(-\frac{1}{2\pi i} A\right), \\
+        f_d(A) &= \mathrm{det}\left(-\frac{1}{2\pi i} A\right).
+    \end{align*}
+
+\begin{definition}
+    The \textbf{$k$-th Chern class} of $E$ is defined as 
+    \[
+    c_k(E) := \chi_E(f_k) \in H_\mathrm{dR}^{2k}(M,\C).
+    \]
+\end{definition}
+
+If we instead consider a real vector bundle $E \to M$ we can similiarly define $k$-homogeneous polynomials $g_k \colon \R^{d \times d} \to \R$ by 
+\[
+    \mathrm{det}\left( \mathrm{id} - \frac{t}{2\pi} A\right) = \sum_{k=0}^{d} g_k(A)t^k,
+\]
+and define:
+
+\begin{definition}
+    The \textbf{$k$-th Pontryagin class} of $E$ is defined as 
+    \[
+    p_k(E) := \chi_E(g_{2k}) \in H_\mathrm{dR}^{4k}(M,\R).
+    \]
+\end{definition}
+
+Of course there is a connection between these two definitions:
+
+\begin{lemma}
+    Let $E \to M$ be a real vector bundle. Then 
+    \[
+    p_{k}(E) = (-1)^k c_{2k}(E \otimes \C),
+    \]
+    where $E \otimes \C$ is the complexified bundle and the equality is understood by considering a real differential as the real part of a complex differential form, that is $H_\mathrm{dR}^{4k}(M,\R) \subseteq H_\mathrm{dR}^{4k}(M,\C)$.
+\end{lemma}
+
+\begin{proof}
+    Choose any connection $\nabla$ on $E$ and let $\nabla_\C$ be the induced connection on the complexified bundle $E \otimes \C$. Then by definition any frame of $E$ also defines a frame of $E \otimes \C$ and the corresponding connection $1$-forms are equal. Thus the curvature form $\Omega$ of $E$ agrees with the curvature form $\Omega_\C$ of $E \otimes \C$. From the definition of the polynomials $f_k$ and $g_k$ it is moreover clear that for any real matrix $A \in \R^{d \times d}$ we have 
+    \[
+    f_k(A) = i^k g_k(A).
+    \]
+    Thus 
+    \[
+    c_{2k}(E) = [f_{2k}(\Omega_\C)] = [f_{2k}(\Omega)] = i^{2k} [g_{2k}(\Omega)] = (-1)^k p_k(E).
+    \]
+\end{proof}

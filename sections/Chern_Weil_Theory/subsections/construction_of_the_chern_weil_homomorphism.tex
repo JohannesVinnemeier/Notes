@@ -1,16 +1,16 @@
 \subsection{Construction of the Chern Weil Homomorphism}
 
-Let us recall the definition of the connection and curvature form. Let $E \to M$ be a vector bundle with connection $\nabla$. For a local frame $e_1,\ldots,e_k$ of $E$ over $U \subseteq M$ define the \textbf{connection form} as the unique matrix valued $1$-form $$\Theta = (\Theta_{ij})_{i,j=1}^k \in \Omega^1(U,\R^{k\times k})$$ with
+Let us recall the definition of the connection and curvature form. Let $E \to M$ be a vector bundle with connection $\nabla$. For a local frame $e_1,\ldots,e_k$ of $E$ over $U \subseteq M$ define the \textbf{connection form} as the unique matrix valued $1$-form $$\Theta = (\Theta_{ij})_{i,j=1}^k \in \Omega^1(U,\K^{k\times k})$$ with
 \[
 \nabla e_j = \sum_{i=1}^{k} \Theta_{ij} \otimes e_i.
 \]
-Using the connection form we can compute the covariant derivative of any section $s \in \Omega^0(M,E)$ as follows. In the chosen frame write $s = s^je_j$, then 
+Using the connection form we can compute the covariant derivative of any section $s \in \Omega^0(M,E)$ as follows. In the chosen frame write $s = s^je_j$ for smooth functions $s^j \in C^\infty(M,\K)$, then 
 \[
 \nabla s = ds^j \otimes e_j + \sum_{i=1}^{k} s^j \Theta_{ij} \otimes e_i = (d + \Theta)s,
 \]
 where $d$ acts by differentiation with respect to the local frame as written above and $\Theta$ acts by matrix multiplication in the coordinates of this frame.
 
-The \textbf{curvature form} $\Omega \in \Omega^2(U,\R^{k\times k})$ is then defined as 
+The \textbf{curvature form} $\Omega \in \Omega^2(U,\K^{k\times k})$ is then defined as 
 \[
 \Omega := d \Theta + \Theta \wedge \Theta.
 \]
@@ -35,25 +35,25 @@ A computation shows that $\Omega$ transforms nicely under a change of frame and 
 Chern-Weil theory now constructs cohomology classes (so called characteristic classes) of $M$ out of the curvature form using certain invariant homogeneous polynomials, which we shall introduce next.
 
 \begin{definition}
-    Let $V$ be an $n$-dimensional vector space. An $r$-homogeneous polynomial on $V$ is a map $\eta \colon V \to \R$, such that for all vectors $e_1,\ldots,e_n \in V$ the map 
+    Let $V$ be an $n$-dimensional (real or complex) vector space. An $r$-homogeneous polynomial on $V$ is a map $\eta \colon V \to \K$, such that for all vectors $e_1,\ldots,e_n \in V$ the map 
     \[
-    \R^n \to \R, \; (t_1,\ldots,t_n) \mapsto \eta(t_1e_1 + \ldots + t_n e_n)
+    \K^n \to \K, \; (t_1,\ldots,t_n) \mapsto \eta(t_1e_1 + \ldots + t_n e_n)
     \]
     is a (multivariate) $r$-homogeneous polynomial in the variables $t_1,\ldots,t_n$. The space of all $r$-homogeneous polynomials on $V$ is denoted by $\mathrm{Pol}_r(V)$.
 \end{definition}
 
-By choosing $e_1,\ldots,e_n$ as a basis, it is easy to see that a map $\eta \colon V \to \R$ is an $r$-homogeneous polynomial if and only if for one (then all) linear isomorphisms $A \colon \R^n \to V$, the compostition $\eta \circ A \colon \R^n \to \R$ is an $r$-homogeneous polynomial. Thus we can think of such polynomials as $r$-homogeneous polynomials in the entries of a vector $v = (v_1,\ldots,v_n)$ with respect to some (then all) basis. With this definition it is easy to construct examples:
+By choosing $e_1,\ldots,e_n$ as a basis, it is easy to see that a map $\eta \colon V \to \K$ is an $r$-homogeneous polynomial if and only if for one (then all) linear isomorphisms $A \colon \K^n \to V$, the compostition $\eta \circ A \colon \K^n \to \K$ is an $r$-homogeneous polynomial. Thus we can think of such polynomials as $r$-homogeneous polynomials in the entries of a vector $v = (v_1,\ldots,v_n)$ with respect to some (then all) basis. With this definition it is easy to construct examples:
 
 \begin{example}
-    The determinant $\mathrm{det} \colon \R^{n\times n} \to \R$ is an $n$-homogenous polynomial and the trace $\mathrm{tr} \colon \R^{n\times n} \to \R$ is a $1$-homogeneous polynomial.
+    The determinant $\mathrm{det} \colon \K^{n\times n} \to \K$ is an $n$-homogenous polynomial and the trace $\mathrm{tr} \colon \K^{n\times n} \to \K$ is a $1$-homogeneous polynomial.
 \end{example}
 
 Yet another useful characterization of $\mathrm{Pol}_r(V)$, which we will make use of later, can be given as follows. 
 
 \begin{lemma}
-    Let $\Sigma^r(V^\ast)$ be the space of $r$-linear symmetric maps $V \times \ldots \times V \to \R$. Then 
+    Let $\Sigma^r_\K(V^\ast)$ be the space of $r$-linear symmetric maps $V \times \ldots \times V \to \K$. Then 
 \begin{align*}
-\Phi_r \colon \Sigma^r(V^\ast) &\to \mathrm{Pol}_r(V) \\
+\Phi_r \colon \Sigma^r_\K(V^\ast) &\to \mathrm{Pol}_r(V) \\
     \overline{\eta} &\mapsto (v \mapsto \overline{\eta}(v,\ldots,v))
 \end{align*}
 is an isomorphism of vector spaces.
@@ -63,7 +63,7 @@ is an isomorphism of vector spaces.
 \[
 \eta(t_1v_1 + \ldots + t_rv_r) = \overline{\eta}\left(\sum_{i=1}^{r} t_iv_i,\ldots,\sum_{i=1}^{r} t_iv_i\right)
 \]
-for vectors $v_i \in V$ and scalars $t_i \in \R$. Using multilinearity and symmetry of $\overline{\eta}$ we see that this is a polynomial in $t_1,\ldots,t_r$, where the coefficient in front of $t_1\cdots t_r$ is given by $r! \, \overline{\eta}(v_1,\ldots,v_r)$. So if $\eta = 0$ we conclude that $\overline{\eta}(v_1,\ldots,v_r) = 0$. Hence $\Phi_r$ is injective. To show surjectivity we argue similiarly. Let $\eta \in \mathrm{Pol}_r(V)$ and let $e_1,\ldots,e_n \in V$ be a basis. Then $\eta(t_1e_1 + \ldots + t_ne_n)$ is a polynomial in $t_1,\ldots,t_n$. Let $a_{i_1,\ldots,i_r}$ be the coefficient of this polynomial in front of $t_{i_1}\cdots t_{i_r}$, where we assume that $i_1 \leq \ldots \leq i_r.$ As above we see by comparing coefficients, that if $\eta = \Phi_r(\overline{\eta})$ then
+for vectors $v_i \in V$ and scalars $t_i \in \K$. Using multilinearity and symmetry of $\overline{\eta}$ we see that this is a polynomial in $t_1,\ldots,t_r$, where the coefficient in front of $t_1\cdots t_r$ is given by $r! \, \overline{\eta}(v_1,\ldots,v_r)$. So if $\eta = 0$ we conclude that $\overline{\eta}(v_1,\ldots,v_r) = 0$. Hence $\Phi_r$ is injective. To show surjectivity we argue similiarly. Let $\eta \in \mathrm{Pol}_r(V)$ and let $e_1,\ldots,e_n \in V$ be a basis. Then $\eta(t_1e_1 + \ldots + t_ne_n)$ is a polynomial in $t_1,\ldots,t_n$. Let $a_{i_1,\ldots,i_r}$ be the coefficient of this polynomial in front of $t_{i_1}\cdots t_{i_r}$, where we assume that $i_1 \leq \ldots \leq i_r.$ As above we see by comparing coefficients, that if $\eta = \Phi_r(\overline{\eta})$ then
 \[
 \overline{\eta}(e_{i_1},\ldots,e_{i_r}) = \frac{1}{r!} a_{i_1,\ldots,i_r}.
 \]  
@@ -77,25 +77,25 @@ agree, thus they are equal. Since $e_1,\ldots,e_n$ is a basis, this shows
 \]
 \end{proof}
 
-We now turn our attention to homogeneous polynomials on the vector space $\R^{k\times k}$ of matrices, which are used to define characteristic classes in Chern-Weil theory. 
+We now turn our attention to homogeneous polynomials on the vector space $\K^{k\times k}$ of matrices, which are used to define characteristic classes in Chern-Weil theory. 
 
 \begin{definition}
-    An $r$-homogeneous polynomial $\eta \colon \R^{k \times k} \to \R$ is called invariant if $$\eta(A^{-1}BA) = \eta (B)$$ for all $B \in \R^{k\times k}$ and $A \in \mathrm{GL}(k)$. We denote the space of all such polynomials by $I_r(k) \subseteq \mathrm{Pol}_r(\R^{k \times k})$.
+    An $r$-homogeneous polynomial $\eta \colon \K^{k \times k} \to \K$ is called invariant if $$\eta(A^{-1}BA) = \eta (B)$$ for all $B \in \K^{k\times k}$ and $A \in \mathrm{GL}(k,\K)$. We denote the space of all such polynomials by $I_r(k) \subseteq \mathrm{Pol}_r(\K^{k \times k})$.
 \end{definition}
 
-Under the isomorphism $\Phi_r$ the invariant polynomials correspond to the invariant $r$-linear symmetric maps, where an $r$-linear symmetric map $\overline{\eta} \colon \R^{k \times k} \times \ldots \times \R^{k \times k} \to \R$ is called invariant if 
+Under the isomorphism $\Phi_r$ the invariant polynomials correspond to the invariant $r$-linear symmetric maps, where an $r$-linear symmetric map $\overline{\eta} \colon \K^{k \times k} \times \ldots \times \K^{k \times k} \to \K$ is called invariant if 
 \[
 \overline{\eta}(A^{-1}B_1A,\ldots,A^{-1}B_rA) = \overline{\eta}(B_1,\ldots,B_r)
 \]
-for all $B_1,\ldots,B_r \in \R^{k \times k}$ and $A \in \mathrm{GL}(k)$. Denote the space of all such maps by $S_r(k)$. We can then extend $\overline{\eta}$ to an $r$-linear map (here we don't need invariance yet)
+for all $B_1,\ldots,B_r \in \K^{k \times k}$ and $A \in \mathrm{GL}(k,\K)$. Denote the space of all such maps by $S_r(k)$. We can then extend $\overline{\eta}$ to an $r$-linear map (here we don't need invariance yet)
 \[
-\overline{\eta} \colon \Omega^{l_1}(M,\R^{k \times k}) \times \ldots \times \Omega^{l_r}(M,\R^{k \times k}) \to \Omega^{l}(M),
+\overline{\eta} \colon \Omega^{l_1}(M,\K^{k \times k}) \times \ldots \times \Omega^{l_r}(M,\K^{k \times k}) \to \Omega^{l}(M,\K),
 \]
 where $l = l_1 + \ldots + l_r$ by setting 
 \[
 \overline{\eta}(\Omega_1,\scalebox{0.7}[1]{\ldots},\Omega_r)(X_1,\scalebox{0.7}[1]{\ldots},X_l) := \frac{1}{l_1! \scalebox{0.7}[1]{$\cdots$} l_r!} \sum_{\sigma} \mathrm{sgn}(\sigma) \overline{\eta}(\Omega_1(X_{\sigma(1)}, \scalebox{0.7}[1]{\ldots} ,X_{\sigma(l_1)}),\scalebox{0.7}[1]{\ldots}, \Omega_r(X_{\sigma(l-l_r + 1)}, \scalebox{0.7}[1]{\ldots} ,X_{\sigma(l)}))
 \]
-where the sum is taken over all permutations $\sigma$ of $l$ elements. The coefficient in the above definition is chosen, such that if $\Omega_i = \omega_i \otimes A_i$ for some $\omega_i \in \Omega^{l_i}(M)$ and $A_i \in \Omega^0(M,\R^{k \times k})$ then
+where the sum is taken over all permutations $\sigma$ of $l$ elements. The coefficient in the above definition is chosen, such that if $\Omega_i = \omega_i \otimes A_i$ for some $\omega_i \in \Omega^{l_i}(M,\K)$ and $A_i \in \Omega^0(M,\K^{k \times k})$ then
 \[
 \overline{\eta}(\Omega_1,\ldots,\Omega_r) = \omega_1 \wedge \ldots \wedge \omega_r \, \overline{\eta}(A_1,\ldots,A_r).
 \]
@@ -103,7 +103,7 @@ So this definition agrees with the one in \cite{emilia_globale_ana}, but has the
 
 Now given a vector bundle $E \to M$, the invariance of $\overline{\eta}$  allows us to define an $r$-linear map 
 \[
-\overline{\eta} \colon \Omega^{l_1}(M,\mathrm{End}(E)) \times \ldots \times \Omega^{l_r}(M,\mathrm{End}(E)) \to \Omega^{l}(M)
+\overline{\eta} \colon \Omega^{l_1}(M,\mathrm{End}(E)) \times \ldots \times \Omega^{l_r}(M,\mathrm{End}(E)) \to \Omega^{l}(M,\K)
 \]
 as follows: Choose any local frame of $E$ over $U \subseteq M$. Then under this frame $\Omega_i \in \Omega^{l_i}(M,\mathrm{End}(E))$ corresponds to a matrix valued form $\tilde{\Omega}_i \in \Omega^{l_i}(U,\R^{k \times k})$ and we set 
 \[
@@ -121,13 +121,13 @@ We can now state the central theorem.
     \begin{enumerate}[(i)]
         \item $\eta(\Omega)$ is closed 
         \item If $\nabla^\prime$ is another connection with curvature form $\Omega^\prime$, then $[\eta(\Omega)] = [\eta(\Omega)]$
-        in $H_{dR}^{2r}(M)$.
+        in $H_{dR}^{2r}(M,\K)$.
     \end{enumerate}
 \end{theorem}
 
 We can thus define a map 
 \[
-\chi_E^r \colon I_r(k) \to H_{dR}^{2r}(M)
+\chi_E^r \colon I_r(k) \to H_{dR}^{2r}(M,\K)
 \]
 by choosing any connection on $E$ and defining $\chi_E^r(\eta) := [\eta(\Omega)]$ for the corresponding curvature form $\Omega$. In fact if we define the algebra 
 \[
@@ -135,7 +135,7 @@ I(k) := \bigoplus_{r=0}^\infty I_r(k),
 \]
 where multiplication is defined pointwise as $(\eta_0 \cdot \eta_1)(A):= \eta_0(A)\eta_1(A)$, the maps $\chi_E^r$ define a homomorphism of commutative algebras
 \[  
-\chi_E \colon I(k) \to H_{dR}^{\text{even}}(M),
+\chi_E \colon I(k) \to H_{dR}^{\text{even}}(M,\K),
 \]
 called the \textbf{Chern-Weil homomorphism}. This homomorphism satisfies the following naturality property.
 
