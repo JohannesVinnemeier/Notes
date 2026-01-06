@@ -14,7 +14,7 @@
 \begin{definition}
     The \textbf{$k$-th Chern class} of $E$ is defined as 
     \[
-    c_k(E) := \chi_E(f_k) \in H_\mathrm{dR}^{2k}(M,\C).
+    c_k(E) := \chi_E(f_k) \in H_\mathrm{dR}^{2k}(M;\C).
     \]
 \end{definition}
 
@@ -27,7 +27,7 @@ and define:
 \begin{definition}
     The \textbf{$k$-th Pontryagin class} of $E$ is defined as 
     \[
-    p_k(E) := \chi_E(g_{2k}) \in H_\mathrm{dR}^{4k}(M,\R).
+    p_k(E) := \chi_E(g_{2k}) \in H_\mathrm{dR}^{4k}(M;\R).
     \]
 \end{definition}
 
@@ -38,7 +38,7 @@ Of course there is a connection between these two definitions:
     \[
     p_{k}(E) = (-1)^k c_{2k}(E \otimes \C),
     \]
-    where $E \otimes \C$ is the complexified bundle and the equality is understood by considering a real differential as the real part of a complex differential form, that is $H_\mathrm{dR}^{4k}(M,\R) \subseteq H_\mathrm{dR}^{4k}(M,\C)$.
+    where $E \otimes \C$ is the complexified bundle and the equality is understood by considering a real differential as the real part of a complex differential form, that is $H_\mathrm{dR}^{4k}(M;\R) \subseteq H_\mathrm{dR}^{4k}(M;\C)$.
 \end{lemma}
 
 \begin{proof}
@@ -51,3 +51,30 @@ Of course there is a connection between these two definitions:
     c_{2k}(E) = [f_{2k}(\Omega_\C)] = [f_{2k}(\Omega)] = i^{2k} [g_{2k}(\Omega)] = (-1)^k p_k(E).
     \]
 \end{proof}
+
+Now assume we are given a real oriented vector bundle $E \to M$ of rank $2n$. Choose a metric on $E$ together with a compatible connection. A simple computation shows that the connection $1$-form $\Theta$ with respect to any oriented orthonormal frame is skew-symmetric. Thus 
+\begin{align*}
+    (\Theta \wedge \Theta)^T(X,Y) &= (\Theta(X)\Theta(Y) - \Theta(Y)\Theta(X))^T \\ 
+    &= (-\Theta(Y))(-\Theta(X)) - (-\Theta(X))(-\Theta(Y)) \\
+    &= - (\Theta \wedge \Theta) (X,Y).
+\end{align*}
+So the curvature form $\Omega$ is also skew symmetric:
+\[
+\Omega^T = (d\Theta)^T + (\Theta \wedge \Theta)^T = -d\Theta - \Theta \wedge \Theta = -\Omega.
+\]
+Recall that the Pfaffian is a $n$-homogeneous polynomial 
+\[
+\mathrm{Pf} \colon \mathrm{Skew}_{2n} \to \R
+\]
+on the space of skew symmetric $2n \times 2n$ matrices and satisifies 
+\[
+\mathrm{Pf}(B^T A B) = \mathrm{det}(B)\mathrm{Pf}(A)
+\]
+for $A \in \mathrm{Skew}_{2n}$ and $B \in \R^{n \times n}$ an arbitrary matrix. Thus we can define the $2n$-form $\mathrm{Pf}(\Omega)$ on the neighbourhood where the oriented orthonormal frame was defined. Under a change of oriented orthonormal frame the curvature form $\Omega$ transforms as $S \Omega S^{-1}$ for a special orthogonal matrix $S \in \mathrm{SO}(2n)$. Since $S^{-1} = S^T$ and $\mathrm{det}(S) = 1$ we conclude that $\mathrm{Pf}(\Omega)$ does not depend on the chosen frame and thus defines a global object. Just as in the proof of Theorem \ref{chern_weil:thm:chern_weil_thm} we see that $\mathrm{Pf}(\Omega)$ is closed (only the statement of Lemma \ref{chern_weil:lem:technical_lemma1} changes, where instead of arbitrary $X_i$ and $Y$ we only allow for skew symmetric matrices. Note that the tangent space of $\mathrm{SO}(2n)$ is precisely the space of skew symmetric matrices, such that we can realize any such $Y$ as the velocity vector of a curve through $\mathrm{id}$). Moreover the cohomology class does not depend on the chosen connection and metric. Again the proof is similiar to Theorem \ref{chern_weil:thm:chern_weil_thm}. Thus we can define 
+
+\begin{definition}
+    The \textbf{Euler class} of $E$ is defined as 
+    \[
+    e(E) := \left[\mathrm{Pf}\left(\frac{1}{2\pi}\Omega\right)\right] \in H_\mathrm{dR}^{2n}(M;\R).
+    \]
+\end{definition}
