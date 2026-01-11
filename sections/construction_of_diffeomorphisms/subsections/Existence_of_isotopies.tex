@@ -1,6 +1,6 @@
 \subsection{Existence of Smooth Isotopies}
 
-In this section we proof two statements on the existence of smooth isotopies. Both follow \cite{Milnor1965hcobord} quite closely. The first Lemma is a slight modification of Lemma 5.7 in \cite{Milnor1965hcobord}.
+In this section we proof a few statements on the existence of smooth isotopies. Lemma \ref{constr_diffeo:lem:isotopy_lemma} and Theorem \ref{constr_diffeo:thm:isotopy_extension_theorem} follow \cite{Milnor1965hcobord} quite closely. The first Lemma is a slight modification of Lemma 5.7 in \cite{Milnor1965hcobord}.
 
 \begin{lemma}[Isotopy Lemma]
     \label{constr_diffeo:lem:isotopy_lemma}
@@ -153,3 +153,96 @@ This next corollary essentially says, that there are many embeddings of small di
 
 The above corollary should also be true if $M$ is allowed to have boundary, but the proof fails, since Corollary \ref{constr_diffeo:cor:transitivity_of_diffeo_groups} is clearly false if $M$ has non-empty boundary. An interesting consequence of Corollary \ref{constr_diffeo:cor:embeddings} is the existence of \textbf{embedded paths}: For any connected manifold $M$ (without boundary) and any $p,q \in M$ there exists an embedding $\gamma \colon [0,1] \to M$ with $\gamma(0) = p, \gamma(1) = q$.
 
+\vspace{1em}
+
+By the Whitney embedding theorem any $n$-dimensional manifold can be embedded into $\R^{2n+1}$, but there might be different non-isotopic embeddings. Think for example of inequivalent knots in $\R^3$. The following theorem however says, that upon further increasing the dimension by one, there is only one embedding $M \hookrightarrow \R^{2n+2}$ up to isotopy (at least for $M$ closed).
+
+\begin{theorem}
+    \label{constr_diffeo:thm:equivalence_of_embeddings}
+    Let $M$ be a closed $n$-dimensional manifold. Then any two embeddings $M \hookrightarrow \R^{2n+k}$ for $k \geq 2$ are isotopic.
+\end{theorem}
+
+\begin{proof}
+    Let $N:= 2n + k$ and let $f,g \colon M \hookrightarrow \R^N$ be two embeddings. The idea of the proof is to construct preliminary isotopies $f \simeq f^\prime$ and $g \simeq g^\prime$, such that the straight line homotopy
+    \[
+    h_t := (1-t) f^\prime + t g^\prime
+    \]
+    is an isotopy. Let us observe what is necessary for $h_t$ to be an isotopy. First of all injectivity of $h_t$ for each time $t \in [0,1]$ is equivalent to (note that for $t = 0,1$ there is nothing to show)
+    \[
+    (1-t)(f^\prime(x) - f^\prime(y)) \neq t(g^\prime(y) - g^\prime(x))
+    \]
+    for all $t \in (0,1)$ and $x,y \in M$ with $x \neq y$. If we denote by $\Delta(X) \subseteq X \times X$ the diagonal of a manifold $X$ this in turn is equivalent to 
+    \[
+    ([f^\prime(x) - f^\prime(y)], [g^\prime(x) - g^\prime(y)]) \notin \Delta(\R P^{N-1}) \subseteq \R P^{N-1} \times \R P^{N-1}.
+    \]
+    But this precisely means that the map
+    \begin{align*}
+    M \times M - \Delta(M) & \to \R P^{N-1} \times \R P^{N-1} \\
+    (x,y) &\mapsto ([f^\prime(x) - f^\prime(y)], [g^\prime(x) - g^\prime(y)])
+    \end{align*}
+    is transverse to the diagonal $\Delta(\R P^{N-1})$, since 
+    \begin{align*}
+        \mathrm{dim}(\Delta(\R P^{N-1})) + \mathrm{dim}(M \times M - \Delta(M)) & = 4n + k -1 \\ 
+        &< 4n + 2(k-1) = \mathrm{dim}(\R P^{N-1} \times \R P^{N-1}).
+    \end{align*}
+    Similiarly injectivity of the differential of $h_t$ is equivalent to 
+    \[
+    (1-t) d_xf^\prime (v) \neq -t d_xg^\prime (v)
+    \]
+    for all $t \in (0,1)$ and $(x,v) \in TM - M$, where we embedd $M \subseteq TM$ as the zero section. Again we can formulate this as a transversality condition, namely that the map 
+   \begin{align*}
+    TM -M & \to \R P^{N-1} \times \R P^{N-1} \\
+    (x,v) &\mapsto ([d_xf^\prime (v)], [d_xg^\prime (v)])
+    \end{align*}
+    is transversal to the diagonal $\Delta(\R P^{N-1})$. In order to find such maps $f^\prime$ and $g^\prime$ we will be using the parametric transversality theorem. More precisely we will show that for almost all matrices $A,B \in \mathrm{GL}(N)$ the maps 
+    \[
+    f^\prime := A \circ f, \; g^\prime := A \circ g
+    \]
+    satisfy the desired transversality conditions. Note that for $A, B \in \mathrm{GL}^+(N)$ we have 
+    \[
+    f \simeq A \circ f, \; g \simeq A \circ g,
+    \]
+    since $\mathrm{GL}^+(N)$ is the path connected component of $\mathrm{GL}(N)$ containing the identity. Now consider the maps 
+    \begin{align*}
+        \Phi \colon (M \times M - \Delta(M)) \times \mathrm{GL}(N) \times \mathrm{GL}(N) &\to (\R^N - 0) \times (\R^N - 0)\\
+        (x,y,A,B) &\mapsto (A (f(x)- f(y)),B(g(x) - g(y)))
+    \end{align*}
+    and 
+    \begin{align*}
+        \Psi \colon (TM - M) \times \mathrm{GL}(N) \times \mathrm{GL}(N) &\to (\R^N - 0) \times (\R^N - 0)\\
+        (x,v,A,B) &\mapsto (A \, d_xf(v),B\, d_xg(v)).
+    \end{align*}
+    To compute the derivatives let us write $L_w$ for the map $L_w \colon \R^{N \times N} \to \R^N, \; S \mapsto Sw$ for $w \in \R^N$, which is clearly surjective for $w \neq 0$. Then 
+    \[
+    d_{(x,y,A,B)} \Phi = \begin{pmatrix}
+        \ast & L_{f(x)-f(y)} & 0 \\
+        \ast & 0 & L_{g(x)-g(y)}
+    \end{pmatrix}
+    \]
+    as a map $$T_{(x,y)} (M \times M - \Delta(M)) \oplus \R^{N \times N} \oplus \R^{N \times N} \to \R^N \oplus \R^N,$$ where we denote by $\ast$ the entries irrelevant for our discussion. Since $f(x)-f(y), g(x)-g(y) \neq 0$ it follows that this map is surjective and thus $\Phi$ is a submersion. In particular, post composing with the projection
+    \[
+    \pi \colon (\R^N - 0) \times (\R^N - 0) \to \R P^{N-1} \times \R P^{N-1}
+    \]
+    shows that $\pi \circ \Phi$ is a submersion. Essentially the same calculation also shows that $\pi \circ \Psi$ is a submersion. Now the theorem follows from the parametric transversality theorem.
+\end{proof}
+
+% Following \cite{hirsch2012differential} we call an embedding $\iota \colon M \hookrightarrow N$ of manifolds with boundary a \textbf{neat embedding} if $\iota(\partial M) = \iota(M) \cap \partial N$. 
+As a corollary of the above theorem and the isotopy extension theorem we can show:
+
+\begin{corollary}
+    Let $W$ be an $n$-dimensional manifold with compact boundary. Then any embedding $\partial W \hookrightarrow \R^{2n+1}$ can be extended to an embedding $W \hookrightarrow \R^{2n+1}$.
+\end{corollary}
+
+\begin{proof}
+    By the Whitney embedding theorem we can choose an embedding $\phi \colon W \hookrightarrow \R^{2n+1}$.
+    %  Moreover let $f \colon W \to [0,\infty)$ be a smooth function which vanishes on the boundary $\partial W$ and satisfies $f > 0$ on the interior $\mathrm{int}(W)$. Then 
+    % \[
+    % \psi \colon W \hookrightarrow \mathbb{H}^{2n+2}, x \mapsto (\phi(x),f(x))
+    % \]
+    % is a neat embedding of $W$ and thus in particular 
+    Let $f := \phi|_{\partial W}$ be the restriction to the boundary and let $g \colon \partial W \hookrightarrow \R^{2n+1}$ be any other embedding. By Theorem \ref{constr_diffeo:thm:equivalence_of_embeddings} there exists an isotopy from the inclusion $f(\partial W) \hookrightarrow \R^{2n+1}$ to the embedding 
+    \[
+    g \circ f^{-1} \colon f(\partial W) \hookrightarrow \R^{2n+1}
+    \]
+    and by the isotopy extension Theorem (Theorem \ref{constr_diffeo:thm:isotopy_extension_theorem}) we can extend this isotopy to an isotopy $h_t \colon \R^{2n+1} \to \R^{2n+1}$. Then $\psi := h_1 \circ \phi \colon W \hookrightarrow \R^{2n+1}$ is an extension of $g$.
+\end{proof}
