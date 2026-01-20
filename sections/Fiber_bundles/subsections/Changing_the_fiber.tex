@@ -1,0 +1,53 @@
+ \subsection{Changing the fiber}
+
+     Given a fiber bundle, Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1} allows us to change the fiber:
+
+    \begin{corollary}[Changing the fiber]
+        \label{fiber_bundles:cor:changing_fiber}
+        Let $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ be a fiber bundle with structure group $G$. Given a space $F^\prime$ upon which $G$ acts effectively, there exists a unique (up to isomorphism) fiber bundle 
+        \[
+        F^\prime \hookrightarrow E^\prime \oset[3pt]{\scalebox{0.8}{$p^\prime$}}{\longrightarrow} B
+        \]
+        which has the same trivialising neighbourhoods $(U_\alpha)$ and the same transition functions $(\tau_{\alpha,\beta})$ as $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$. We denote this bundle by $E \times_G F^\prime$ (see Lemma \ref{fiber_bundles:lem:borel_construction} for the origin of this notation).
+    \end{corollary}
+
+    Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1} tells us, that the new bundle still retains all of the information of the old bundle, as it is uniquely determined by the transition functions, i.e. we can simply change the fiber again to get the original bundle back. 
+
+    \begin{example}
+         Given any fiber bundle $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ with structure group $G$ we can apply the above corollary with $F^\prime := G$ upon which $G$ acts effectively by left-translations to get a principal $G$-bundle over $B$. This bundle is called the \textbf{underlying principal bundle} of $E \to B$ (see Definition \ref{fiber_bundles:def:principal_bundle}).
+    \end{example}
+
+    \begin{example}
+        Using the above corollary we can also construct the frame bundle from Example \ref{fiber_bundles:example:frame_bundle} more abstractly by defining it as the underlying principal bundle of $E \to F$. Note that the uniqueness results in Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1} shows, that the bundle constructed in this way is in fact isomorphic to $\mathrm{GL}(E)$. The construction in Example \ref{fiber_bundles:example:frame_bundle} of course has the benefit of being more concrete.
+    \end{example}
+
+    We can use Proposition \ref{fiber_bundles:prop:construction_of_morphisms} to get a much stronger result compared to Corollary \ref{fiber_bundles:cor:changing_fiber}:
+
+    \begin{theorem}[The Change of Fiber Functor]
+        \label{fiber_bundles:thm:change_of_fiber_functor}
+        Let $G$ be a topological group acting effectively on spaces $F$ and $F^\prime$. Then changing the fiber from $F$ to $F^\prime$ defines a functor 
+        \[
+        \times_G F^\prime \colon \mathsf{Fib}_{F,G} \to \mathsf{Fib}_{F^\prime,G}.
+        \]
+        Moreover the composition $\times_G F \circ \times_G F^\prime$ is naturally isomorphic to the identity on $\mathsf{Fib}_{F,G}$. Thus $\times_G F$ defines an equivalence of categories.
+    \end{theorem}
+
+    \begin{proof}
+    ???????????????????????????????????????????????
+    \end{proof}
+
+    Changing the fiber satisifes the following naturality condition with respect to the pullback operation (introduced below). 
+    
+    \begin{proposition}
+        \label{fiber_bundles:prop:natruality_of_changing_fiber}
+        Let $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ be a fiber bundle with structure group $G$,$F^\prime$ a space upon which $G$ acts effectively and $f \colon B^\prime \to B$ a continuous map. Then 
+        \[
+        (f^\ast E) \times_G F^\prime \cong f^\ast(E \times_G F^\prime).
+        \]
+    \end{proposition}
+
+    \begin{proof}
+        For the sake of brevity let us call an open cover $(U_\alpha)$ of some base space $X$ of a fiber bundle $Q \to X$ a trivialising cover for $Q$, if the $U_\alpha$ are trivialising neighbourhoods for $Q$. Now let $(U_\alpha)$ be a trivialising cover for $E$ with transition functions $\tau_{\alpha,\beta} \colon U_\alpha \cap U_\beta \to G$. Then by definition $(f^{-1}(U_\alpha))$ is a trivialising cover for $f^\ast E$ with transition functions $$\tau_{\alpha,\beta}\circ f \colon f^{-1}(U_\alpha) \cap f^{-1}(U_\beta) \to G.$$ Thus again by definition $(f^{-1}(U_\alpha))$ is a trivialising cover of $(f^\ast E) \times_G F^\prime$ with transition functions $\tau_{\alpha,\beta}\circ f$. Similiarly we see that this same cover is a trivialising cover for $f^\ast(E \times_G F^\prime)$ with $\tau_{\alpha,\beta}\circ f$ as transition functions. Thus the statement follows from the uniqueness result of Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1}.
+    \end{proof}
+
+    More abstractly we can formulate this propostion as follows. Let $\mathcal{F}_{F,G}(B)$ denote the set of isomorphism classes of fiber bundles with fiber $F$ and structure group $G$ over a given base space $B$. Then $\mathcal{F}_{F,G}(-)$ defines a contravariant functor $\mathsf{Top} \to \mathsf{Set}$ and changing the fiber defines a natural isomorphism of functors $\mathcal{F}_{F,G}(-) \Rightarrow \mathcal{F}_{F^\prime,G}(-)$.

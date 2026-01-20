@@ -226,7 +226,6 @@ By the Whitney embedding theorem any $n$-dimensional manifold can be embedded in
     shows that $\pi \circ \Phi$ is a submersion. Essentially the same calculation also shows that $\pi \circ \Psi$ is a submersion. Now the theorem follows from the parametric transversality theorem.
 \end{proof}
 
-% Following \cite{hirsch2012differential} we call an embedding $\iota \colon M \hookrightarrow N$ of manifolds with boundary a \textbf{neat embedding} if $\iota(\partial M) = \iota(M) \cap \partial N$. 
 As a corollary of the above theorem and the isotopy extension theorem we can show:
 
 \begin{corollary}
@@ -234,13 +233,7 @@ As a corollary of the above theorem and the isotopy extension theorem we can sho
 \end{corollary}
 
 \begin{proof}
-    By the Whitney embedding theorem we can choose an embedding $\phi \colon W \hookrightarrow \R^{2n+1}$.
-    %  Moreover let $f \colon W \to [0,\infty)$ be a smooth function which vanishes on the boundary $\partial W$ and satisfies $f > 0$ on the interior $\mathrm{int}(W)$. Then 
-    % \[
-    % \psi \colon W \hookrightarrow \mathbb{H}^{2n+2}, x \mapsto (\phi(x),f(x))
-    % \]
-    % is a neat embedding of $W$ and thus in particular 
-    Let $f := \phi|_{\partial W}$ be the restriction to the boundary and let $g \colon \partial W \hookrightarrow \R^{2n+1}$ be any other embedding. By Theorem \ref{constr_diffeo:thm:equivalence_of_embeddings} there exists an isotopy from the inclusion $f(\partial W) \hookrightarrow \R^{2n+1}$ to the embedding 
+    By the Whitney embedding theorem we can choose an embedding $\phi \colon W \hookrightarrow \R^{2n+1}$. Let $f := \phi|_{\partial W}$ be the restriction to the boundary and let $g \colon \partial W \hookrightarrow \R^{2n+1}$ be any other embedding. By Theorem \ref{constr_diffeo:thm:equivalence_of_embeddings} there exists an isotopy from the inclusion $f(\partial W) \hookrightarrow \R^{2n+1}$ to the embedding 
     \[
     g \circ f^{-1} \colon f(\partial W) \hookrightarrow \R^{2n+1}
     \]

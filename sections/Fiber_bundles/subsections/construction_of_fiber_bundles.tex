@@ -1,7 +1,5 @@
 \subsection{Construction of Fiber Bundles}
 
-For convencience, let us state the definition of a fiber bundle.
-
 \begin{definition}[Fiber Bundle]
     \label{fiber_bundles:def:fiber_bundle}
     Let $G$ be a topological group acting effectively on a space $F$. A fiber bundle $E$ over $B$ with fiber $F$ and structure group $G$ consists of a surjective continuous map $p \colon E \to B$ and a collection of maps 
@@ -27,18 +25,18 @@ For convencience, let us state the definition of a fiber bundle.
         \item $(U_\alpha)_\alpha$ is an open cover of $B$.
         \item The collection $(\phi_\alpha)$ is maximal with respect to the first 3 conditions.
     \end{enumerate}
-    The maps $\phi_\alpha$ are called local trivialisations,  The sets $U_\alpha$ are called trivialising neighbourhoods and the map $\tau_{\alpha,\beta}$ is called the transition function for $\phi_\alpha,\phi_\beta$. Furthermore, we call $E$ the total space, $B$ the base space and $F$ the fiber. We write
+    The maps $\phi_\alpha$ are called local trivialisations,  the sets $U_\alpha$ are called trivialising neighbourhoods and the map $\tau_{\alpha,\beta}$ is called the transition function for $\phi_\alpha,\phi_\beta$. We write $(U_\alpha,\phi_\alpha)$ as a shorthand for the local trivialisation $\phi_\alpha \colon U_\alpha \times F \to p^{-1}(U_\alpha)$. Furthermore, we call $E$ the total space, $B$ the base space and $F$ the fiber. We denote the fiber bundle by
     \[
     F \hookrightarrow E \oset[0.5pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B
     \]
-    or sometimes just $E \xrightarrow{p} B$ to denote the fiber bundle. 
+    or sometimes just by $E \xrightarrow{p} B$.  
 \end{definition}
 
-Fiber bundles also come with an appropriate notion of morphism:
+Fiber bundles with structure group also come with an appropriate notion of morphism:
 
 \begin{definition}
     \label{fiber_bundles:def:bundle_morphism}
-    A morphism of fiber bundles $E \to B$ and $E^\prime \to B^\prime$ is a pair $(H,h)$ of continuous maps $H \colon E \to E^\prime$ and $h \colon B \to B^\prime$, such that 
+    Let $F \hookrightarrow E \oset[0.5pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ and $F \hookrightarrow E^\prime \oset[0.5pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B^\prime$ be fiber bundles with structure group $G$. A $G$-morphism is a pair $(H,h)$ of continuous maps $H \colon E \to E^\prime$ and $h \colon B \to B^\prime$, such that 
         \[\begin{tikzcd}
         E & {E^\prime} \\
         B & {B^\prime}
@@ -47,8 +45,18 @@ Fiber bundles also come with an appropriate notion of morphism:
         \arrow[from=1-2, to=2-2]
         \arrow["h", from=2-1, to=2-2]
         \end{tikzcd}\]
-        commutes. We usually denote such a morphism only by $H \colon E \to E^\prime$. Note that $h$ is completely determined by $f$, justifying this notation. If $B = B^\prime$ we generally implicitly require $h$ to be the identity. 
+        commutes and in local trivialisations $H$ is given by the action of elements in $G$. That is for any local trivialisations $(U_\alpha,\phi_\alpha)$ of $E$ and $(V_\beta,\psi_\beta)$ of $E^\prime$ with $h(U_\alpha) \subseteq V_\beta$ there exists a continuous map 
+        \[
+        g_{\alpha\beta} \colon U_\alpha \to G,
+        \] 
+        such that the composition $\psi_\beta^{-1} \circ H \circ \phi_\alpha \colon U_\alpha \times F \to V_\beta \times F$ is given by 
+        \[
+        (x,f) \mapsto (h(x),g_{\alpha\beta}(x) \cdot f).
+        \]
+        We usually denote such a morphism only by $H \colon E \to E^\prime$. Note that $h$ is completely determined by $f$, justifying this notation. If $B = B^\prime$ we generally implicitly require $h$ to be the identity. 
 \end{definition}
+
+Note that with the above definition any $G$-morphism is a fiber wise homeomorphism. Sometimes we may want to relax this condition by dropping the requirement that locally $H$ is given by the action of group elements and call the resulting morphism simply a morphism of fiber bundles. For categoy theoretical aspects it is however nicer to work with $G$-morphisms. Thus we define the category $\mathsf{Fib}_{F,G}$ to be the category whose objects are given by fiber bundles with fiber $F$ and structure group $G$ and whose morphisms are given by $G$-morphisms.
 
 \begin{remark}
     In Definition \ref{fiber_bundles:def:fiber_bundle} we require surjectivity of $p$ to exclude the case $F = \emptyset$. The requirement, that $G$ acts effectively guarantees for the transition maps to be unique. However, this is not a strong requirement to impose, since if $G$ does not act effectively, i.e.
@@ -120,7 +128,7 @@ Fiber bundles also come with an appropriate notion of morphism:
      Interestingly, the transition functions already uniquely determine the fiber bundle, in a sense made precise by the following theorem.
 
      \begin{theorem}[Fiber bundle construction A]
-        \label{thm:fiber_bundle_construction1}
+        \label{fiber_bundles:thm:fiber_bundle_construction1}
         Let $B,F$ be (non-empty) topological spaces and $G$ a topological group acting effectively on $F$. Suppose we are given the following data:
         \begin{enumerate}[(i)]
             \item An open cover $\mathcal{U} := (U_\alpha)_\alpha$ of B (where $\alpha$ ranges over some index set $A$)
@@ -232,7 +240,7 @@ Fiber bundles also come with an appropriate notion of morphism:
      \end{proof}
 
     \needspace{5em}
-     We may also formulate Theorem \ref{thm:fiber_bundle_construction1} slightly different, if we are given the fibers $F_x = p^{-1}(x)$ as sets. This is usually more practical, as the description of the bundle is more explicit:
+     We may also formulate Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1} slightly different, if we are given the fibers $F_x = p^{-1}(x)$ as sets. This is usually more practical, as the description of the bundle is more explicit:
 
      \begin{theorem}[Fiber bundle construction B]
         \label{thm:fiber_bundle_construction2}
@@ -296,51 +304,36 @@ Fiber bundles also come with an appropriate notion of morphism:
         If $E$ carries a fiber metric we may similiarly construct the \textbf{orthonormal frame bundle} $O(M)$ as a principal $\mathrm{O}(n)$-bundle and if $E$ is oriented we can construct the \textbf{oriented frame bundle} $\mathrm{GL^+}(M)$ as a principal $\mathrm{GL^+}(n)$-bundle. Of course we can also combine the two to get the \textbf{oriented orthonormal frame bundle} $\mathrm{SO}(M)$.
      \end{example}
 
-     Given a fiber bundle, Theorem \ref{thm:fiber_bundle_construction1} allows us to change the fiber:
+     Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1} describes a construction which can be applied to objects in $\mathsf{Fib}_{F,G}$. The following theorem describes an analgous construction for the morphisms, which is will be the key to the functoriality result of Theorem \ref{fiber_bundles:thm:change_of_fiber_functor} below.
 
-    \begin{corollary}[Changing the fiber]
-        \label{fiber_bundles:cor:changing_fiber}
-        Let $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ be a fiber bundle with structure group $G$. Given a space $F^\prime$ upon which $G$ acts effectively, there exists a unique (up to isomorphism) fiber bundle 
+     \begin{proposition}
+        \label{fiber_bundles:prop:construction_of_morphisms}
+        Let $E \to B$ and $E^\prime \to B^\prime$ be fiber bundles with fiber $F$ and structure group $G$. Suppose we are given the following data:
+        \begin{enumerate}[(i)]
+            \item A continuous map $f \colon B \to B^\prime$,
+            \item Trivialisations $(U_\alpha,\phi_\alpha)_{\alpha}$ of $E$ and $(V_\beta,\psi_\beta)_{\beta}$ of $E^\prime$, such that the $U_\alpha$ cover $B$ and for each $\alpha$ there exists some $\beta$ with $f(U_\alpha) \subseteq V_\beta$,
+            \item For each pair $\alpha,\beta$ with $f(U_\alpha) \subseteq V_\beta$ a continuous map $g_{\alpha\beta} \colon U_\alpha \to G$, which transforms as follows: for some other $\alpha^\prime,\beta^\prime$ with $f(U_{\alpha^\prime}) \subseteq V_{\beta^\prime}$ it holds that 
+            \[
+            g_{\alpha\beta}(x) = \tau^{-1}_{\beta^\prime\beta}(x) g_{\alpha^\prime\beta^\prime}(x) \tau_{\alpha^\prime\alpha}(x)
+            \]
+            for all $x \in U_\alpha \cap U_{\alpha^\prime}$, where $\tau_{\alpha^\prime\alpha}$ and $\tau_{\beta^\prime\beta}$ are the respective transition functions.
+        \end{enumerate}
+        Then there exists a unique $G$-morphism $E \to H$, which corresponds to the maps 
         \[
-        F^\prime \hookrightarrow E^\prime \oset[3pt]{\scalebox{0.8}{$p^\prime$}}{\longrightarrow} B
+        U_\alpha \times F \to V_\beta \times F, \; \; (x,f) \mapsto (f(x), \, g_{\alpha\beta}(x) \cdot f)
         \]
-        which has the same trivialising neighbourhoods $(U_\alpha)$ and the same transition functions $(\tau_{\alpha,\beta})$ as $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$. We denote this bundle by $E \times_G F^\prime$ (see Lemma \ref{fiber_bundles:lem:borel_construction} for the origin of this notation).
-    \end{corollary}
+        under the local trivialisations $\phi_\alpha$ and $\psi_\beta$ for all $\alpha, \beta$ with $f(U_\alpha) \subseteq V_\beta$.     \end{proposition}
 
-    Theorem \ref{thm:fiber_bundle_construction1} tells us, that the new bundle still retains all of the information of the old bundle, as it is uniquely determined by the transition functions, i.e. we can simply change the fiber again to get the original bundle back. 
+        \begin{proof}
+            By definition any $G$-morphism is locally determined by maps $g_{\alpha\beta} \colon U_\alpha \to G$ and these maps transform as in $(iii)$ by definition of the transition functions. So conversely we may define a $G$-morphism locally by these $g_{\alpha\beta}$ and since they transform correctly we get a globally defined object.
+        \end{proof}
 
-    \begin{example}
-         Given any fiber bundle $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ with structure group $G$ we can apply the above corollary with $F^\prime := G$ upon which $G$ acts effectively by left-translations to get a principal $G$-bundle over $B$. This bundle is called the \textbf{underlying principal bundle} of $E \to B$ (see Definition \ref{fiber_bundles:def:principal_bundle}).
-    \end{example}
+        \headline{Smooth Bundles}
 
-    \begin{example}
-        Using the above corollary we can also construct the frame bundle from Example \ref{fiber_bundles:example:frame_bundle} more abstractly by defining it as the underlying principal bundle of $E \to F$. Note that the uniqueness results in Theorem \ref{thm:fiber_bundle_construction1} shows, that the bundle constructed in this way is in fact isomorphic to $\mathrm{GL}(E)$. The construction in Example \ref{fiber_bundles:example:frame_bundle} of course has the benefit of being more concrete.
-    \end{example}
-
-    Changing the fiber satisifes the following naturality condition with respect to the pullback operation (introduced below). 
-    
-    \begin{proposition}
-        \label{fiber_bundles:prop:natruality_of_changing_fiber}
-        Let $F \hookrightarrow E \oset[0.6pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ be a fiber bundle with structure group $G$,$F^\prime$ a space upon which $G$ acts effectively and $f \colon B^\prime \to B$ a continuous map. Then 
-        \[
-        (f^\ast E) \times_G F^\prime \cong f^\ast(E \times_G F^\prime).
-        \]
-    \end{proposition}
-
-    \begin{proof}
-        For the sake of brevity let us call an open cover $(U_\alpha)$ of some base space $X$ of a fiber bundle $Q \to X$ a trivialising cover for $Q$, if the $U_\alpha$ are trivialising neighbourhoods for $Q$. Now let $(U_\alpha)$ be a trivialising cover for $E$ with transition functions $\tau_{\alpha,\beta} \colon U_\alpha \cap U_\beta \to G$. Then by definition $(f^{-1}(U_\alpha))$ is a trivialising cover for $f^\ast E$ with transition functions $$\tau_{\alpha,\beta}\circ f \colon f^{-1}(U_\alpha) \cap f^{-1}(U_\beta) \to G.$$ Thus again by definition $(f^{-1}(U_\alpha))$ is a trivialising cover of $(f^\ast E) \times_G F^\prime$ with transition functions $\tau_{\alpha,\beta}\circ f$. Similiarly we see that this same cover is a trivialising cover for $f^\ast(E \times_G F^\prime)$ with $\tau_{\alpha,\beta}\circ f$ as transition functions. Thus the statement follows from the uniqueness result of Theorem \ref{thm:fiber_bundle_construction1}.
-    \end{proof}
-
-    More abstractly we can formulate this propostion as follows. Let $\mathcal{F}_{F,G}(B)$ denote the set of isomorphism classes of fiber bundles with fiber $F$ and structure group $G$ over a given base space $B$. Then $\mathcal{F}_{F,G}(-)$ defines a contravariant functor $\mathsf{Top} \to \mathsf{Set}$ and changing the fiber defines a natural isomorphism of functors $\mathcal{F}_{F,G}(-) \Rightarrow \mathcal{F}_{F^\prime,G}(-)$.
-
-    \needspace{3cm}
-
-    \headline{Smooth Bundles}
-
-    \noindent If we are in the smooth category, we can analogously define smooth fiber bundles by requiring the spaces $E ,B$ and $F$ to be smooth manifolds (where either $F$ or $B$ has no boundary), the group $G$ to be a Lie group and all maps to be smooth. In particular, the local trivialisation are diffeomorphisms. All of the above results also hold in the smooth category. 
+        \noindent If we are in the smooth category, we can analogously define smooth fiber bundles by requiring the spaces $E ,B$ and $F$ to be smooth manifolds (where either $F$ or $B$ has no boundary), the group $G$ to be a Lie group and all maps to be smooth. In particular, the local trivialisation are diffeomorphisms. All of the above results also hold in the smooth category. 
 
     \begin{theorem}[Fiber bundle construction $\mathrm{A}^\prime$]
-        The conclusions of Theorem \ref{thm:fiber_bundle_construction1} remain true in the smooth category. 
+        The conclusions of Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1} remain true in the smooth category. 
     \end{theorem}
     \begin{proof}
         The only difficulty is in defining the smooth structure on 
@@ -382,10 +375,12 @@ Fiber bundles also come with an appropriate notion of morphism:
     \[
     g^{-1}(U) \times F \to g^*E, \; (b^\prime,f) \mapsto (b^\prime,\phi(g(b^\prime),f)).
     \]
-    The same construction works in the smooth category using Theorem \ref{thm:fiber_bundle_construction2_smooth} as long as either $F$ has no boundary or $B$ and $B^\prime$ have no boundary. By projecting onto the second factor we get a bundle homomorphism $G \colon g^*E \to E$, making the following diagram commute:
+    By projecting onto the second factor we get a bundle homomorphism $G \colon g^*E \to E$, making the following diagram commute:
     \[
         \commsquare{$g^*E$}{$E$}{$B^\prime$}{$B$}{$G$}{}{$p$}{$g$}
     \]
+
+    In fact it is easily seen, that this diagram is a pullback diagram in the category $\mathsf{Top}$ of topological spaces, which gives a useful characterisation of the pullback bundle. The same construction works in the smooth category using Theorem \ref{thm:fiber_bundle_construction2_smooth} as long as either $F$ has no boundary or $B$ and $B^\prime$ have no boundary. 
 
     \needspace{3cm}
     \begin{lemma}
@@ -408,13 +403,13 @@ Fiber bundles also come with an appropriate notion of morphism:
     Clearly $H$ is continuous and $G \circ H = \mathrm{id}_{\mathrm{im} G}$ as well as $H \circ G = \mathrm{id}_{g^*E}$, so $G$ is in fact an embedding.
    \end{proof}
 
-   Given a fiber bundle $F \hookrightarrow E \oset[0.7pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ and a submanifold $S \subseteq B$ we can then define the restriction of $E$ to $S$ as the pullback of $E$ under the inclusion $\iota \colon S \hookrightarrow B$:
-   \[
-   E|_S := \iota^*E
-   \]
-   The above Lemma shows that this is indeed a submanfold of $E$. In fact, in the situation of the above Lemma we have $$\mathrm{im} G = E|_{g(B^\prime)}.$$
+%    Given a fiber bundle $F \hookrightarrow E \oset[0.7pt]{\scalebox{0.8}{$p$}}{\longrightarrow} B$ and a submanifold $S \subseteq B$ we can then define the restriction of $E$ to $S$ as the pullback of $E$ under the inclusion $\iota \colon S \hookrightarrow B$:
+%    \[
+%    E|_S := \iota^*E
+%    \]
+%    The above Lemma shows that this is indeed a submanfold of $E$. In fact, in the situation of the above Lemma we have $$\mathrm{im} G = E|_{g(B^\prime)}.$$
 
-   \vspace{1em}
+%    \vspace{1em}
 
    One usecase for pullback bundles is to define vector fields along curves $\gamma \colon I \to M$ for a smooth manifold $M$ as sections in the pullback bundle $\gamma^\ast TM$. The follwoing Lemma says, that we can equivalently define them as maps 
    \[

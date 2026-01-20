@@ -154,18 +154,44 @@ For any topological group $G$ a universal bundle always exists. This can for exa
     Note however that the Milnor construction yields a map $BG \to BH$, while the alternative construction only yields a homotopy class of maps.
 \end{remark}
 
-Using the theory developed above we can generealize the concept of a universal bundle to arbitrary fiber bundles. This will be a generalization of Corollary \ref{fiber_bundles:cor:universal_bundle_defines_natural_isomorphism}.
+Using the theory developed above we can generealize the concept of a universal bundle to arbitrary fiber bundles. First let us define what a universal should be in this context.
+
+\begin{definition}
+    \label{fiber_bundles:def:general_universal_bundle}
+    A fiber bundle $E \to X$ over a CW-complex $X$ with fiber $F$ and structure group $G$ is called universal if for any other fiber bundle $E^\prime \to X^\prime$ over a CW-complex $X^\prime$ with the same fiber and structure group, there exists a $G$-morphism $E^\prime \to E$, which is unique up to homotopy of $G$-morphisms.
+\end{definition}
+
+For principal bundles we called a bundle universal if the total space is contractible, but showed in Theorem \ref{fiber_bundles:thm:universal_principal_bundle} that such bundles are precisely the universal bundles in the sense of the definition above. Thus this definition generalizes our previous one. Again we remark that Definition \ref{fiber_bundles:def:general_universal_bundle} is equivalent to a saying that universal bundles are the terminal objects in the appropriate homotopy category. Using the theory developed above it is easy to show existence of universal bundles:
 
 \begin{theorem}
+    \label{fiber_bundles:thm:existence_of_general_universal_bundles}
+    Let $G$ be a topological group acting effectively on $F$. Then the bundle $EG \times_G F$ is universal.
+\end{theorem}
+
+\begin{proof}
+    ???????????????????????????????????????????????
+\end{proof}
+
+Moreover we have an analogue of Theorem \ref{fiber_bundles:thm:extension_theorem}:
+
+\begin{theorem}
+    Let $E \to X$ be a fiber bundle with fiber $F$ and structure group $G$ over a CW-complex and let $A \subseteq X$ be a subcomplex. Then any $G$-morphism $E|_A \to EG \times_G F$ can be extended to a $G$-morphism $E \to EG \times_G F$. 
+\end{theorem}
+
+\begin{proof}
+    ???????????????????????????????????????????????
+\end{proof}
+
+\begin{corollary}
     Let $G$ be a topological group acting effectively on a space $F$. Then for any CW-complex $X$ the map 
     \[
     [X,BG] \to \mathcal{F}_{F,G}(X), \; \; [f] \mapsto \left[f^\ast(EG \times_G F)\right]
     \]
     is a natural bijection, where $\mathcal{F}_{F,G}(X)$ denotes the set of isomorphism classes of fiber bundles with fiber $F$ and structure group $G$ over $X$.
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
-    By Corollary \ref{fiber_bundles:cor:universal_bundle_defines_natural_isomorphism} the map 
+    We could argue as we did in Corollary \ref{fiber_bundles:cor:universal_bundle_defines_natural_isomorphism} for principal bundles using Theorem \ref{fiber_bundles:thm:existence_of_general_universal_bundles} instead. Alternatively we can also show this by using Corollary \ref{fiber_bundles:cor:universal_bundle_defines_natural_isomorphism} directly, which tells us that the map 
     \[
     [X,BG] \to \mathcal{P}_G(X), \; \; [f] \mapsto [f^\ast EG]
     \]
@@ -177,5 +203,5 @@ Using the theory developed above we can generealize the concept of a universal b
     \[
     [X,BG] \to \mathcal{F}_{F,G}(X), \; \; [f] \mapsto \left[(f^\ast EG) \times_G F\right].
     \]
-    So the Theorem follows by again applying Proposition \ref{fiber_bundles:prop:natruality_of_changing_fiber}.
+    So the statement follows by again applying Proposition \ref{fiber_bundles:prop:natruality_of_changing_fiber}.
 \end{proof}
