@@ -21,7 +21,7 @@
         \[
         \phi_\alpha^{-1} \circ \phi_\beta \colon (U_\alpha \cap U_\beta) \times F \to (U_\alpha \cap U_\beta) \times F
         \]
-        is given by $(b,f) \mapsto (b,\tau_{\alpha,\beta} \cdot f)$.
+        is given by $(b,f) \mapsto (b,\tau_{\alpha,\beta}(b) \cdot f)$.
         \item $(U_\alpha)_\alpha$ is an open cover of $B$.
         \item The collection $(\phi_\alpha)$ is maximal with respect to the first 3 conditions.
     \end{enumerate}
@@ -304,25 +304,25 @@ Note that with the above definition any $G$-morphism is a fiber wise homeomorphi
         If $E$ carries a fiber metric we may similiarly construct the \textbf{orthonormal frame bundle} $O(M)$ as a principal $\mathrm{O}(n)$-bundle and if $E$ is oriented we can construct the \textbf{oriented frame bundle} $\mathrm{GL^+}(M)$ as a principal $\mathrm{GL^+}(n)$-bundle. Of course we can also combine the two to get the \textbf{oriented orthonormal frame bundle} $\mathrm{SO}(M)$.
      \end{example}
 
-     Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1} describes a construction which can be applied to objects in $\mathsf{Fib}_{F,G}$. The following theorem describes an analgous construction for the morphisms, which is will be the key to the functoriality result of Theorem \ref{fiber_bundles:thm:change_of_fiber_functor} below.
+     Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1} describes a construction which can be applied to objects in $\mathsf{Fib}_{F,G}$. The following theorem describes an analgous construction for the morphisms, which will be the key to the functoriality result of Theorem \ref{fiber_bundles:thm:change_of_fiber_functor} below.
 
      \begin{proposition}
         \label{fiber_bundles:prop:construction_of_morphisms}
         Let $E \to B$ and $E^\prime \to B^\prime$ be fiber bundles with fiber $F$ and structure group $G$. Suppose we are given the following data:
         \begin{enumerate}[(i)]
-            \item A continuous map $f \colon B \to B^\prime$,
-            \item Trivialisations $(U_\alpha,\phi_\alpha)_{\alpha}$ of $E$ and $(V_\beta,\psi_\beta)_{\beta}$ of $E^\prime$, such that the $U_\alpha$ cover $B$ and for each $\alpha$ there exists some $\beta$ with $f(U_\alpha) \subseteq V_\beta$,
-            \item For each pair $\alpha,\beta$ with $f(U_\alpha) \subseteq V_\beta$ a continuous map $g_{\alpha\beta} \colon U_\alpha \to G$, which transforms as follows: for some other $\alpha^\prime,\beta^\prime$ with $f(U_{\alpha^\prime}) \subseteq V_{\beta^\prime}$ it holds that 
+            \item A continuous map $h \colon B \to B^\prime$,
+            \item Trivialisations $(U_\alpha,\phi_\alpha)_{\alpha}$ of $E$ and $(V_\beta,\psi_\beta)_{\beta}$ of $E^\prime$, such that the $U_\alpha$ cover $B$ and for each $\alpha$ there exists some $\beta$ with $h(U_\alpha) \subseteq V_\beta$,
+            \item For each pair $\alpha,\beta$ with $h(U_\alpha) \subseteq V_\beta$ a continuous map $g_{\alpha\beta} \colon U_\alpha \to G$, which transforms as follows: for some other $\alpha^\prime,\beta^\prime$ with $h(U_{\alpha^\prime}) \subseteq V_{\beta^\prime}$ it holds that 
             \[
             g_{\alpha\beta}(x) = \tau^{-1}_{\beta^\prime\beta}(x) g_{\alpha^\prime\beta^\prime}(x) \tau_{\alpha^\prime\alpha}(x)
             \]
             for all $x \in U_\alpha \cap U_{\alpha^\prime}$, where $\tau_{\alpha^\prime\alpha}$ and $\tau_{\beta^\prime\beta}$ are the respective transition functions.
         \end{enumerate}
-        Then there exists a unique $G$-morphism $E \to H$, which corresponds to the maps 
+        Then there exists a unique $G$-morphism $E \to E^\prime$, which corresponds to the maps 
         \[
-        U_\alpha \times F \to V_\beta \times F, \; \; (x,f) \mapsto (f(x), \, g_{\alpha\beta}(x) \cdot f)
+        U_\alpha \times F \to V_\beta \times F, \; \; (x,f) \mapsto (h(x), \, g_{\alpha\beta}(x) \cdot f)
         \]
-        under the local trivialisations $\phi_\alpha$ and $\psi_\beta$ for all $\alpha, \beta$ with $f(U_\alpha) \subseteq V_\beta$.     \end{proposition}
+        under the local trivialisations $\phi_\alpha$ and $\psi_\beta$ for all $\alpha, \beta$ with $h(U_\alpha) \subseteq V_\beta$.     \end{proposition}
 
         \begin{proof}
             By definition any $G$-morphism is locally determined by maps $g_{\alpha\beta} \colon U_\alpha \to G$ and these maps transform as in $(iii)$ by definition of the transition functions. So conversely we may define a $G$-morphism locally by these $g_{\alpha\beta}$ and since they transform correctly we get a globally defined object.

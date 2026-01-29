@@ -44,7 +44,7 @@ Before showing the lemma, let us introduce the notion of a smooth family of $r$-
     \[
     (\beta_t)_p = \sum \beta^{i_1,\ldots,i_r}(t,p)d_px_{i_1} \wedge \ldots \wedge d_px_{i_r}
     \]
-    for smooth functions $\beta^{i_1,\ldots,i_r}$. If $I$ is closed we call $\beta_t$ smooth if it can be extended to a smooth family $\beta^\prime_t$ indexed over some open open interval $I^\prime \supseteq I$.
+    for smooth functions $\beta^{i_1,\ldots,i_r}$. If $I$ is closed we call $\beta_t$ smooth if it can be extended to a smooth family $\beta^\prime_t$ indexed over some open interval $I^\prime \supseteq I$.
 \end{definition}
 
 \noindent Then $t \mapsto (\beta_t)_p$ is a smooth curve in the vector space $\Lambda^r(T_p^\ast M)$, such that 
@@ -99,7 +99,7 @@ Note that if $\partial M = \emptyset$ we can also directly allow for closed inte
     \label{prop:lie_derivative_properties}
     Let $\alpha \in \Omega^r(M), \beta \in \Omega^s(M)$, $\lambda \in \R$ and $X \in \mathscr{X}(M)$. Then the Lie derivative satisfies the following properties:
     \begin{enumerate}[(i)]
-        \item Locality: $(\mathcal{L}_X \alpha)_U = \mathcal{L}_{X|_U} \alpha|_U$ for $U \subseteq M$ open
+        \item Locality: $(\mathcal{L}_X \alpha)|_U = \mathcal{L}_{X|_U} \alpha|_U$ for $U \subseteq M$ open
         \item Linearity in $\alpha$: $\mathcal{L}_X(\lambda \alpha + \beta) = \lambda \mathcal{L}_X \alpha + \mathcal{L}_X \beta$
         \item Leibniz rule: $\mathcal{L}_X(\alpha \wedge \beta) = \mathcal{L}_X \alpha \wedge \beta + \alpha \wedge \mathcal{L}_X \beta$
         \item Compatibility with $d$: $\mathcal{L}_X(d\alpha) = d(\mathcal{L}_X\alpha)$

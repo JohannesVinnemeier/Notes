@@ -21,7 +21,9 @@
         Using the above corollary we can also construct the frame bundle from Example \ref{fiber_bundles:example:frame_bundle} more abstractly by defining it as the underlying principal bundle of $E \to F$. Note that the uniqueness results in Theorem \ref{fiber_bundles:thm:fiber_bundle_construction1} shows, that the bundle constructed in this way is in fact isomorphic to $\mathrm{GL}(E)$. The construction in Example \ref{fiber_bundles:example:frame_bundle} of course has the benefit of being more concrete.
     \end{example}
 
-    We can use Proposition \ref{fiber_bundles:prop:construction_of_morphisms} to get a much stronger result compared to Corollary \ref{fiber_bundles:cor:changing_fiber}:
+    \needspace{4cm}
+
+    We can use Proposition \ref{fiber_bundles:prop:construction_of_morphisms} to get a much stronger form of Corollary \ref{fiber_bundles:cor:changing_fiber}:
 
     \begin{theorem}[The Change of Fiber Functor]
         \label{fiber_bundles:thm:change_of_fiber_functor}
@@ -33,10 +35,50 @@
     \end{theorem}
 
     \begin{proof}
-    ???????????????????????????????????????????????
+    The proof is straightforward but takes some care to write down precisely. For every bundle $E$ in $\mathsf{Fib}_{F,G}$ choose a bundle $E \times_G F^\prime$ in $\mathsf{Fib}_{F^\prime,G}$ with the same trivialising neighbourhoods and transition functions as $E$ (using Corollary \ref{fiber_bundles:cor:changing_fiber}). On morphisms we define the functor as follows. Let 
+    \[\begin{tikzcd}
+        E_1 & {E_2} \\
+        B_1 & {B_1}
+        \arrow["H_1", from=1-1, to=1-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow["h_1", from=2-1, to=2-2]
+        \end{tikzcd}\]
+    be a $G$-morphism in $\mathsf{Fib}_{F,G}$ . Choose a trivialising cover $(U_\alpha)$ of $E_1$ and $(V_\beta)$ of $E_2$, such that for all $\alpha$ there exists $\beta$ with $h_1(U_\alpha) \subseteq V_\beta$. Then in local trivialisations $H$ is given by 
+    \[
+        U_\alpha \times F \to V_\beta \times F, \; \; (x,f) \mapsto (h_1(x), \, g_{\alpha\beta}(x) \cdot f)
+    \]
+    for some $g_{\alpha\beta} \colon U_\alpha \to G$, which transform as required in Proposition \ref{fiber_bundles:prop:construction_of_morphisms}. Since by definition $(U_\alpha)$ is also a trivialising cover of $E_1 \times_G F^\prime$ with the same transition functions as $E_1$ and similiarly for $E_2 \times_G F^\prime$, we can apply Proposition \ref{fiber_bundles:prop:construction_of_morphisms} to construct a $G$-morphism $K \colon E_1 \times_G F^\prime \to E_2 \times_G F^\prime$. We claim that $K$ does not depend on the chosen covers $(U_\alpha)$ and $(V_\beta)$. So let $(U^\prime_{\alpha^\prime})$ and $(V^\prime_{\beta^\prime})$ be different trivialising covers with the same property and define $K^\prime \colon E_1 \times_G F^\prime \to E_2 \times_G F^\prime$ in the same way. Then we can also use the covers $(U_\alpha) \cup (U^\prime_{\alpha^\prime})$ and $(V_\beta) \cup (V^\prime_{\beta^\prime})$ to construct a $G$-morphism $K^{\prime\prime} \colon E_1 \times_G F^\prime \to E_2 \times_G F^\prime$, which by definition agrees with $K$ on $E_1|_{U_\alpha}$ for all $\alpha$, such that $h_1(U_\alpha) \subseteq V_\beta$ for some $\beta$ and similiarly for $K^\prime$. Thus $K = K^{\prime\prime} = K^\prime$. We may then define 
+    \[
+    H_1 \times_G F^\prime := K.
+    \]
+    To see that this is functorial let 
+    \[\begin{tikzcd}
+        E_2 & {E_3} \\
+        B_2 & {B_3}
+        \arrow["H_2", from=1-1, to=1-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-2, to=2-2]
+        \arrow["h_2", from=2-1, to=2-2]
+        \end{tikzcd}\]
+    be another $G$-morphism. Let $(U_\alpha)$,$(V_\beta)$ and $(W_\gamma)$ be trivialising covers of $E_1$,$E_2$ and $E_3$ respectively, such that for all $\alpha$ there exists $\beta$ with $h_1(U_\alpha) \subseteq V_\beta$ and for all $\beta$ there exists $\gamma$ with $h_2(V_\beta) \subseteq W_\gamma$. Then the covers $(U_\alpha)$ and $(W_\gamma)$ may be used to construct $(H_2 \circ H_1) \times_G F^\prime$ as above and for $\alpha,\beta,\gamma$ with $h_1(U_\alpha) \subseteq V_\beta$ and $h_2(V_\beta) \subseteq W_\gamma$ this map clearly agrees with the composition $H_2 \times_G F^\prime \circ H_1 \times_G F^\prime$. Moreover it is clear that the identity gets mapped to the identity under $ \times_G F^\prime$ by using $(V_\beta) = (U_\alpha)$ for the construction. 
+    
+    Next we show the statement about the equivalence of categories. First we define a canonical isomorphism
+    \[
+    \eta_E \colon E \to (E \times_G F^\prime) \times_G F
+    \]
+    as follows. Let $(U_\alpha)$ be a trivialising cover for $E$ with transition functions $\tau_{\beta\alpha} \colon U_\alpha \cap U_\beta \to G$. Then by definition $(U_\alpha)$ is also a trivialising cover for $(E \times_G F^\prime) \times_G F$ with the same transition functions. For $\alpha,\beta$ with $U_\alpha \subseteq U_\beta$ set $G_{\alpha\beta} := \tau_{\beta\alpha}$ (the reversed order of $\alpha$ and $\beta$ only has to do with the notational conventions used for the transition functions). Then these transform as in Proposition \ref{fiber_bundles:prop:construction_of_morphisms}, and thus define a $G$-morphism $\eta_E \colon E \to (E \times_G F^\prime) \times_G F$. This is an isomorphism, since it corresponds to the identity
+    \[
+    U_\alpha \times F \to  U_\alpha \times F
+    \]
+    under local trivialisations and as before we see that $\eta_E$ does not depend on the cover $(U_\alpha)$. Finally for the naturality let $H_1 \colon E_1 \to E_2$ be as above and again choose trivialising covers $(U_\alpha)$ of $E_1$ and $(V_\beta)$ of $E_2$, such that for all $\alpha$ there exists $\beta$ with $h_1(U_\alpha) \subseteq V_\beta$. Then for fixed $\alpha, \beta$ with $h_1(U_\alpha) \subseteq V_\beta$ the maps $H_1$ and $(H_1 \times_G F^\prime) \times_G F$ both correspond to the same map 
+    \[
+    U_\alpha \times F \to V_\beta \times F.
+    \]
+    Moreover since $\eta_{E_1}$ and $\eta_{E_2}$ correspond to the identity maps on $U_\alpha \times F$ and $V_\beta \times F$, respectively, the statement follows. 
     \end{proof}
 
-    Changing the fiber satisifes the following naturality condition with respect to the pullback operation (introduced below). 
+    Changing the fiber satisifes the following naturality condition with respect to the pullback operation. 
     
     \begin{proposition}
         \label{fiber_bundles:prop:natruality_of_changing_fiber}
