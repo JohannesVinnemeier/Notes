@@ -44,11 +44,11 @@ Of course there is a connection between these two definitions:
 \begin{proof}
     Choose any connection $\nabla$ on $E$ and let $\nabla_\C$ be the induced connection on the complexified bundle $E \otimes \C$. Then by definition any frame of $E$ also defines a frame of $E \otimes \C$ and the corresponding connection $1$-forms are equal. Thus the curvature form $\Omega$ of $E$ agrees with the curvature form $\Omega_\C$ of $E \otimes \C$. From the definition of the polynomials $f_k$ and $g_k$ it is moreover clear that for any real matrix $A \in \R^{d \times d}$ we have 
     \[
-    f_k(A) = i^k g_k(A).
+    f_k(A) = (-i)^k g_k(A).
     \]
     Thus 
     \[
-    c_{2k}(E) = [f_{2k}(\Omega_\C)] = [f_{2k}(\Omega)] = i^{2k} [g_{2k}(\Omega)] = (-1)^k p_k(E).
+    c_{2k}(E) = [f_{2k}(\Omega_\C)] = [f_{2k}(\Omega)] = (-i)^{2k} [g_{2k}(\Omega)] = (-1)^k p_k(E).
     \]
 \end{proof}
 
@@ -78,3 +78,51 @@ for $A \in \mathrm{Skew}_{2n}$ and $B \in \R^{n \times n}$ an arbitrary matrix. 
     e(E) := \left[\mathrm{Pf}\left(\frac{1}{2\pi}\Omega\right)\right] \in H_\mathrm{dR}^{2n}(M;\R).
     \]
 \end{definition}
+
+It is no coincidence that the above construction of the Euler class works and is just an example of the following more general construction. Instead of considering homogeneous polynomials on $\K^{k \times k}$ which are invariant under conjugation with elements in $\mathrm{GL}(k,\K)$ we can more generally consider polynomials $\eta \colon\mathfrak{g} \to \K$ defined on the Lie-Algebra $\mathfrak{g}$ of some matrix Lie-group $G \subseteq \mathrm{GL}(k,\K)$, which are invariant under conjugation with elements in $G$. Suppose we are then given a vector bundle $E \to M$ with structure group $G$ and some connection, such that the corresponding (locally defined) curvature form $\Omega$ takes values in $\mathfrak{g}$. Under a change of local frame this curvature form transforms as $S \Omega S^{-1}$ for a matrix $S \in G$, thus $\eta(\Omega)$ is a well defined global object and the proofs above are easily generalized to show that $\eta(\Omega)$ is closed and does depend on the chosen connection (as long as the connection yields local curvature forms with values in $\mathfrak{g}$). For this more general approach to be useful we need to guarantee the existence of such connections, which is the statement of the following proposition.
+
+\begin{proposition}
+    Let $E \to M$ be a vector bundle with structure group $G \subseteq \mathrm{GL}(k,\K)$. Then there exists a connection on $E$, such that the curvature form with respect to any local frame \footnotemark takes values in $\mathfrak{g}$. 
+\end{proposition}
+
+\begin{proof}
+    Let $(e_i^\alpha)$ be local frames defined on some neighbourhoods $U_\alpha \subseteq M$ which cover $M$. On $E|_{U_\alpha}$ define a connection by $\nabla^\alpha e_i = 0$. In other words for a local section $s = s^i e_i^\alpha$ we set $\nabla^\alpha s := d s^i \otimes e_i^\alpha$. Now let $(\psi_\alpha)$ be a partition of unity subordinate to the cover $(U_\alpha)$ and define a connection $\nabla$ on $E$ by 
+    \[
+    \nabla s := \sum_{\alpha} \psi_\alpha \nabla^\alpha s
+    \]
+    for any section $s \in \Gamma(E)$. We claim that the connection one forms of $\nabla$ already take values in $\mathfrak{g}$. To this end let $(e_i)$ be any other frame defined on $U \subseteq M$ and let $A_\alpha = (a_{ij}^\alpha) \in C^\infty(U \cap U_\alpha,G)$ be the change of basis matrix from $(e_i)$ to $(e_i^\alpha)$, that is 
+    \[
+    e_j = \sum_{i} a_{ij}^\alpha e_i^\alpha.
+    \]
+    Moreover we write $A_\alpha^{-1} = (a^{ij}_\alpha)$ for the inverse, that is 
+    \[
+    e_j^\alpha = \sum_{i} a^{ij}_\alpha e_i.
+    \]
+    We now compute 
+    \begin{align*}
+        \nabla^\alpha e_j = \sum_i d a_{ij}^\alpha \otimes e_i^\alpha = \sum_{i,k} a_\alpha^{ki} da_{ij}^\alpha \otimes e_k = \sum_{k,i} a_\alpha^{ik} da_{kj}^\alpha \otimes e_i 
+    \end{align*}
+    In the last equality we only exchanged the roles of $k$ and $i$. So 
+    \[
+    \nabla e_j = \sum_{\alpha,k,i} \psi_\alpha a_\alpha^{ik} da_{kj}^\alpha \otimes e_i,
+    \]
+    such that for some vector field $X$ the connection one form is given by 
+    \[
+    \Theta(X) = \sum_\alpha \psi_\alpha \left(\sum_k a_\alpha^{ik} da_{ki}^\alpha(X) \right)_{ij} = \sum_\alpha \psi_\alpha A_\alpha^{-1} dA_\alpha(X)
+    \]
+    Note that for some point $p \in M$, where both frames $(e_i)$ and $(e_i^\alpha)$ are defined we have $$d_pA_\alpha(X_p) \in T_{A_\alpha(p)} G,$$ such that $A_\alpha^{-1}(p) d_pA_\alpha(X_p) = d_p(A_\alpha^{-1}(p)A_\alpha)(X_p) \in T_e G = \mathfrak{g}$. Thus $\Theta(X) \in \mathfrak{g}$. Next we show that the corresponding curvature form 
+    \[
+    \Omega = \Theta \wedge \Theta + d\Theta
+    \]
+    also takes values in $\mathfrak{g}$. Firstly note that for vector fields $X,Y$ we have 
+    \[  
+    (\Theta \wedge \Theta)(X,Y) = \Theta(X)\Theta(Y) - \Theta(Y)\Theta(X) = [\Theta(X),\Theta(Y)]
+    \]
+    and it follows from general Lie theory of matrix groups, that the corresponding Lie algebra is closed under taking the commutator. For the second term we apply Corollary \ref{cartan_cal:cor:formula_d_alpha} component wise to get 
+    \[
+    d\Theta(X,Y) = X \cdot \Theta(Y) - Y \cdot \Theta(X) - \Theta([X,Y]).
+    \]
+    The first two terms are just directional derivatives of smooth functions with values in the vector space $\mathfrak{g}$ and thus take again values in $\mathfrak{g}$. The statement follows.
+\end{proof}
+
+\footnotetext{That is any local frame determined by a local trivialisation from the maximal trivialising atlas making $E \to M$ into a vector bundle with structure group $G$. Compare Definition \ref{fiber_bundles:def:fiber_bundle}.}
