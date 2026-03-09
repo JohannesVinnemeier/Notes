@@ -143,7 +143,8 @@
     In the above theorems the submanifold $X$ which we pulled back by $f$ was always assumed to be without boundary. Here is a version, which allows for $X$ to have boundary as well.
 
     \begin{lemma}
-            Let $M,N$ be smooth manifolds where $M$ has no boundary and let $f \colon M \to N$ be a submersion. Given a submanifold $X \subseteq N$ with boundary the preimage $f^{-1}() \subseteq M$ is a submanifold with boundary 
+        \label{on_mnf_with_boundary:lem:preimage_of_submersion}
+            Let $M,N$ be smooth manifolds where $M$ has no boundary and let $f \colon M \to N$ be a submersion. Given a submanifold $X \subseteq N$ with boundary the preimage $f^{-1}(X) \subseteq M$ is a submanifold with boundary 
             \[
             \partial f^{-1}(X) = f^{-1}(\partial X)
             \]
@@ -170,12 +171,13 @@
             \[
             \partial f^{-1}(S) = \emptyset \neq f^{-1}(\partial S).
             \]
+            Or even worse, consider the $2$-dimensional half space $\H^2 := \{(x,y) \in \R^2 \mid x \leq 0\}$ and the submersion $f \colon \H^2 \to \R, \; (x,y) \mapsto y$. Then $f^{-1}([0,1])$ is not even a manifold anymore.
+            
             Moreover we cannot replace the sumbersion condition by only a transversality condition. Consider for example the map 
             \[
             f \colon \R \to \R^2, x \mapsto (0,x),
             \]
             which is transversal to $S := [0,1] \times \{0\} \subseteq \R^2$. Then again $\partial f^{-1}(S) = \emptyset \neq f^{-1}(\partial S)$.
         \end{remark}
-    % To conclude this section we briefly discuss the so called vertical differential of a map, which can be useful in the context of transversality. 
     
  

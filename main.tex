@@ -13,6 +13,7 @@
 \usetikzlibrary{decorations.markings}
 \usepackage[justification=centering]{caption}
 \usepackage{bbm}
+\usepackage{bm}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{hyperref, xurl}
@@ -68,6 +69,7 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\K}{\mathbb{K}}
+\renewcommand{\H}{\mathbb{H}}
 
 %makes a wider tilde symbol, the second argument dictates the width
 \newcommand{\reallywidetilde}[2]{
@@ -154,7 +156,7 @@
 % \includeonly{sections/Riemannian_Geometry/riemannian_geometry}
 % \includeonly{sections/Functional_Analysis/functional_analysis}
 % \includeonly{sections/Cartan_Calculus/cartan_calculus}
-% \includeonly{sections/Whitney_Topologies/whitney_toologies}
+% \includeonly{sections/Whitney_Topologies/whitney_topologies}
 % \includeonly{sections/Miscellaneous/miscellaneous}
 % \includeonly{sections/Chern_Weil_Theory/chern_weil_theory}
 
@@ -183,7 +185,7 @@
 
     \include{sections/Functional_Analysis/functional_analysis}
 
-    \include{sections/Whitney_Topologies/whitney_toologies}
+    \include{sections/Whitney_Topologies/whitney_topologies}
     
     \include{sections/Miscellaneous/miscellaneous}
 
@@ -199,8 +201,8 @@
 
 % Bibliography (Comment out for faster compilation)
 
-\nocite{*} %Include all entries from BibTeX file
-\bibliographystyle{alpha}
-\bibliography{ref}
+% \nocite{*} %Include all entries from BibTeX file
+% \bibliographystyle{alpha}
+% \bibliography{ref}
 
 \end{document}
