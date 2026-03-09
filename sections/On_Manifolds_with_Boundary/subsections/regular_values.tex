@@ -21,7 +21,7 @@
     \[
     \partial f := f|_{\partial M}.
     \]
-    We now generalize three theorems from \cite{guillemin2010differential} about transversal maps by allowing the codomain to have boundary as well. 
+    We now generalize two theorems from \cite{guillemin2010differential} about transversal maps by allowing the codomain to have boundary as well. 
 
     \begin{theorem}[Transversality Theorem]
     \label{thm:transversality}
@@ -87,58 +87,31 @@
         is a submanifold (with boundary) of $M \times S$. Consider the projection $\pi \colon M \times S \to S$. We can then show, that for a regular value $s \in S$ of the map $\pi|_{X^\prime}$ the maps $f_s$ and $\partial f_s$ are transversal to $X$, which is just some linear algebra. The proof is exactly the same as in the case $\partial N = \emptyset$, see \cite{guillemin2010differential} (p. 68). Then the statement follows from Sard`s Theorem.
     \end{proof}
 
-    \begin{theorem}[Transversality Homotopy Theorem]
-        \label{thm:transversality_homotopy}
-        Let $M,N$ be manifolds with boundary, $f \colon M \to N$ smooth and $X \subseteq N$ a submanifold without boundary. Then $f$ is smoothly homotopic to a map $g \colon M \to N$ with
-        \[
-            g \pitchfork X \text{ and } \partial g \pitchfork X.
-        \]
-    \end{theorem}
-    \begin{proof}
-        First we may assume that $\mathrm{im}(f)\subseteq \mathrm{int}(N)$, since $f$ is always smoothly homotopic to such a map (the inclusion $\mathrm{int}(N) \hookrightarrow N$ is a smooth homotopy equivalence). Define
-        \[
-        Y := X \cap \mathrm{int}(N)
-        \]
-        and 
-        \[
-        f^\prime \colon M \to \mathrm{int}(N), \; p \mapsto f(p).
-        \]
-        Using the Transversality Homotopy Theorem for the case $\partial N = \emptyset$ (see \cite{guillemin2010differential} p. 70) we get that $f^\prime$ is smoothly homotopic to a map $g^\prime \colon M \to \mathrm{int}(N)$, such that 
-        \[
-            g^\prime \pitchfork Y \text{ and } \partial g^\prime \pitchfork Y.
-        \]
-        Now define $g := \iota \circ f^\prime$, where $\iota \colon \mathrm{int}(N) \hookrightarrow N$ is the inclusion. Since $g$ does not intersect $X$ at boundary points, i.e. $\mathrm{im}(g) \cap X \subseteq \mathrm{int}(N)$, the transversality properties of $g^\prime$ directly imply
-        \[
-            g \pitchfork X \text{ and } \partial g \pitchfork X.
-        \]
-        
-        %Now consider the inclusion $\iota \colon N \to \mathrm{D}(N)$ of $N$ into its double and define $g := \iota \circ f$ and $Y := \iota(X)$. From here on we mimic the proof of Theorem 6.36 in \cite{lee2011smooth}. By the Whitney embedding theorem we may assume that $\mathrm{D}(N)$ is a submanifold of some $\R^n$. Choose a tubular neighbourhood $V$ of $\mathrm{N}$ together with a retraction $r \colon V \to \mathrm{D}(N)$, which is a submersion. Now define $$\delta \colon \mathrm{D}(N) \to \R_{>0}, \; x \mapsto \mathrm{sup}\{\tau >0 \mid B_\tau(x) \subseteq V\}.$$
-        % It is straightforward to show that $\delta$ is continuous. Using the Whitney approximation theorem for functions we can choose a smooth function $\epsilon \colon \mathrm{D}(N) \to \R_{>0}$ with 
-        % \[
-        % 0 < \epsilon(x) < \delta(x) \text{ for all } x \in \mathrm{D}(N). 
-        % \]
-        % Now define 
-        % \[
-        % G^\prime \colon M \times B_1(0) \to V, (p,v) \mapsto g(p) + \epsilon(g(p))v. 
-        % \]
-        % and $G := r \circ G^\prime$. For $p \in M$ consider the inclusion
-        % \[
-        % h_p \colon B_1(0) \to M \times B_1(0), \; v \mapsto (p,v).
-        % \]
-        % Then $G^\prime \circ h_p$ is clearly a submersion. If $p \in \partial M$ then $\partial G^\prime \circ h_p$ is also a submerison. In particular $D_{(p,v)} G^\prime$ and $D_{(p,v)} \partial G^\prime$ are surjective, thus $G^\prime$ and $\partial G^\prime$ are submersions. This implies that $G$ and $\partial G$ are submerisons (since $r$ is also a submerison). In particular 
-        % \[
-        % G \pitchfork Y \text{ and } \partial G \pitchfork Y.
-        % \]
-        % Applying Theorem \ref{thm:parametric_transversality} we get that for almost every $v \in B_1(0)$:
-        % \[
-        %     g_v \pitchfork Y \text{ and } \partial g_v \pitchfork Y.
-        % \]
-        % Since $g_0 = g = \iota \circ f$ and $\mathrm{im}(f) \subseteq \mathrm{int}(N)$ we get that $\mathrm{im}(g_0) \subseteq \iota(\mathrm{int}(N)) =: U$, which is an open subset of $\mathrm{D}(N)$. Then
-        % \[
-        % G^{-1}(U) \subseteq M \times B_1(0)
-        % \]
-        % is open and $M \times {0} \subseteq U$.
-    \end{proof}
+    % \begin{theorem}[Transversality Homotopy Theorem]
+    %     \label{thm:transversality_homotopy}
+    %     Let $M,N$ be manifolds with boundary, $f \colon M \to N$ smooth and $X \subseteq N$ a submanifold without boundary. Then $f$ is smoothly homotopic to a map $g \colon M \to N$ with
+    %     \[
+    %         g \pitchfork X \text{ and } \partial g \pitchfork X.
+    %     \]
+    % \end{theorem}
+    % \begin{proof}
+    %     First we may assume that $\mathrm{im}(f)\subseteq \mathrm{int}(N)$, since $f$ is always smoothly homotopic to such a map (the inclusion $\mathrm{int}(N) \hookrightarrow N$ is a smooth homotopy equivalence). Define
+    %     \[
+    %     Y := X \cap \mathrm{int}(N)
+    %     \]
+    %     and 
+    %     \[
+    %     f^\prime \colon M \to \mathrm{int}(N), \; p \mapsto f(p).
+    %     \]
+    %     Using the Transversality Homotopy Theorem for the case $\partial N = \emptyset$ (see \cite{guillemin2010differential} p. 70) we get that $f^\prime$ is smoothly homotopic to a map $g^\prime \colon M \to \mathrm{int}(N)$, such that 
+    %     \[
+    %         g^\prime \pitchfork Y \text{ and } \partial g^\prime \pitchfork Y.
+    %     \]
+    %     Now define $g := \iota \circ f^\prime$, where $\iota \colon \mathrm{int}(N) \hookrightarrow N$ is the inclusion. Since $g$ does not intersect $X$ at boundary points, i.e. $\mathrm{im}(g) \cap X \subseteq \mathrm{int}(N)$, the transversality properties of $g^\prime$ directly imply
+    %     \[
+    %         g \pitchfork X \text{ and } \partial g \pitchfork X.
+    %     \]
+    % \end{proof}
 
     In the above theorems the submanifold $X$ which we pulled back by $f$ was always assumed to be without boundary. Here is a version, which allows for $X$ to have boundary as well.
 
