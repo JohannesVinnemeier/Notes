@@ -4,14 +4,14 @@
 
 Let $M,N$ be smooth manifolds with or without boundary. Consider the set $C^\infty(M,N)$ of smooth maps. On this set one can define the so called Whitney topologies, which provide a precise language to make sense of such statements as "slighlty perturbing $f$ yields a map transversal to a given submanifold". In the following we will proof a number of useful approximation results of this kind concerning immersions, one-to-one immersions, embeddings and transversal maps.
 
-Let us begin by recalling the definition of these topolgies. First we define the Whitney topology on the space $C^k(M,N)$ of $C^k$ maps from $M$ to $N$. We will be using the definition from \cite{hirsch2012differential} using local charts. For the discussion of an equivalent definition see section \ref{whitney_top:sec:equivalent_def}. Suppose we are given the following data
+Let us begin by recalling the definition of the Whitney topologies. First we define a topology on the space $C^k(M,N)$ of $C^k$ maps from $M$ to $N$. We will be using the definition from \cite{hirsch2012differential} using local charts. For the discussion of an equivalent definition see section \ref{whitney_top:sec:equivalent_def}. Suppose we are given the following data
 \begin{itemize}
     \item A family of charts $\Phi = (U_\alpha,\phi_\alpha)_{\alpha\in J}$ for $M$, such that $(U_\alpha)_{\alpha\in J}$ is locally finite, that is each point $x \in M$ posseses a neighbourhood that interesects only finitely many $U_\alpha$
     \item A family of charts $\Psi = (V_\alpha,\psi_\alpha)_{\alpha \in J}$ for $N$
     \item A family $K= (K_\alpha)_{\alpha \in J}$ of compact sets $K_\alpha \subseteq U_\alpha$
     \item A family of positive numbers $\epsilon = (\epsilon_\alpha)_{\alpha \in J}$
 \end{itemize} 
-Then if $f \in C^k(M,N)$ with $f(K_\alpha) \subseteq V_\alpha$ for each $\alpha \in J$ we define a basic open neighbourhood
+Then if $f \in C^k(M,N)$ with $f(K_\alpha) \subseteq V_\alpha$ for each $\alpha \in J$, we define a basic open neighbourhood
 \[
 \mathcal{N}^k(f,\Phi,\Psi,K,\epsilon)
 \]
@@ -19,7 +19,7 @@ as the set of functions $g \in C^k(M,N)$, such that for all $\alpha \in J$, $g(K
 \[
 \norm{f_\alpha - g_\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha))} := \sum_{\abs{\beta} \leq k} \; \max_{x \in \phi_\alpha^{-1}(K_\alpha)} \; \norm{\partial^\beta f_\alpha(x) - \partial^\beta g_\alpha(x)} < \epsilon_\alpha.
 \]
-The sum is taken over multiindices $\beta \in \N_0^n$ (where $n = \mathrm{dim}(M)$). The collection of all such basic open neighbourhoods form the basis for a topology on $C^k(M,N)$ (it is easy to see that the intersection of two such neighbourhoods is again of the same form). The topology on $C^\infty(M,N)$ is then simply defined as the topology induced by all inclusion maps $C^\infty(M,N) \to C^k(M,N)$. 
+The sum is taken over multiindices $\beta \in \N_0^n$ (where $n = \mathrm{dim}(M)$). The collection of all such basic open neighbourhoods form the basis for a topology on $C^k(M,N)$ called the Whitney $C^k$-topology (it is easy to see that the intersection of two such neighbourhoods is again of the same form). The Whitney $C^\infty$-topology on $C^\infty(M,N)$ is then simply defined as the topology induced by all inclusion maps $C^\infty(M,N) \to C^k(M,N)$. 
 
 A first interesting approximation result is the following.
 
@@ -43,14 +43,14 @@ For a proof see \cite{hirsch2012differential}. Moreover many interesting classes
 
 Again this is shown in \cite{hirsch2012differential}. We now state the announced approximation results. The proofs will be given further below. For simplicity we assume all maps to be smooth from this point on \footnotemark. By Theorem \ref{whitney_top:thm:C0_is_dense} this is not a serious restriction. 
 
-\footnotetext{The reason for this is to avoid discussions about the necessary regularity conditions needed for Sard's Theorem.}
+\footnotetext{The reason for this is to avoid discussions about the necessary regularity conditions required by Sard's Theorem for $C^k$-functions, $k < \infty$.}
 
 \begin{theorem}[Immersions]
     \label{whitney_top:thm:approx_immersions}
     Let $M^n$ and $N^p$ be manifolds with boundary, $p \geq 2n$. Then the set of immersions $\mathrm{Imm}(M,N) \subseteq C^\infty(M,N)$ is dense. Moreover if $f \colon M \to N$ is already an immersion on some closed subset $A \subseteq M$ there exists an immersion $g \colon M \to N$ with $g|_A = f|_A$ arbitrarily close to $f$.
 \end{theorem}
 
-Increasing the dimension of $N$ by one we even obtain the following.
+Here the term ``arbitrarily close'' is to be understood with respect to the Whitney $C^\infty$-topology on $C^\infty(M,N)$. Increasing the dimension of $N$ by one we even obtain the following.
 
 \begin{theorem}[One-to-one Immersions]
      \label{whitney_top:thm:approx_one_to_one_immersions}
@@ -75,7 +75,7 @@ In Theorem \ref{whitney_top:thm:approx_one_to_one_immersions} and Corollary \ref
     Suppose this were not the case. Then we can use compactness $A$ to construct sequences $(a_n)_{n \in \N}$ and $(a_n^\prime)_{n \in \N}$ in $M$ with $a_n \neq a_n^\prime$ and $f(a_n) = f(a_n^\prime)$, which converge to points $z$ and $z^\prime$ in $A$ respectively. This implies $f(z) = f(z^\prime)$ and since $f$ is one-to-one on $A$ we conclude $z = z^\prime$. However, since $f$ is an immersion at $z$ it must be one-to-one on a neighbourhood of $z$ contradicting $a_n \neq a_n^\prime$.
 \end{proof}
 
-Finally we have a statement about transversality. 
+Finally we have a statement to approximate any smooth map $f \colon M \to N$ by one which is transversal to a given submanifold. We denote the restriction of $f$ to the boundary $\partial M$ of $M$ by $\partial f \colon \partial M \to N$.
 
 \begin{theorem}[Transversality]
     \label{whitney_top:thm:approx_transversality}
@@ -86,15 +86,15 @@ Finally we have a statement about transversality.
     The proof of Theorem \ref{whitney_top:thm:approx_transversality} also shows the following version of this Theorem, which may be useful. If $f \colon M \to N$ satisfies $f \pitchfork S$ at all points in $A$ but not necessarily $\partial f \pitchfork S$ at all points in $A \cap \partial M$, there still exists $g \colon M \to N$ arbitrarily close to $f$ with $g \pitchfork S$ and $g|_A = f|_A$ but not necessarily with $\partial g \pitchfork S$.
 \end{remark}
 
-In practice one is often interested in the following problem: Given a map $f \colon M \to N$ can we find a map $g \colon M \to N$ homotopic to $f$ with certain desired properties? All of the above theorems can be applied in this context by virtue of the following Proposition, which furthermore allows us to impose conditions on the homotopy.
+In practice one is often interested in the following problem: Given a map $f \colon M \to N$ can we find a map $g \colon M \to N$ homotopic to $f$ with certain desired properties? All of the above theorems can be applied in this context by virtue of the following Proposition, which furthermore allows us to impose conditions on the homotopy itself.
 
 \begin{proposition}
     \label{whitney_top:prop:homotopy_construction}
-    Let $\mathcal{U} \subseteq  C^\infty(M,N)$ be some open subset and $f \in \mathcal{U}$. Then for any $g \in \mathcal{U}$ sufficiently close to $f$ there exists a homotopy $h_t \colon M \to N$, $0 \leq t \leq 1$, from $f$ to $g$ with $h_t \in \mathcal{U}$ for all $0 \leq t \leq 1$. Moreover if $f|_A = g|_A$ for some closed subset $A \subseteq M$ we can choose this homotopy rel $A$.
+    Let $M$ and $N$ be manifolds with boundary, $\mathcal{U} \subseteq  C^\infty(M,N)$ be some open subset and $f \in \mathcal{U}$. Then for any $g \in \mathcal{U}$ sufficiently close to $f$ there exists a homotopy $h_t \colon M \to N$, $0 \leq t \leq 1$, from $f$ to $g$ with $h_t \in \mathcal{U}$ for all $0 \leq t \leq 1$. Moreover if $f|_A = g|_A$ for some closed subset $A \subseteq M$ we can choose this homotopy rel $A$.
 \end{proposition}
 
 
-Together all of these results comprise a very efficient machinery for tackling problems in differential topology. As an example we proof the following, which - up to the precise restrictions on the dimension - is a generalisation of Theorem \ref{constr_diffeo:thm:equivalence_of_embeddings}.
+Together all of these results comprise a very efficient machinery for approaching problems in differential topology. As an example we proof the following, which - up to the precise restrictions on the dimension - is a generalisation of Theorem \ref{constr_diffeo:thm:equivalence_of_embeddings}.
 
 \begin{corollary}
     Let $M^n$ and $N^p$ be compact manifolds with boundary of dimensions $p \geq 2n+3$. Then two embeddings $f,g \colon M \to N$ are isotopic if and only if they are homotopic.
@@ -106,13 +106,13 @@ Together all of these results comprise a very efficient machinery for tackling p
 
 \headline{Proofs of the Approximation Theorems}
 
-In this section we will proof Theorems \ref{whitney_top:thm:approx_immersions}, \ref{whitney_top:thm:approx_one_to_one_immersions} \ref{whitney_top:thm:approx_transversality} as well as Proposition \ref{whitney_top:prop:homotopy_construction}. The proofs of Theorem \ref{whitney_top:thm:approx_immersions} and \ref{whitney_top:thm:approx_one_to_one_immersions} are generalisations of the proofs of Theorem 2.5 and Lemma 2.5 in \cite{adachi1993embeddings} respectively. 
+In this section we will proof Theorem \ref{whitney_top:thm:approx_immersions}, \ref{whitney_top:thm:approx_one_to_one_immersions}, \ref{whitney_top:thm:approx_transversality} as well as Proposition \ref{whitney_top:prop:homotopy_construction}. The proofs of Theorem \ref{whitney_top:thm:approx_immersions} and \ref{whitney_top:thm:approx_one_to_one_immersions} are generalisations of the proofs of Theorem 2.5 and Lemma 2.5 in \cite{adachi1993embeddings} respectively. 
 
-In the following we will necessarily need to compute some $C^k$-norms. The following technical Lemma takes care of all of such computations which we need.
+In the following we will necessarily need to compute some $C^k$-norms. The following technical Lemma takes care of all of these computations. We denote by $\H^n$ the $n$-dimensional half space.
 
 \begin{lemma}
     \label{whitney_top:lem:technical_lemma_about_norms}
-    Suppose we are given open sets $U, U^\prime \subseteq \H^n, W, W^\prime \subseteq \H^m$, compact subsets $K \subseteq U, L \subseteq W$, a smooth function $\lambda \colon U \to \R$, diffeomorphisms $\phi \colon U^\prime \to U$ and $\psi \colon W \to W^\prime$ as well as constants $\epsilon > 0$ and $C > 0$. Then there exists $\delta >0$ with the following property. Let $r,s, \theta \colon U_K \to W$ be smooth functions defined on some neighbourhood $U_K \subseteq U$ of $K$, which can depend on the functions $r,s,\theta$. Suppose that $s$ satisfies $s(K) \subseteq L$ and $\norm{s}_{C^k(K)} \leq C$. Then if
+    Suppose we are given open sets $U, U^\prime \subseteq \H^n, W, W^\prime \subseteq \H^m$, compact subsets \linebreak $K \subseteq U, L \subseteq W$, a smooth function $\lambda \colon U \to \R$, diffeomorphisms $\phi \colon U^\prime \to U$ and $\psi \colon W \to W^\prime$ as well as constants $\epsilon > 0$ and $C > 0$. Then there exists $\delta >0$ with the following property. Let $r,s, \theta \colon U_K \to W$ be smooth functions defined on some neighbourhood $U_K \subseteq U$ of $K$, which can depend on the functions $r,s,\theta$. Suppose that $s$ satisfies $s(K) \subseteq L$ and $\norm{s}_{C^k(K)} \leq C$. Then if
     \[
     \norm{r - s}_{C^k(K)} < \delta \text{ and } \norm{\theta}_{C^k(K)} < \delta
     \]
@@ -160,7 +160,7 @@ In the following we will necessarily need to compute some $C^k$-norms. The follo
     \[
     \norm{(\partial^\beta \psi) \circ r - (\partial^\beta \psi) \circ s}_{C^0(K)}
     \]
-    can be made arbitrarily small. To see this we fix some compact neighbourhood $\tilde{L} \subseteq W$ of $L$. Then there exists some small radius $r > 0$ depending only on $L$ and $\tilde{L}$, such that each ball of radius $r$ around a point in $L$ is contained in $\tilde{L}$. Thus if we choose $\delta < r$ we can conlude from $s(K) \subseteq L$ that $r(K) \subseteq \tilde{L}$. But by compactness $\partial^\beta \psi$ is uniformly continuous on $\tilde{L}$ from which the claim follows. Thus we can guarantee that the first term in (\ref{whitney_top:eq:ck_norm_lemma_long_norm}) is arbitrarily small for sufficiently small $\delta >0$, which does not depend on $r, s$. For the second term we argue as follows. First of all we obtain from $s(K) \subseteq L$ that 
+    can be made arbitrarily small. To see this we fix some compact neighbourhood $\tilde{L} \subseteq W$ of $L$. Then there exists some small radius $\rho > 0$ depending only on $L$ and $\tilde{L}$, such that each ball of radius $\rho$ around a point in $L$ is contained in $\tilde{L}$. Thus if we choose $\delta < \rho$ we can conlude from $s(K) \subseteq L$ that $r(K) \subseteq \tilde{L}$. But by compactness $\partial^\beta \psi$ is uniformly continuous on $\tilde{L}$ from which the claim follows. Thus we can guarantee that the first term in (\ref{whitney_top:eq:ck_norm_lemma_long_norm}) is arbitrarily small for sufficiently small $\delta >0$, which does not depend on $r, s$. For the second term we argue as follows. First of all we obtain from $s(K) \subseteq L$ that 
     \[
     \norm{(\partial^\beta \psi) \circ s}_{C^0(K)} \leq \norm{\partial^\beta \psi}_{C^0(L)}.
     \]
@@ -168,13 +168,13 @@ In the following we will necessarily need to compute some $C^k$-norms. The follo
     \[
     \norm{S_\beta^\alpha - R_\beta^\alpha}_{C^0(K)}
     \]
-    can be made arbitrarily small for sufficiently small $\delta$. To see this note that $(\partial^\gamma r_j)_{\abs{\gamma} \leq l, j = 1,\ldots,m}$ restrcited to $K$ only takes values in the compact set $I^n$ defined above. The same holds for $(\partial^\gamma s_j)_{\abs{\gamma} \leq l, j = 1,\ldots,m}$. Hence the statement follows from the fact that $P_\beta^\alpha$ is uniformly continuous on $I^n$. This shows that $\delta$ can be chosen such that (\ref{whitney_top:eq:ck_norm_lemma_part1}) holds. 
+    can be made arbitrarily small for sufficiently small $\delta$. To see this note that $(\partial^\gamma r_j)_{\abs{\gamma} \leq l, j = 1,\ldots,m}$ restrcited to $K$ only takes values in the compact set $I^n$ defined above. The same holds for $(\partial^\gamma s_j)_{\abs{\gamma} \leq l, j = 1,\ldots,m}$. Hence the statement follows from the fact that $P_\beta^\alpha$ is uniformly continuous on the compact set $I^n$. This shows that $\delta$ can be chosen such that (\ref{whitney_top:eq:ck_norm_lemma_part1}) holds. 
 
     For (\ref{whitney_top:eq:ck_norm_lemma_part2}) note that we can again write 
     \[
     \partial^\alpha(\theta \circ \phi) = \sum_{\abs{\beta}\leq l} T_\beta^\alpha((\partial^\gamma \phi_j)_{\abs{\gamma} \leq l, j = 1,\ldots,n}) (\partial^\beta \theta) \circ \phi
     \]
-    for any multiindex $\alpha \in \N_0^n$ of order $\abs{\alpha} = l \leq k$, this time for different polynomials $T_\beta^\alpha$. Again we abbreviate $\Phi_\beta^\alpha := T_\beta^\alpha((\partial^\gamma \phi_j)_{\abs{\gamma} \leq l, j = 1,\ldots,n})$. We now have to choose $\delta >0$, such that  
+    for any multiindex $\alpha \in \N_0^n$ of order $\abs{\alpha} = l \leq k$, this time for potentially different polynomials $T_\beta^\alpha$. Again we abbreviate $\Phi_\beta^\alpha := T_\beta^\alpha((\partial^\gamma \phi_j)_{\abs{\gamma} \leq l, j = 1,\ldots,n})$. We now have to choose $\delta >0$, such that  
     \[
     \norm{\Phi_\beta^\alpha (\partial^\beta \theta) \circ \phi}_{C^0(\phi^{-1}(K))} \leq \norm{\Phi_\beta^\alpha}_{C^0(\phi^{-1}(K))} \norm{(\partial^\beta \theta) \circ \phi}_{C^0(\phi^{-1}(K))}  
     \]
@@ -192,7 +192,7 @@ In the following we will necessarily need to compute some $C^k$-norms. The follo
 \end{proof}
 
 
-We now begin with the proof of Theorem \ref{whitney_top:thm:approx_immersions} for which will need the following Lemma, which is essentially a local version of the theorem we aim to proof. 
+We now begin with the proof of Theorem \ref{whitney_top:thm:approx_immersions} for which we will need the following Lemma, which is essentially a local version of the theorem we aim to proof. 
 
 \begin{lemma}
     \label{whitney_top:lem:approx_immersions_lemma}
@@ -204,7 +204,7 @@ We now begin with the proof of Theorem \ref{whitney_top:thm:approx_immersions} f
 \end{lemma}
 
 \begin{proof}
-    First we argue that we may assume $\partial U = \emptyset$. If this is not the case we can use a partition of unity to extend $f$ to a smooth function $f^\prime \colon U^\prime \to \R^p$ defined on an open subset $U^\prime \subseteq \R^n$ containing $U$. Then apply the Lemma to $f^\prime$ and restrict to $U$ again. So assume $\partial U = \emptyset$. Define 
+    First we argue that we may assume $\partial U = \emptyset$. If this is not the case we can use a partition of unity to extend $f$ to a smooth function $f^\prime \colon U^\prime \to \R^p$ defined on an open subset $U^\prime \subseteq \R^n$ containing $U$. Then apply the Lemma to $f^\prime$ and restrict to $U$ again. Thus we can assume $\partial U = \emptyset$. Define 
     \[
     F \colon  U \times S^{n-1} \to U \times S^{n-1} \times \R^p, \; (x,v) \mapsto (x,v,D_xf(v)).
     \]
@@ -255,7 +255,7 @@ With this Lemma at hand we can now proof Theorem \ref{whitney_top:thm:approx_imm
     For sufficiently small $A_n$ this is well defined, that is
     $w_n^{-1}(f_{n-1}(x)) + \lambda_n(x)A_ny$ is contained in the domain of $w_n$. This is due to compactness of $f_{n-1}(D_n) \subseteq W_n$ and the fact that $W_n$ is an open subset of $\R^p$, as we assumed $\partial N = \emptyset$. Smoothness of $f_n$ follows from (\ref{whitney_top:eq:immersion_cover_property2}). By definition $f_n(D_n) \subseteq W_n$ and similiarly to well definedness we can choose $A_n$, such that $f_n(D_i) \subseteq W_i$ at least for finitely many $i \in \Z$. This however suffices to achieve the same for all $i \in \Z$ simultaneously. Indeed, note that by local finiteness of $(O_i)_{i \in \Z}$ and compactness of $D_n$ only finitely many $O_i$, and so in particular only finitely many $D_i$, intersect $D_n$. But $f_{n-1} = f_n$ outside $D_n$ and $f_{n-1}(D_i) \subseteq W_i$ already holds for all $i \in \Z$. Thus \ref{whitney_top:eq:immersion_property_3}) holds for sufficiently small $A_n$. An analogous argument allows us to ensure that $f_n(K_\alpha) \subseteq V_\alpha$ for all $\alpha \in J$ by using local finiteness of $(U_\alpha)_{\alpha \in J}$ instead. Furthermore \ref{whitney_top:eq:immersion_property_2}) holds by definition.
     
-    Moreover we can apply Lemma \ref{whitney_top:lem:approx_immersions_lemma} to choose $A_n$, such that $f_n$ is an immersion on an open neighbourhood of $B_n$ on which $\lambda_n = 1$, which exists by (\ref{whitney_top:eq:immersion_cover_property1}). In particular it is an immersion on $B_n$. We can furthermore guarantee that $f_n$ remains an immersion on $C_{n-1}$ by choosing $A_n$ sufficiently small. To see this note that $C_{n-1}$ is closed by local finiteness of $(O_i)_{i \in \Z}$, and so in particular $D_n \cap C_{n-1}$ is compact. The claim then follows essentially from the fact that the set of $p \times n$ matrices of full rank is open in $\R^{p \times n}$. Thus \ref{whitney_top:eq:immersion_property_1}) is also established.
+    Moreover we can apply Lemma \ref{whitney_top:lem:approx_immersions_lemma} to choose $A_n$, such that $f_n$ is an immersion on an open neighbourhood of $B_n$ on which $\lambda_n = 1$, which exists by (\ref{whitney_top:eq:immersion_cover_property1}). In particular it is an immersion on $B_n$. We can furthermore guarantee that $f_n$ remains an immersion on $C_{n-1}$ by choosing $A_n$ sufficiently small. To see this note that $C_{n-1}$ is closed by local finiteness of $(O_i)_{i \in \Z}$ and thus $D_n \cap C_{n-1}$ is compact. The claim then follows essentially from the fact that the set of $p \times n$ matrices of full rank is open in $\R^{p \times n}$. Thus \ref{whitney_top:eq:immersion_property_1}) is also established.
 
     It only remains to show the second part of \ref{whitney_top:eq:immersion_property_4}). For $x \in \phi_\alpha^{-1}(K_\alpha \cap D_n)$ let 
     \begin{align*}
@@ -265,23 +265,25 @@ With this Lemma at hand we can now proof Theorem \ref{whitney_top:thm:approx_imm
     \end{align*}
     In fact all of these expressions may be defined on an open neighbourhood of $\phi_\alpha^{-1}(K_\alpha \cap D_n)$. Since $f_n^\alpha = f_{n-1}^\alpha$ outside $\phi_\alpha^{-1}(K_\alpha \cap D_n)$ we have 
     \[
-    \norm{f_n^\alpha - f_{n-1}^\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha))} = \sum_{\abs{\beta} \leq k} \max_{x \in \phi_\alpha^{-1}(K_\alpha \cap D_n)} \norm{\partial^\beta(\tau_n^\alpha \circ (\hat{f}_{n-1}^\alpha + \hat{A}_n^\alpha))(x) - \partial^\beta(\tau_n^\alpha \circ \hat{f}_{n-1}^\alpha)(x)}.
+    \norm{f_n^\alpha - f_{n-1}^\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha))} = \norm{\tau_n^\alpha \circ (\hat{f}_{n-1}^\alpha + \hat{A}_n^\alpha) - \tau_n^\alpha \circ \hat{f}_{n-1}^\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha \cap D_n))}
     \]
-    Note that we can make $\hat{A}_n^\alpha$ and all of its partial derivatives arbitrarily small by choosing $A_n$ sufficiently small. Thus we can apply Lemma \ref{whitney_top:lem:technical_lemma_about_norms} (\ref{whitney_top:eq:ck_norm_lemma_part1}) to 
+    Note that we can make $\hat{A}_n^\alpha$ and all of its partial derivatives arbitrarily small by choosing $A_n$ sufficiently small (this is essentially Lemma \ref{whitney_top:lem:technical_lemma_about_norms} (\ref{whitney_top:eq:ck_norm_lemma_part3})). Thus we can apply Lemma \ref{whitney_top:lem:technical_lemma_about_norms} (\ref{whitney_top:eq:ck_norm_lemma_part1}) to 
     \begin{itemize}
     \item $r = \hat{f}_{n-1}^\alpha + \hat{A}_n^\alpha$,
     \item $s = \hat{f}_{n-1}^\alpha$,
     \item $\psi = \tau_n^\alpha$,
     \item $K = \phi_\alpha^{-1}(K_\alpha \cap D_n)$
-    \item $L = s(K)$
+    \item $L = s(K)$,
+    \item $C = \norm{s}_{C^k(K)}$
     \end{itemize} 
     to conclude that the above sum can be made arbitrarily small for sufficiently small $A_n$. Again a local finiteness argument shows that $\norm{f_n^\alpha - f_{n-1}^\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha))}$ is non-zero for only finitely many $\alpha \in J$. This shows \ref{whitney_top:eq:immersion_property_4}).
+
 
     We now define 
     \[
     g := \lim_{n \to \infty} f_n.
     \]
-    This is a well defined smooth map, since by local finiteness of $(O_i)_{i \in \Z}$ we get that an arbitrary point $x \in M$ has a neighbourhood $U(x)$ which intersects only finitely many $D_i$. Thus for sufficiently large $n > 0$ we conclude from \ref{whitney_top:eq:immersion_property_2}) that
+    This is a well defined smooth map, since local finiteness of $(O_i)_{i \in \Z}$ implies that an arbitrary point $x \in M$ has a neighbourhood $U(x)$ which intersects only finitely many $D_i$. Thus for sufficiently large $n > 0$ we conclude from \ref{whitney_top:eq:immersion_property_2}) that
     \[
     f_n = f_{n+1} = f_{n+2} = \ldots
     \]
@@ -317,13 +319,13 @@ With this Lemma at hand we can now proof Theorem \ref{whitney_top:thm:approx_imm
     \[
     w_n^{-1}(f_{n-1}(x)) + \lambda_n(x)A_ny - \lambda_n(x) \delta_n e_1
     \]
-    is again contained in the domain of $w_n$. Moreover this added term $\lambda_n(x) \delta_n e_1$ does not change the fact that $f_n$ is an immersion on $B_n$ for almost all $A_n$, since it is constant a neighbourhood of $B_n$. The rest of the proof then goes through unchanged if in addition to $A_n$ we also choose $\delta_n$ sufficiently small in each step.
+    is again contained in the domain of $w_n$. Moreover the added term $\lambda_n(x) \delta_n e_1$ does not change the fact that $f_n$ is an immersion on $B_n$ for almost all $A_n$, since this term is constant a neighbourhood of $B_n$. The rest of the proof then goes through unchanged if in addition to $A_n$ we also choose $\delta_n$ sufficiently small in each step.
 \end{proof}
 
 Next we will proof Theorem \ref{whitney_top:thm:approx_one_to_one_immersions} about one-to-one immersions.
 
 \begin{proof}[Proof of Theorem \ref{whitney_top:thm:approx_one_to_one_immersions}]
-    First we may assume, that $f$ is already an immersion. To see this choose some closed neighbourhood $U_A \subseteq U$ of $A$. By Theorem \ref{whitney_top:thm:approx_immersions}, which we just proofed, we can choose an immersion arbitrarily close to $f$, which agrees with $f$ on the closed set $U_A$. So let us assume, that $f$ is an immersion. 
+    First we may assume, that $f$ is already an immersion. To see this choose some closed neighbourhood $U_A \subseteq U$ of $A$. By Theorem \ref{whitney_top:thm:approx_immersions}, which we just proofed, we can choose an immersion arbitrarily close to $f$, which agrees with $f$ on the closed set $U_A$ and so in particular this immersion is still one-to-one in an neighbourhood of $A$. So let us assume, that $f$ is an immersion. 
     
     Using the same notation as in the proof of Theorem \ref{whitney_top:thm:approx_immersions} let $\mathcal{N} := \mathcal{N}^k(f,\Phi,\Psi,K,\epsilon) \cap C^\infty(M,N)$ be some open neighbourhood of $f$. We choose the following data: A locally finite cover $(D_i)_{i \in \Z}$ of $M$ of compact sets $D_i \subseteq M$, open sets $B_i \subseteq M$ which still cover $M$, charts $(W_i,w_i)_{i \in \Z}$ of $N$ as well as cut-off functions $\lambda_i \colon M \to [0,1]$, such that 
     \begin{enumerate}[(i)]
@@ -333,7 +335,7 @@ Next we will proof Theorem \ref{whitney_top:thm:approx_one_to_one_immersions} ab
         \item \label{whitney_top:eq:one_to_one_immersion_cover_property4}$D_i \subseteq U$ for $i \leq 0$ and $D_i \subseteq M - A$ for $i >0$,
         \item \label{whitney_top:eq:one_to_one_immersion_cover_property5}$f|_{B_i}$ is injective.
     \end{enumerate}
-    Again the existence of this data follows from paracompactness of $M$. For (\ref{whitney_top:eq:one_to_one_immersion_cover_property5}) recall that immersions are locally embeddings. Now define a sequence $f_n \colon M \to N$, $n \geq 0$, with $f_0 := f$, satisfying the following properties.
+    Again the existence of this data follows from paracompactness of $M$. For (\ref{whitney_top:eq:one_to_one_immersion_cover_property5}) recall that immersions are locally embeddings. We now inductively define a sequence $f_n \colon M \to N$, $n \geq 0$, with $f_0 := f$, satisfying the following properties.
     \begin{enumerate}[1)]
         \item \label{whitney_top:eq:one_to_one_immersion_property_1} $f_n$ is an immersion and is injective on $C_n := \bigcup_{-\infty \leq i \leq n} B_i$,
         \item \label{whitney_top:eq:one_to_one_immersion_property_2} $f_n = f_{n-1}$ outside $D_n$,
@@ -343,7 +345,7 @@ Next we will proof Theorem \ref{whitney_top:thm:approx_one_to_one_immersions} ab
         \norm{f_n^\alpha - f_{n-1}^\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha))} < \frac{\epsilon_\alpha}{2^n}.
         \]
     \end{enumerate}
-    Here properties \ref{whitney_top:eq:one_to_one_immersion_property_2})- \ref{whitney_top:eq:one_to_one_immersion_property_4}) are the same as in the proof of Theorem \ref{whitney_top:thm:approx_immersions}. Again it is clear that $f_0 = f$ satisfies these properties. At first we want to assume taht both $M$ and $N$ have empty boundary. We define $f_n$ using $f_{n-1}$ by
+    Here properties \ref{whitney_top:eq:one_to_one_immersion_property_2})- \ref{whitney_top:eq:one_to_one_immersion_property_4}) are the same as in the proof of Theorem \ref{whitney_top:thm:approx_immersions}. Again it is clear that $f_0 = f$ satisfies these properties. At first we want to assume that both $M$ and $N$ have empty boundary. We define $f_n$ using $f_{n-1}$ by
     \[
     f_n(x) := \begin{dcases}
         w_n(w_n^{-1}(f_{n-1}(x)) + \lambda_n(x)b_n), & x \in D_n, \\
@@ -375,7 +377,7 @@ Next we will proof Theorem \ref{whitney_top:thm:approx_one_to_one_immersions} ab
     \[
     \gamma_n \colon G_n \to \R^p, \; (x,y) \mapsto \frac{w_n^{-1}(f_{n-1}(x)) - w_n^{-1}(f_{n-1}(y))}{\lambda_n(y) - \lambda_n(x)}.
     \]
-    Since $\mathrm{dim}(G_n) = 2\,\mathrm{dim}(M) < p$ the image of $\gamma_n$ is a set of zero measure. So (\ref{whitney_top:eq:claim_one_to_one_immersions}) holds for all $b_n$ not contained in this set. Let us now choose such $b_n$ to define $f_n$. Using (\ref{whitney_top:eq:claim_one_to_one_immersions}) it is now easy to show that $f_n$ is injective on $C_n$. To this end assume there exist $x,y \in C_n$ with $f_n(x) = f_n(y)$ and $x \neq y$. Applying (\ref{whitney_top:eq:claim_one_to_one_immersions}) inductively shows 
+    Since $\mathrm{dim}(G_n) = 2\,\mathrm{dim}(M) < p$ the image of $\gamma_n$ is a set of measure zero. So (\ref{whitney_top:eq:claim_one_to_one_immersions}) holds for all $b_n$ not contained in this set. Let us now choose such $b_n$ to define $f_n$. Using (\ref{whitney_top:eq:claim_one_to_one_immersions}) it is now easy to show that $f_n$ is injective on $C_n$. To this end assume there exist $x,y \in C_n$ with $f_n(x) = f_n(y)$ and $x \neq y$. Applying (\ref{whitney_top:eq:claim_one_to_one_immersions}) inductively shows 
     \[
     f_{i-1}(x) = f_{i-1}(y) \text{ and } \lambda_i(x) = \lambda_i(y)
     \]
@@ -456,7 +458,7 @@ Next we proof Theorem \ref{whitney_top:thm:approx_transversality} about transver
         \item $f(D_i) \subseteq W_i$,
         \item \label{whitney_top:eq:transversality_cover_property4}$D_i \subseteq U$ for $i \leq 0$ and $D_i \subseteq M - A$ for $i >0$.
     \end{enumerate}
-    Again the existence of this data follows from paracompactness of $M$. Now define a sequence $f_n \colon M \to N$, $n \geq 0$, with $f_0 := f$, satisfying the following properties.
+    We now inductively define a sequence $f_n \colon M \to N$, $n \geq 0$, with $f_0 := f$, satisfying the following properties.
     \begin{enumerate}[1)]
         \item \label{whitney_top:eq:transversality_property_1} $f_n \pitchfork S$ at all points in $C_n := \bigcup_{-\infty \leq i \leq n} B_i$ and $\partial f_n \pitchfork S$ at all points in $\partial C_n = C_n \cap \partial M$,
         \item \label{whitney_top:eq:transversality_property_2} $f_n = f_{n-1}$ outside $D_n$,
@@ -473,7 +475,7 @@ Next we proof Theorem \ref{whitney_top:thm:approx_transversality} about transver
         f_{n-1}(x), & x \notin D_n
     \end{dcases}
     \]
-    for some suitable vector $b_n \in \R^p$, which we choose next. Again it follows as before that for sufficiently small $b_n$, $f_n$ is a well defined smooth map satisfying \ref{whitney_top:eq:transversality_property_2}), \ref{whitney_top:eq:transversality_property_3}) and \ref{whitney_top:eq:transversality_property_4}). Using Lemma \ref{whitney_top:lem:approx_transversality_lemma} we can moreover choose $b_n$, such that $f_n \pitchfork S$ on $B_n$ and $\partial f_n \pitchfork S$ on $\partial B_n$, since $\lambda_n^2 > 0$ on $B_n$. From the chain rule we obtain  $d_x\lambda_n^2 = 0$ for all points $x \in M - B_n$, such that 
+    for some suitable vector $b_n \in \H^p$, which we choose next. Again it follows as before that for sufficiently small $b_n$, $f_n$ is a well defined smooth map satisfying \ref{whitney_top:eq:transversality_property_2}), \ref{whitney_top:eq:transversality_property_3}) and \ref{whitney_top:eq:transversality_property_4}). Using Lemma \ref{whitney_top:lem:approx_transversality_lemma} we can moreover choose $b_n$, such that $f_n \pitchfork S$ on $B_n$ and $\partial f_n \pitchfork S$ on $\partial B_n$, since $\lambda_n^2 > 0$ on $B_n$. From the chain rule we obtain  $d_x\lambda_n^2 = 0$ for all points $x \in M - B_n$, such that 
     \[
     d_xf_n = d_xf_{n-1}.
     \]
@@ -486,7 +488,7 @@ Next we proof Theorem \ref{whitney_top:thm:approx_transversality} about transver
     is a well-defined smooth map, which agrees with $f$ on $A$ and $g \in \mathcal{N}$. Moreover both $g$ and $\partial g$ are transversal to $S$ by \ref{whitney_top:eq:transversality_property_1}) since the $B_i$ cover $M$.
 \end{proof}
 
-Finally we proof Proposition \ref{whitney_top:prop:homotopy_construction}. In the proof we will repeatedly make use of the following technical lemma. The precise formulas in this lemma may look strange at first but it will become clear in the proof of Proposition \ref{whitney_top:prop:homotopy_construction} where they comes from.
+Finally we proof Proposition \ref{whitney_top:prop:homotopy_construction}. In the proof we will repeatedly make use of the following technical lemma. The precise formulas in this lemma may look strange at first but it will become clear in the proof of Proposition \ref{whitney_top:prop:homotopy_construction} where they come from.
 
 \begin{lemma}
     \label{whitney_top:lem:lemma_for_homotopy_prop}
@@ -540,7 +542,7 @@ We can now proof Proposition \ref{whitney_top:prop:homotopy_construction}.
         \item $\lambda_i = 1$ in a neighbourhood of $B_i$,
         \item $D_i$ contains the support of $\lambda_i$ in its interior,
         \item $f(D_i) \subseteq W_i$,
-        \item $w_i^{-1}(W_i) \subseteq \R^p$ is convex.
+        \item $w_i^{-1}(W_i) \subseteq \H^p$ is convex.
     \end{enumerate}
     Let us introduce some more notation. Consider the following data:
     \begin{itemize}
