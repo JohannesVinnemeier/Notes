@@ -2,9 +2,9 @@
 \label{whitney_top:sec:approx_results}
 
 
-Let $M,N$ be smooth manifolds with or without boundary. Consider the set $C^\infty(M,N)$ of smooth maps. On this set one can define the so called Whitney topologies, which provide a precise language to make sense of such statements as "slighlty perturbing $f$ yields a map transversal to a given submanifold". In the following we will proof a number of useful approximation results of this kind concerning immersions, one-to-one immersions, embeddings and transversal maps.
+In the following we use the term ``manifold with boundary'' to refer to a smooth manifold, which may have empty or non-empty boundary. So let $M$ and $N$ be manifolds with boundary. Consider the set $C^\infty(M,N)$ of smooth maps from $M$ to $N$. On this set one can define the so called Whitney topologies, which provide a precise language to make sense of such statements as "slighlty perturbing $f$ yields a map transversal to a given submanifold". In the following we will proof a number of useful approximation results of this kind concerning immersions, one-to-one immersions, embeddings and transversal maps.
 
-Let us begin by recalling the definition of the Whitney topologies. First we define a topology on the space $C^k(M,N)$ of $C^k$ maps from $M$ to $N$. We will be using the definition from \cite{hirsch2012differential} using local charts. For the discussion of an equivalent definition see section \ref{whitney_top:sec:equivalent_def}. Suppose we are given the following data
+Let us begin by recalling the definition of the Whitney topologies. First we define a topology on the space $C^k(M,N)$ of $C^k$-maps from $M$ to $N$. We will be using the definition from \cite{hirsch2012differential} using local charts. For the discussion of an equivalent definition see section \ref{whitney_top:sec:equivalent_def}. Suppose we are given the following data
 \begin{itemize}
     \item A family of charts $\Phi = (U_\alpha,\phi_\alpha)_{\alpha\in J}$ for $M$, such that $(U_\alpha)_{\alpha\in J}$ is locally finite, that is each point $x \in M$ posseses a neighbourhood that interesects only finitely many $U_\alpha$,
     \item A family of charts $\Psi = (V_\alpha,\psi_\alpha)_{\alpha \in J}$ for $N$,
@@ -19,7 +19,7 @@ of $f$ as the set of functions $g \in C^k(M,N)$, such that for all $\alpha \in J
 \[
 \norm{f_\alpha - g_\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha))} := \sum_{\abs{\beta} \leq k} \; \max_{x \in \phi_\alpha^{-1}(K_\alpha)} \; \norm{\partial^\beta f_\alpha(x) - \partial^\beta g_\alpha(x)} < \epsilon_\alpha.
 \]
-The sum is taken over multiindices $\beta \in \N_0^n$ (where $n = \mathrm{dim}(M)$). The collection of all such basic open neighbourhoods form the basis for a topology on $C^k(M,N)$ called the Whitney $C^k$-topology (it is easy to see that the intersection of two such neighbourhoods is again of the same form). The Whitney $C^\infty$-topology on $C^\infty(M,N)$ is then simply defined as the topology induced by all inclusion maps $C^\infty(M,N) \to C^k(M,N)$. 
+The sum is taken over multiindices $\beta \in \N_0^n$, where $n = \mathrm{dim}(M)$. The collection of all such basic open neighbourhoods form the basis for a topology on $C^k(M,N)$ called the Whitney $C^k$-topology (it is easy to see that the intersection of two such neighbourhoods is again of the same form). The Whitney $C^\infty$-topology on $C^\infty(M,N)$ is then simply defined as the topology induced by all inclusion maps $C^\infty(M,N) \to C^k(M,N)$. 
 
 A first interesting approximation result is the following.
 
