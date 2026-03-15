@@ -6,16 +6,16 @@ Let $M,N$ be smooth manifolds with or without boundary. Consider the set $C^\inf
 
 Let us begin by recalling the definition of the Whitney topologies. First we define a topology on the space $C^k(M,N)$ of $C^k$ maps from $M$ to $N$. We will be using the definition from \cite{hirsch2012differential} using local charts. For the discussion of an equivalent definition see section \ref{whitney_top:sec:equivalent_def}. Suppose we are given the following data
 \begin{itemize}
-    \item A family of charts $\Phi = (U_\alpha,\phi_\alpha)_{\alpha\in J}$ for $M$, such that $(U_\alpha)_{\alpha\in J}$ is locally finite, that is each point $x \in M$ posseses a neighbourhood that interesects only finitely many $U_\alpha$
-    \item A family of charts $\Psi = (V_\alpha,\psi_\alpha)_{\alpha \in J}$ for $N$
-    \item A family $K= (K_\alpha)_{\alpha \in J}$ of compact sets $K_\alpha \subseteq U_\alpha$
-    \item A family of positive numbers $\epsilon = (\epsilon_\alpha)_{\alpha \in J}$
+    \item A family of charts $\Phi = (U_\alpha,\phi_\alpha)_{\alpha\in J}$ for $M$, such that $(U_\alpha)_{\alpha\in J}$ is locally finite, that is each point $x \in M$ posseses a neighbourhood that interesects only finitely many $U_\alpha$,
+    \item A family of charts $\Psi = (V_\alpha,\psi_\alpha)_{\alpha \in J}$ for $N$,
+    \item A family $K= (K_\alpha)_{\alpha \in J}$ of compact sets $K_\alpha \subseteq U_\alpha$,
+    \item A family of positive numbers $\epsilon = (\epsilon_\alpha)_{\alpha \in J}$.
 \end{itemize} 
-Then if $f \in C^k(M,N)$ with $f(K_\alpha) \subseteq V_\alpha$ for each $\alpha \in J$, we define a basic open neighbourhood
+Then if $f \in C^k(M,N)$ with $f(K_\alpha) \subseteq V_\alpha$ for each $\alpha \in J$, we define a basic $C^k$-neighbourhood
 \[
 \mathcal{N}^k(f,\Phi,\Psi,K,\epsilon)
 \]
-as the set of functions $g \in C^k(M,N)$, such that for all $\alpha \in J$, $g(K_\alpha) \subseteq V_\alpha$ and the coordinate representations $f_\alpha := \psi_\alpha^{-1} \circ f\circ\phi_\alpha$ and $g_\alpha := \psi_\alpha^{-1} \circ g\circ\phi_\alpha$ defined on some open neighbourhood of $\phi_\alpha^{-1}(K_\alpha)$ satisfy 
+of $f$ as the set of functions $g \in C^k(M,N)$, such that for all $\alpha \in J$, $g(K_\alpha) \subseteq V_\alpha$ and the coordinate representations $f_\alpha := \psi_\alpha^{-1} \circ f\circ\phi_\alpha$ and $g_\alpha := \psi_\alpha^{-1} \circ g\circ\phi_\alpha$ defined on some open neighbourhood of $\phi_\alpha^{-1}(K_\alpha)$ satisfy 
 \[
 \norm{f_\alpha - g_\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha))} := \sum_{\abs{\beta} \leq k} \; \max_{x \in \phi_\alpha^{-1}(K_\alpha)} \; \norm{\partial^\beta f_\alpha(x) - \partial^\beta g_\alpha(x)} < \epsilon_\alpha.
 \]
@@ -112,7 +112,7 @@ In the following we will necessarily need to compute some $C^k$-norms. The follo
 
 \begin{lemma}
     \label{whitney_top:lem:technical_lemma_about_norms}
-    Suppose we are given open sets $U, U^\prime \subseteq \H^n, W, W^\prime \subseteq \H^m$, compact subsets \linebreak $K \subseteq U, L \subseteq W$, a smooth function $\lambda \colon U \to \R$, diffeomorphisms $\phi \colon U^\prime \to U$ and $\psi \colon W \to W^\prime$ as well as constants $\epsilon > 0$ and $C > 0$. Then there exists $\delta >0$ with the following property. Let $r,s, \theta \colon U_K \to W$ be smooth functions defined on some neighbourhood $U_K \subseteq U$ of $K$, which can depend on the functions $r,s,\theta$. Suppose that $s$ satisfies $s(K) \subseteq L$ and $\norm{s}_{C^k(K)} \leq C$. Then if
+    Suppose we are given open sets $U, U^\prime \subseteq \H^n, W, W^\prime \subseteq \H^m$, compact subsets \linebreak $K \subseteq U, L \subseteq W$, a smooth family of smooth functions $\lambda_t \colon U \to \R$ for $0 \leq t \leq 1$, diffeomorphisms $\phi \colon U^\prime \to U$ and $\psi \colon W \to W^\prime$ as well as constants $\epsilon > 0$ and $C > 0$. Then there exists $\delta >0$ with the following property. Let $r,s, \theta \colon U_K \to W$ be smooth functions defined on some neighbourhood $U_K \subseteq U$ of $K$, which can depend on the functions $r,s,\theta$. Suppose that $s$ satisfies $s(K) \subseteq L$ and $\norm{s}_{C^k(K)} \leq C$. Then if
     \[
     \norm{r - s}_{C^k(K)} < \delta \text{ and } \norm{\theta}_{C^k(K)} < \delta
     \]
@@ -120,9 +120,11 @@ In the following we will necessarily need to compute some $C^k$-norms. The follo
     \begin{enumerate}[(i)]
         \item \label{whitney_top:eq:ck_norm_lemma_part1} $\norm{\psi \circ r - \psi \circ s}_{C^k(K)} < \epsilon$,
         \item \label{whitney_top:eq:ck_norm_lemma_part2} $\norm{\theta \circ \phi}_{C^k(\phi^{-1}(K))} < \epsilon$,
-        \item \label{whitney_top:eq:ck_norm_lemma_part3} $\norm{\lambda \theta}_{C^k(K)} < \epsilon$.
+        \item \label{whitney_top:eq:ck_norm_lemma_part3} $\norm{\lambda_t \theta}_{C^k(K)} < \epsilon$ for all $0 \leq t \leq 1$.
     \end{enumerate}
 \end{lemma}
+
+It is important to note that this constant $\delta > 0$ does \textit{not} depend on the functions $s$ and $r$ as long as $s$ is chosen such that $s(K) \subset L$ and $\norm{s}_{C^k(K)} \leq C$. This will however only be important in the proof Lemma \ref{whitney_top:lem:lemma_for_homotopy_prop}. 
 
 \begin{proof}
     We start with (\ref{whitney_top:eq:ck_norm_lemma_part1}). Let $\alpha \in \N_0^n$ be some multiindex of order $\abs{\alpha} = l \leq k$. A computation shows that $\partial^\alpha(\psi \circ r)$ can be expressed as a sum of the form 
@@ -154,13 +156,13 @@ In the following we will necessarily need to compute some $C^k$-norms. The follo
     \end{align} 
     Choosing $\delta < 1$ we obtain from $\norm{s}_{C^k(K)} \leq C$ that also $\norm{r}_{C^k(K)} \leq C + 1$. So in particular $\abs{\partial^\gamma r_j} \leq C + 1$ on $K$ and so if we write $I := [-(C+1),C+1]$ we conclude that
     \[
-    \norm{R_\beta^\alpha}_{C^0(K)} \leq \norm{P_\beta^\alpha}_{C^0(I^{N(l,m)})}
+    \norm{R_\beta^\alpha}_{C^0(K)} \leq \norm{P_\beta^\alpha}_{C^0(I^{N(l,m)})}.
     \]
     Note that the right hand side is some constant not depending on $r$ and $s$. We now claim that if we choose $\delta > 0$ sufficiently small then
     \[
     \norm{(\partial^\beta \psi) \circ r - (\partial^\beta \psi) \circ s}_{C^0(K)}
     \]
-    can be made arbitrarily small. To see this we fix some compact neighbourhood $\tilde{L} \subseteq W$ of $L$. Then there exists some small radius $\rho > 0$ depending only on $L$ and $\tilde{L}$, such that each ball of radius $\rho$ around a point in $L$ is contained in $\tilde{L}$. Thus if we choose $\delta < \rho$ we can conlude from $s(K) \subseteq L$ that $r(K) \subseteq \tilde{L}$. But by compactness $\partial^\beta \psi$ is uniformly continuous on $\tilde{L}$ from which the claim follows. Thus we can guarantee that the first term in (\ref{whitney_top:eq:ck_norm_lemma_long_norm}) is arbitrarily small for sufficiently small $\delta >0$, which does not depend on $r, s$. For the second term we argue as follows. First of all we obtain from $s(K) \subseteq L$ that 
+    can be made arbitrarily small. To see this we fix some compact neighbourhood $\tilde{L} \subseteq W$ of $L$. Then there exists some small radius $\rho > 0$ depending only on $L$ and $\tilde{L}$, such that each ball of radius $\rho$ around a point in $L$ is contained in $\tilde{L}$ (of course considering balls in the metric space $\H^m$). Thus if we choose $\delta < \rho$ we can conlude from $s(K) \subseteq L$ that $r(K) \subseteq \tilde{L}$. But by compactness $\partial^\beta \psi$ is uniformly continuous on $\tilde{L}$ from which the claim follows. Thus we can guarantee that the first term in (\ref{whitney_top:eq:ck_norm_lemma_long_norm}) is arbitrarily small for sufficiently small $\delta >0$, which does not depend on $r, s$. For the second term we argue as follows. First of all we obtain from $s(K) \subseteq L$ that 
     \[
     \norm{(\partial^\beta \psi) \circ s}_{C^0(K)} \leq \norm{\partial^\beta \psi}_{C^0(L)}.
     \]
@@ -182,13 +184,13 @@ In the following we will necessarily need to compute some $C^k$-norms. The follo
 
     Finally for  (\ref{whitney_top:eq:ck_norm_lemma_part3}) it is easy to compute that 
     \[
-    \partial^\alpha(\lambda \theta) = \sum_{\abs{\beta} + \abs{\gamma} = l} \partial^\beta \lambda \, \partial^\gamma \theta
+    \partial^\alpha(\lambda_t \theta) = \sum_{\abs{\beta} + \abs{\gamma} = l} \partial^\beta \lambda_t \, \partial^\gamma \theta
     \]
     for any multiindex $\alpha \in \N_0^n$ of order $\abs{\alpha} = l \leq k$. Since 
     \[
-    \norm{\partial^\beta \lambda \, \partial^\gamma \theta}_{C^0(K)} \leq \norm{\partial^\beta \lambda}_{C^0(K)} \norm{\partial^\gamma \theta}_{C^0(K)} < \delta \norm{\partial^\beta \lambda}_{C^0(K)}
+    \norm{\partial^\beta \lambda_t \, \partial^\gamma \theta}_{C^0(K)} \leq \norm{\partial^\beta \lambda_t}_{C^0(K)} \norm{\partial^\gamma \theta}_{C^0(K)} \leq \delta \max_{t \in [0,1]} \norm{\partial^\beta \lambda_t}_{C^0(K)}
     \]
-    and $\norm{\partial^\beta \lambda}_{C^0(K)}$ is just some constant not depending on $\theta$ the statement follows.  
+    and $\max_{t \in [0,1]} \norm{\partial^\beta \lambda_t}_{C^0(K)}$ is just some constant not depending on $\theta$ the statement follows. 
 \end{proof}
 
 
@@ -228,7 +230,7 @@ With this Lemma at hand we can now proof Theorem \ref{whitney_top:thm:approx_imm
     \begin{enumerate}[(i)]
         \item \label{whitney_top:eq:immersion_cover_property1}$\lambda_i = 1$ in a neighbourhood of $B_i$,
         \item \label{whitney_top:eq:immersion_cover_property2}$D_i$ contains the support of $\lambda_i$ in its interior,
-        \item $f(D_i) \subseteq W_i$,
+        \item $f(D_i) \subseteq W_i$ for all $i \in \Z$,
         \item \label{whitney_top:eq:immersion_cover_property4}$D_i \subseteq U$ for $i \leq 0$ and $D_i \subseteq M - A$ for $i >0$.
     \end{enumerate}
     The existence of the data described above follows easily from paracompactness of $M$ by using the following basic fact: For two given open covers of $M$ one can always find a third open cover which is a locally finite refinement of both.
@@ -248,8 +250,8 @@ With this Lemma at hand we can now proof Theorem \ref{whitney_top:thm:approx_imm
     It is clear that $f_0 = f$ satisfies these properties. Let us first assume $\partial N = \emptyset$. We will construct $f_n$ by applying Lemma \ref{whitney_top:lem:approx_immersions_lemma} to $f_{n-1}$ expressed in the coordinates of the charts $w_n$ and $o_n$ for suitable matrices $A_n \in \R^{p \times n}$. Define 
     \[
     f_n(x) := \begin{dcases}
-        w_n(w_n^{-1}(f_{n-1}(x)) + \lambda_n(x)A_ny), & x = o_n(y) \in D_n \\
-        f_{n-1}(x), & x \notin D_n
+        w_n(w_n^{-1}(f_{n-1}(x)) + \lambda_n(x)A_ny), & x = o_n(y) \in D_n, \\
+        f_{n-1}(x), & x \notin D_n.
     \end{dcases}
     \]
     For sufficiently small $A_n$ this is well defined, that is
@@ -265,14 +267,14 @@ With this Lemma at hand we can now proof Theorem \ref{whitney_top:thm:approx_imm
     \end{align*}
     In fact all of these expressions may be defined on an open neighbourhood of $\phi_\alpha^{-1}(K_\alpha \cap D_n)$. Since $f_n^\alpha = f_{n-1}^\alpha$ outside $\phi_\alpha^{-1}(K_\alpha \cap D_n)$ we have 
     \[
-    \norm{f_n^\alpha - f_{n-1}^\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha))} = \norm{\tau_n^\alpha \circ (\hat{f}_{n-1}^\alpha + \hat{A}_n^\alpha) - \tau_n^\alpha \circ \hat{f}_{n-1}^\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha \cap D_n))}
+    \norm{f_n^\alpha - f_{n-1}^\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha))} = \norm{\tau_n^\alpha \circ (\hat{f}_{n-1}^\alpha + \hat{A}_n^\alpha) - \tau_n^\alpha \circ \hat{f}_{n-1}^\alpha}_{C^k(\phi_\alpha^{-1}(K_\alpha \cap D_n))}.
     \]
     Note that we can make $\hat{A}_n^\alpha$ and all of its partial derivatives arbitrarily small by choosing $A_n$ sufficiently small (this is essentially Lemma \ref{whitney_top:lem:technical_lemma_about_norms} (\ref{whitney_top:eq:ck_norm_lemma_part3})). Thus we can apply Lemma \ref{whitney_top:lem:technical_lemma_about_norms} (\ref{whitney_top:eq:ck_norm_lemma_part1}) to 
     \begin{itemize}
     \item $r = \hat{f}_{n-1}^\alpha + \hat{A}_n^\alpha$,
     \item $s = \hat{f}_{n-1}^\alpha$,
     \item $\psi = \tau_n^\alpha$,
-    \item $K = \phi_\alpha^{-1}(K_\alpha \cap D_n)$
+    \item $K = \phi_\alpha^{-1}(K_\alpha \cap D_n)$,
     \item $L = s(K)$,
     \item $C = \norm{s}_{C^k(K)}$
     \end{itemize} 
@@ -307,7 +309,7 @@ With this Lemma at hand we can now proof Theorem \ref{whitney_top:thm:approx_imm
     be our model for the half space and denote by $e_1 = (1,0,\ldots,0) \in \R^p$ the first standard basis vector. Now define
     \[
     f_n(x) := \begin{dcases}
-        w_n(w_n^{-1}(f_{n-1}(x)) + \lambda_n(x)A_ny - \lambda_n(x) \delta_n e_1), & x = o_n(y) \in D_n \\
+        w_n(w_n^{-1}(f_{n-1}(x)) + \lambda_n(x)A_ny - \lambda_n(x) \delta_n e_1), & x = o_n(y) \in D_n, \\
         f_{n-1}(x), & x \notin D_n
     \end{dcases}
     \]
@@ -331,9 +333,9 @@ Next we will proof Theorem \ref{whitney_top:thm:approx_one_to_one_immersions} ab
     \begin{enumerate}[(i)]
         \item \label{whitney_top:eq:one_to_one_immersion_cover_property1} $\lambda_i^{-1}((0,1]) = B_i$,
         \item \label{whitney_top:eq:one_to_one_immersion_cover_property2}$D_i$ contains the support of $\lambda_i$, that is $\overline{B}_i$, in its interior,
-        \item $f(D_i) \subseteq W_i$,
+        \item $f(D_i) \subseteq W_i$ for all $i \in \Z$,
         \item \label{whitney_top:eq:one_to_one_immersion_cover_property4}$D_i \subseteq U$ for $i \leq 0$ and $D_i \subseteq M - A$ for $i >0$,
-        \item \label{whitney_top:eq:one_to_one_immersion_cover_property5}$f|_{B_i}$ is injective.
+        \item \label{whitney_top:eq:one_to_one_immersion_cover_property5}$f|_{B_i}$ is injective for all $i \in \Z$.
     \end{enumerate}
     Again the existence of this data follows from paracompactness of $M$. For (\ref{whitney_top:eq:one_to_one_immersion_cover_property5}) recall that immersions are locally embeddings. We now inductively define a sequence $f_n \colon M \to N$, $n \geq 0$, with $f_0 := f$, satisfying the following properties.
     \begin{enumerate}[1)]
@@ -442,7 +444,7 @@ Next we proof Theorem \ref{whitney_top:thm:approx_transversality} about transver
     \[
     z_1 = d_{(x,b)} \pi (y_2,z_2).
     \]
-    Since $d_{(x,b)} \pi$ is just the restriction of the projection $T_xM \oplus T_b B \to T_b B$ it follows that $z_1 = z_2$. So by linearity we can write (\ref{whitney_top:eq:approx_transversality_lemma2})
+    Since $d_{(x,b)} \pi$ is just the restriction of the projection $T_xM \oplus T_b B \to T_b B$ it follows that $z_1 = z_2$. So by linearity we can write (\ref{whitney_top:eq:approx_transversality_lemma2}) as
     \[
     w = d_{(x,b)}F(y_1-y_2,0) + d_{(x,b)}F(y_2,z_1).
     \]
@@ -455,7 +457,7 @@ Next we proof Theorem \ref{whitney_top:thm:approx_transversality} about transver
     \begin{enumerate}[(i)]
         \item \label{whitney_top:eq:transversality_cover_property1}$\lambda_i^{-1}((0,1]) = B_i$,
         \item \label{whitney_top:eq:transversality_cover_property2}$D_i$ contains the support of $\lambda_i$ in its interior,
-        \item $f(D_i) \subseteq W_i$,
+        \item $f(D_i) \subseteq W_i$ for all $i \in \Z$,
         \item \label{whitney_top:eq:transversality_cover_property4}$D_i \subseteq U$ for $i \leq 0$ and $D_i \subseteq M - A$ for $i >0$.
     \end{enumerate}
     We now inductively define a sequence $f_n \colon M \to N$, $n \geq 0$, with $f_0 := f$, satisfying the following properties.
@@ -492,25 +494,27 @@ Finally we proof Proposition \ref{whitney_top:prop:homotopy_construction}. In th
 
 \begin{lemma}
     \label{whitney_top:lem:lemma_for_homotopy_prop}
-    Suppose we are given open sets $U, U^\prime \subseteq \H^n, W, W^\prime \subseteq \H^m$, $V \subseteq W$ compact sets $K \subseteq U, L \subseteq V$, a smooth function $\lambda \colon U^\prime \to [0,1]$, diffeomorphisms $\phi \colon U^\prime \to U$ and $\psi \colon W \to W^\prime$ as well as constants $\epsilon > 0$ and $C > 0$. Then there exists $\delta >0$ with the following property. Let $p,q \colon U_K \to W$ be smooth functions defined on some neighbourhood $U_K \subseteq U$ of $K$, which can depend on the functions $p,q$. Suppose that $q$ satisfies $q(K) \subseteq L$ and $\norm{q}_{C^k(K)} \leq C$. Then if
+    Suppose we are given open sets $U, U^\prime \subseteq \H^n, W, W^\prime \subseteq \H^m$, $V \subseteq W$, compact sets $K \subseteq U, L \subseteq V$, a smooth family of smooth functions $\lambda_t \colon U^\prime \to [0,1]$ for $0 \leq t \leq 1$, diffeomorphisms $\phi \colon U^\prime \to U$ and $\psi \colon W \to W^\prime$ as well as constants $\epsilon > 0$ and $C > 0$. Then there exists $\delta >0$ with the following property. Let $p,q \colon U_K \to W$ be smooth functions defined on some neighbourhood $U_K \subseteq U$ of $K$, which can depend on the functions $p,q$. Suppose that $q$ satisfies $q(K) \subseteq L$ and $\norm{q}_{C^k(K)} \leq C$. Then if
     \[
     \norm{p-q}_{C^k(K)} < \delta
     \]
-    we have 
+    the following holds for all $0 \leq t \leq 1$. 
     \begin{enumerate}[(i)]
-        \item \label{whitney_top:eq:lemma_for_homotopy_prop_part1} $((1-\lambda)p + \lambda q)(K) \subseteq V$ and
+        \item \label{whitney_top:eq:lemma_for_homotopy_prop_part1} $((1-\lambda_t)p + \lambda_t q)(K) \subseteq V$ and
     \[
-        \norm{\psi((1-\lambda) (p \circ \phi) + \lambda (q \circ \phi)) - \psi \circ p \circ \phi}_{C^k(\phi^{-1}(K))} < \epsilon.
+        \norm{\psi((1-\lambda_t) (p \circ \phi) + \lambda_t (q \circ \phi)) - \psi \circ p \circ \phi}_{C^k(\phi^{-1}(K))} < \epsilon,
     \]
-    \item \label{whitney_top:eq:lemma_for_homotopy_prop_part2} $((1-\lambda)(\psi \circ p) + \lambda (\psi \circ q))(K) \subseteq \psi(V)$ and 
+    \item \label{whitney_top:eq:lemma_for_homotopy_prop_part2} $((1-\lambda_t)(\psi \circ p) + \lambda_t (\psi \circ q))(K) \subseteq \psi(V)$ and 
     \[
-    \norm{\psi^{-1}((1-\lambda) (\psi \circ p) + \lambda (\psi \circ q)) - q}_{C^k(K)} < \epsilon.
+    \norm{\psi^{-1}((1-\lambda_t) (\psi \circ p) + \lambda_t (\psi \circ q)) - q}_{C^k(K)} < \epsilon.
     \]
     \end{enumerate}
 \end{lemma}
 
+As in Lemma \ref{whitney_top:lem:technical_lemma_about_norms} note that the constant $\delta > 0$ does \textit{not} depend on the functions $p$ and $q$ as long as $q$ is chosen such that $q(K) \subset L$ and $\norm{q}_{C^k(K)} \leq C$. 
+
 \begin{proof}
-    We first choose $\delta$, such that $((1-\lambda)p + \lambda q)(K) \subseteq V$ holds. By compactness of $L \subseteq V$ there exists some radius $r > 0$ depending only on $L$ and $V$ with the property that any ball of radius $r$ around a point in $L$ is contained in $V$. So choosing $\delta < r$ it follows from $q(K) \subseteq L$ and $0 \leq \lambda \leq 1$, that $(1-\lambda)p(x) + \lambda q(x) \in V$ for any point $x \in K$. In fact the same argument shows that if we fix some compact neighbourhood $\tilde{L} \subseteq W$ of $L$ we can choose $\delta$ sufficiently small, such that $p(K) \subseteq \tilde{L}$ is automatically satisfies. We will make use of this fact later in the proof. 
+    We first choose $\delta$, such that $((1-\lambda_t)p + \lambda_t q)(K) \subseteq V$ holds. By compactness of $L \subseteq V$ there exists some radius $r > 0$ depending only on $L$ and $V$ with the property that any ball of radius $r$ around a point in $L$ is contained in $V$ (of course considering balls in the metric space $\H^m$). So choosing $\delta < r$ it follows from $q(K) \subseteq L$ and $0 \leq \lambda_t \leq 1$, that $(1-\lambda_t)p(x) + \lambda_t q(x) \in V$ for any point $x \in K$ and all $t \in [0,1]$. In fact the same argument shows that if we fix some compact neighbourhood $\tilde{L} \subseteq W$ of $L$ we can choose $\delta$ sufficiently small, such that $p(K) \subseteq \tilde{L}$ is automatically satisfied. We will make use of this fact later in the proof. 
     
     We will now repeatedly apply Lemma \ref{whitney_top:lem:technical_lemma_about_norms} to make the desired norm in (\ref{whitney_top:eq:lemma_for_homotopy_prop_part1}) small. First of all we can choose $\delta$ to make 
     \[
@@ -518,18 +522,22 @@ Finally we proof Proposition \ref{whitney_top:prop:homotopy_construction}. In th
     \]
     arbitrarily small by applying part (\ref{whitney_top:eq:ck_norm_lemma_part2}) of Lemma \ref{whitney_top:lem:technical_lemma_about_norms}, where $p-q$ plays the role of $\theta$. Applying part (\ref{whitney_top:eq:ck_norm_lemma_part3}) of Lemma \ref{whitney_top:lem:technical_lemma_about_norms} we can thus also make 
     \[
-    \norm{\lambda (p \circ \phi - q \circ \phi)}_{C^k(\phi^{-1}(K))}
+    \norm{\lambda_t (p \circ \phi - q \circ \phi)}_{C^k(\phi^{-1}(K))}
     \]
     arbitrarily small. We now want to apply part (\ref{whitney_top:eq:ck_norm_lemma_part1}) of Lemma \ref{whitney_top:lem:technical_lemma_about_norms} to 
     \begin{align*}
-        r &= p \circ \phi + \lambda (p \circ \phi - q \circ \phi) \\
+        r &= p \circ \phi + \lambda_t (p \circ \phi - q \circ \phi), \\
         s &= p \circ \phi
     \end{align*}
     to conclude that 
     \[
-    \norm{\psi(p \circ \phi + \lambda (p \circ \phi - q \circ \phi)) - \psi \circ p \circ \phi}_{C^k(\phi^{-1}(K))},
+    \norm{\psi(p \circ \phi + \lambda_t (p \circ \phi - q \circ \phi)) - \psi \circ p \circ \phi}_{C^k(\phi^{-1}(K))}
     \]
-    can be made arbitrarily small (this is the norm we are interested in just slightly rewritten). To apply the Lemma the assumption $(p \circ \phi)(\phi^{-1}(K)) = p(K)\subseteq \tilde{L}$ for some compact set $\tilde{L} \subseteq W$, which is fixed prior, is still missing. But as mentioned before we can choose $\tilde{L}$ as any fixed compact neighbourhood of $L$ and if we then choose $\delta$ sufficiently small we automatically only consider functions $p$ with $p(K) \subseteq \tilde{L}$. Hence we can apply the Lemma. The resulting $\delta$ now may of course depend on $\tilde{L}$ but not on $p$ or $q$, which is what we are interested in.
+    can be made arbitrarily small (this is the norm we are interested in just slightly rewritten). To apply Lemma \ref{whitney_top:lem:technical_lemma_about_norms} two assumptions on $s$ are still missing. Firstly we need $s(\phi^{-1}(K)) = p(K)\subseteq \tilde{L}$ for some compact set $\tilde{L} \subseteq W$, which is fixed prior. But as mentioned before we can choose $\tilde{L}$ as any fixed compact neighbourhood of $L$ and if we then choose $\delta$ sufficiently small we automatically only consider functions $p$ with $p(K) \subseteq \tilde{L}$. Secondly we need $\norm{s}_{C^k(\phi^{-1}(K))} \leq \tilde{C}$ for some constant $\tilde{C}$, which is also fixed prior. To this end note that 
+    \[
+    \norm{s}_{C^k(\phi^{-1}(K))} \leq \norm{p \circ \phi - q \circ \phi}_{C^k(\phi^{-1}(K))} + \norm{q \circ \phi}_{C^k(\phi^{-1}(K))}.
+    \] 
+    The first term can be bounded by $1$ for sufficiently small $\delta$ and the second term is bounded by some constant only depending on $C$, $\phi$ and $K$ (cf. the computation in Lemma \ref{whitney_top:lem:technical_lemma_about_norms}  (\ref{whitney_top:eq:ck_norm_lemma_part2})). Hence we can apply Lemma \ref{whitney_top:lem:technical_lemma_about_norms}.
     
     Part (\ref{whitney_top:eq:lemma_for_homotopy_prop_part2}) of the Lemma can be shown analogously. In fact this part is slightly easier because the argument involving $\tilde{L}$ given above is not even needed here.
 \end{proof}
@@ -541,7 +549,7 @@ We can now proof Proposition \ref{whitney_top:prop:homotopy_construction}.
     \begin{enumerate}[(i)]
         \item $\lambda_i = 1$ in a neighbourhood of $B_i$,
         \item $D_i$ contains the support of $\lambda_i$ in its interior,
-        \item $f(D_i) \subseteq W_i$,
+        \item $f(D_i) \subseteq W_i$ for all $i \in \N$,
         \item $w_i^{-1}(W_i) \subseteq \H^p$ is convex.
     \end{enumerate}
     Let us introduce some more notation. Consider the following data:
@@ -555,32 +563,32 @@ We can now proof Proposition \ref{whitney_top:prop:homotopy_construction}.
     \[
     \mathcal{V}({\Delta}) := \mathcal{N}^k(f,{\bf O},{\bf W} ,{\bf D},{\Delta}) \cap C^\infty(M,N)
     \]
-    the neighbourhood of $f$ determined by this data. Moreover we shall assume that $\mathcal{U}$ is of the form 
+    the $C^k$-neighbourhood of $f$ determined by this data. Moreover we shall assume that $\mathcal{U}$ is of the form 
     \[
     \mathcal{U} = \mathcal{N}^k(f,\Phi,\Psi,K,\epsilon) \cap C^\infty(M,N),
     \]
-    using the same notation as in the other proofs. Now the goal at hand is to find a sufficiently small neighbourhood $\mathcal{V} \subseteq \mathcal{U}$ of $f$, such that the Proposition holds for any $g \in \mathcal{V}$. To construct this neighbourhood we inductively define numbers $\delta_n \in (0,1)$, $n \geq 0$, with the following property. For $\Delta_n := (\delta_1,\ldots,\delta_n,1,1,\ldots)$ and $g \in \mathcal{V}_n := \mathcal{V}(\Delta_n)$ we can recursively define homotopies $h^k_t$, $t \in [0,1]$, $0 \leq k \leq n$ as follows. For $k = 0$ set $h_t^0 := f$. To construct $h_t^k$ out of $h_t^{k-1}$ choose a smooth function $\alpha \colon [0,1] \to [0,1]$ with $\alpha = 0$ on $[0,\frac{1}{4})$ and $\alpha = 1$ on $(\frac{3}{4},1]$. On $D_k$ we define $h_t^k$ by a straight line homotopy from $h_1^{k-1}$ to $g$ in the coordinates of the chart $w_k$ and then use the cut-off function $\lambda_k$ to keep it constant outside of $D_k$. More precisely that is 
+    using the same notation as in the other proofs. Now the goal at hand is to find a sufficiently small neighbourhood $\mathcal{V} \subseteq \mathcal{U}$ of $f$, such that the Proposition holds for any $g \in \mathcal{V}$. To construct this neighbourhood we inductively define numbers $\delta_n \in (0,1)$, $n \geq 0$, with the following property. For $\Delta_n := (\delta_1,\ldots,\delta_n,1,1,\ldots)$ and $g \in \mathcal{V}_n := \mathcal{V}(\Delta_n)$ we can recursively define homotopies $h^k_t$, $t \in [0,1]$, $0 \leq k \leq n$, as follows. For $k = 0$ set $h_t^0 := f$. To construct $h_t^k$ out of $h_t^{k-1}$ choose a smooth function $\alpha \colon [0,1] \to [0,1]$ with $\alpha = 0$ on $[0,\frac{1}{4})$ and $\alpha = 1$ on $(\frac{3}{4},1]$. On $D_k$ we define $h_t^k$ by a straight line homotopy from $h_1^{k-1}$ to $g$ in the coordinates of the chart $w_k$ and then use the cut-off function $\lambda_k$ to keep it constant outside of $D_k$. More precisely that is 
     \[
     h_t^k(x) := \begin{dcases}
-        w_k((1-\alpha(t)\lambda_k(x)) w_k^{-1}(h_1^{k-1}(x)) + \alpha(t)\lambda_k(x)w_k^{-1}(g(x))) &, x \in D_k \\
-        h_1^{k-1} &, x \notin D_k
+        w_k((1-\alpha(t)\lambda_k(x)) w_k^{-1}(h_1^{k-1}(x)) + \alpha(t)\lambda_k(x)w_k^{-1}(g(x))) &, x \in D_k, \\
+        h_1^{k-1} &, x \notin D_k.
     \end{dcases}  
     \]
-    These homotopies are well defined and satisfy the following properties for all $0 \leq k \leq n$.
+    The numbers $\delta_n$ are then chosen such that these homotopies are well defined and satisfy the following properties for all $0 \leq k \leq n$.
     \begin{enumerate}[1)]
         \item \label{whitney_top:eq:homotopy_property_1}$h_1^k = g$ on $C_k := \bigcup_{i=1}^k B_i$,
         \item \label{whitney_top:eq:homotopy_property_2}$h_t^k = h_1^{k-1}$ outside of $D_k$ for all $t \in [0,1]$,
-        \item \label{whitney_top:eq:homotopy_property_3}$h_t^k(D_i) \subseteq W_i$ for all $t \in [0,1]$,
+        \item \label{whitney_top:eq:homotopy_property_3}$h_t^k(D_i) \subseteq W_i$ for all $t \in [0,1]$ and $i \in \N$,
         \item \label{whitney_top:eq:homotopy_property_4}$h_t^k(x) = f(x)$ for all $x \in A$ and $t \in [0,1]$,
-        \item \label{whitney_top:eq:homotopy_property_5}$h_t^k = h_1^{k-1}$ for $t \in [0,\frac{1}{4})$ and $h_t^k = h_1^k$ for $t \in (\frac{3}{4},1]$. 
-        \item \label{whitney_top:eq:homotopy_property_6} $h_t^k(K_\alpha) \subseteq V_\alpha$ for all $\alpha \in J$ and the coordinate expressions $h_t^{t,\alpha} := \psi_\alpha^{-1} \circ h_t^k \circ \phi_\alpha$ satisfy
+        \item \label{whitney_top:eq:homotopy_property_5}$h_t^k = h_1^{k-1}$ for $t \in [0,\frac{1}{4})$ and $h_t^k = h_1^k$ for $t \in (\frac{3}{4},1]$,
+        \item \label{whitney_top:eq:homotopy_property_6} $h_t^k(K_\alpha) \subseteq V_\alpha$ for all $t \in [0,1]$ and $\alpha \in J$ and the coordinate expressions $h_t^{k,\alpha} := \psi_\alpha^{-1} \circ h_t^k \circ \phi_\alpha$ satisfy
         \[
         \norm{h_t^{k,\alpha} - h_1^{k-1,\alpha}}_{C^k(\phi_\alpha^{-1}(K_\alpha))} < \frac{\epsilon_\alpha}{2^k}
         \]
         for all $t \in [0,1]$.
     \end{enumerate}
 
-    The base case $n=0$ is clear. So suppose we have already constructed $\delta_1,\ldots,\delta_{n-1}$. Then for any $g \in \mathcal{V}_{n-1}$, $h_t^n$ is well-defined since $h_1^{n-1}(D_n) \subseteq W_n$, $g(D_n) \subseteq W_n$ and $w_n^{-1}(W_n)$ is convex, such that 
+    Again we proof the general case where both $M$ and $N$ may have non-empty boundary right away. The base case $n=0$ is clear. So suppose we have already constructed $\delta_1,\ldots,\delta_{n-1}$. Then for any $g \in \mathcal{V}_{n-1}$, $h_t^n$ is well-defined since $h_1^{n-1}(D_n) \subseteq W_n$, $g(D_n) \subseteq W_n$ and $w_n^{-1}(W_n)$ is convex, such that 
     \[
     (1-\alpha(t)\lambda_n(x)) w_n^{-1}(h_1^{n-1}(x)) + \alpha(t)\lambda_n(x)w_n^{-1}(g(x))
     \]
@@ -593,26 +601,29 @@ We can now proof Proposition \ref{whitney_top:prop:homotopy_construction}.
     \begin{itemize}
         \item $p = w_n^{-1} \circ h_1^{n-1} \circ o_n$,
         \item $q = w_n^{-1} \circ g \circ o_n$,
-        \item $\lambda = \alpha(t)\lambda_n \circ o_n$ for some fixed $t \in [0,1]$,
+        \item $\lambda_t = \alpha(t)\lambda_n \circ o_n$,
         \item $K = o_n^{-1}(D_n \cap D_i)$,
-        \item $V = w_n^{-1}(W_n \cap W_i)$.
+        \item $V = w_n^{-1}(W_n \cap W_i)$,
+        \item $C = \norm{w_n^{-1} \circ f \circ o_n}_{C^k(o_n^{-1}(D_n))} + 1$.
     \end{itemize}
     Then we can write 
     \[
-    (w_n^{-1} \circ h_t^n \circ o_n)(x) = (1-\lambda(x))p(x) + \lambda(x) q(x)
+    (w_n^{-1} \circ h_t^n \circ o_n)(x) = (1-\lambda_t(x))p(x) + \lambda_t(x) q(x)
     \]
-    for $x \in K$ and if (\ref{whitney_top:eq:homotopy_prop_eq1}) is sufficiently small then in particular $\norm{p-q}_{C^k(K)}$ can be made arbitrarily small. To apply the Lemma we still need to choose the compact set $L \subseteq V$, such that $q$ always satisfies $q(K) \subseteq L$ no matter which precise $g$ we used to define $q$. We fix $L$ as some compact neighbourhood of $(w_n^{-1} \circ f \circ o_n)(K) \subseteq V$. Then we can choose $\delta_n$ so small that $q(K) \subseteq L$ for any $g \in \mathcal{V}_n$. Now Lemma \ref{whitney_top:lem:lemma_for_homotopy_prop} tells us that $((1-\lambda)p + \lambda q)(K) \subseteq V$ for (\ref{whitney_top:eq:homotopy_prop_eq1}) sufficiently small, which is equivalent to $h_t^n(D_n \cap D_i) \subseteq W_i$. Of course we can then also achieve this for finitely many $i \in \N$ if (\ref{whitney_top:eq:homotopy_prop_eq1}) and $\delta_n$ are sufficiently small. But by a local finiteness argument only finitely many $D_i$ intersect $D_n$ and since $h_t^{n-1}(D_i) \subseteq W_i$ already holds for all $i \in \N$ and $h_t^{n} = h_1^{n-1}$ outside $D_n$ we conclude that we can also achieve $h_t^{n}(D_i) \subseteq W_i$ for all $i \in \N$.  
+    for $x \in K$ and if (\ref{whitney_top:eq:homotopy_prop_eq1}) is sufficiently small then in particular $\norm{p-q}_{C^k(K)}$ can be made arbitrarily small. Moreover using the triangle inequality we compute
+    $$\norm{q}_{C^k(K)} \leq \norm{q}_{C^k(o_n^{-1}(D_n))} \leq \norm{w_n^{-1} \circ f \circ o_n}_{C^k(o_n^{-1}(D_n))} + 1 = C$$ 
+    if we choose $\delta_n < 1$. To apply the Lemma we still need to choose the compact set $L \subseteq V$, such that $q$ always satisfies $q(K) \subseteq L$ no matter which precise $g$ we used to define $q$. We fix $L$ as some compact neighbourhood of $(w_n^{-1} \circ f \circ o_n)(K) \subseteq V$. Then we can choose $\delta_n$ so small that $q(K) \subseteq L$ for any $g \in \mathcal{V}_n$. Now Lemma \ref{whitney_top:lem:lemma_for_homotopy_prop} tells us that $((1-\lambda_t)p + \lambda_t q)(K) \subseteq V$ for (\ref{whitney_top:eq:homotopy_prop_eq1}) sufficiently small, which is equivalent to $h_t^n(D_n \cap D_i) \subseteq W_i$. Of course we can then also achieve this for finitely many $i \in \N$ if (\ref{whitney_top:eq:homotopy_prop_eq1}) and $\delta_n$ are sufficiently small. But by a local finiteness argument only finitely many $D_i$ intersect $D_n$ and since $h_t^{n-1}(D_i) \subseteq W_i$ already holds for all $i \in \N$ and $h_t^{n} = h_1^{n-1}$ outside $D_n$ we conclude that we can also achieve $h_t^{n}(D_i) \subseteq W_i$ for all $i \in \N$.  
 
-    For \ref{whitney_top:eq:homotopy_property_6}) we apply Lemma \ref{whitney_top:lem:lemma_for_homotopy_prop} to the same $p,q, \lambda$ and 
+    For \ref{whitney_top:eq:homotopy_property_6}) we apply Lemma \ref{whitney_top:lem:lemma_for_homotopy_prop} to the same $p,q, \lambda_t, C$ and 
     \begin{itemize}
         \item $\phi = o_n^{-1} \circ \phi_\alpha$,
         \item $\psi = \psi_\alpha^{-1} \circ w_n$,
         \item $K = o_n^{-1}(D_n \cap K_\alpha)$,
         \item $V = w_n^{-1}(W_n \cap V_\alpha)$,
     \end{itemize}
-    with the obvious domains and codomains. An anlogous argument as above shows that $h_t^{n}(K_\alpha) \subseteq V_\alpha$ holds for all $\alpha \in J$ if (\ref{whitney_top:eq:homotopy_prop_eq1}) and $\delta_n$ are sufficiently small. Furthermore we can write 
+    with the obvious domains and codomains for $\phi$ and $\psi$. Again we choose $L \subseteq V$ as some compact neighbourhood of $(w_n^{-1} \circ f \circ o_n)(K) \subseteq V$. An anlogous argument as above shows that $h_t^{n}(K_\alpha) \subseteq V_\alpha$ holds for all $\alpha \in J$ if (\ref{whitney_top:eq:homotopy_prop_eq1}) and $\delta_n$ are sufficiently small. Furthermore we can write 
     \[
-    h_t^{n,\alpha}(x) = \psi((1-\lambda(x)) p (\phi(x)) + \lambda(x) q(\phi(x)))
+    h_t^{n,\alpha}(x) = \psi((1-\lambda_t(x)) p (\phi(x)) + \lambda_t(x) q(\phi(x)))
     \]
     and $h_1^{n-1,\alpha}(x) = (\psi \circ p \circ \phi)(x)$ for $x \in \phi_\alpha^{-1}(D_n \cap K_\alpha) = \phi^{-1}(K)$. So Lemma \ref{whitney_top:lem:lemma_for_homotopy_prop} (\ref{whitney_top:eq:lemma_for_homotopy_prop_part1}) tells us that 
     \[
@@ -631,16 +642,17 @@ We can now proof Proposition \ref{whitney_top:prop:homotopy_construction}.
     \begin{itemize}
         \item $p = w_n^{-1} \circ h_1^{n-2} \circ o_n$,
         \item $q = w_n^{-1} \circ g \circ o_n$,
-        \item $\lambda = \lambda_{n-1} \circ o_n$,
+        \item $\lambda_t = \lambda_{n-1} \circ o_n$,
         \item $K = o_n^{-1}(D_n \cap D_{n-1})$,
         \item $V = w_n^{-1}(W_n \cap W_{n-1})$,
-        \item $\psi = w_{n-1}^{-1} \circ w_n$.
+        \item $\psi = w_{n-1}^{-1} \circ w_n$,
+        \item $C = \norm{w_n^{-1} \circ f \circ o_n}_{C^k(o_n^{-1}(D_n))} + 1$.
     \end{itemize}
-    Again if $\delta_n$ is sufficiently small we obtain $q(K) \subseteq L$ for any $g \in \mathcal{V}_n$, where $L \subseteq V$ is some fixed compact neighbourhood of $(w_n^{-1} \circ f \circ o_n)(K) \subseteq V$. Write 
+    Since $\lambda_t$ does not depend on $t$ let us just write $\lambda$ instead. Again if $\delta_n$ is sufficiently small we obtain $q(K) \subseteq L$ for any $g \in \mathcal{V}_n$, where $L \subseteq V$ is some fixed compact neighbourhood of $(w_n^{-1} \circ f \circ o_n)(K) \subseteq V$. For $x \in o_n^{-1}(D_n)$ write 
     \[
     (w_n^{-1} \circ h_1^{n-1} \circ o_n)(x) = \begin{dcases}
-        \psi^{-1}((1-\lambda(x))(\psi \circ p)(x) + \lambda(x)(\psi \circ q)(x)) &, x \in K \\
-    (w_n^{-1} \circ h_1^{n-2} \circ o_n)(x) &, x \in o_n^{-1}(D_n) - K
+        \psi^{-1}((1-\lambda(x))(\psi \circ p)(x) + \lambda(x)(\psi \circ q)(x)) &, x \in K, \\
+    (w_n^{-1} \circ h_1^{n-2} \circ o_n)(x) &, x \in o_n^{-1}(D_n) - K.
     \end{dcases}
     \]
     As before we see that if (\ref{whitney_top:eq:homotopy_prop_eq2}) is sufficiently small then in particular $\norm{p - q}_{C^k(K)}$ is sufficiently small. Thus we can conclude from Lemma \ref{whitney_top:lem:lemma_for_homotopy_prop} that also (\ref{whitney_top:eq:homotopy_prop_eq1}) is sufficiently small. Proceeding inductively we can construct $\delta_n$, such that (\ref{whitney_top:eq:homotopy_prop_eq2}) and hence (\ref{whitney_top:eq:homotopy_prop_eq1}) becomes arbitrarily small for any $g \in \mathcal{V}_n$ as long as
@@ -657,13 +669,13 @@ We can now proof Proposition \ref{whitney_top:prop:homotopy_construction}.
     Then for any $g \in \mathcal{V}$ the homotopies $h_t^k$ are well defined for all $k \geq 0$ and satisfy properties \ref{whitney_top:eq:homotopy_property_1}) - \ref{whitney_top:eq:homotopy_property_6}) for all $k \geq 0$. For better readibility in what follows let us write $h^k(-,t) := h_t^k$. Moreover let $a_n := \sum_{k=1}^n 2^{-k}$ and $I_n := \left[ a_n, a_{n+1}\right]$. For $t \in I_n$ the homotopy $h_t$ is now defined by $h_t^n$ with the time parameter $t$ rescaled to the interval $I_n$, that is 
     \[
     h_t(x):= \begin{dcases}
-        h^n(x,2^{n+1}(t - a_n)) &, t \in I_n \\
+        h^n(x,2^{n+1}(t - a_n)) &, t \in I_n, \\
         g(x) &, t =1.
     \end{dcases}
     \] 
-    This is well-defined for $t \in I_{n-1} \cap I_n$ since $h^{n-1}_1 = h^n_0$. We claim moreover that $h_t$ defines a smooth homotopy. For $t_0 \neq 1$, $t_0$ is either an interior point or a boundary point of some Interval $I_n$. If it is an interior point, then $h_t = h^n(-,2^{n+1}(t - a_n))$ for $t$ in some neighbourhood of $t_0$. If it is a boundary point, say $t_0 = a_{n+1}$, then $h_t = h^n_1$ in some neighbourhood of $t_0$ by \ref{whitney_top:eq:homotopy_property_5}). If $t_0 = 1$ we obtain from \ref{whitney_top:eq:homotopy_property_1}) using a local finiteness argument that for any $x_0 \in M$ there exists some neighbourhood $U(x_0) \subseteq M$ of $x_0$, such that $h_t(x) = h_t^n(x) = g(x)$ for $n$ sufficiently large, $x \in U(x_0)$ and $t$ in some neighbourhood of $t_0$. This shows smoothness. 
+    This is well-defined for $t \in I_{n-1} \cap I_n$ since $h^{n-1}_1 = h^n_0$. We claim moreover that $h_t$ defines a smooth homotopy. For $t_0 \neq 1$, $t_0$ is either an interior point or a boundary point of some Interval $I_n$. If it is an interior point, then $h_t = h^n(-,2^{n+1}(t - a_n))$ for $t$ in some neighbourhood of $t_0$. If it is a boundary point, say $t_0 = a_{n+1}$, then $h_t = h^n_1$ in some neighbourhood of $t_0$ by \ref{whitney_top:eq:homotopy_property_5}). If $t_0 = 1$ we obtain from \ref{whitney_top:eq:homotopy_property_1}) and \ref{whitney_top:eq:homotopy_property_2}) using a local finiteness argument that for any $x_0 \in M$ there exists some neighbourhood $U(x_0) \subseteq M$ of $x_0$, such that $h_t^n(x) = g(x) = h_t(x)$ for $n$ sufficiently large, $x \in U(x_0)$ and $t$ in some neighbourhood of $t_0$. This shows smoothness. 
 
-    It is then clear from the definition that $h_0 = f$ and $h_1 = g$. Furthermore $h_t(x) = f(x)$ for all $x \in A$ by \ref{whitney_top:eq:homotopy_property_4}). Finally we have to show that $h_t \in \mathcal{U}$ for all $t \in [0,1]$. Again using \ref{whitney_top:eq:homotopy_property_1}) as well as compactness of $K_\alpha$ it follows that $g = h_t^n$ in a neighbourhood of $K_\alpha$ for sufficiently large $n$. So since $h_t^n(K_\alpha) \subseteq V_\alpha$ holds for all $\alpha \in J$ and $t \in [0,1]$ we also obtain $h_t(K_\alpha) \subseteq V_\alpha$ for all $\alpha \in J$ and $t \in [0,1]$. Now given any $t < 1$ we can write $h_t = h_s^n$ for some $n \geq 0$ and $s = 2^{n+1}(t - a_n)$. Write $h_t^{\alpha} := \psi_\alpha^{-1} \circ h_t \circ \phi_\alpha$ and $f^{\alpha} := \psi_\alpha^{-1} \circ f \circ \phi_\alpha$. Using \ref{whitney_top:eq:homotopy_property_6}) we compute 
+    It is then clear from the definition that $h_0 = f$ and $h_1 = g$. Furthermore $h_t(x) = f(x)$ for all $x \in A$ by \ref{whitney_top:eq:homotopy_property_4}). Finally we have to show that $h_t \in \mathcal{U}$ for all $t \in [0,1]$. Again using \ref{whitney_top:eq:homotopy_property_1}) as well as compactness of $K_\alpha$ it follows that $h_t^n = g$ in a neighbourhood of $K_\alpha$ for sufficiently large $n$. So since $h_t^n(K_\alpha) \subseteq V_\alpha$ holds for all $\alpha \in J$ and $t \in [0,1]$ we also obtain $h_t(K_\alpha) \subseteq V_\alpha$ for all $\alpha \in J$ and $t \in [0,1]$. Now given any $t < 1$ we can write $h_t = h_s^n$ for some $n \geq 0$ and $s = 2^{n+1}(t - a_n)$. Write $h_t^{\alpha} := \psi_\alpha^{-1} \circ h_t \circ \phi_\alpha$ and $f^{\alpha} := \psi_\alpha^{-1} \circ f \circ \phi_\alpha$. Using \ref{whitney_top:eq:homotopy_property_6}) we compute 
     \begin{align*}
         \norm{h_t^{\alpha} - f^{\alpha}}_{C^k(\phi_\alpha^{-1}(K_\alpha))} &= \norm{h_s^{n,\alpha} - f^{\alpha}}_{C^k(\phi_\alpha^{-1}(K_\alpha))} \\
         &\leq \norm{h_s^{n,\alpha} - h_1^{n-1,\alpha}}_{C^k(\phi_\alpha^{-1}(K_\alpha))} + \sum_{i=1}^{n-1} \norm{h_1^{i,\alpha} - h_1^{i-1,\alpha}}_{C^k(\phi_\alpha^{-1}(K_\alpha))} \\
