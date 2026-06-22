@@ -59,3 +59,17 @@ In the following let $M,N$ be Riemannian manifolds (without boundary).
     \]
 \end{proof}
 
+The following Lemma is a version of the Hopf-Rinow Theorem.
+
+\begin{lemma}
+    A Riemannian manifold $M$ is complete if and only if all closed bounded subsets are compact.
+\end{lemma}
+
+\begin{proof}
+    Assume that $M$ is complete. Let $A \subseteq M$ be some closed and bounded subset and choose $p \in A$. Then by the usual Hopf-Rinow Theorem the exponential map $\mathrm{exp}_p$ is defined on the whole tangent space $T_p M$ and for each point $q \in M$ there exists a minimizing geodesic segment from $p$ to $q$. Let $R := \mathrm{diam}(A)$ be the diameter of $A$. Then we conclude that 
+    \[
+    A \subseteq \mathrm{exp}_p(\overline{B}_R(0)),
+    \]
+    where $\overline{B}_R(0) \subseteq T_pM$ is the closed ball of radius $R$. Thus $A$ is a closed subset of a compact space and consequently itself compact. If on the other hand all closed bounded subsets are compact, then completeness just follows for general metric spaces by a straightforward argument.
+\end{proof}
+

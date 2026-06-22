@@ -1,0 +1,88 @@
+\subsection{Miscellaneous Formulas}
+
+\begin{lemma}
+    \label{cartan_calc:lem:relation_between_Lie_derivative_and_connection}
+    Let $M$ be a Riemannian manifold, $\omega \in \Omega^k(M)$ a $k$-form and $X \in \mathscr{X}(M)$ a vector field. Then
+    \[
+    \mathcal{L}_X \omega = \nabla_X \omega + \sum_{i=1}^{k} \omega(-,\ldots,\nabla X,\ldots,-),
+    \] 
+    where $\nabla X$ enters in the $i$-th slot in the $i$-th summand, which is a covariant tensor field of degree $k$ defined by 
+    \[
+    \omega(-,\ldots,\nabla X,\ldots,-)(Y_1,\ldots,Y_k) := \omega(Y_1,\ldots,\nabla_{Y_i} X,\ldots,Y_k).
+    \] 
+\end{lemma}
+
+\begin{proof}
+    Let $e_1,\ldots,e_n$ be local orthonormal frame and let $\epsilon^1,\ldots,\epsilon^n$ be the corresponding dual frame. Using Cartan's magic formula (Proposition \ref{cartan_cal:prop:magic_formula}) and the formula for the exterior derivative from Lemma \ref{cartan_calc:lem:formula_for_d_and_codifferential} we compute 
+    \begin{align*}
+    \mathcal{L}_X\omega & = d\iota_X\omega + \iota_X d \omega \\
+                        & = \sum_{i=1}^{n}  \epsilon^i \wedge \nabla_i \iota_X\omega + \iota_X \left(\sum_{i=1}^{n} \epsilon^i \wedge \nabla_i \omega\right) \\
+                        & = \sum_{i=1}^{n}  \epsilon^i \wedge \nabla_i \iota_X\omega + \sum_{i=1}^{n} \iota_X \epsilon^i \wedge \nabla_i \omega - \epsilon^i \wedge \iota_X \nabla_i \omega 
+    \end{align*}
+    In the last line we used the Leibniz rule for the interior product, see Theorem \ref{thm:cartan_calculus}. Moreover 
+    \[
+    \iota_X \nabla_i \omega = \nabla_i(\omega(X,-)) - \omega(\nabla_iX,-).
+    \]
+    Plugging this into the formula above we see that the first sum cancles and we obtain 
+    \[
+    \mathcal{L}_X\omega = \sum_{i=1}^{n} \iota_X \epsilon^i \wedge \nabla_i \omega + \epsilon^i \wedge \omega(\nabla_iX,-)
+    \]
+    To compute the first summand write $X = \sum_{j=1}^{n}X^je_j$. Then 
+    \[
+    \sum_{i=1}^{n} \iota_X \epsilon^i \wedge \nabla_i \omega = \sum_{i=1}^{n} X^i \nabla_i \omega = \nabla_X \omega.
+    \]
+    For the second summand we compute ?????
+    % \begin{align*}
+    %     (\epsilon^i \wedge \omega(\nabla_iX,-))(e_1,\ldots,e_n) & = (-1)^{i-1} \omega(\nabla_iX,e_1,\ldots,e_{i-1},e_{i+1},\ldots,e_n) \\
+    %     & = \omega(e_1,\ldots,e_{i-1},\nabla_iX,e_{i+1},\ldots,e_n) \\
+    %     & = \omega(-,\ldots,\nabla X,\ldots,-)(e_1,\ldots,e_k) 
+    % \end{align*}
+    Combining these observations the lemma follows.
+\end{proof}
+
+\begin{lemma}
+    Let $M$ be a Riemannian manifold and $X \in \mathscr{X}(M)$ a vector field. Then 
+    \[
+    \mathrm{div}(X) = \mathrm{tr}(\nabla X).
+    \]
+    In particular if $e_1,\ldots,e_n$ is a local orthonormal frame we obtain 
+    \[
+    \mathrm{div}(X) = \sum_{i=1}^{n} \langle \nabla_{e_i}X, e_i \rangle.
+    \]
+\end{lemma}
+
+\begin{proof}
+    The divergence of a vector field $X$ is defined by 
+    \[
+    d\iota_X \mathrm{vol} = \mathrm{div}(X) \mathrm{vol},
+    \]
+    where $\mathrm{vol}$ is the Riemannian volume form (if $M$ is not oriented $\mathrm{vol}$ can only be defined locally, but the divergence will be independent of the chosen local orientation, hence still globally defined). Using Cartan's magic formula and the fact that $\mathrm{vol}$ is closed we obtain from Lemma \ref{cartan_calc:lem:relation_between_Lie_derivative_and_connection}
+    \begin{align*}
+        \mathrm{div}(X) \mathrm{vol} & = \mathcal{L}_X \mathrm{vol} \\
+    & = \nabla_X \mathrm{vol} + \sum_{i=1}^{k} \mathrm{vol}(-,\ldots,\nabla X,\ldots,-) \\
+    & = \sum_{i=1}^{k} \mathrm{vol}(-,\ldots,\nabla X,\ldots,-)
+    \end{align*}
+    The last equality follows from the fact that the volume form is parallel. Let $e_1,\ldots,e_n$ be an oriented orthonormal frame and $\epsilon^1,\ldots,\epsilon^n$ the corresponding dual frame (again if $M$ is not oriented we only work with a local orientation). Write  
+    \[
+    \nabla X = \sum_{i,j=1}^{n} Y_i^j \epsilon^i \otimes e_j.
+    \]
+    Then 
+    \begin{align*}
+        \mathrm{vol}(-,\ldots,\nabla X,\ldots,-)(e_1,\ldots,e_n) & = \mathrm{vol}(e_1,\ldots,\nabla_{e_i}X,\ldots,e_n)  \\
+        & = \sum_{j=1}^{n} Y_i^j \mathrm{vol}(e_1,\ldots,e_j,\ldots,e_n)  \\
+        &= Y_i^i \mathrm{vol}(e_1,\ldots,e_i,\ldots,e_n) = Y_i^i
+    \end{align*}
+    and thus 
+    \[
+    \mathrm{vol}(-,\ldots,\nabla X,\ldots,-) = Y_i^i \mathrm{vol}.
+    \]
+    By definition of the trace $\mathrm{tr}(\nabla X) = \sum_{i=1}^{n} Y_i^i$, from which the first formula in the lemma now follows. The second formula follows directly from the definition of the trace.
+\end{proof}
+
+\begin{remark}
+    For a smooth function $f \colon M \to \R$ there are two ways to define the Laplacian of $f$, namely as $\mathrm{div}(\mathrm{grad}(f))$ or as the connection Laplacian $\mathrm{tr}_g(\nabla^2 f)$, where we take the trace with respect to the metric $g$ on $M$. By the above Lemma the two agree, using the fact that $\mathrm{grad}(f) = (\nabla f)^\sharp$ and that the covariant derivative commutes with the musical isomorphisms:
+    \[
+    \mathrm{div}(\mathrm{grad}(f)) = \mathrm{tr}(\nabla\mathrm{grad}(f)) = \mathrm{tr}((\nabla^2f)^\sharp) = \mathrm{tr}_g(\nabla^2 f)
+    \]
+    The last equality is the definition of the trace operator $\mathrm{tr}_g$.
+\end{remark}
