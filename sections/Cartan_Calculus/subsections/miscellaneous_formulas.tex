@@ -31,7 +31,16 @@
     \[
     \sum_{i=1}^{n} \iota_X \epsilon^i \wedge \nabla_i \omega = \sum_{i=1}^{n} X^i \nabla_i \omega = \nabla_X \omega.
     \]
-    For the second summand we compute ?????
+    For the second summand let $e_{j_1},\ldots,e_{j_k}$ be any (not necessarily ordered) $k$-tuple of distinct basis vectors. If $i = j_l$ for some $1 \leq l \leq k$ we get 
+    \begin{align*}
+    (\epsilon^i \wedge \omega(\nabla_iX,-))(e_{j_1},\ldots,e_{j_k}) & = (-1)^{l-1}\omega(\nabla_iX,e_{j_1},\ldots,e_{j_{l-1}},e_{j_{l+1}},\ldots,e_{j_n}) \\ 
+    &= \omega(e_{j_1},\ldots,e_{j_{l-1}},\nabla_iX,e_{j_{l+1}},\ldots,e_{j_n}) 
+    \end{align*}
+    On the other hand, if $i$ is distinct from any of the $j_l$, this term evaluates to $0$. Therefore
+    \begin{align*}
+        \left(\sum_{i=1}^{n} \epsilon^i \wedge \omega(\nabla_iX,-)\right)(e_{j_1},\ldots,e_{j_k}) &= \sum_{l=1}^k \omega(e_{j_1},\ldots,e_{j_{l-1}},\nabla_{j_l}X,e_{j_{l+1}},\ldots,e_{j_n}) \\
+        &= \left(\sum_{i=1}^{k} \omega(-,\ldots,\nabla X,\ldots,-)\right)(e_{j_1},\ldots,e_{j_k})
+    \end{align*}
     % \begin{align*}
     %     (\epsilon^i \wedge \omega(\nabla_iX,-))(e_1,\ldots,e_n) & = (-1)^{i-1} \omega(\nabla_iX,e_1,\ldots,e_{i-1},e_{i+1},\ldots,e_n) \\
     %     & = \omega(e_1,\ldots,e_{i-1},\nabla_iX,e_{i+1},\ldots,e_n) \\
